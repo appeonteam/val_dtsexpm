@@ -1,0 +1,7 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "qs.pbl" "";
+@end;
+@begin Objects 
+ "w_uij.srw" "qs.pbl";
+@end;
