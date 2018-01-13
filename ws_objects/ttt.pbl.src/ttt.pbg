@@ -1,0 +1,7 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "ttt.pbl" "";
+@end;
+@begin Objects 
+ "ttt.sra" "ttt.pbl";
+@end;
