@@ -1,0 +1,93 @@
+﻿$PBExportHeader$d_gcc_rpt_room_score_no_proc.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=300 color="536870912" )
+summary(height=0 color="553648127" )
+footer(height=0 color="536870912" )
+detail(height=0 color="553648127" )
+table(column=(type=char(15) updatewhereclause=yes name=gcc_room dbname="gcc.room" )
+ column=(type=number updatewhereclause=yes name=gcc_gccid dbname="gcc.gccid" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=datetime updatewhereclause=yes name=fromdate dbname="fromdate" )
+ column=(type=datetime updatewhereclause=yes name=todate dbname="todate" )
+ column=(type=char(6) updatewhereclause=yes name=score dbname="score" )
+ column=(type=datetime updatewhereclause=yes name=gcc_ansdate dbname="gcc.ansdate" )
+ column=(type=decimal(2) updatewhereclause=yes name=totscoreperq dbname="totscoreperq" )
+ column=(type=long updatewhereclause=yes name=qgen_questions_qorder dbname="qorder" )
+ retrieve="  SELECT DISTINCT gcc.room, 
+			gcc.gccid,
+			g.last_name,
+			g.first_name,
+			q.questiontxt ,
+			q.questionid ,
+			convert( datetime , vzt_date(':fdate')) fromdate , 
+			convert( datetime , vzt_date(':tdate')) todate,
+			';score'				score,
+			gcc.ansdate , 
+/* fast */
+vzt_gcc_tot_score_by_room( gcc.ansdate,gcc.ansdate, q.questionid,';NA', gcc.room) totscoreperq,
+/*
+vzt_gcc_totcards_by_room( vzt_date(':fdate'),vzt_date(':tdate'), ',15,17,20,22,',';NA', gcc.room) totcards,
+vzt_gcc_tot_score_by_room( vzt_date(':fdate'),vzt_date(':tdate'), string(q.questionid),';NA', gcc.room) totscoreperq,
+vzt_gcc_tot_score_by_room( vzt_date(':fdate'),vzt_date(':tdate'), ',15,17,20,22,',';NA', gcc.room) totscoreavg,
+*/
+			q.sortorder qorder
+    FROM qgen_questions  q,
+			qgen_qset_questions qq,
+			guest g, 
+			gcc 
+   WHERE  
+			gcc.room <> '' and gcc.room is not null and 
+ 			gcc.guest_account= g.account and
+			gcc.surveyid = qq.qsetid and 
+			q.questionid = qq.questionid and
+			totscoreperq > 0 
+
+			/*1 and totscoreperq < ;score 1*/
+			/* AND ((';NA' = 'Y') OR ( ';NA'='N' AND answerid <> 999999000 )) */ 
+			/* AND ( string(0)=';qset' OR A1.qsetid IN (;qset)  ) 		*/	
+			/*1 AND (':question'= '' or ':question' = '*ALL*' or LOCATE(','+':question'+',' ,  ','+RTRIM(convert(varchar(10),qq.questionid))+',') > 0) 
+			1*/  
+			/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.ansdate BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			1*/
+			/* AND ( '*ALL*' IN (';COMP') OR '' IN  (';COMP') OR g.comp_name IN (';COMP')) */	
+ 
+			AND q.qtypeid NOT IN ('FF1','FF2', 'FF3','FF4', 'SCT')
+
+
+"  sort="qgen_questions_qorder A gcc_room A gcc_gccid A " )
+group(level=1 header.height=72 trailer.height=12 by=("questionid" ) header.color="553648127" trailer.color="536870912" )
+group(level=2 header.height=0 trailer.height=68 by=("questionid" , "gcc_room" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Room Score Summary" border="0" color="0" x="1239" y="4" height="64" width="663" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="From:" border="0" color="0" x="1175" y="84" height="56" width="155" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="To:" border="0" color="0" x="1614" y="84" height="56" width="91" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=7 alignment="0" tabsequence=32766 border="0" color="128" x="1339" y="84" height="56" width="256" format="[shortdate]" html.valueishtml="0"  name=fromdate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Displaying Question Scores Less than" border="0" color="0" x="987" y="148" height="56" width="978" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=9 alignment="0" tabsequence=32766 border="0" color="0" x="1966" y="148" height="56" width="137" format="[general]" html.valueishtml="0"  name=score visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=8 alignment="0" tabsequence=32766 border="0" color="128" x="1723" y="84" height="56" width="407" format="[shortdate]" html.valueishtml="0"  name=todate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=5 alignment="0" tabsequence=32766 border="0" color="128" x="69" y="8" height="56" width="2569" format="[general]" html.valueishtml="0"  name=questiontxt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=trailer.2 id=1 alignment="0" tabsequence=32766 border="0" color="0" x="530" y="4" height="56" width="306" format="[general]" html.valueishtml="0"  name=gcc_room visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.2 alignment="0" expression="sum( 1 for group 2 ) "border="0" color="128" x="933" y="4" height="56" width="183" format="[general]" html.valueishtml="0"  name=totcardsperq visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.2 alignment="0" expression="sum(  totscoreperq for group 2 ) / sum( 1 for group 2 ) "border="0" color="128" x="1289" y="0" height="56" width="562" format="#,##0.00" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=trailer.1 x="59" y="0" height="12" width="2967"  name=r_2 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+rectangle(band=trailer.1 x="59" y="60" height="8" width="2871"  name=r_3 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=trailer.1 alignment="0" text="Total for Room" border="0" color="16711680" x="82" y="4" height="56" width="379" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=1 alignment="0" tabsequence=32766 border="0" color="16711680" x="480" y="4" height="64" width="256" format="[general]" html.valueishtml="0"  name=gcc_room_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Question" border="0" color="65535" x="91" y="236" height="56" width="457" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Tot Cards" border="0" color="65535" x="891" y="236" height="56" width="352" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Room Avg Score:" border="0" color="65535" x="1225" y="236" height="56" width="699" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Room" border="0" color="65535" x="549" y="236" height="56" width="366" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

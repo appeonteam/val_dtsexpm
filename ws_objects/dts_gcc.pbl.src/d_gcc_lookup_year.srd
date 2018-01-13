@@ -1,0 +1,20 @@
+﻿$PBExportHeader$d_gcc_lookup_year.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=52 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=id dbname="id" )
+ column=(type=char(4) updatewhereclause=yes name=code dbname="code" )
+ column=(type=char(1) updatewhereclause=yes name=name dbname="name" )
+ column=(type=char(4) updatewhereclause=yes name=descr dbname="descr" )
+ column=(type=long updatewhereclause=yes name=value dbname="value" )
+ column=(type=long updatewhereclause=yes name=sortorder dbname="sortorder" )
+ retrieve="		SELECT 1 id, '2000' code, ' ' name, '2000' descr,  1 value,   1 sortorder  FROM DUMMY
+UNION SELECT 1 id, '2001' code, ' ' name, '2001' descr,  1 value,   1 sortorder  FROM DUMMY
+UNION SELECT 1 id, '2002' code, ' ' name, '2002' descr,  1 value,   1 sortorder  FROM DUMMY
+UNION SELECT 1 id, '2003' code, ' ' name, '2003' descr,  1 value,   1 sortorder  FROM DUMMY
+UNION SELECT 1 id, '2004' code, ' ' name, '2004' descr,  1 value,   1 sortorder  FROM DUMMY
+UNION SELECT 1 id, '2005' code, ' ' name, '2005' descr,  1 value,   1 sortorder  FROM DUMMY" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="114" y="0" height="52" width="480" format="[general]"  name=descr edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

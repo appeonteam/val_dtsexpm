@@ -1,0 +1,114 @@
+﻿$PBExportHeader$f_log_delete.srf
+global type f_log_delete from function_object
+end type
+
+forward prototypes
+global function integer f_log_delete (datawindow dw_nm, double dw_row)
+end prototypes
+
+global function integer f_log_delete (datawindow dw_nm, double dw_row);string	table_key_str, table_key_str2
+double table_key_num
+if dw_nm.dataobject = 'd_problem2' then
+	table_key_str=dw_nm.GetItemString(dw_row,'problem_number')
+	insert 	into problem_log 
+	select 	problem_desc ,
+				problem_number,
+				timer1_start_min,
+				timer2_start_min,
+				timer1_reps,
+				timer2_reps,
+				auth_take_off_timer,
+				default_status,
+				pre_openable,
+				timer_level,
+				mx_map,
+				mm_map,
+				desc_tran,
+				timer3_start_min,
+				timer3_reps,
+				action = 'D',
+				action_ts = getdate(),
+				action_user = :cPassUserName
+	from		problem where problem_number=:table_key_str;
+	if sqlca.sqlcode <> 0 then MessageBox("DB Error",sqlca.sqlerrtext)
+//	MessageBox("delete",'key='+table_key_str+' user='+cPassUserName)
+	return 0
+end if
+
+if dw_nm.dataobject = 'd_subproblem2' then
+	table_key_str2=dw_nm.GetItemString(dw_row,'subproblem_number')
+	table_key_str=dw_nm.GetItemString(dw_row,'problem_number')
+	insert		into subproblem_log
+	select 	subproblem_desc,       
+				subproblem_number,     
+				problem_number,        
+				timer1_start_min,      
+				timer2_start_min,      
+				timer1_reps,     	    
+				timer2_reps,     	    
+				auth_take_off_timer,   
+				default_status     ,   
+				pre_openable       ,   
+				timer_level        ,   
+				auto_assign_ind    ,   
+				dept_assign        ,   
+				init_paging_min    ,   
+				retcode     	,	      
+				mx_map      	,	      
+				mm_map      	,	      
+				lnk_task_no        ,   
+				lnk_subtask_no     ,   
+				use_depart_dt      ,   
+				post_amt    	,	      
+				post_code          ,   
+				resp_task_no       ,   
+				resp_subtask_no    ,   
+				recurring_template_id ,
+				tasking_offset      ,  
+				desc_tran     	    ,  
+				depart_offset       ,  
+				timer3_start_min    ,  
+				timer3_reps         ,  
+				ext_pref_code       ,  
+				skip_history        ,  
+				ext_pref_onetime ,   
+				action = 'D'     		,      
+				action_ts  = getdate() 		,      
+				action_user = :cPassUserName	  
+	from 		subproblem	
+	where	problem_number=:table_key_str and subproblem_number=:table_key_str2;
+	if sqlca.sqlcode <> 0 then MessageBox("DB Error",sqlca.sqlerrtext)
+//	MessageBox("delete",'key='+table_key_str+' '+table_key_str2+' user='+cPassUserName)
+	return 0
+end if
+
+if dw_nm.dataobject = 'd_equipment_master_detail' then
+	table_key_str=dw_nm.GetItemString(dw_row,'area_number')
+	insert into equipment_master_log 
+	select 	category, 			       
+		manufacturer,
+		model,
+		serialno,
+		purchasecost,
+		area_number,
+		zone_code,
+		zone_group_code,
+		area_name,
+		vendor,
+		purchasedate,
+		extended_warranty,
+		warranty_expires,
+		descr,
+		action = 'D',
+  		action_ts = getdate(),
+  		action_user = :cPassUserName
+	from	equipment_master
+	where	area_number=:table_key_str;
+	if sqlca.sqlcode <> 0 then MessageBox("DB Error",sqlca.sqlerrtext)
+	//	MessageBox("delete",'key='+table_key_str+' user='+cPassUserName)
+	return 0
+end if
+
+return 1
+end function
+

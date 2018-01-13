@@ -1,0 +1,92 @@
+﻿$PBExportHeader$d_qset_edit_tv.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=728 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=qsetid dbname="qgen_qset.qsetid" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=descr dbname="qgen_qset.descr" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=active dbname="qgen_qset.active" initial="N" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=showqnum dbname="qgen_qset.showqnum" initial="Y" values=" 	Y/ 	N/" )
+ column=(type=long update=yes updatewhereclause=yes name=sortorder dbname="qgen_qset.sortorder" )
+ column=(type=long update=yes updatewhereclause=yes name=y_start dbname="qgen_qset.y_start" initial="5" )
+ column=(type=long update=yes updatewhereclause=yes name=y_before_q dbname="qgen_qset.y_before_q" initial="5" )
+ column=(type=long update=yes updatewhereclause=yes name=y_q_to_a dbname="qgen_qset.y_q_to_a" initial="5" )
+ column=(type=long update=yes updatewhereclause=yes name=x_start_q dbname="qgen_qset.x_start_q" initial="10" )
+ column=(type=long update=yes updatewhereclause=yes name=x_start_a dbname="qgen_qset.x_start_a" initial="20" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_title_pic_left dbname="qgen_qset.web_title_pic_left" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_title_pic_right dbname="qgen_qset.web_title_pic_right" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_title_pic_bg dbname="qgen_qset.web_title_pic_bg" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_title_pic_top dbname="qgen_qset.web_title_pic_top" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_title_pic_bottom dbname="qgen_qset.web_title_pic_bottom" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_qpic_left dbname="qgen_qset.web_qpic_left" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_qpic_right dbname="qgen_qset.web_qpic_right" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_qpic_top dbname="qgen_qset.web_qpic_top" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_qpic_botom dbname="qgen_qset.web_qpic_botom" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=web_qpic_bg dbname="qgen_qset.web_qpic_bg" )
+ retrieve="  SELECT ~"qgen_qset~".~"qsetid~",   
+         ~"qgen_qset~".~"descr~",   
+         ~"qgen_qset~".~"active~",   
+         ~"qgen_qset~".~"showqnum~",   
+         ~"qgen_qset~".~"sortorder~",   
+         ~"qgen_qset~".~"y_start~",   
+         ~"qgen_qset~".~"y_before_q~",   
+         ~"qgen_qset~".~"y_q_to_a~",   
+         ~"qgen_qset~".~"x_start_q~",   
+         ~"qgen_qset~".~"x_start_a~"  ,
+ 			~"qgen_qset~".~"web_title_pic_left~",   
+         ~"qgen_qset~".~"web_title_pic_right~",   
+         ~"qgen_qset~".~"web_title_pic_bg~",   
+         ~"qgen_qset~".~"web_title_pic_top~",   
+         ~"qgen_qset~".~"web_title_pic_bottom~",   
+         ~"qgen_qset~".~"web_qpic_left~",   
+         ~"qgen_qset~".~"web_qpic_right~",   
+         ~"qgen_qset~".~"web_qpic_top~",   
+         ~"qgen_qset~".~"web_qpic_botom~",   
+         ~"qgen_qset~".~"web_qpic_bg~"   
+        
+    FROM ~"qgen_qset~"   
+	WHERE  ~"qgen_qset~".~"qsetid~" = :ad_qsetid
+" update="qgen_qset" updatewhere=0 updatekeyinplace=yes arguments=(("ad_qsetid", number)) )
+groupbox(band=detail text="Spacing:"border="5" color="0" x="37" y="244" height="460" width="933"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Qsetid:"border="0" color="0" x="32" y="20" height="56" width="329"  name=qsetid_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="8388608" x="407" y="20" height="56" width="174" format="[general]"  name=qsetid edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Order in list:"border="0" color="0" x="878" y="20" height="56" width="320"  name=sortorder_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=10 border="5" color="16711680" x="1248" y="20" height="56" width="229" format="[general]"  name=sortorder editmask.mask="###" editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Active:"border="0" color="0" x="32" y="184" height="56" width="329"  name=active_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="407" y="184" height="56" width="55" format="[general]"  name=active checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Show question numbers:"border="0" color="0" x="489" y="184" height="56" width="640"  name=showqnum_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="1138" y="184" height="56" width="370" format="[general]"  name=showqnum radiobuttons.columns=2 radiobuttons.scale=no radiobuttons.threed=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Yes"border="0" color="0" x="1225" y="180" height="56" width="101"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="No"border="0" color="0" x="1413" y="180" height="56" width="82"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Descr:"border="0" color="0" x="32" y="100" height="56" width="329"  name=descr_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="16711680" x="407" y="100" height="56" width="1070" format="[general]"  name=descr edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="Starting Y offset:"border="0" color="0" x="64" y="316" height="56" width="571"  name=y_start_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Y Between questions:"border="0" color="0" x="64" y="392" height="56" width="571"  name=y_before_q_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Y Between q and a:"border="0" color="0" x="64" y="468" height="56" width="571"  name=y_q_to_a_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Question start X:"border="0" color="0" x="64" y="544" height="56" width="571"  name=x_start_q_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Answer start X"border="0" color="0" x="64" y="620" height="56" width="571"  name=x_start_a_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=50 border="5" color="16711680" x="667" y="316" height="56" width="274" format="[general]"  name=y_start editmask.spin=yes editmask.mask="####" editmask.spinrange="1~~9999" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="1" tabsequence=60 border="5" color="16711680" x="667" y="392" height="56" width="274" format="[general]"  name=y_before_q editmask.spin=yes editmask.mask="####" editmask.spinrange="1~~9999" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="1" tabsequence=70 border="5" color="16711680" x="667" y="468" height="56" width="274" format="[general]"  name=y_q_to_a editmask.spin=yes editmask.mask="####" editmask.spinrange="1~~9999" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="1" tabsequence=80 border="5" color="16711680" x="667" y="544" height="56" width="274" format="[general]"  name=x_start_q editmask.spin=yes editmask.mask="####" editmask.spinrange="1~~9999" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="1" tabsequence=90 border="5" color="16711680" x="667" y="620" height="56" width="274" format="[general]"  name=x_start_a editmask.spin=yes editmask.mask="####" editmask.spinrange="1~~9999" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+groupbox(band=detail text="GFX: "border="5" color="0" x="1001" y="244" height="460" width="997"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text=" Qset Title:"border="0" color="128" x="1234" y="248" height="52" width="297"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text=" Question Dflt:"border="0" color="128" x="1600" y="248" height="52" width="357"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269524" )
+text(band=detail alignment="0" text="Left:"border="0" color="0" x="1024" y="316" height="56" width="128"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Right:"border="0" color="0" x="1024" y="392" height="56" width="174"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Top:"border="0" color="0" x="1024" y="468" height="56" width="128"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Bot:"border="0" color="0" x="1024" y="544" height="56" width="119"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="BG:"border="0" color="0" x="1024" y="616" height="56" width="110"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=100 border="5" color="8388608" x="1202" y="316" height="56" width="357" format="[general]"  name=web_title_pic_left edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=120 border="5" color="8388608" x="1202" y="392" height="56" width="357" format="[general]"  name=web_title_pic_right edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=140 border="5" color="8388608" x="1202" y="468" height="56" width="357" format="[general]"  name=web_title_pic_top edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="0" tabsequence=160 border="5" color="8388608" x="1202" y="544" height="56" width="357" format="[general]"  name=web_title_pic_bottom edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=180 border="5" color="8388608" x="1202" y="616" height="56" width="357" format="[general]"  name=web_title_pic_bg edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=110 border="5" color="8388608" x="1600" y="316" height="56" width="366" format="[general]"  name=web_qpic_left edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="0" tabsequence=130 border="5" color="8388608" x="1600" y="392" height="56" width="366" format="[general]"  name=web_qpic_right edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=18 alignment="0" tabsequence=150 border="5" color="8388608" x="1600" y="468" height="56" width="366" format="[general]"  name=web_qpic_top edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=19 alignment="0" tabsequence=170 border="5" color="8388608" x="1600" y="544" height="56" width="366" format="[general]"  name=web_qpic_botom edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=20 alignment="0" tabsequence=190 border="5" color="8388608" x="1600" y="616" height="56" width="366" format="[general]"  name=web_qpic_bg edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

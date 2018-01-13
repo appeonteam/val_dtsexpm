@@ -1,0 +1,959 @@
+﻿$PBExportHeader$f_close_a_call_common.srf
+global type f_close_a_call_common from function_object
+end type
+
+forward prototypes
+global function string f_close_a_call_common (string callnumber, string targettable, datetime adt_closedate, boolean ab_message, string as_closedby, string as_closedbydept)
+end prototypes
+
+global function string f_close_a_call_common (string callnumber, string targettable, datetime adt_closedate, boolean ab_message, string as_closedby, string as_closedbydept);// targetTable '1' = timercalls
+//					'2' = pendingcalls
+
+
+string      sCallNumber, ls_error_txt 
+datetime 	dtCallIndate
+string      sStatCode
+string      sRoom
+string      sGuest
+string      sCaller
+string      sProblem
+string      sSubproblem
+string      sProblemDefinition
+string      sComplaint
+string      sReceiver
+string      sShift
+string      sResolution
+string      sRepairman
+datetime 	dtCallOutdate
+string      sClosedBy
+string      sClosedBydept
+string      sTimerNumber
+datetime 	dtTimerStart
+string      sCallerCategory
+string      sProblemNumber
+string      sSubproblemNumber
+double    	dTimer1StartMin
+double    	dTimer2StartMin
+double    	dTimer1Reps
+double   	dTimer2Reps
+string      sAuthTakeOffTimer
+string      sDefaultStatus   
+string      sPreOpenable
+string      sPreOpened
+int         iTimerLevel
+string      sRoomDsc
+string      sOpenedStatus
+string		sPagingInd
+string 		sTimeCompleted
+double      d_paging_min
+double      d_account 
+string		sRecurInd
+double		dRecurId
+string		sOrigStatus
+string		sLnkTaskNo
+string		sLnkSubtaskNo
+string 		newCallNumber
+string		sAutoAssignInd
+int			ilnkCallTargetTable
+string		sZone, sEmployeeName, sEmployeeNum, sPagerId, sCapeCode
+string		sUseDepDt
+boolean 		guestDeptDateFound
+time			timerStartTime
+date			timerStartDate
+string		timerStartDateStr
+string		LnkTaskTimerTime
+datetime		timerStartDateDt, origTimerStartDt
+decimal 		ldamount
+double    	dTimer3StartMin
+double    	dTimer3Reps
+
+// select from timer/pending call table
+if targetTable = '1' then
+  SELECT "timercalls"."call_number",   
+         "timercalls"."call_indate",   
+         "timercalls"."stat_code",   
+         "timercalls"."room",   
+         "timercalls"."guest",   
+         "timercalls"."caller",   
+         "timercalls"."problem",   
+         "timercalls"."subproblem",   
+         "timercalls"."problem_definition",   
+         "timercalls"."complaint",   
+         "timercalls"."receiver",   
+         "timercalls"."shift",   
+         "timercalls"."resolution",   
+         "timercalls"."repairman",   
+         "timercalls"."call_outdate",   
+         "timercalls"."closed_by",   
+         "timercalls"."closed_bydept",   
+         "timercalls"."timer_number",   
+         "timercalls"."timer_start",   
+         "timercalls"."caller_category",   
+         "timercalls"."problem_number",   
+         "timercalls"."subproblem_number",   
+         "timercalls"."timer1_start_min",   
+         "timercalls"."timer2_start_min",   
+         "timercalls"."timer1_reps",   
+         "timercalls"."timer2_reps",   
+         "timercalls"."auth_take_off_timer",   
+         "timercalls"."default_status",   
+         "timercalls"."pre_openable",   
+         "timercalls"."pre_opened",   
+         "timercalls"."timer_level",   
+         "timercalls"."room_dsc",   
+         "timercalls"."opened_status",
+			"timercalls"."paging_ind",  
+			"timercalls"."init_paging_min",
+			"timercalls"."guest_id",
+			"timercalls"."recur_ind",
+			"timercalls"."recur_id"     ,
+			"timercalls"."amount",
+			"timercalls"."timer3_start_min",
+			"timercalls"."timer3_reps"
+			
+    INTO :sCallNumber,   
+         :dtCallIndate,   
+         :sStatCode,   
+         :sRoom,   
+         :sGuest,   
+         :sCaller,   
+         :sProblem,   
+         :sSubproblem,   
+         :sProblemDefinition,   
+         :sComplaint,   
+         :sReceiver,   
+         :sShift,   
+         :sResolution,   
+         :sRepairman,   
+         :dtCallOutdate,   
+         :sClosedBy,   
+         :sClosedBydept,   
+         :sTimerNumber,   
+         :dtTimerStart,   
+         :sCallerCategory,   
+         :sProblemNumber,   
+         :sSubproblemNumber,   
+         :dTimer1StartMin,   
+         :dTimer2StartMin,   
+         :dTimer1Reps,   
+         :dTimer2Reps,   
+         :sAuthTakeOffTimer,   
+         :sDefaultStatus,   
+         :sPreOpenable,   
+         :sPreOpened,   
+         :iTimerLevel,   
+         :sRoomDsc,   
+         :sOpenedStatus,  
+			:sPagingInd,
+			:d_paging_min, 
+			:d_account,
+			:sRecurInd,
+			:dRecurId,
+			:ldAmount,
+			:dTimer3StartMin,
+			:dTimer3Reps
+    FROM "timercalls"  
+   WHERE "timercalls"."call_number" = :callNumber   ;
+else
+  SELECT "pendingcalls"."call_number",   
+         "pendingcalls"."call_indate",   
+         "pendingcalls"."stat_code",   
+         "pendingcalls"."room",   
+         "pendingcalls"."guest",   
+         "pendingcalls"."caller",   
+         "pendingcalls"."problem",   
+         "pendingcalls"."subproblem",   
+         "pendingcalls"."problem_definition",   
+         "pendingcalls"."complaint",   
+         "pendingcalls"."receiver",   
+         "pendingcalls"."shift",   
+         "pendingcalls"."resolution",   
+         "pendingcalls"."repairman",   
+         "pendingcalls"."call_outdate",   
+         "pendingcalls"."closed_by",   
+         "pendingcalls"."closed_bydept",   
+         "pendingcalls"."timer_number",   
+         "pendingcalls"."timer_start",   
+         "pendingcalls"."caller_category",   
+         "pendingcalls"."problem_number",   
+         "pendingcalls"."subproblem_number",   
+         "pendingcalls"."timer1_start_min",   
+         "pendingcalls"."timer2_start_min",   
+         "pendingcalls"."timer1_reps",   
+         "pendingcalls"."timer2_reps",   
+         "pendingcalls"."auth_take_off_timer",   
+         "pendingcalls"."default_status",   
+         "pendingcalls"."pre_openable",   
+         "pendingcalls"."pre_opened",   
+         "pendingcalls"."timer_level",   
+         "pendingcalls"."room_dsc",   
+         "pendingcalls"."opened_status",
+			"pendingcalls"."paging_ind",  
+			"pendingcalls"."init_paging_min",
+			"pendingcalls"."guest_id",     
+			"pendingcalls"."recur_ind",
+			"pendingcalls"."recur_id",
+			"pendingcalls"."amount",
+			"pendingcalls"."timer3_start_min",
+			"pendingcalls"."timer3_reps"
+
+    INTO :sCallNumber,   
+         :dtCallIndate,   
+         :sStatCode,   
+         :sRoom,   
+         :sGuest,   
+         :sCaller,   
+         :sProblem,   
+         :sSubproblem,   
+         :sProblemDefinition,   
+         :sComplaint,   
+         :sReceiver,   
+         :sShift,   
+         :sResolution,   
+         :sRepairman,   
+         :dtCallOutdate,   
+         :sClosedBy,   
+         :sClosedBydept,   
+         :sTimerNumber,   
+         :dtTimerStart,   
+         :sCallerCategory,   
+         :sProblemNumber,   
+         :sSubproblemNumber,   
+         :dTimer1StartMin,   
+         :dTimer2StartMin,   
+         :dTimer1Reps,   
+         :dTimer2Reps,   
+         :sAuthTakeOffTimer,   
+         :sDefaultStatus,   
+         :sPreOpenable,   
+         :sPreOpened,   
+         :iTimerLevel,   
+         :sRoomDsc,   
+         :sOpenedStatus,
+			:sPagingInd  ,
+			:d_paging_min, 
+			:d_account,
+			:sRecurInd,
+			:dRecurId,
+			:ldAmount,
+			:dTimer3StartMin,
+			:dTimer3Reps
+    FROM "pendingcalls"  
+   WHERE "pendingcalls"."call_number" = :callNumber   ;	
+end if
+
+if sqlca.sqlcode = 100 then 
+	If ab_message then 
+		MessageBox("Error","Call number " + sCallNumber + " may have already been closed! It should not appear in your " + &
+	           "Pending calls or Timer calls screen after the next refresh!")
+	END IF
+	return '' // true
+end if
+
+if sqlca.sqlcode <> 0 then
+//	MessageBox("DB Error","Select error on timercalls/pendingcalls table: " + callNumber)
+	rollback;
+//	egm_sqlerror(sqlca)
+	return ''
+end if	
+
+// delete from timer/pending call table
+if targetTable = '1' then
+	DELETE FROM "timercalls"  
+   		WHERE "timercalls"."call_number" = :callNumber   ;
+elseif targetTable = '2' then
+	DELETE FROM "pendingcalls"  
+   		WHERE "pendingcalls"."call_number" = :callNumber   ;
+end if
+
+if sqlca.sqlcode <> 0 then
+	ls_error_txt = f_nvl(sqlca.sqlerrtext,'')
+	if ab_message then MessageBox("DB Error","Delete error on timercalls/pendingcalls table: "+targettable+'~r~nCall number:' + callNumber)
+	rollback;
+//	egm_sqlerror(sqlca)
+	return 'Error on DELETE, table='+ targettable + '~r~nCall number:' + callNumber + '~r~nError text:' + ls_error_txt  // false
+end if
+
+//insert into closedcalls table
+sOrigStatus = sStatCode
+sStatCode = '99'
+dtCallOutdate = adt_closedate // f_sysdate() // datetime(today(),now())
+
+If trim(as_closedby) = '' then
+	if trim(cpassusername) = '' then // most likely action is performed by SP
+		sClosedBy = sRepairman 
+	else
+		sClosedBy 		= cpassusername 
+	end if
+ELSE // use parameters 
+	sClosedBy 		= as_closedby
+	if trim(as_closedbydept) <> '' then
+		sClosedByDept 	= as_closedbydept
+	end if
+END IF
+
+INSERT INTO "closedcalls"  
+         ( "call_number",   
+           "call_indate",   
+           "stat_code",   
+           "room",   
+           "guest",   
+           "caller",   
+           "problem",   
+           "subproblem",   
+           "problem_definition",   
+           "complaint",   
+           "receiver",   
+           "shift",   
+           "resolution",   
+           "repairman",   
+           "call_outdate",   
+           "closed_by",   
+           "closed_bydept",   
+           "timer_number",   
+           "timer_start",   
+           "caller_category",   
+           "problem_number",   
+           "subproblem_number",   
+           "timer1_start_min",   
+           "timer2_start_min",   
+           "timer1_reps",   
+           "timer2_reps",   
+           "auth_take_off_timer",   
+           "default_status",   
+           "pre_openable",   
+           "pre_opened",   
+           "timer_level",   
+           "room_dsc",   
+           "opened_status",
+				"paging_ind",  
+				"init_paging_min",
+				"guest_id",
+				"recur_ind",
+				"recur_id",
+				"Amount",
+				"timer3_start_min",
+				"timer3_reps"
+)  
+  VALUES ( :sCallNumber,   
+           :dtCallIndate,   
+           :sStatCode,   
+           :sRoom,   
+           :sGuest,   
+           :sCaller,   
+           :sProblem,   
+           :sSubproblem,   
+           :sProblemDefinition,   
+           :sComplaint,   
+           :sReceiver,   
+           :sShift,   
+           :sResolution,   
+           :sRepairman,   
+           :dtCallOutdate,   
+           :sClosedBy,   
+           :sClosedBydept,   
+           :sTimerNumber,   
+           :dtTimerStart,   
+           :sCallerCategory,   
+           :sProblemNumber,   
+           :sSubproblemNumber,   
+           :dTimer1StartMin,   
+           :dTimer2StartMin,   
+           :dTimer1Reps,   
+           :dTimer2Reps,   
+           :sAuthTakeOffTimer,   
+           :sDefaultStatus,   
+           :sPreOpenable,   
+           :sPreOpened,   
+           :iTimerLevel,   
+           :sRoomDsc,   
+           :sOpenedStatus,
+  			  :sPagingInd  ,
+			  :d_paging_min, 
+			  :d_account,
+			  :sRecurInd,
+			  :dRecurId,
+			  :ldAmount,
+				:dTimer3StartMin,
+				:dTimer3Reps
+			  )  ;
+
+if sqlca.sqlcode <> 0 then 
+	ls_error_txt = f_nvl(sqlca.sqlerrtext,'')
+//	If ab_message then MessageBox("DB Error","Delete error on timercalls/pendingcalls table: " + callNumber)
+	rollback;
+//	egm_sqlerror(sqlca)
+	if sqlca.sqlcode <> 0 then 
+		if ab_message then MessageBox("DB Error","Rollback error for Callnumber: " + callNumber)
+		return ls_error_txt  + '~r~nDB Error on Rollback error for Callnumber: ' + callNumber //false
+	end if
+	return 'DB Error closing call Callnumber: ' + callNumber +'~r~n~r~n' + ls_error_txt   //false
+end if
+
+if sPagingInd <> '' then
+	sTimeCompleted = string(today(),"yyyy/mm/dd hh:mm:ss")
+	
+	UPDATE pageassignment
+		SET time_completed = :sTimeCompleted
+	WHERE pageassignment.call_number = :callnumber   ;
+
+	if sqlca.sqlcode <> 0 then
+		ls_error_txt = f_nvl(sqlca.sqlerrtext,'')
+		rollback;
+	//	egm_sqlerror(sqlca)
+		if sqlca.sqlcode <> 0 then
+			if ab_message then MessageBox("DB Error","Rollback error for Callnumber: " + callNumber)
+			return ls_error_txt  + '~r~nDB Error on Pageassignment Rollback error for Callnumber: ' + callNumber //false
+		end if
+		return 'DB Error on Pageassignment update closing call Callnumber: ' + callNumber +'~r~n~r~n' + ls_error_txt   //false
+	end if
+end if
+
+//create recurring call
+if sRecurInd = 'Y' and dRecurId > 0 then
+//	MessageBox("info","get recurring info:"+callNumber)
+	date newTimerDate
+	time newTimerTime
+	datetime rcall_indate,rtimer_start
+//	s_call sCall
+	string rcall_number,rstat_code
+	if f_next_recurring_date(dRecurId,newTimerDate,newTimerTime,date(dtTimerStart),time(dtTimerStart)) = true then
+		newCallNumber=string(f_new_call_number())
+		rtimer_start=datetime(newTimerDate,newTimerTime)
+//		scall.call_number=newCallNumber     
+		rcall_number=newCallNumber
+//		scall.call_indate=datetime(today(),now())
+		rcall_indate=datetime(today(),now())
+		if sDefaultStatus = '01' then
+//			scall.stat_code = '00' // force to pre-open so it can be auto assign
+			rstat_code = '00'
+			sPagingInd = 'P' // as part of pre-open status
+		else
+//			scall.stat_code=sOrigStatus  
+//			scall.stat_code = sDefaultStatus // if somehow call was change to 00, it will force it back to default status
+			rstat_code = sDefaultStatus
+		end if
+		StartInsertRecurCall:
+		if targetTable = '1' then
+			INSERT INTO "timercalls"  
+         ( "call_number",   
+           "call_indate",   
+           "stat_code",   
+           "room",   
+           "guest",   
+           "caller",   
+           "problem",   
+           "subproblem",   
+           "problem_definition",   
+           "complaint",   
+           "receiver",   
+           "shift",   
+           "resolution",   
+           "repairman",   
+           "call_outdate",   
+           "closed_by",   
+           "closed_bydept",   
+           "timer_number",   
+           "timer_start",   
+           "caller_category",   
+           "problem_number",   
+           "subproblem_number",   
+           "timer1_start_min",   
+           "timer2_start_min",   
+           "timer1_reps",   
+           "timer2_reps",   
+           "auth_take_off_timer",   
+           "default_status",   
+           "pre_openable",   
+           "pre_opened",   
+           "timer_level",   
+           "room_dsc",   
+           "opened_status",
+			  "paging_ind",
+			  "init_paging_min",
+			  "recur_ind",
+				"recur_id","timer3_start_min","timer3_reps") 
+	 	VALUES ( 
+		 	:rcall_number, 
+	 		:rcall_indate,
+	 		:rstat_code,
+			:sRoom , 
+			:sGuest ,  
+			:sCaller,   
+			:sProblem,   
+			:sSubProblem,   
+			:sProblemDefinition ,  
+			:sComplaint ,  
+			:sReceiver,  
+			:sShift,   
+			'',  //resolution
+			'',  //repairman  
+			null,// call_outdate
+			'', //closed_by  
+			:sClosedBydept,   
+			:sTimerNumber,   
+			:rtimer_start,
+			:sCallerCategory,
+			:sProblemNumber, 
+			:sSubproblemNumber, 
+			:dTimer1StartMin,   
+			:dTimer2StartMin, 
+			:dTimer1Reps  ,
+			:dTimer2Reps,   
+			:sAuthTakeOffTimer , 
+			:sDefaultStatus   ,
+			:sPreOpenable,   
+			:sPreOpened,  
+			:iTimerLevel,  
+			:sRoomDsc,
+			:sOpenedStatus,
+			:sPagingInd,
+			:d_paging_min,
+			:sRecurInd,
+			:dRecurId,
+			:dTimer3StartMin,
+			:dTimer3Reps);
+		else
+			INSERT INTO "pendingcalls"  (
+           "call_number",   
+           "call_indate",   
+           "stat_code",   
+           "room",   
+           "guest",   
+           "caller",   
+           "problem",   
+           "subproblem",   
+           "problem_definition",   
+           "complaint",   
+           "receiver",   
+           "shift",   
+           "resolution",   
+           "repairman",   
+           "call_outdate",   
+           "closed_by",   
+           "closed_bydept",   
+           "timer_number",   
+           "timer_start",   
+           "caller_category",   
+           "problem_number",   
+           "subproblem_number",   
+           "timer1_start_min",   
+           "timer2_start_min",   
+           "timer1_reps",   
+           "timer2_reps",   
+           "auth_take_off_timer",   
+           "default_status",   
+           "pre_openable",   
+           "pre_opened",   
+           "timer_level",   
+           "room_dsc",   
+           "opened_status",
+			  "paging_ind",
+			  "init_paging_min",
+			  "recur_ind",
+				"recur_id",
+				"timer3_start_min",
+				"timer3_reps") 
+	 		VALUES ( 
+		 	:rcall_number, 
+	 		:rcall_indate,
+	 		:rstat_code,
+			:sRoom , 
+			:sGuest ,  
+			:sCaller,   
+			:sProblem,   
+			:sSubProblem,   
+			:sProblemDefinition ,  
+			:sComplaint ,  
+			:sReceiver,  
+			:sShift,   
+			'',  //resolution
+			'',  //repairman  
+			null,// call_outdate
+			'', //closed_by  
+			:sClosedBydept,   
+			:sTimerNumber,   
+			:rtimer_start,
+			:sCallerCategory,
+			:sProblemNumber, 
+			:sSubproblemNumber, 
+			:dTimer1StartMin,   
+			:dTimer2StartMin, 
+			:dTimer1Reps  ,
+			:dTimer2Reps,   
+			:sAuthTakeOffTimer , 
+			:sDefaultStatus   ,
+			:sPreOpenable,   
+			:sPreOpened,  
+			:iTimerLevel,  
+			:sRoomDsc,
+			:sOpenedStatus,
+			:sPagingInd,
+			:d_paging_min,
+			:sRecurInd,
+			:dRecurId,
+			:dTimer3StartMin,
+			:dTimer3Reps	);
+		end if
+		if sqlca.sqlcode <> 0 then
+			if sqlca.sqldbcode = -193 then// duplicate primary key 
+				sCallNumber=string(f_new_call_number())
+				Goto StartInsertRecurCall // re-try insertion
+			else
+	//			egm_sqlerror(sqlca)
+				MessageBox("db error","DB error getting lnk_task info!")
+				goto FINISH
+			end if
+		end if
+	end if
+end if
+
+// check linked task for inserting linked task
+select	lnk_task_no,
+			lnk_subtask_no
+into		:sLnkTaskNo,
+			:sLnkSubtaskNo
+from		subproblem
+where		problem_number=:sProblemNumber
+and		subproblem_number=:sSubproblemNumber;
+if sqlca.sqlcode < 0 then
+//	egm_sqlerror(sqlca)
+	MessageBox("db error","DB error checking lnk_task info!")
+else
+	if len(trim(sLnkTaskNo)) > 0 and len(trim(sLnkSubtaskNo)) > 0  then // insert linked task
+//		s_call lCall
+		string lpre_opened, lpaging_ind, lproblem_definition
+		datetime ltimer_start, lcall_indate
+		lproblem_definition='Created by task:'+trim(sProblem)+', subtask:'+trim(sSubproblem)
+		select	problem.problem_desc,
+					subproblem.subproblem_desc,
+					subproblem.timer1_start_min,
+					subproblem.timer2_start_min,
+					subproblem.timer1_reps,
+					subproblem.timer2_reps,
+					subproblem.auth_take_off_timer,
+					subproblem.default_status,
+					subproblem.pre_openable,
+					subproblem.timer_level,
+					subproblem.auto_assign_ind,
+					subproblem.dept_assign,
+					subproblem.init_paging_min,
+					subproblem.use_depart_dt,
+					subproblem.timer3_start_min,
+					subproblem.timer3_reps
+		into		:sProblem,
+					:sSubproblem,
+					:dTimer1StartMin,
+					:dTimer2StartMin,
+					:dTimer1Reps,
+					:dTimer2Reps,
+					:sAuthTakeOffTimer,
+					:sDefaultStatus,
+					:sPreOpenable,
+					:iTimerLevel,
+					:sAutoAssignInd,
+					:sClosedBydept,
+					:d_paging_min,
+					:sUseDepDt,
+				   :dTimer3StartMin,
+				   :dTimer3Reps
+		from 		problem, subproblem
+		where		problem.problem_number = subproblem.problem_number
+		and		problem.problem_number = :sLnkTaskNo
+		and		subproblem.subproblem_number=:sLnkSubtaskNo;
+		if sqlca.sqlcode < 0 then
+//			egm_sqlerror(sqlca)
+			MessageBox("db error","DB error getting lnk_task info!")
+			goto FINISH
+		end if		
+		// get guest departure info 8/7/04
+		// get default pickup time 
+		guestDeptDateFound = false
+		if sUseDepDt = 'Y' then
+//			LnkTaskTimerTime=ProfileString (cINIPath +&
+//							"he_dts.ini","CallDataEntry", "LnkTskByDeptTimeDef", "11:00")							
+			LnkTaskTimerTime=ProfileString( gnv_appman.cScreenSettingPath+"\"+gnv_appman.cScreenSettingFile,&
+												"CallDataEntry", "LnkTskByDeptTimeDef", '11:00' )
+			select	room_registry.date_to
+			into		:timerStartDateStr
+			from		room_registry
+			where		room_code=:sRoom;
+			if sqlca.sqlcode < 0 then
+//				egm_sqlerror(sqlca)
+				MessageBox("db error","DB error checking guest departure info!")
+			else
+				if sqlca.sqlcode = 0 then
+					timerStartDate=f_str_d_to_d(timerStartDateStr)
+					timerStartDateDt = datetime(timerStartDate,time(LnkTaskTimerTime))
+					if IsDate(f_dt_to_d_str(timerStartDateDt)) then
+						if timerStartDateDt > datetime(today(),now()) then
+							guestDeptDateFound = true
+						end if
+						
+					else
+						MessageBox("invalid Date",timerStartDateStr+" "+string(timerStartDate))
+					end if
+				end if
+			end if
+			
+		end if
+		// end get guest departure info
+		
+		
+		newCallNumber=string(f_new_call_number())
+		
+	
+//		if sAutoAssignInd = 'Y' and & 
+//			integer(sDefaultStatus) > 0 and integer(sDefaultStatus) < 10 then
+//			// creating pageassignment record 
+//			s_pageassignment ass
+//			select unit_type into :sZone
+//			from area where area_number=:sRoom;
+//			if sqlca.sqlcode < 0 then
+////				egm_sqlerror(sqlca)
+//				MessageBox("db error","DB error getting zone info!")
+//				goto FINISH
+//			end if 
+//			if not f_find_pager_id (sClosedBydept, sEmployeeName, &
+//						sEmployeeNum, sPagerId, sCapeCode, sZone) then
+//				ass.assignment_id = string(today(),"yymmddhhmmss")+string(rand(99))
+//			   ass.assignment_cd = 'N'
+//		 	   ass.dept_assigned = sClosedBydept
+//			   ass.emp_id = '8888888888'
+//			   ass.emp_name = 'NONE'
+//				sRepairman=''
+//		      ass.time_assigned = string(today(),"yyyy/mm/dd hh:mm:ss")
+//			   SetNull(ass.time_completed)
+//			   ass.call_number = newCallNumber 
+//			   ass.page_sent = 'N'
+//				ass.special_msg = 'Auto assignment call # ' + scallnumber + &
+//				 ' has failed to allocate a pager!'
+//				ass.pager_id = f_find_mgr_pager(sClosedBydept,sZone)
+//				sRepairman=''
+//    		ELSE
+//				ass.assignment_id = string(today(),"yymmddhhmmss")+string(rand(99))
+//				ass.assignment_cd = 'T'
+//				ass.dept_assigned = sClosedBydept
+//				ass.emp_id = sEmployeeNum
+//				ass.emp_name = sEmployeeName
+//				sRepairman = sEmployeeName
+//				ass.pager_id = sPagerId
+//				ass.time_assigned = string(today(),"yyyy/mm/dd hh:mm:ss")
+//				SetNull(ass.time_completed)
+//				ass.call_number = newCallNumber 
+//				ass.page_sent = 'N'
+//			END IF
+//			if not f_insert_assignment(ass) then
+//				rollback;
+//				return ''
+//			end if
+//		else
+//			sRepairman=''
+//		end if
+//		//*****
+		sRepairman=''
+//		if sDefaultStatus = '00' then
+		if sDefaultStatus < '10' then // all records would be inserted into timercalls table
+			sDefaultStatus = '00' //force to pre-open for all timercalls calls
+			lpre_opened = 'Y'
+			lpaging_ind='P'
+		else
+			lpre_opened = 'N'
+			lpaging_ind = ''
+		end if
+		if guestDeptDateFound then //use room_registry guest check date
+			ltimer_start = timerStartDateDt
+		else
+			ltimer_start=f_calc_timer_start(datetime(today(),now()),dTimer1StartMin)
+		end if
+		lcall_indate=datetime(today(),now())
+		StartInsertLnkTask:
+		if integer(sDefaultStatus) < 10 then
+			INSERT INTO "timercalls"  
+         ( "call_number",   
+           "call_indate",   
+           "stat_code",   
+           "room",   
+           "guest",   
+           "caller",   
+           "problem",   
+           "subproblem",   
+           "problem_definition",   
+           "complaint",   
+           "receiver",   
+           "shift",   
+           "resolution",   
+           "repairman",   
+           "call_outdate",   
+           "closed_by",   
+           "closed_bydept",   
+           "timer_number",   
+           "timer_start",   
+           "caller_category",   
+           "problem_number",   
+           "subproblem_number",   
+           "timer1_start_min",   
+           "timer2_start_min",   
+           "timer1_reps",   
+           "timer2_reps",   
+           "auth_take_off_timer",   
+           "default_status",   
+           "pre_openable",   
+           "pre_opened",   
+           "timer_level",   
+           "room_dsc",   
+           "opened_status",
+			  "paging_ind",
+			  "init_paging_min",
+			  "recur_ind",
+				"recur_id",
+				"timer3_start_min",
+				"timer3_reps") 
+	 		VALUES (			
+				:newCallNumber,     
+				:lcall_indate,
+				:sDefaultStatus, 
+				:sRoom,
+				'HotelEXPERT', // :sGuest,   
+				:sCaller,   
+				:sProblem,   
+				:sSubProblem,   
+				:lproblem_definition,
+				:sComplaint,   
+				'HotelEXPERT', //receiver  
+				:sShift,   
+				'', 				//resolution
+				:sRepairman,  
+				null, 			//call_outdate
+				'', 				//closed_by  
+				:sClosedBydept,   
+				:sTimerNumber,
+				:ltimer_start,
+				'SYSTEM',					//:sCallerCategory,   
+				:sLnkTaskNo,  	//problem_number
+				:sLnkSubtaskNo, //subproblem_number
+				:dTimer1StartMin,   
+				:dTimer2StartMin, 
+				:dTimer1Reps,  
+				:dTimer2Reps,   
+				:sAuthTakeOffTimer,  
+				:sDefaultStatus,   
+				:sPreOpenable,  
+				:sPreOpened,
+				:iTimerLevel,  
+				:sRoomDsc,
+				:sDefaultStatus,
+				:lpaging_ind,
+				:d_paging_min,
+				'N', 				//recur_ind
+				0,					//recur_id
+				:dTimer3StartMin,
+				:dTimer3Reps);				
+		else
+			INSERT INTO "pendingcalls"  
+         ( "call_number",   
+           "call_indate",   
+           "stat_code",   
+           "room",   
+           "guest",   
+           "caller",   
+           "problem",   
+           "subproblem",   
+           "problem_definition",   
+           "complaint",   
+           "receiver",   
+           "shift",   
+           "resolution",   
+           "repairman",   
+           "call_outdate",   
+           "closed_by",   
+           "closed_bydept",   
+           "timer_number",   
+           "timer_start",   
+           "caller_category",   
+           "problem_number",   
+           "subproblem_number",   
+           "timer1_start_min",   
+           "timer2_start_min",   
+           "timer1_reps",   
+           "timer2_reps",   
+           "auth_take_off_timer",   
+           "default_status",   
+           "pre_openable",   
+           "pre_opened",   
+           "timer_level",   
+           "room_dsc",   
+           "opened_status",
+			  "paging_ind",
+			  "init_paging_min",
+			  "recur_ind",
+				"recur_id",
+				"timer3_start_min",
+				"timer3_reps") 
+	 		VALUES (			
+				:newCallNumber,     
+				:lcall_indate,
+				:sDefaultStatus, 
+				:sRoom,
+				'HotelEXPERT', //:sGuest,   
+				:sCaller,   
+				:sProblem,   
+				:sSubProblem,   
+				:lproblem_definition,
+				:sComplaint,   
+				'HotelEXPERT', //receiver  
+				:sShift,   
+				'', 				//resolution
+				:sRepairman,  
+				null, 			//call_outdate
+				'', 				//closed_by  
+				:sClosedBydept,   
+				:sTimerNumber,
+				:ltimer_start,
+				'SYSTEM', //:sCallerCategory,   
+				:sLnkTaskNo,  	//problem_number
+				:sLnkSubtaskNo, //subproblem_number
+				:dTimer1StartMin,   
+				:dTimer2StartMin, 
+				:dTimer1Reps,  
+				:dTimer2Reps,   
+				:sAuthTakeOffTimer,  
+				:sDefaultStatus,   
+				:sPreOpenable,  
+				:sPreOpened,
+				:iTimerLevel,  
+				:sRoomDsc,
+				:sDefaultStatus,
+				:lpaging_ind,
+				:d_paging_min,
+				'N', 				//recur_ind
+				0,					//recur_id
+				:dTimer3StartMin,
+				:dTimer3Reps);				
+		end if
+		if sqlca.sqlcode <> 0 then
+			if sqlca.sqldbcode = -193 then// duplicate primary key 
+				sCallNumber=string(f_new_call_number())
+				Goto StartInsertLnkTask // re-try insertion
+			else
+				rollback;
+//				egm_sqlerror(sqlca)
+				MessageBox("db error","DB error INSERT lnk_task! "+sqlca.sqlerrtext)
+				return 'db error","DB error getting lnk_task info!'
+			end if
+		end if
+	end if
+end if
+
+FINISH:
+commit;
+if sqlca.sqlcode <> 0 then
+	ls_error_txt = f_nvl(sqlca.sqlerrtext,'')
+	if ab_message then MessageBox("DB Error","Final Commit error for Callnumber: " + callNumber)
+	egm_sqlerror(sqlca)
+	return "DB Error on Final Commit for Callnumber: " + callNumber // false
+end if
+
+return '' 
+end function
+

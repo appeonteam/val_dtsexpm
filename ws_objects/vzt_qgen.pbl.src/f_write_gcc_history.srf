@@ -1,0 +1,57 @@
+﻿$PBExportHeader$f_write_gcc_history.srf
+global type f_write_gcc_history from function_object
+end type
+
+forward prototypes
+global function integer f_write_gcc_history (double ad_gccid, string as_action, ref blob ab_source, string as_descr, string as_misc, string as_msgtext)
+end prototypes
+
+global function integer f_write_gcc_history (double ad_gccid, string as_action, ref blob ab_source, string as_descr, string as_misc, string as_msgtext);// Save it in the GCC history log
+string 		ls_error
+long 			ll_rc
+datetime		ldt_action
+blob			lb_source
+double		ld_hid
+
+//IF IsValid(adw_source) then 
+//	f_dw_to_syntax_and_data( adw_source, true, lb_source )  
+//Else
+	lb_source  = ab_source
+//END IF
+
+//ls_descr		= f_nvl(is_descr,'??? Letter') + ' printed'
+ldt_action	= datetime( today(), now() )
+ INSERT INTO gcc_history  
+         ( gccid,   
+           actioncode,   
+			  action_dt,  
+           descr,
+			  refnum,
+			  msgtext
+          )  
+  VALUES ( :ad_gccid,   
+           :as_action,   
+			  :ldt_action,
+           :as_descr  ,
+			  :as_misc,
+			  :as_msgtext
+          )  ;
+If SQLCA.sqlcode = 0 then
+	SELECT MAX(id) INTO :ld_hid FROM gcc_history ;
+	If SQLCA.sqlcode = 0 and len(lb_source) > 0 then 
+		UPDATEBLOB gcc_history SET object = :lb_source WHERE id = :ld_hid ;
+	END IF;
+	If SQLCA.sqlcode = 0 then 
+		COMMIT; 
+		If SQLCA.sqlcode = 0 then return 0
+	END IF
+END IF
+// some bad rc
+ll_rc		= SQLCA.sqlcode
+ls_error = SQLCA.sqlerrtext
+ROLLBACK;
+MessageBox('GCC History', 'Insert failed. RC='+string (ll_rc)+ '~r~nError:'+ ls_error, Stopsign!)
+return -10
+
+end function
+

@@ -1,0 +1,33 @@
+﻿$PBExportHeader$gf_subtractmonth.srf
+$PBExportComments$Decrements the month of a date by one.
+global type gf_subtractmonth from function_object
+end type
+
+forward prototypes
+global function date gf_subtractmonth (date ad_date)
+end prototypes
+
+global function date gf_subtractmonth (date ad_date);Integer li_day, li_month, li_year
+Date ld_return
+
+li_day	= Day( ad_date )
+li_month = Month( ad_date )
+li_year  = Year( ad_date )
+	
+IF li_month = 1 THEN
+	li_month = 12
+	li_year --
+ELSE
+	li_month --
+END IF	
+
+ld_return = Date( li_year, li_month, li_day )
+
+DO WHILE NOT IsDate( String( ld_return ) )
+	li_day --
+	ld_return = Date( li_year, li_month, li_day )
+LOOP
+
+RETURN ld_return
+end function
+

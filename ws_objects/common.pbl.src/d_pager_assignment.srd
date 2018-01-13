@@ -1,0 +1,74 @@
+﻿$PBExportHeader$d_pager_assignment.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=134217750 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=84 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=72 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=dept_assigned dbname="pageassignment.dept_assigned" )
+ column=(type=char(29) updatewhereclause=yes name=employee_name dbname="pageassignment.emp_name" )
+ column=(type=char(50) updatewhereclause=yes name=pager_id dbname="pageassignment.pager_id" )
+ column=(type=char(20) updatewhereclause=yes name=time_assigned dbname="pageassignment.time_assigned" )
+ column=(type=char(20) updatewhereclause=yes name=time_completed dbname="pageassignment.time_completed" )
+ column=(type=char(10) updatewhereclause=yes name=call_number dbname="pageassignment.call_number" )
+ column=(type=char(20) updatewhereclause=yes name=time_page_sent dbname="pageassignment.time_page_sent" )
+ column=(type=char(25) updatewhereclause=yes name=task dbname="closedcalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=subtask dbname="closedcalls.subproblem" )
+ column=(type=char(20) updatewhereclause=yes name=assignment_id dbname="pageassignment.assignment_id" )
+ column=(type=char(1) updatewhereclause=yes name=pageassignment_assignment_cd dbname="pageassignment.assignment_cd" )
+ retrieve="  SELECT pageassignment.dept_assigned,   
+         pageassignment.emp_name,   
+         pageassignment.pager_id,   
+         pageassignment.time_assigned,   
+         pageassignment.time_completed,   
+         pageassignment.call_number,   
+         pageassignment.time_page_sent,   
+         closedcalls.problem,   
+         closedcalls.subproblem,   
+         pageassignment.assignment_id,   
+         pageassignment.assignment_cd
+    FROM pageassignment,   
+         closedcalls  
+   WHERE ( pageassignment.call_number = closedcalls.call_number ) 
+   
+union  all
+  
+    SELECT pageassignment.dept_assigned,   
+         pageassignment.emp_name,   
+         pageassignment.pager_id,   
+         pageassignment.time_assigned,   
+         pageassignment.time_completed,   
+         pageassignment.call_number,   
+         pageassignment.time_page_sent,   
+         'Active/Deactivate ',   
+         ' ',   
+         pageassignment.assignment_id,   
+         pageassignment.assignment_cd
+    FROM pageassignment
+   WHERE pageassignment.assignment_cd <> 'T'
+"  sort="time_assigned D " )
+text(band=header alignment="2" text="Dept " border="0" color="16777215" x="9" y="4" height="56" width="379" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Employee" border="0" color="16777215" x="398" y="4" height="56" width="507" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Pager Id" border="0" color="16777215" x="914" y="4" height="56" width="283" html.valueishtml="0"  name=t_3 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Time Assigned" border="0" color="16777215" x="1207" y="4" height="56" width="443" html.valueishtml="0"  name=t_4 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Time Completed" border="0" color="16777215" x="1659" y="4" height="56" width="480" html.valueishtml="0"  name=t_5 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Call #" border="0" color="16777215" x="2149" y="4" height="56" width="178" html.valueishtml="0"  name=t_6 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Page Last Sent" border="0" color="16777215" x="2336" y="4" height="56" width="425" html.valueishtml="0"  name=t_7 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Task" border="0" color="16777215" x="2770" y="4" height="56" width="402" html.valueishtml="0"  name=t_8 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Subtask" border="0" color="16777215" x="3182" y="4" height="56" width="453" html.valueishtml="0"  name=t_9 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="0" text="Pageassignment Assignment Id" border="0" color="16777215" x="3643" y="4" height="56" width="329" html.valueishtml="0"  name=t_10 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="64" width="379" format="[general]" html.valueishtml="0"  name=dept_assigned visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="398" y="4" height="64" width="507" format="[general]" html.valueishtml="0"  name=employee_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="914" y="4" height="64" width="283" format="[general]" html.valueishtml="0"  name=pager_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1207" y="4" height="64" width="443" format="[general]" html.valueishtml="0"  name=time_assigned visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1659" y="4" height="64" width="480" format="[general]" html.valueishtml="0"  name=time_completed visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="0" x="2149" y="4" height="64" width="178" format="[general]" html.valueishtml="0"  name=call_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2336" y="4" height="64" width="425" format="[general]" html.valueishtml="0"  name=time_page_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2770" y="4" height="64" width="402" format="[general]" html.valueishtml="0"  name=task visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3182" y="4" height="64" width="453" format="[general]" html.valueishtml="0"  name=subtask visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3643" y="4" height="56" width="329" format="[general]" html.valueishtml="0"  name=assignment_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

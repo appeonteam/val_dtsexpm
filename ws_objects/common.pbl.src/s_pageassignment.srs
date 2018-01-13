@@ -1,0 +1,16 @@
+﻿$PBExportHeader$s_pageassignment.srs
+$PBExportComments$structure for pageassignment table
+global type s_pageassignment from structure
+	string		assignment_id
+	string		assignment_cd
+	string		dept_assigned
+	string		emp_id
+	string		emp_name
+	string		pager_id
+	string		time_assigned
+	string		time_completed
+	string		call_number
+	string		page_sent
+	string		special_msg
+end type
+

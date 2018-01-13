@@ -1,0 +1,53 @@
+﻿$PBExportHeader$f_validate_recur_dt.srf
+global type f_validate_recur_dt from function_object
+end type
+
+forward prototypes
+global subroutine f_validate_recur_dt (time dailystart, time dailyend, string wkdaysel, ref date recurdate, ref time recurtime)
+end prototypes
+
+global subroutine f_validate_recur_dt (time dailystart, time dailyend, string wkdaysel, ref date recurdate, ref time recurtime);boolean dailyTimeScheduled = true
+boolean wkDaySelected = true
+int i = 1
+string dowt[7] = {'Sun','Mon','Tue','Wed','Thu','Fri','Sat'}
+
+if IsNull(dailyStart) or dailyStart = time('00:00') then
+	dailyTimeScheduled = false
+end if
+
+if IsNull(wkDaySel) or wkDaySel='' then
+	wkDaySelected = false
+end if
+
+if (not dailyTimeScheduled) and (not wkDaySelected) then
+	return
+end if
+
+if dailyTimeScheduled then
+	if recurTime < dailyStart then
+		recurTime = dailyStart
+	else
+		if recurTime > dailyEnd then
+			recurDate = RelativeDate(recurDate,1)
+			recurTime = dailyStart
+		end if
+	end if
+end if
+
+if wkDaySelected then
+	Do while i <= 7
+		if Pos(wkDaySel,dowt[DayNumber(recurDate)]) > 0 then // found 
+			i = 7
+		else
+			recurDate = RelativeDate(recurDate,1)
+			if dailyTimeScheduled then
+				recurTime = dailyStart
+			end if
+		end if
+		i++
+	Loop
+end if
+
+return
+end subroutine
+

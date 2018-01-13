@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_template02.srd
+release 9;
+datawindow(units=1 timer_interval=0 color=79349703 processing=0 HTMLDW=no print.printername="" print.documentname="Commentator Survey" print.orientation = 0 print.margin.left = 24 print.margin.right = 24 print.margin.top = 24 print.margin.bottom = 24 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=yes print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=20 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=307 color="536870912" )
+table(column=(type=char(1) updatewhereclause=no name=fftext dbname="zzz" )
+ column=(type=char(1) updatewhereclause=no name=state dbname="state" initial="empty" )
+ )
+text(band=header alignment="0" text="text" border="0" color="0" x="30" y="1" height="19" width="510" html.valueishtml="0"  name=qset_title visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression=" if ( state = 'X', 'Double click to minimize.', ' sssssssssss')"border="0" color="16711680" x="549" y="3" height="14" width="183" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+button(band=header text="" defaultpicture=yes enabled=yes action="15" border="1" color="0" x="3" y="2" height="18" width="19" vtextalign="0" htextalign="0"  name=b_1 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()

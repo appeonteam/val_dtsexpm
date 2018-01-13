@@ -1,0 +1,43 @@
+﻿$PBExportHeader$f_vzt_readfile_to_blob.srf
+global type f_vzt_readfile_to_blob from function_object
+end type
+
+forward prototypes
+global function integer f_vzt_readfile_to_blob (string as_filename, ref blob ab_target)
+end prototypes
+
+global function integer f_vzt_readfile_to_blob (string as_filename, ref blob ab_target);integer li_FileNum, loops, i
+long flen, bytes_read , ll_len
+blob b 
+
+// Get the file length, and open the file
+
+flen = FileLength(as_filename)
+If flen <= 12 then return -1 
+
+li_FileNum = FileOpen(as_filename, StreamMode!, Read!, LockRead!)
+If li_FileNum <= 0 then return -1 
+
+// Determine how many times to call FileRead
+IF flen > 32765 THEN
+	IF Mod(flen, 32765) = 0 THEN
+		loops = flen/32765
+	ELSE
+		loops = (flen/32765) + 1
+	END IF
+ELSE
+	loops = 1
+END IF
+
+// Read the file
+
+FOR i = 1 to loops
+	bytes_read = FileRead(li_FileNum, b)
+	ab_target = ab_target + b
+NEXT
+
+FileClose(li_FileNum)
+ll_len = len ( ab_target )
+return ll_len 
+end function
+

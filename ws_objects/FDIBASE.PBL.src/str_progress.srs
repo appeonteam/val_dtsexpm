@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_progress.srs
+global type str_progress from structure
+	string		ss_title
+	string		ss_message
+	window		sw_callingwindow
+end type
+

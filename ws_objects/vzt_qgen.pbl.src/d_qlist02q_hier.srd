@@ -1,0 +1,115 @@
+﻿$PBExportHeader$d_qlist02q_hier.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=24 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=char(200) updatewhereclause=yes name=qgen_questions_questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=char(3) updatewhereclause=yes name=qgen_questions_qtypeid dbname="qgen_questions.qtypeid" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=long updatewhereclause=yes name=width dbname="qgen_questions.width" )
+ column=(type=long updatewhereclause=yes name=ansperline dbname="qgen_questions.ansperline" )
+ column=(type=long updatewhereclause=yes name=qgen_qtypes_maxchoices dbname="qgen_qtypes.maxchoices" )
+ column=(type=char(20) updatewhereclause=yes name=ddlookuptype dbname="qgen_questions.ddlookuptype" )
+ column=(type=char(100) updatewhereclause=yes name=ddcodecol dbname="qgen_questions.ddcodecol" )
+ column=(type=char(100) updatewhereclause=yes name=dddispcol dbname="qgen_questions.dddispcol" )
+ column=(type=char(100) updatewhereclause=yes name=ddlookup dbname="qgen_questions.ddlookup" )
+ column=(type=char(10) updatewhereclause=yes name=ddcoltype dbname="qgen_questions.ddcodecoltype" )
+ column=(type=long updatewhereclause=yes name=repeat dbname="qgen_questions.repeat" )
+ column=(type=long updatewhereclause=yes name=height dbname="qgen_questions.height" )
+ column=(type=char(50) updatewhereclause=yes name=fontface dbname="qgen_questions.fontface" )
+ column=(type=long updatewhereclause=yes name=fontsize dbname="qgen_questions.fontsize" )
+ column=(type=char(1) updatewhereclause=yes name=bold dbname="qgen_questions.bold" )
+ column=(type=char(1) updatewhereclause=yes name=italic dbname="qgen_questions.italic" )
+ column=(type=char(1) updatewhereclause=yes name=under dbname="qgen_questions.under" )
+ column=(type=number updatewhereclause=yes name=fgcolor dbname="qgen_questions.fgcolor" )
+ column=(type=number updatewhereclause=yes name=bgcolor dbname="qgen_questions.bgcolor" )
+ column=(type=char(7) updatewhereclause=yes name=vzt_hierarchy_id dbname="vzt_hierarchy.id" )
+ column=(type=char(7) updatewhereclause=yes name=vzt_hierarchy_parent_id dbname="vzt_hierarchy.parent_id" )
+ column=(type=long updatewhereclause=yes name=sortorder dbname="vzt_hierarchy.orderingroup" )
+ column=(type=number updatewhereclause=yes name=present_id dbname="vzt_hierarchy.present_id" )
+ column=(type=number updatewhereclause=yes name=graphic_id dbname="vzt_hierarchy.graphic_id" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_hierarchy_nodetype dbname="vzt_hierarchy.nodetype" )
+ column=(type=char(1) updatewhereclause=yes name=showqnum dbname="showqnum" )
+ column=(type=char(100) updatewhereclause=yes name=weblookup dbname="qgen_questions.weblookup" )
+ column=(type=char(1) updatewhereclause=yes name=same_row dbname="qgen_questions.same_row" )
+ retrieve="  SELECT ~"DBA~".~"qgen_questions~".~"questiontxt~",   
+         ~"DBA~".~"qgen_questions~".~"qtypeid~",   
+         ~"DBA~".~"qgen_questions~".~"questionid~",   
+         ~"DBA~".~"qgen_questions~".~"width~",   
+         ~"DBA~".~"qgen_questions~".~"ansperline~",   
+         ~"DBA~".~"qgen_qtypes~".~"maxchoices~",   
+     
+         ~"DBA~".~"qgen_questions~".~"ddlookuptype~",   
+         ~"DBA~".~"qgen_questions~".~"ddcodecol~",   
+         ~"DBA~".~"qgen_questions~".~"dddispcol~",   
+         ~"DBA~".~"qgen_questions~".~"ddlookup~",   
+         ~"DBA~".~"qgen_questions~".~"ddcodecoltype~",   
+         ~"DBA~".~"qgen_questions~".~"repeat~",   
+      
+         ~"DBA~".~"qgen_questions~".~"height~",   
+         ~"DBA~".~"qgen_questions~".~"fontface~",   
+         ~"DBA~".~"qgen_questions~".~"fontsize~",   
+         ~"DBA~".~"qgen_questions~".~"bold~",   
+         ~"DBA~".~"qgen_questions~".~"italic~",   
+         ~"DBA~".~"qgen_questions~".~"under~",   
+         ~"DBA~".~"qgen_questions~".~"fgcolor~",   
+         ~"DBA~".~"qgen_questions~".~"bgcolor~",   
+         ~"vzt_hierarchy~".~"id~",   
+         ~"vzt_hierarchy~".~"parent_id~",   
+         ~"vzt_hierarchy~".~"orderingroup~",   
+         ~"vzt_hierarchy~".~"present_id~",   
+         ~"vzt_hierarchy~".~"graphic_id~",   
+         ~"vzt_hierarchy~".~"nodetype~"  ,
+			'N' showqnum ,
+			~"DBA~".~"qgen_questions~".~"weblookup~",  
+			~"DBA~".~"qgen_questions~".~"same_row~"  
+
+
+    FROM ~"DBA~".~"qgen_questions~",   
+         ~"DBA~".~"qgen_qtypes~",   
+         ~"vzt_hierarchy~"  
+   WHERE ( ~"DBA~".~"qgen_questions~".~"qtypeid~" = ~"DBA~".~"qgen_qtypes~".~"qtypeid~" ) and  
+         ~"vzt_hierarchy~".~"leafind~" 	= 'Y' AND  
+         ~"vzt_hierarchy~".~"nodetype~" = 'QUESTION' AND  
+         ~"DBA~".~"qgen_questions~".~"questionid~" = floor( ~"vzt_hierarchy~".~"reportid~")   
+			AND ~"vzt_hierarchy~".~"parent_id~" = :as_parentid  
+			
+
+ORDER BY  ~"vzt_hierarchy~".~"orderingroup~" ASC   
+" arguments=(("as_parentid", string))  sort="vzt_hierarchy_parent_id A sortorder A " )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="41" y="4" height="52" width="901" format="[general]" html.valueishtml="0"  name=qgen_questions_questiontxt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="974" y="4" height="52" width="142" format="[general]" html.valueishtml="0"  name=qgen_questions_qtypeid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1129" y="4" height="52" width="338" format="[general]" html.valueishtml="0"  name=qgen_qtypes_maxchoices visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1509" y="4" height="52" width="215" format="[general]" html.valueishtml="0"  name=questionid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1751" y="4" height="52" width="123" format="[general]" html.valueishtml="0"  name=width visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1897" y="4" height="52" width="224" format="[general]" html.valueishtml="0"  name=ansperline visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2139" y="4" height="52" width="311" format="[general]" html.valueishtml="0"  name=ddcodecol visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2464" y="4" height="52" width="311" format="[general]" html.valueishtml="0"  name=dddispcol visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="2793" y="4" height="52" width="210" format="[general]" html.valueishtml="0"  name=ddcoltype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3017" y="4" height="52" width="265" format="[general]" html.valueishtml="0"  name=ddlookuptype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3301" y="4" height="52" width="617" format="[general]" html.valueishtml="0"  name=ddlookup visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3936" y="0" height="52" width="169" format="[general]" html.valueishtml="0"  name=repeat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="4402" y="4" height="52" width="165" format="[general]" html.valueishtml="0"  name=height visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="4567" y="4" height="52" width="384" format="[general]" html.valueishtml="0"  name=fontface visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="4969" y="4" height="52" width="151" format="[general]" html.valueishtml="0"  name=fontsize visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="5161" y="0" height="52" width="50" format="[general]" html.valueishtml="0"  name=bold visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="5221" y="0" height="52" width="50" format="[general]" html.valueishtml="0"  name=italic visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="5285" y="4" height="52" width="50" format="[general]" html.valueishtml="0"  name=under visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="5929" y="4" height="52" width="201" format="[general]" html.valueishtml="0"  name=vzt_hierarchy_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="16711680" x="5362" y="4" height="52" width="270" format="[general]" html.valueishtml="0"  name=fgcolor visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="16711680" x="5655" y="4" height="52" width="251" format="[general]" html.valueishtml="0"  name=bgcolor visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="6153" y="4" height="52" width="183" format="[general]" html.valueishtml="0"  name=vzt_hierarchy_parent_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="6359" y="4" height="52" width="192" format="[general]" html.valueishtml="0"  name=sortorder visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="16777215" x="6578" y="4" height="52" width="210" format="[general]" html.valueishtml="0"  name=present_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="6811" y="4" height="52" width="192" format="[general]" html.valueishtml="0"  name=graphic_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="7031" y="4" height="52" width="251" format="[general]" html.valueishtml="0"  name=vzt_hierarchy_nodetype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="7310" y="4" height="52" width="101" format="[general]" html.valueishtml="0"  name=showqnum visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="7429" y="4" height="52" width="247" format="[general]" html.valueishtml="0"  name=weblookup visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="7703" y="4" height="52" width="69" format="[general]" html.valueishtml="0"  name=same_row visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

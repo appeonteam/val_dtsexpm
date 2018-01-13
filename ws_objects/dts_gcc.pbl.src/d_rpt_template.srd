@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_rpt_template.srd
+$PBExportComments$fields
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 2 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=188 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=64 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=s1 dbname="s1" )
+ )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="0" x="14" y="8" height="56" width="695" format="[general]"  name=c_pagecount  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text=" mmm-DD-yyyy hh:mm:ss"border="0" color="0" x="14" y="60" height="56" width="695"  name=c_ranon  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="1" expression="~"Printed on ~"+ string( f_sysdate(), 'mmm-DD-yyyy hh:mm:ss' )"border="0" color="0" x="9" y="112" height="56" width="695" format="[general]"  name=c_printed  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

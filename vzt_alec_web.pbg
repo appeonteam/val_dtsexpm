@@ -1,0 +1,8 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_alec_web.pbl" "";
+@end;
+@begin Objects
+ "alec_web_new.srj" "vzt_alec_web.pbl";
+ "alec_web.srj" "vzt_alec_web.pbl";
+@end;

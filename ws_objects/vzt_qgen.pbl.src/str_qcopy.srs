@@ -1,0 +1,7 @@
+﻿$PBExportHeader$str_qcopy.srs
+global type str_qcopy from structure
+	datawindow		dw_questions
+	datawindow		dw_answers
+	string		ret
+end type
+

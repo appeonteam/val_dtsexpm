@@ -1,0 +1,39 @@
+﻿$PBExportHeader$d_vendor_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=88 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="553648127" )
+table(column=(type=long updatewhereclause=yes key=yes identity=yes name=id dbname="vzt_contact.id" )
+ column=(type=char(50) updatewhereclause=yes name=contacttype dbname="vzt_contact.contacttype" )
+ column=(type=char(100) updatewhereclause=yes name=firstname dbname="vzt_contact.firstname" )
+ column=(type=char(50) updatewhereclause=yes name=prim_phone dbname="prim_phone" )
+ column=(type=char(150) updatewhereclause=yes name=email dbname="email" )
+ retrieve="  SELECT ~"vzt_contact~".~"id~",   
+         ~"vzt_contact~".~"contacttype~",   
+         ~"vzt_contact~".~"firstname~"  ,
+			vzt_hew_contact_prim_phone ( ~"vzt_contact~".~"id~" ) prim_phone, 
+			vzt_hew_contact_prim_email ( ~"vzt_contact~".~"id~" ) email 
+    FROM ~"vzt_contact~"  
+   WHERE (~"vzt_contact~".~"contacttype~" IN 
+(SELECT CODE FROM QGEN_LOOKUP WHERE ~"NAME~"='CONTACTTYPE1' ) ) 
+" update="vzt_contact" updatewhere=0 updatekeyinplace=no  sort="firstname A " )
+text(band=header alignment="0" text=" Company Name" border="6" color="16777215" x="41" y="12" height="64" width="1211" html.valueishtml="0"  name=comp_name_t visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="  Vendor Type" border="6" color="16777215" x="1312" y="12" height="64" width="485" html.valueishtml="0"  name=contacttype_t visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Primary Phone" border="6" color="16777215" x="1847" y="12" height="64" width="667" html.valueishtml="0"  name=prim_phone_t visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Primary Email" border="6" color="16777215" x="2565" y="12" height="64" width="1161" html.valueishtml="0"  name=email_t visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="9" y="12" height="40" width="23" format="[general]" html.valueishtml="0"  name=c1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="134217729" x="41" y="0" height="76" width="1211" format="[general]" html.valueishtml="0"  name=firstname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="2523" y="16" height="52" width="32" format="[general]" html.valueishtml="0"  name=obj_1398218582 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="1262" y="12" height="40" width="41" format="[general]" html.valueishtml="0"  name=obj_1398214866 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="1806" y="16" height="64" width="32" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+button(band=detail text="" filename="mail.bmp" enabled=yes action="0" border="0" color="0" x="3744" y="0" height="76" width="105" vtextalign="0" htextalign="0"  name=b_email visible="1~tif ( POS(email, '@' ) > 0 ,1,0)"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="134217729" x="1312" y="0" height="76" width="485" format="[general]" html.valueishtml="0"  name=contacttype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="134217729" x="1847" y="0" height="64" width="667" format="[general]" html.valueishtml="0"  name=prim_phone visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="134217729" x="2565" y="0" height="64" width="1161" format="[general]" html.valueishtml="0"  name=email visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=-32560 savemetadata=-12165 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,209 @@
+﻿$PBExportHeader$f_submit_report.srf
+global type f_submit_report from function_object
+end type
+
+forward prototypes
+global function integer f_submit_report (string as_mode, ref datawindow adw_def, ref datawindow adw_parms, ref datawindow adw_rpt, string as_hier_id)
+end prototypes
+
+global function integer f_submit_report (string as_mode, ref datawindow adw_def, ref datawindow adw_parms, ref datawindow adw_rpt, string as_hier_id);str_reporter_reportparms  lstr_run_parms
+string 	ls_code, ls_message, 	ls_syntax_and_data, ls_syntax
+int 		li_rc
+long 		ll_temp, ll_defrow
+long 		ll_len, ll_repdefrow, ll_repdefmax
+blob 		btext, b_syntax
+string 	ls_rpt_do	=	''
+string	ls_debug_syntax
+
+lstr_run_parms.mode 				= as_mode
+lstr_run_parms.schedule_id 	= ''
+lstr_run_parms.report_id 		= as_hier_id // hierarchy pointer 
+
+If adw_parms.AcceptText() <> 1 then return 1
+	li_rc = 1 
+	if f_nvl(( gnv_appman.is_userid),'') then gnv_appman.is_userid = 'SYS'
+	//save definition and parms first
+	// store into schedule 
+	string 			ls_id, ls_status, ls_do
+	datetime 		ldt_submitted, ldt_ttr, ldt_ttr_end
+	string 			ls_mon, ls_tue, ls_wed, ls_thu, ls_fri, ls_sat, ls_sun, ls_recurring, ls_keeplast, ls_title
+	string			ls_windowname, ls_distlist_id
+	int				li_days_to_keep
+	str_response 	lstr_parms
+		
+	lstr_parms.dw1 = adw_def
+	
+	If as_mode =  'BATCH' then 
+		OpenWithParm( w_vzt_batch_parms, lstr_parms)
+		lstr_parms = Message.PowerObjectParm 
+		If not IsValid (lstr_parms ) then return 1
+		If lstr_parms.rc <= 0 then return 1
+	END IF
+	ll_defrow			= adw_def.GetRow() 
+	ls_title				= adw_def.object.title			[ ll_defrow ]
+	ls_keeplast			= adw_def.object.keeplast		[ ll_defrow ]
+	ls_recurring 		= adw_def.object.recurring		[ ll_defrow ]
+	ldt_ttr				= adw_def.object.timetorun		[ ll_defrow ]
+	ldt_ttr_end			= adw_def.object.timetorunend	[ ll_defrow ]
+	ls_mon 				= adw_def.object.DAYTORUNMON	[ ll_defrow ]
+	ls_tue 				= adw_def.object.DAYTORUNTUE	[ ll_defrow ]
+	ls_wed 				= adw_def.object.DAYTORUNWED	[ ll_defrow ]
+	ls_thu 				= adw_def.object.DAYTORUNTHU	[ ll_defrow ]
+	ls_fri 				= adw_def.object.DAYTORUNFRI	[ ll_defrow ]
+	ls_sat 				= adw_def.object.DAYTORUNSAT	[ ll_defrow ]
+	ls_sun 				= adw_def.object.DAYTORUNSUN	[ ll_defrow ]
+	li_days_to_keep 	= adw_def.object.DAYSTOKEEP 	[ ll_defrow ]
+	ls_windowname		= trim(adw_def.object.WINDOWNAME [ ll_defrow ])
+	ls_distlist_id		= adw_def.object.distribution_list_id	[ ll_defrow ]
+	if IsNUll(ls_windowname) or ls_windowname = '' then ls_windowname = "w_vzt_rpt_processor"
+	ldt_submitted 		= f_sysdate() 
+	
+	If as_mode =  'BATCH' then 
+		ls_status			= 'SUBMITTED'
+	Else
+		ls_status			= 'ONLINE'
+	END IF	
+	
+	If ls_status = 'ONLINE' then 	ls_recurring = 'ONETIME' // cannot schedule jobs online
+	
+	//create unique id
+	ls_id = UPPER( gnv_appman.is_userid + string( ldt_submitted , "mmddhhmmssa/p"))
+	ls_id	= ls_id + f_random_string(3)
+	ls_id = f_replace( ls_id, ' ', '_')
+	
+	INSERT INTO VZT_batchschedule 
+	( SELECT :ls_id,
+		:as_hier_id ,
+		:gnv_appman.is_userid, 
+		:ls_title,   
+		:ldt_submitted ,
+		NULL, NULL, 
+		:ls_status,
+      :ls_keeplast,   
+      :ls_recurring 	,   
+	   :ls_mon ,
+      :ls_tue ,
+      :ls_wed ,
+      :ls_thu ,
+      :ls_fri ,
+      :ls_sat ,
+      :ls_sun ,
+		'',
+      :li_days_to_keep ,		
+		'', 
+		'',
+	 	VZT_REPORTDEF.SECURITYLEVEL, 
+	  	:ldt_ttr, 
+		:ldt_ttr_end ,
+		'',
+		:ls_distlist_id												 // VZT_REPORTDEF.DISTRIBUTION_LIST_ID 
+  		FROM VZT_HIERARCHY , VZT_REPORTDEF 
+	 	WHERE 	VZT_HIERARCHY.ID 			= :as_hier_id AND 
+					VZT_REPORTDEF.REPORTID 	= VZT_HIERARCHY.REPORTID and  
+					VZT_HIERARCHY.LEAFIND 	= 'Y'  
+		 )   ;
+	
+		If SQLCA.sqlcode <> 0 then	
+			ls_code = string(SQLCA.sqlcode) 
+			ls_message = SQLCA.sqlerrtext
+			li_rc = -10
+		END if
+		If SQLCA.sqlnrows <> 1 then	
+			ls_code = ''
+			ls_message = 'No rows inserted - report not found.'
+			li_rc = -15
+		END if
+		
+		If li_rc > 0 then 
+			setpointer(Hourglass!)
+		 
+			ll_repdefmax = adw_def.RowCount()
+ 			if ll_repdefmax > 0 then 
+			 //if SQLCA.dbms = 'ODBC' then 
+				f_dw_to_syntax_and_data( adw_parms, true, btext ) // parms object
+				 If gnv_appman.is_debugmode = 'Y' then 
+					ls_debug_syntax = string ( btext )
+					MessageBox( 'DEBUG: f_submit_report, parms syntax.', ls_debug_syntax )
+				 END IF 
+
+				
+				If as_mode = 'ONLINES' then 
+					SELECT VZT_REPORTDEF.dwdataobjectname into :ls_do FROM VZT_HIERARCHY, VZT_REPORTDEF 
+						WHERE 	
+						VZT_HIERARCHY.ID 			= :as_hier_id AND 
+						VZT_REPORTDEF.REPORTID 	= VZT_HIERARCHY.REPORTID and  
+						VZT_HIERARCHY.LEAFIND 	= 'Y'  ;
+					If f_nvl( ls_do, '') = '' then 
+						MessageBox('Report submission failed', 'Report data object missing.')
+						Return -1
+					END IF
+					adw_rpt.dataobject = ls_do
+					f_dw_to_syntax_and_data( adw_rpt, true, btext ) // report object 
+				ELSE
+					SELECTBLOB VZT_REPORTDEF.DWSYNTAX INTO :b_syntax FROM VZT_HIERARCHY, VZT_REPORTDEF 
+						WHERE 	
+						VZT_HIERARCHY.ID 			= :as_hier_id AND 
+						VZT_REPORTDEF.REPORTID 	= VZT_HIERARCHY.REPORTID and  
+						VZT_HIERARCHY.LEAFIND 	= 'Y'  ;
+
+					If len(b_syntax ) <= 16 then 
+						MessageBox('Report submission failed', 'Report definition missing from VZT_REPORTDEF table.~r~nRebuild the report.')
+						Return -1
+					END IF
+			 
+					f_dw_to_syntax_and_data( adw_rpt, 	false, b_syntax ) 
+					f_dw_to_syntax_and_data( adw_rpt, 	true, btext )
+				END IF 
+				// b_syntax contains bitmaps 
+		//	 END IF  //ODBC 
+ 				If len (b_syntax ) < 24 then 
+					 btext = btext + blob( "0000000000000000" )
+				Else
+					 btext = btext + b_syntax + blob( "0000000000000000" )
+				END IF
+			 If gnv_appman.is_debugmode = 'Y' then 
+					ls_debug_syntax = mid( string ( btext ), 1, 32000)
+					MessageBox( 'DEBUG: f_submit_report', ls_debug_syntax )
+			 END IF 
+		 
+			 UPDATEBLOB VZT_batchschedule SET DWSYNTAX = :btext WHERE ID = :ls_id ;
+			end if // rep def max 
+			If SQLCA.sqlcode <> 0 then	
+				ls_code = string(SQLCA.sqlcode) 
+				ls_message = SQLCA.sqlerrtext
+				li_rc = -10
+			END IF 
+		End If		// rc check 
+			
+		If as_mode =  'BATCH' then 			
+			f_end_tran (SQLCA, li_rc , 'Batch Submission', 'Report submitted to the batch queue.','Batch submission failed.' )
+		ELSE
+			f_end_tran (SQLCA, li_rc , '', '', '') 
+			If li_rc < 0 then 
+				MessageBox("Online submision failed", "SQL Code:"+ls_code+ "~n~r SQL Error:" +ls_message )
+			ELSE
+				string ls_run
+				IF as_mode = 'ONLINES' then 
+					lstr_run_parms.mode 				= "BATCHOL"
+					lstr_run_parms.schedule_id 	= trim(ls_id)
+					lstr_run_parms.report_id 		= trim(ls_id)	
+					window lw_temp // gw_rptwin[UpperBound(gw_rptwin)+1] 
+					If IsValid( gnv_appman.iw_frame) then 
+						opensheetwithparm(lw_temp , lstr_run_parms, ls_windowname, gnv_appman.iw_frame, 0, Layered! )	
+					ELSE
+						openwithparm(lw_temp , lstr_run_parms, ls_windowname)	
+					END IF
+					//MessageBox('f', 'a')
+				ELSE	
+					// use separate server EXE  
+					ls_run = "vztbserv.exe BATCHOL`" + trim(ls_id) +"`" +gnv_appman.is_userid+"`"
+					li_rc = RUN (ls_run , Minimized!)
+					If li_rc < 0 then MessageBox("VZT Online Report Error", "Run command ("+ls_run +") failed. rc="+String( li_rc ))
+				END IF				
+			End If
+		END IF
+
+return 1
+
+end function
+

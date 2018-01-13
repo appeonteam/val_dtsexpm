@@ -1,0 +1,44 @@
+﻿$PBExportHeader$gf_monthname.srf
+$PBExportComments$Return the character name of a month.
+global type gf_monthname from function_object
+end type
+
+forward prototypes
+global function string gf_monthname (date ad_date)
+end prototypes
+
+global function string gf_monthname (date ad_date);string ls_retval 
+integer li_Month
+
+li_Month = Month( ad_Date )
+
+CHOOSE CASE li_Month
+	CASE 1
+		ls_retval = "January"
+	CASE 2
+		ls_retval = "February"
+	CASE 3
+		ls_retval = "March"
+	CASE 4
+		ls_retval = "April"
+	CASE 5
+		ls_retval = "May"
+	CASE 6
+		ls_retval = "June"
+	CASE 7
+		ls_retval = "July"
+	CASE 8
+		ls_retval = "August"
+	CASE 9
+		ls_retval = "September"
+	CASE 10
+		ls_retval = "October"
+	CASE 11
+		ls_retval = "November"
+	CASE 12
+		ls_retval = "December"
+END CHOOSE
+
+RETURN ls_RetVal	
+end function
+

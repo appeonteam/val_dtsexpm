@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_trace_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=56 color="15780518" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=52 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=dte dbname="vzt_trace.dte" )
+ column=(type=char(300) updatewhereclause=yes name=msg1 dbname="vzt_trace.msg1" )
+ column=(type=char(300) updatewhereclause=yes name=msg2 dbname="vzt_trace.msg2" )
+ column=(type=char(500) updatewhereclause=yes name=msg3 dbname="vzt_trace.msg3" )
+ column=(type=number update=yes updatewhereclause=yes identity=yes name=id dbname="vzt_trace.id" )
+ column=(type=long updatewhereclause=yes name=nl dbname="vzt_trace.nl" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"vzt_trace~" ) COLUMN(NAME=~"vzt_trace.dte~") COLUMN(NAME=~"vzt_trace.msg1~") COLUMN(NAME=~"vzt_trace.msg2~") COLUMN(NAME=~"vzt_trace.msg3~") COLUMN(NAME=~"vzt_trace.id~") COLUMN(NAME=~"vzt_trace.nl~")) ORDER(NAME=~"vzt_trace.id~" ASC=no)  ORDER(NAME=~"vzt_trace.dte~" ASC=no) "  sort="id D dte D " )
+text(band=header alignment="2" text="Dte" border="0" color="33554432" x="9" y="0" height="52" width="375" html.valueishtml="0"  name=dte_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Msg2" border="0" color="33554432" x="1349" y="0" height="52" width="809" html.valueishtml="0"  name=msg2_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Msg3" border="0" color="33554432" x="2167" y="0" height="52" width="3511" html.valueishtml="0"  name=msg3_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="nl" border="0" color="0" x="393" y="4" height="56" width="55" html.valueishtml="0"  name=nl_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="44" width="375" format="[shortdate] [time]" html.valueishtml="0"  name=dte visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1349" y="0" height="48" width="809" format="[general]" html.valueishtml="0"  name=msg2 visible="1" edit.limit=300 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif ( nl = 1 and ( pos( msg2 , 'END') > 0 or  pos( msg2 , 'START') > 0),
+If ( pos(msg1,'guest_stay_check_upd') <= 0 , RGB(250,230,60) , RGB(250,120,80) ) ,
+
+if ( nl = 1 , RGB(200,200,60), 
+if ( pos( lower(msg2) , 'missing') > 0 or pos( lower(msg2) , 'error') >0,  
+RGB(255,111,111)  ,
+if ( pos( lower(msg2) , 'vip') > 0 or pos( lower(msg2) , 'pref') > 0, RGB(200,151,131),    
+RGB(255,255,255))  )))
+" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="2167" y="0" height="48" width="3511" format="[general]" html.valueishtml="0"  name=msg3 visible="1" edit.limit=500 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="33554432" x="393" y="0" height="48" width="55" format="[general]" html.valueishtml="0"  name=nl visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+compute(band=detail alignment="0" expression=" space ( nl * 4 ) +  lower(trim(msg1 ))"border="0" color="0~tif ( nl = 1, RGB(0,0,0),  
+if ( nl = 2, RGB(80,170,80),  
+if ( nl = 3, RGB(210,110,80),  
+if ( nl = 4, RGB(227,20,20),  
+RGB(122,0,0)  
+))))
+" x="457" y="0" height="48" width="882" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial Narrow" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~tif ( nl = 1 and ( pos( msg2 , 'END') > 0 or  pos( msg2 , 'START') > 0),
+If ( pos(msg1,'guest_stay_check_upd') <= 0 , RGB(250,230,60) , RGB(250,120,80) ) ,
+
+if ( nl = 1 , RGB(200,200,60), 
+RGB(255,255,255)  ))
+" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_vzt_add_time_to_date.srf
+global type f_vzt_add_time_to_date from function_object
+end type
+
+forward prototypes
+global function datetime f_vzt_add_time_to_date (datetime ad_date)
+end prototypes
+
+global function datetime f_vzt_add_time_to_date (datetime ad_date);datetime ldt_date 
+time ltTime
+ltTime = time(ad_date)
+ldt_date = ad_date
+if ltTime = time ( '00:00:00') then 
+	ldt_date = datetime( date(ad_date), now ())
+end if
+
+return ldt_date
+end function
+

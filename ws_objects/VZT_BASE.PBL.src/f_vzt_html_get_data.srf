@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_vzt_html_get_data.srf
+global type f_vzt_html_get_data from function_object
+end type
+
+forward prototypes
+global function string f_vzt_html_get_data (string as_url, string as_args)
+end prototypes
+
+global function string f_vzt_html_get_data (string as_url, string as_args);string		ls_data, ls_url, ls_tab, ls_args
+
+ls_url	= as_url
+ls_args	= as_args
+ 
+ls_tab = '~t'
+
+//ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ),   EncodingANSI!)
+//ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ) )
+
+If gnv_appman.is_unicode = 'Y' then  
+		If Not IsNull( gnv_appman.i_encoding_web ) then 
+
+//			ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ),   EncodingANSI!) 
+//			if ls_data <> 'OK' then ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ),   EncodingUTF8!) 
+//			ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ),   EncodingUTF16LE!) 
+//			ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ),   EncodingUTF16BE!) 
+			ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ),   gnv_appman.i_encoding_web) 
+			
+		ELSE
+			ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ) )
+		END IF	
+ELSE
+	ls_data		= 	string( f_vzt_html_get_result( ls_url, ls_args ) )
+END IF	
+
+If gnv_appman.is_debugmode = 'Y' then 
+	clipboard ( ls_data) 
+	messagebox("html get data 2", ls_data)
+END IF 
+ls_data		=	f_replace( ls_data, '``' ,'~r~n')
+ls_data		=	f_replace( ls_data, '~~' , ls_tab )
+ls_data		=	f_nvl(ls_data	, '')
+
+return ls_data
+end function
+

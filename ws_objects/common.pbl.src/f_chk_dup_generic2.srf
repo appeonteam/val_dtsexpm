@@ -1,0 +1,27 @@
+﻿$PBExportHeader$f_chk_dup_generic2.srf
+global type f_chk_dup_generic2 from function_object
+end type
+
+forward prototypes
+global function boolean f_chk_dup_generic2 (string is_table_name, string is_col1_name, string is_col2_name, string is_col1_value, string is_col2_value)
+end prototypes
+
+global function boolean f_chk_dup_generic2 (string is_table_name, string is_col1_name, string is_col2_name, string is_col1_value, string is_col2_value);int rec_found
+string my_sql
+
+my_sql = "select count(*) from "+is_table_name+" where "+is_col1_name+"='"+is_col1_value+&
+			"' and "+is_col2_name+"='"+is_col2_value+"'"
+
+declare my_cursor DYNAMIC cursor for SQLSA;
+PREPARE SQLSA from :my_sql;
+OPEN DYNAMIC my_cursor;
+FETCH my_cursor into :rec_found;
+CLOSE my_cursor;
+
+if rec_found > 0 then
+	return true
+else
+	return false
+end if
+end function
+

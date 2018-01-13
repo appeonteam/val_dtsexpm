@@ -1,0 +1,164 @@
+﻿$PBExportHeader$d_he_rpt_calls_by_duration_summary_notsk.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="Calls by Room Report" print.orientation = 2 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 1 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=440 color="536870912" )
+summary(height=276 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=120 color="536870912" )
+table(column=(type=char(9) updatewhereclause=yes name=interval dbname="interval" )
+ column=(type=char(8) updatewhereclause=yes name=threshold dbname="threshold" )
+ column=(type=datetime updatewhereclause=yes name=fromdate dbname="fromdate" )
+ column=(type=datetime updatewhereclause=yes name=todate dbname="todate" )
+ column=(type=long updatewhereclause=yes name=total_calls dbname="total_calls" )
+ column=(type=long updatewhereclause=yes name=calls_within_interval dbname="calls_within_interval" )
+ column=(type=decimal(7) updatewhereclause=yes name=percent dbname="percent" )
+ column=(type=decimal(7) updatewhereclause=yes name=vzt_trigger dbname="vzt_trigger" )
+ retrieve="SELECT DISTINCT 
+';duration' interval ,
+';percent' threshold ,
+
+(SELECT MIN (~"cc~".~"call_outdate~")
+	FROM 	~"closedcalls~" 	~"cc~", 
+			~"problem~" 		~"p~", 
+			~"subproblem~" 	~"sp~"
+	WHERE 	 ( ~"p~".~"problem_number~"			= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"problem_number~" 		= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"subproblem_number~"	= ~"cc~".~"subproblem_number~" ) 
+			/*1
+			 AND
+				( 	{ts ';CFDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';CTDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"cc~".~"call_outdate~" BETWEEN 
+					{ts ';CFDATE 00:00:00.000000'} AND {ts ';CTDATE 23:59:59.777000'} 
+				)
+			1*/
+	/*1 
+	 	 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') )
+	1*/	
+	/*1
+	 	 AND ( '*ALL*' IN (';CALCAT') OR '' IN  (';CALCAT') OR cc.caller_category IN (';CALCAT') )
+	1*/	
+
+	) fromdate ,
+
+(SELECT MAX (~"cc~".~"call_outdate~" )
+	FROM 	~"closedcalls~" 	~"cc~", 
+			~"problem~" 		~"p~", 
+			~"subproblem~" 	~"sp~"
+	WHERE 	 ( ~"p~".~"problem_number~"			= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"problem_number~" 		= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"subproblem_number~"	= ~"cc~".~"subproblem_number~" ) 
+			/*1
+			 AND
+				( 	{ts ';CFDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';CTDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"cc~".~"call_outdate~" BETWEEN 
+					{ts ';CFDATE 00:00:00.000000'} AND {ts ';CTDATE 23:59:59.777000'} 
+				)
+			1*/
+	/*1 
+	 	 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') )
+	1*/	
+	/*1
+	 	 AND ( '*ALL*' IN (';CALCAT') OR '' IN  (';CALCAT') OR cc.caller_category IN (';CALCAT') )
+	1*/	
+
+	) todate ,
+
+
+	(SELECT count(*) 
+	FROM 	~"closedcalls~" 	~"cc~", 
+			~"problem~" 		~"p~", 
+			~"subproblem~" 	~"sp~"
+	WHERE 	 ( ~"p~".~"problem_number~"			= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"problem_number~" 		= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"subproblem_number~"	= ~"cc~".~"subproblem_number~" ) 
+			/*1
+			 AND
+				( 	{ts ';CFDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';CTDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"cc~".~"call_outdate~" BETWEEN 
+					{ts ';CFDATE 00:00:00.000000'} AND {ts ';CTDATE 23:59:59.777000'} 
+				)
+			1*/
+	/*1 
+	 	 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') )
+	1*/	
+	/*1
+	 	 AND ( '*ALL*' IN (';CALCAT') OR '' IN  (';CALCAT') OR cc.caller_category IN (';CALCAT') )
+	1*/	
+
+	) total_calls
+
+	,(SELECT count(*) 
+	FROM 	~"closedcalls~" 	~"cc~", 
+			~"problem~" 		~"p~", 
+			~"subproblem~" 	~"sp~"
+	WHERE 	 ( ~"p~".~"problem_number~"		= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"problem_number~" 	= ~"cc~".~"problem_number~" ) 
+			and ( ~"sp~".~"subproblem_number~"	= ~"cc~".~"subproblem_number~" ) 
+			and ( seconds(seconds(timer_start, -~"sp~".~"timer1_start_min~" * 60), call_outdate) / 60 ) < ( 0 /*1 + ;duration 1*/ ) 
+			/*1
+			 AND
+				( 	{ts ';CFDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';CTDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"cc~".~"call_outdate~" BETWEEN 
+					{ts ';CFDATE 00:00:00.000000'} AND {ts ';CTDATE 23:59:59.777000'} 
+				)
+			1*/
+	/*1 
+	 	 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') )
+	1*/	
+	/*1
+	 	 AND ( '*ALL*' IN (';CALCAT') OR '' IN  (';CALCAT') OR cc.caller_category IN (';CALCAT') )
+	1*/	
+
+		) 	calls_within_interval 
+
+	, ((calls_within_interval  * 100 )/ vzt_max_of_two( total_calls, 1) ) percent 
+	, (percent - 0 /*1 - ;percent 1*/ ) vzt_trigger // default threshold = 90 negative value means - do alert 
+
+FROM 	~"closedcalls~" 	~"cc~", 
+		~"problem~" 		~"p~", 
+		~"subproblem~" 	~"sp~"
+WHERE 		( ~"p~".~"problem_number~"		= ~"cc~".~"problem_number~" ) 
+		and 	( ~"sp~".~"problem_number~" 	= ~"cc~".~"problem_number~" ) 
+		and 	( ~"sp~".~"subproblem_number~"	= ~"cc~".~"subproblem_number~" ) 
+
+		/*1
+			 AND
+				( 	{ts ';CFDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';CTDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"cc~".~"call_outdate~" BETWEEN 
+					{ts ';CFDATE 00:00:00.000000'} AND {ts ';CTDATE 23:59:59.777000'} 
+				)
+		1*/
+	/*1 
+	 	 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') )
+	1*/	
+	/*1
+	 	 AND ( '*ALL*' IN (';CALCAT') OR '' IN  (';CALCAT') OR cc.caller_category IN (';CALCAT') )
+	1*/	
+" )
+rectangle(band=header x="384" y="404" height="12" width="2121" brush.hatch="6" brush.color="0" pen.style="5" pen.width="5" pen.color="553648127"  background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Duration "border="1" color="0" x="389" y="308" height="64" width="352"  name=closed_bydept_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text="From"border="0" color="0" x="393" y="176" height="64" width="151"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=3 alignment="0" tabsequence=32766 border="0" color="0" x="581" y="176" height="64" width="320" format="[shortdate]"  name=fromdate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Calls by Duration Summary"border="0" color="0" x="1010" y="16" height="64" width="814"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text="To"border="0" color="0" x="1024" y="176" height="64" width="73"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1129" y="176" height="64" width="370" format="[shortdate]"  name=todate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Number of Calls"border="1" color="0" x="1001" y="308" height="64" width="731"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215"  height.autosize=yes)
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="0" x="2011" y="16" height="72" width="370" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Percentage"border="1" color="0" x="2016" y="308" height="64" width="338"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="448" y="24" height="56" width="261" format="[general]"  name=interval edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="2034" y="28" height="56" width="229" format="##0.0"  name=percent edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="%"border="0" color="0" x="2272" y="28" height="56" width="69"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="!!!"border="0" color="255" x="2478" y="4" height="104" width="110" visible="1~tif ( vzt_trigger  < 0, 1,0)"  font.face="Arial" font.height="-18" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=detail alignment="2" text="O"border="0" color="255" x="2583" y="4" height="104" width="119" visible="1~tif ( vzt_trigger  < 0, 1,0)"  font.face="Wingdings" font.height="-18" font.weight="700"  font.family="1" font.pitch="2" font.charset="2" background.mode="2" background.color="65535" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="0" x="992" y="28" height="56" width="334" format="[general]"  name=calls_within_interval edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="out of "border="0" color="0" x="1339" y="28" height="56" width="192"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1541" y="28" height="56" width="306" format="[general]"  name=total_calls edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2734" y="32" height="64" width="215" format="[general]"  name=vzt_trigger visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=summary id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2208" y="8" height="56" width="215" format="[general]"  name=threshold edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=summary alignment="0" text="e-mail alert generated if percentage is less than"border="0" color="0" x="978" y="8" height="56" width="1221"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

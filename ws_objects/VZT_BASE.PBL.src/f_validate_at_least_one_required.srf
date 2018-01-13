@@ -1,0 +1,45 @@
+﻿$PBExportHeader$f_validate_at_least_one_required.srf
+global type f_validate_at_least_one_required from function_object
+end type
+
+forward prototypes
+global function integer f_validate_at_least_one_required (ref datawindow adw_target, string as_reqcols[])
+end prototypes
+
+global function integer f_validate_at_least_one_required (ref datawindow adw_target, string as_reqcols[]);int li_column , li_ret
+string ls_colname ,ls_visible, ls_columns , ls_style
+
+li_ret = -1
+ls_columns 	=''
+For li_column = 1 to upperbound( as_reqcols[] )
+	ls_colname = as_reqcols[li_column] 
+	If not IsNull( ls_colname) and trim(ls_colname) <> '' then 
+		If NOT f_is_column_null( 1, ls_colname, adw_target) then li_ret = 0
+		ls_columns += ls_colname + '~r~n'
+	End If			
+Next
+
+If li_ret < 0 then MessageBox('Required Data Missing', 'At least one of the following columns is required:~r~n~r~n' + ls_columns , Stopsign!)
+For li_column = 1 to upperbound( as_reqcols[] )
+	ls_colname = as_reqcols[li_column] 
+	If not IsNull( ls_colname) and trim(ls_colname) <> '' then 
+		ls_visible 	= trim( adw_target.Describe( ls_colname+".Visible" ))
+		ls_style		= lower(trim( adw_target.Describe( ls_colname+".Edit.Style" )))
+		If ls_visible = '1' then 
+				If li_ret < 0 then 
+				adw_target.modify( ls_colname+".Background.Color='"+ STRING(RGB(128,255,128))+ "'")
+				li_ret = -1
+			ELSE
+				If ls_style = 'checkbox' then 
+					adw_target.modify( ls_colname+".Background.Color='"+ STRING(RGB(192,192,192)) +"'")
+				ELSE
+					adw_target.modify( ls_colname+".Background.Color='"+ STRING(RGB(255,255,255)) +"'")					
+				End If
+			End If
+		End If				//visible
+	End If			
+Next
+
+return li_ret
+end function
+

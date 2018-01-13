@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_replace_ascii.srf
+global type f_replace_ascii from function_object
+end type
+
+forward prototypes
+global function string f_replace_ascii (string as_input)
+end prototypes
+
+global function string f_replace_ascii (string as_input);string ls_output
+	ls_output = as_input
+	ls_output = f_replace( ls_output , CHAR(CODE_SOH), '<SOH>')
+	ls_output = f_replace( ls_output , CHAR(CODE_ACK), '<ACK>')
+	ls_output = f_replace( ls_output , CHAR(CODE_US), '<US>')
+	ls_output = f_replace( ls_output , CHAR(CODE_RS), '<RS>')
+	ls_output = f_replace( ls_output , CHAR(CODE_STX), '<STX>')
+	ls_output = f_replace( ls_output , CHAR(CODE_NAK), '<NAK>')
+	ls_output = f_replace( ls_output , CHAR(CODE_ETX), '<ETX>')
+	ls_output = f_replace( ls_output , CHAR(CODE_ENQ), '<ENQ>')
+	ls_output = f_replace( ls_output , CHAR(CODE_EOT), '<EOT>')
+//	ls_output = f_replace( ls_output , CHAR(CODE_CR), '<CR>')
+//	ls_output = f_replace( ls_output , CHAR(CODE_LF), '<LF>')
+	
+return ls_output 
+end function
+

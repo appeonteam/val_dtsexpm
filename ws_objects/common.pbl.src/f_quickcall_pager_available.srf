@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_quickcall_pager_available.srf
+global type f_quickcall_pager_available from function_object
+end type
+
+forward prototypes
+global function boolean f_quickcall_pager_available ()
+end prototypes
+
+global function boolean f_quickcall_pager_available ();int quickCnt
+select 	count(*) into :quickCnt 
+from 		pager_emp a, instemp b
+where 	a.emp_id=b.employee_number 
+and 		b.dept='QUICKCALL';
+if sqlca.sqlcode < 0 then
+	MessageBox("DB Error",sqlca.sqlerrtext)
+	return false
+end if
+
+if quickCnt > 0 then
+	return true
+else
+	return false
+end if
+
+end function
+

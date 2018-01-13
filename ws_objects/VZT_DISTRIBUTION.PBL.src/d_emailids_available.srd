@@ -1,0 +1,43 @@
+﻿$PBExportHeader$d_emailids_available.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=72 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes identity=yes name=id dbname="vzt_address.id" )
+ column=(type=char(20) updatewhereclause=yes name=type dbname="vzt_address.type" )
+ column=(type=char(150) updatewhereclause=yes name=address dbname="vzt_address.address" )
+ column=(type=char(150) updatewhereclause=yes name=descr dbname="vzt_address.descr" )
+ column=(type=char(1) updatewhereclause=yes name=vzt_address_prim dbname="vzt_address.prim" values="	Y/	N" )
+ column=(type=char(100) updatewhereclause=yes name=firstname dbname="vzt_contact.firstname" )
+ column=(type=char(50) updatewhereclause=yes name=lastname dbname="vzt_contact.lastname" )
+ retrieve="  SELECT a.id, 
+        	a.~"type~",
+			a.~"address~",
+			descr,
+			a.~"prim~",
+			c.firstname, 
+			c.lastname 
+    FROM vzt_address a, vzt_contact_address ca , vzt_contact c 
+		WHERE ca.address_id 	= a.id AND
+				ca.contact_id 	= :ai_contact_id AND
+				c.id 				= :ai_contact_id			
+				and a.~"type~" = 'EMAIL'  
+ORDER BY 2,3 ASC   
+" arguments=(("ai_contact_id", number)) )
+text(band=header alignment="2" text="ID" border="0" color="16777215" x="78" y="0" height="64" width="64" html.valueishtml="0"  name=questionid_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Type" border="0" color="16777215" x="192" y="0" height="64" width="146" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Primary " border="0" color="16777215" x="549" y="0" height="64" width="251" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Address" border="0" color="16777215" x="859" y="0" height="64" width="242" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="8" height="52" width="165" format="[General]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="210" y="8" height="52" width="393" format="[general]" html.valueishtml="0"  name=type visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="622" y="8" height="48" width="55" format="[general]" html.valueishtml="0"  name=vzt_address_prim visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="704" y="8" height="52" width="946" format="[general]" html.valueishtml="0"  name=address visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Descr" border="0" color="16777215" x="1659" y="0" height="64" width="174" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1664" y="8" height="48" width="905" format="[general]" html.valueishtml="0"  name=descr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

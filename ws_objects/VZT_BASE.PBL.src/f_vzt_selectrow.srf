@@ -1,0 +1,40 @@
+﻿$PBExportHeader$f_vzt_selectrow.srf
+global type f_vzt_selectrow from function_object
+end type
+
+forward prototypes
+global function integer f_vzt_selectrow (ref datawindow adw_target)
+end prototypes
+
+global function integer f_vzt_selectrow (ref datawindow adw_target);long		ll_row, ll_maxrow, ll_rc
+
+ll_row 		= adw_target.getRow()
+ll_maxrow 	= adw_target.rowCount()
+
+if ll_row <= 0 then return -10
+
+if ll_maxrow > 1 then
+	if (ll_row + 1) <= ll_maxrow then
+		ll_rc = adw_target.rowsDiscard((ll_row + 1), ll_maxrow, Primary!)
+		if ll_rc <> 1 then
+			messageBox("Row Selection Error", "Could not discard subsequent rows")
+			return -20
+		end if
+	end if
+	if ll_row <> 1 then
+		ll_rc = adw_target.rowsDiscard(1, (ll_row - 1), Primary!)
+		if ll_rc <> 1 then
+			messageBox("Row Selection Error", "Could not discard prior rows")
+			return -30
+		Else
+			ll_row = adw_target.RowCount() 
+			If ll_row = 0 then
+			END IF
+		end if
+	end if
+end if
+
+return 1
+
+end function
+

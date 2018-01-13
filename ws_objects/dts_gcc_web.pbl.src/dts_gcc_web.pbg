@@ -1,0 +1,30 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dts_gcc_web.pbl" "";
+@end;
+@begin Objects 
+ "d_gcc_about.srd" "dts_gcc_web.pbl";
+ "d_gcc_guest_entry.srd" "dts_gcc_web.pbl";
+ "d_gcc_list_web.srd" "dts_gcc_web.pbl";
+ "d_vzt_sysoptions_edit_0509.srd" "dts_gcc_web.pbl";
+ "d_vzt_sysoptions_edit_gcc.srd" "dts_gcc_web.pbl";
+ "d_web_all_conf_edit.srd" "dts_gcc_web.pbl";
+ "d_web_conf_edit.srd" "dts_gcc_web.pbl";
+ "d_web_conf_list.srd" "dts_gcc_web.pbl";
+ "d_web_survey_wait.srd" "dts_gcc_web.pbl";
+ "d_web_survey_wait_prepare.srd" "dts_gcc_web.pbl";
+ "gcc_web.srj" "dts_gcc_web.pbl";
+ "gcc_web_new.srj" "dts_gcc_web.pbl";
+ "m_gcc_main.srm" "dts_gcc_web.pbl";
+ "w_gcc_about.srw" "dts_gcc_web.pbl";
+ "w_gcc_feedback.srw" "dts_gcc_web.pbl";
+ "w_gcc_feedback_new10.srw" "dts_gcc_web.pbl";
+ "w_gcc_letter_thanks_websurvey.srw" "dts_gcc_web.pbl";
+ "w_gcc_letter_thanks_websurvey_batch.srw" "dts_gcc_web.pbl";
+ "w_gcc_letter_thanks_websurvey_new.srw" "dts_gcc_web.pbl";
+ "w_gcc_openlog1.srw" "dts_gcc_web.pbl";
+ "w_gcc_web_import.srw" "dts_gcc_web.pbl";
+ "w_get_survey_list.srw" "dts_gcc_web.pbl";
+ "w_vzt_web_conf_edit.srw" "dts_gcc_web.pbl";
+ "w_web_batch_prompt.srw" "dts_gcc_web.pbl";
+@end;

@@ -1,0 +1,542 @@
+﻿$PBExportHeader$m_gcc_adhoc.srm
+forward
+global type m_gcc_adhoc from menu
+end type
+type m_file from menu within m_gcc_adhoc
+end type
+type m_runquery from menu within m_file
+end type
+type m_openquery from menu within m_file
+end type
+type m_loadspeciala from menu within m_file
+end type
+type m_loadspecialb from menu within m_file
+end type
+type m_savequery from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_exitqa from menu within m_file
+end type
+type m_file from menu within m_gcc_adhoc
+m_runquery m_runquery
+m_openquery m_openquery
+m_loadspeciala m_loadspeciala
+m_loadspecialb m_loadspecialb
+m_savequery m_savequery
+m_-2 m_-2
+m_exitqa m_exitqa
+end type
+type m_edit from menu within m_gcc_adhoc
+end type
+type m_clear from menu within m_edit
+end type
+type m_edit from menu within m_gcc_adhoc
+m_clear m_clear
+end type
+type m_windowsgraph from menu within m_gcc_adhoc
+end type
+type m_tile4 from menu within m_windowsgraph
+end type
+type m_layer from menu within m_windowsgraph
+end type
+type m_cascade from menu within m_windowsgraph
+end type
+type m_arrangemenuicons from menu within m_windowsgraph
+end type
+type m_-3 from menu within m_windowsgraph
+end type
+type m_toolbar from menu within m_windowsgraph
+end type
+type m_timecalculator from menu within m_windowsgraph
+end type
+type m_windowsgraph from menu within m_gcc_adhoc
+m_tile4 m_tile4
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_toolbar m_toolbar
+m_timecalculator m_timecalculator
+end type
+type m_help from menu within m_gcc_adhoc
+end type
+type m_context from menu within m_help
+end type
+type m_index from menu within m_help
+end type
+type m_search from menu within m_help
+end type
+type m_-4 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_gcc_adhoc
+m_context m_context
+m_index m_index
+m_search m_search
+m_-4 m_-4
+m_about m_about
+end type
+end forward
+
+global type m_gcc_adhoc from menu
+m_file m_file
+m_edit m_edit
+m_windowsgraph m_windowsgraph
+m_help m_help
+end type
+global m_gcc_adhoc m_gcc_adhoc
+
+forward prototypes
+public subroutine of_localize ()
+end prototypes
+
+public subroutine of_localize ();//  this.m_file.m_new.text = 'Neue' 
+end subroutine
+
+on m_gcc_adhoc.create
+m_gcc_adhoc=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_windowsgraph=create m_windowsgraph
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_windowsgraph, &
+this.m_help}
+end on
+
+on m_gcc_adhoc.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_windowsgraph)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_gcc_adhoc
+m_runquery m_runquery
+m_openquery m_openquery
+m_loadspeciala m_loadspeciala
+m_loadspecialb m_loadspecialb
+m_savequery m_savequery
+m_-2 m_-2
+m_exitqa m_exitqa
+end type
+
+on selected;// Declare active sheet (a window data type).
+
+window	activesheet
+string	text, sheet_name
+
+activesheet = w_main.GetActiveSheet( )
+If IsValid(activesheet) then
+// There is an active sheet, so get its title.
+// Change the text of the MenuItem to read Close and
+// then the title of the active sheet.
+
+	text = "E&xit " + activesheet.title
+	m_exitqa.text=text
+
+else 
+
+// No sheet is active, change the text to Close Window.
+
+	m_exitqa.text = "E&xit Window"
+
+end if
+
+end on
+
+on m_file.create
+this.Text="&File"
+this.Microhelp="File Options."
+this.m_runquery=create m_runquery
+this.m_openquery=create m_openquery
+this.m_loadspeciala=create m_loadspeciala
+this.m_loadspecialb=create m_loadspecialb
+this.m_savequery=create m_savequery
+this.m_-2=create m_-2
+this.m_exitqa=create m_exitqa
+this.Item[]={this.m_runquery, &
+this.m_openquery, &
+this.m_loadspeciala, &
+this.m_loadspecialb, &
+this.m_savequery, &
+this.m_-2, &
+this.m_exitqa}
+end on
+
+on m_file.destroy
+destroy(this.m_runquery)
+destroy(this.m_openquery)
+destroy(this.m_loadspeciala)
+destroy(this.m_loadspecialb)
+destroy(this.m_savequery)
+destroy(this.m_-2)
+destroy(this.m_exitqa)
+end on
+
+type m_runquery from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_run")
+
+end on
+
+on m_runquery.create
+this.Text="&Run"
+this.ToolBarItemName="Run!"
+this.ToolBarItemText="Query"
+this.ToolBarItemOrder=1
+end on
+
+type m_openquery from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_loadfile")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_load")
+
+end on
+
+on m_openquery.create
+this.Text="&Load Q&&A"
+this.Microhelp="Load a Q&A Query File (*.QA1) from disk."
+this.ToolBarItemName="Custom007!"
+this.ToolBarItemText="Load Q&A"
+this.ToolBarItemOrder=9
+end on
+
+type m_loadspeciala from menu within m_file
+end type
+
+on m_loadspeciala.create
+this.Text="Load Daily Q&&A"
+this.ToolBarItemName="qa1.bmp"
+this.ToolBarItemText="Load Daily Q&A"
+this.ToolBarItemOrder=10
+end on
+
+event clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_loadfilea")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_load")
+
+end event
+
+type m_loadspecialb from menu within m_file
+end type
+
+on m_loadspecialb.create
+this.Text="Load Weekly Q&&A"
+this.ToolBarItemName="qa2.bmp"
+this.ToolBarItemText="Load Weekly Q&A"
+this.ToolBarItemOrder=11
+end on
+
+event clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_loadfileb")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_load")
+
+end event
+
+type m_savequery from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_savefile")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_save")
+
+end on
+
+on m_savequery.create
+this.Text="&Save"
+this.Microhelp="Save a Q&A Query File (*.QA1) to disk."
+this.ToolBarItemName="Custom008!"
+this.ToolBarItemText="Save"
+this.ToolBarItemOrder=13
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_exitqa from menu within m_file
+end type
+
+event clicked;window w_activesheet
+
+w_activesheet = w_main.GetActiveSheet()
+If IsValid( w_activesheet ) Then Close( w_activesheet )
+
+
+end event
+
+on m_exitqa.create
+this.Text="E&xit Q&&A~tAlt+X"
+this.Microhelp="Exit (close) the currently selected Graph(s) and/or Report(s)."
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit Q&A"
+this.ToolBarItemOrder=90
+this.ToolBarItemSpace=2
+this.Shortcut=600
+end on
+
+type m_edit from menu within m_gcc_adhoc
+m_clear m_clear
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.Microhelp="Edit Options."
+this.m_clear=create m_clear
+this.Item[]={this.m_clear}
+end on
+
+on m_edit.destroy
+destroy(this.m_clear)
+end on
+
+type m_clear from menu within m_edit
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_clear")
+
+end on
+
+on m_clear.create
+this.Text="C&lear Criteria~tCtrl+L"
+this.Microhelp="Clear all currently specified criteria and selected graphs and reports."
+this.Shortcut=332
+end on
+
+type m_windowsgraph from menu within m_gcc_adhoc
+m_tile4 m_tile4
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_toolbar m_toolbar
+m_timecalculator m_timecalculator
+end type
+
+on m_windowsgraph.create
+this.Text="&Windows"
+this.Microhelp="Window Options."
+this.m_tile4=create m_tile4
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_arrangemenuicons=create m_arrangemenuicons
+this.m_-3=create m_-3
+this.m_toolbar=create m_toolbar
+this.m_timecalculator=create m_timecalculator
+this.Item[]={this.m_tile4, &
+this.m_layer, &
+this.m_cascade, &
+this.m_arrangemenuicons, &
+this.m_-3, &
+this.m_toolbar, &
+this.m_timecalculator}
+end on
+
+on m_windowsgraph.destroy
+destroy(this.m_tile4)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_arrangemenuicons)
+destroy(this.m_-3)
+destroy(this.m_toolbar)
+destroy(this.m_timecalculator)
+end on
+
+type m_tile4 from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Tile! )
+end on
+
+on m_tile4.create
+this.Text="Tile"
+this.Microhelp="Arrange all open windows at roughly equal size, all showing with no overlap."
+end on
+
+type m_layer from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Layer! )
+end on
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Zoom all windows (almost maximize but keep title bars) and overlap w/layer order; reverse order as last accessed."
+end on
+
+type m_cascade from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Cascade! )
+end on
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Regularize (approx 25% screen size) all windows, overlap and layer as last accessed."
+end on
+
+type m_arrangemenuicons from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Icons! )
+end on
+
+on m_arrangemenuicons.create
+this.Text="Arrange Menu &Icons"
+this.Microhelp="Arrange Minimized Windows (Icons) along bottom of screen, left-to-right as last accessed."
+end on
+
+type m_-3 from menu within m_windowsgraph
+end type
+
+on m_-3.create
+this.Text="-"
+end on
+
+type m_toolbar from menu within m_windowsgraph
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, GetActiveSheet(ParentWindow))
+
+
+end on
+
+on m_toolbar.create
+this.Text="Tool&bar Options..."
+this.Microhelp="Show, hide and place Q&A Toolbar and/or its' text."
+this.ToolBarItemName="Custom041!"
+this.ToolBarItemText="Toolbar"
+this.ToolBarItemOrder=85
+end on
+
+type m_timecalculator from menu within m_windowsgraph
+end type
+
+on clicked;// open calculator
+SetPointer( HourGlass! )
+Open( w_calc_time, w_main )
+end on
+
+on m_timecalculator.create
+this.Text="Time Calc&ulator~tCtrl+U"
+this.Microhelp="A pop-up time duration Calculator used to convert seconds, minutes, hours, days, weeks, months and years amongst each other."
+this.Shortcut=341
+end on
+
+type m_help from menu within m_gcc_adhoc
+m_context m_context
+m_index m_index
+m_search m_search
+m_-4 m_-4
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.Microhelp="Help Options."
+this.m_context=create m_context
+this.m_index=create m_index
+this.m_search=create m_search
+this.m_-4=create m_-4
+this.m_about=create m_about
+this.Item[]={this.m_context, &
+this.m_index, &
+this.m_search, &
+this.m_-4, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_context)
+destroy(this.m_index)
+destroy(this.m_search)
+destroy(this.m_-4)
+destroy(this.m_about)
+end on
+
+type m_context from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_context.create
+this.Text="Co&ntext"
+this.Microhelp="Context-Sensitive Help, based on the last selected screen object, within the Help Index."
+end on
+
+type m_index from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_index.create
+this.Text="&Index"
+this.Microhelp="Show the Help Index (i.e., Help Table-of-Contents)."
+end on
+
+type m_search from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_search.create
+this.Text="&Search"
+this.Microhelp="Search the Help Index for application related key words and phrases."
+end on
+
+type m_-4 from menu within m_help
+end type
+
+on m_-4.create
+this.Text="-"
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;SetPointer( HourGlass! )
+//OpenSheet( w_about, "w_about", w_main, 3, Original! )
+Open( w_about, w_main )
+end on
+
+on m_about.create
+this.Text="&About"
+this.Microhelp="Application version, copyright and available memory information."
+this.Visible=false
+end on
+

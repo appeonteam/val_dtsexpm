@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_vzt_text_list_avl.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=76 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="553648127" )
+table(column=(type=number update=yes updatewhereclause=yes identity=yes name=id dbname="vzt_text.id" )
+ column=(type=char(400) update=yes updatewhereclause=yes key=yes name=text dbname="vzt_text.text" )
+ column=(type=char(400) update=yes updatewhereclause=yes name=descr dbname="vzt_text.descr" )
+ column=(type=number update=yes updatewhereclause=yes key=yes name=lang_id dbname="vzt_text.lang_id" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=textcat dbname="vzt_text.textcat" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=textsubcat dbname="vzt_text.textsubcat" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=textsubject dbname="vzt_text.textsubject" )
+ retrieve="  SELECT ~"vzt_text~".~"id~",   
+         ~"vzt_text~".~"text~",   
+         ~"vzt_text~".~"descr~",   
+         ~"vzt_text~".~"lang_id~",   
+         ~"vzt_text~".~"textcat~",   
+         ~"vzt_text~".~"textsubcat~",   
+         ~"vzt_text~".~"textsubject~"  
+    FROM ~"vzt_text~"    
+where  ~"vzt_text~".~"lang_id~" <> 1 
+	and not exists (SELECT * from ~"vzt_text_lang~"  
+   WHERE ( ~"vzt_text~".~"id~" = ~"vzt_text_lang~".~"text_id~" ) and  
+         ( ~"vzt_text_lang~".~"english_text_id~" = :ad_eng_text_id ) )    
+" update="vzt_text" updatewhere=0 updatekeyinplace=no arguments=(("ad_eng_text_id", number)) )
+text(band=header alignment="0" text="Text Id" border="6" color="16777215" x="4005" y="4" height="64" width="215" html.valueishtml="0"  name=text_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Text String" border="6" color="16777215" x="32" y="4" height="64" width="1083" html.valueishtml="0"  name=text_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Description" border="6" color="16777215" x="1669" y="4" height="64" width="745" html.valueishtml="0"  name=descr_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Language" border="6" color="16777215" x="1147" y="4" height="64" width="466" html.valueishtml="0"  name=vzt_text_lang_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Text Category" border="6" color="16777215" x="2423" y="4" height="64" width="457" html.valueishtml="0"  name=textcat_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Text Subcategory" border="6" color="16777215" x="2889" y="4" height="64" width="526" html.valueishtml="0"  name=textsubcat_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Subject" border="6" color="16777215" x="3424" y="4" height="64" width="521" html.valueishtml="0"  name=textsubject_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="9" y="12" height="40" width="14" format="[general]" html.valueishtml="0"  name=c1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="1623" y="12" height="40" width="37" format="[general]" html.valueishtml="0"  name=obj_1398214866 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="134217729" x="4005" y="4" height="56" width="215" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="1125" y="4" height="56" width="14" format="[general]" html.valueishtml="0"  name=obj_1398218582 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="3954" y="4" height="56" width="41" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="134217729" x="32" y="4" height="56" width="1083" format="[general]" html.valueishtml="0"  name=text visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="134217729" x="1669" y="4" height="56" width="745" format="[general]" html.valueishtml="0"  name=descr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="134217729" x="1147" y="4" height="56" width="466" format="[General]" html.valueishtml="0"  name=lang_id visible="1" dddw.name=d_vzt_lang_list dddw.displaycolumn=name dddw.datacolumn=id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="134217729" x="2423" y="4" height="56" width="457" format="[general]" html.valueishtml="0"  name=textcat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="134217729" x="2889" y="4" height="56" width="526" format="[general]" html.valueishtml="0"  name=textsubcat visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="134217729" x="3424" y="4" height="56" width="521" format="[general]" html.valueishtml="0"  name=textsubject visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=-32560 savemetadata=-12165 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

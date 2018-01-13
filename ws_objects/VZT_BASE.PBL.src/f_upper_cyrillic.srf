@@ -1,0 +1,26 @@
+﻿$PBExportHeader$f_upper_cyrillic.srf
+global type f_upper_cyrillic from function_object
+end type
+
+forward prototypes
+global function string f_upper_cyrillic (string as_text)
+end prototypes
+
+global function string f_upper_cyrillic (string as_text);string ls_ret, ls_lower, ls_upper
+string ls_lc = 'àáâãäå¸æçèéêëìíîïðñòóôõö÷øùúûüýþÿ'
+string ls_uc = 'AÁBÃÄEEÆÇÈÉÊËÌHOÏÐCTÓÔÕÖ×ØÙÚÛÜÝÞß' 
+
+ls_ret = UPPER(as_text)
+long llx , llmax
+llmax =  LEN(ls_lc)
+FOR llx=1 to llmax
+	ls_lower = MID(ls_lc,llx,1)
+	ls_upper = MID(ls_uc,llx,1)
+	ls_ret	= f_replace( ls_ret, ls_lower , ls_upper )
+NEXT
+
+return ls_ret
+
+
+end function
+

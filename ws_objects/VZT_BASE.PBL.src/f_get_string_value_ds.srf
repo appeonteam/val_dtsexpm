@@ -1,0 +1,50 @@
+﻿$PBExportHeader$f_get_string_value_ds.srf
+global type f_get_string_value_ds from function_object
+end type
+
+forward prototypes
+global function string f_get_string_value_ds (string as_column, long al_row, ref datastore ads_source)
+end prototypes
+
+global function string f_get_string_value_ds (string as_column, long al_row, ref datastore ads_source);string 	ls_coltype , ls_colvalue
+date		ld_coldate
+datetime ldt_coldt
+
+	ls_coltype 		= Upper(ads_source.describe(as_column  + ".coltype"))
+	CHOOSE CASE ls_coltype
+	CASE "DATE"
+		ld_coldate	= ads_source.getItemDate(1, as_column)
+		 
+		IF SQLCA.dbms = 'ODBC' then 
+			ls_colvalue = string (ld_coldate , "yyyy-mm-dd" )
+		ELSEIF MID(SQLCA.dbms, 1,3) = 'ORA' then
+			ls_colvalue = string ( ld_coldate, "mm/dd/yyyy" )
+		ELSE
+		END IF 
+
+	CASE "DATETIME"
+		ldt_coldt = ads_source.getItemDateTime(1, as_column)
+		 
+		IF SQLCA.dbms = 'ODBC' then 
+			ls_colvalue = string ( ldt_coldt, "yyyy-mm-dd" )
+		ELSEIF MID(SQLCA.dbms, 1,3) = 'ORA' then
+			ls_colvalue = string ( ldt_coldt, "mm/dd/yyyy" )
+		ELSE
+		END IF 
+			
+	CASE "NUMBER"
+		ls_colvalue = string( ads_source.getItemNumber(1, as_column))
+	CASE ELSE
+		if Pos(ls_coltype, "CHAR") <> 0 then
+			ls_colvalue = Trim(ads_source.getItemString(1, as_column))
+		elseif Pos(ls_coltype, "DECIMAL(0)") <> 0 then
+			ls_colvalue = string( ads_source.getItemNumber(1, as_column))
+		elseif Pos(ls_coltype, "DECIMAL") <> 0 then
+			ls_colvalue = string( ads_source.getItemDecimal(1, as_column))
+		else
+		end if
+	END CHOOSE
+
+return ls_colvalue
+end function
+

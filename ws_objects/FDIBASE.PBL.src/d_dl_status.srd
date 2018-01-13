@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_dl_status.srd
+$PBExportComments$Dddw - Status - [d_call_de]
+release 3;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no grid.lines=0 )
+header(height=1 color="536870912")
+summary(height=1 color="536870912")
+footer(height=1 color="536870912")
+detail(height=65 color="536870912")
+table(column=(type=char(10) update=yes name=stat_desc dbname="callstat.stat_desc" )
+ column=(type=char(2) update=yes key=yes name=stat_code dbname="callstat.stat_code" )
+ column=(type=char(32766) name=stat_longdesc dbname="callstat.stat_longdesc" )
+ retrieve="PBSELECT(TABLE(NAME=~"callstat~" ) COLUMN(NAME=~"callstat.stat_desc~") COLUMN(NAME=~"callstat.stat_code~") COLUMN(NAME=~"callstat.stat_longdesc~")) ORDER(NAME=~"callstat.stat_code~" ASC=yes ) " update="callstat" updatewhere=0 updatekeyinplace=no  sort="stat_code A " )
+text(band=header color="0" alignment="0" border="0" x="10" y="4" height="57" width="83" text="Stat Longdesc" font.face="Arial" font.height="-8" font.weight="400" font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215")
+column(band=detail id=2 border="0" alignment="0" color="0" height="65" tabsequence=10 width="83" x="10" y="4"  name=stat_code  tag="The numeric code used for call status identification." format="[general]" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400" font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215")
+column(band=detail id=1 border="0" alignment="0" color="0" height="65" tabsequence=20 width="339" x="101" y="4"  name=stat_desc  tag="The description of the numeric code used for call status identification." format="[general]" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400" font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215")

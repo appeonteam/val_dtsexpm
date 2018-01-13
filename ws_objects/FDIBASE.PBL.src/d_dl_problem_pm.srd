@@ -1,0 +1,33 @@
+﻿$PBExportHeader$d_dl_problem_pm.srd
+$PBExportComments$Dddw - Problem - [d_call_de]
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=char(5) update=yes updatewhereclause=yes name=problem_number dbname="problem.problem_number" dbalias=".problem_number" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=problem_desc dbname="problem.problem_desc" dbalias=".problem_desc" )
+ column=(type=long updatewhereclause=yes name=seq dbname="seq" )
+ retrieve="SELECT problem.problem_number,   
+        problem_desc,
+		seq=0   
+from problem, subproblem 
+where problem.problem_number=subproblem.problem_number 
+and subproblem.default_status>=20 and subproblem.default_status<=40
+GROUP BY problem.problem_number, problem.problem_desc
+ORDER BY problem_desc ASC,   
+         problem.problem_number ASC"  sort="seq A problem_desc A " )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="4" height="64" width="142" format="[general]" html.valueishtml="0"  name=problem_number visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="160" y="4" height="64" width="695" format="[general]" html.valueishtml="0"  name=problem_desc visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

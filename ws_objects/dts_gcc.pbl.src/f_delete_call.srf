@@ -1,0 +1,61 @@
+﻿$PBExportHeader$f_delete_call.srf
+global type f_delete_call from function_object
+end type
+
+forward prototypes
+global function boolean f_delete_call (string callnumber, integer calltable, boolean ab_commit)
+end prototypes
+
+global function boolean f_delete_call (string callnumber, integer calltable, boolean ab_commit);// callTable 1 = 'timercalls'b
+//			    2 = 'pendingcalls'
+//           5 = 'closedcalls'
+//				 6 = 'timercalls'
+
+//	DELETE FROM dtscalls  where call_number = :callNumber;
+
+DELETE FROM pendingcalls 	where call_number = :callNumber;		
+If sqlca.SQLCode = 0 Then 
+	DELETE FROM closedcalls where call_number = :callNumber;	
+END IF 
+If sqlca.SQLCode = 0 Then 
+	DELETE FROM timercalls 	where call_number = :callNumber;
+END IF;
+
+string ls_error, ls_code 
+If sqlca.SQLCode <> 0 Then        
+	ls_error =  sqlca.SQLerrtext
+	ls_code	=  string( sqlca.SQLCode) 
+	ROLLBACK;
+	MessageBox('Database Delete Error', 'Failed to delete record. ~r~n~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+	return false
+END IF
+
+if ab_commit then // if commit requested - only if delete is NOT part of bigger tx!!!!
+	commit;
+	if sqlca.sqlcode < 0 then
+		ls_error =  sqlca.SQLerrtext
+		ls_code	=  string( sqlca.SQLCode) 
+		ROLLBACK;
+		MessageBox('Database Commit Error', 'Failed on commit. ~r~n~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+		return false
+	end if
+end if	
+return true
+
+//CHOOSE CASE callTable
+//	CASE 1
+//		DELETE FROM timercalls
+//			where call_number = :callNumber;
+//	CASE 2
+//		DELETE FROM pendingcalls
+//		where call_number = :callNumber;		
+//	CASE 5
+//		DELETE FROM closedcalls
+//		where call_number = :callNumber;	
+//	CASE 6
+//		DELETE FROM timercalls
+//			where call_number = :callNumber;
+//END CHOOSE
+//
+end function
+

@@ -1,0 +1,90 @@
+﻿$PBExportHeader$d_part_usage_alert_rpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=256 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=partname dbname="vzt_part.partname" )
+ column=(type=char(200) updatewhereclause=yes name=description dbname="vzt_part.description" )
+ column=(type=long updatewhereclause=yes name=usage_count dbname="usage_count" )
+ column=(type=long updatewhereclause=yes name=qty_reorder_point dbname="vzt_part.qty_reorder_point" )
+ column=(type=char(10) updatewhereclause=yes name=distlist_id dbname="vzt_part.alert_distlist_id" )
+ column=(type=datetime updatewhereclause=yes name=date_alert_last_sent dbname="vzt_part.date_alert_last_sent" )
+ column=(type=char(300) updatewhereclause=yes name=distlist dbname="vzt_hierarchy.distlist_name" )
+ column=(type=char(7) updatewhereclause=yes name=vzt_distlist dbname="vzt_hierarchy.distlist" )
+ column=(type=long updatewhereclause=yes name=vzt_trigger dbname="vzt_trigger" )
+ column=(type=long updatewhereclause=yes name=id dbname="id" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_part_dept dbname="vzt_part.dept" )
+ column=(type=char(40) updatewhereclause=yes name=instdept_dept_longdesc dbname="instdept.dept_longdesc" )
+ retrieve="  SELECT ~"vzt_part~".~"partname~",   
+         ~"vzt_part~".~"description~",
+			COUNT(*)  USAGE_COUNT,    
+         ~"vzt_part~".~"qty_reorder_point~",   
+         ~"vzt_part~".~"alert_distlist_id~",   
+         ~"vzt_part~".~"date_alert_last_sent~",	
+			 ~"vzt_hierarchy~".~"name~" distlist_name ,  
+			 ~"vzt_hierarchy~".~"id~" 	distlist ,  
+       	(~"vzt_part~".~"qty_reorder_point~" - COUNT(*) - 1 )  	vzt_trigger , /* added ~"-1~" for trigger on = not > */
+			~"vzt_part~".~"id~" id   ,
+			~"vzt_part~".dept ,
+			~"instdept~".dept_longdesc
+    FROM ~"closedcalls~",   
+         ~"vzt_part~",   
+         ~"vzt_part_task_map~" ,
+			~"vzt_hierarchy~" ,
+			~"instdept~" 
+
+   WHERE ( ~"closedcalls~".~"problem_number~" 	= ~"vzt_part_task_map~".~"problem_number~" ) and  
+         ( ~"closedcalls~".~"subproblem_number~" = ~"vzt_part_task_map~".~"subproblem_number~" ) and  
+         ( ~"vzt_part~".~"id~" 						= ~"vzt_part_task_map~".~"part_id~" )   and 
+         ( ~"vzt_part~".~"autotask~"					= 'Y' )    
+
+		AND ~"closedcalls~".~"call_outdate~" > 
+			ISNULL( ~"vzt_part~".~"date_alert_last_sent~", dateadd(day, (-90), getdate()) )   
+		AND  ~"vzt_hierarchy~".~"id~" =   ~"vzt_part~".~"alert_distlist_id~" 
+		AND ( ~"vzt_hierarchy~".~"treetype~" = 'DISTLIST' ) AND  
+         ( ~"vzt_hierarchy~".~"parent_id~" = '400000' )    and 
+		~"instdept~".dept = ~"vzt_part~".dept 
+
+	/*2
+		 	 AND ( '*ALL*' IN (':DEPT') OR '' IN  (':DEPT') OR ~"vzt_part~".dept  IN (':DEPT') )
+	2*/	
+ 
+
+ GROUP BY 
+			~"vzt_part~".~"id~", 
+			~"vzt_part~".~"partname~",   
+         ~"vzt_part~".~"description~",   
+         ~"vzt_part~".~"qty_reorder_point~",   
+         ~"vzt_part~".~"alert_distlist_id~",   
+         ~"vzt_part~".~"date_alert_last_sent~",
+ 			~"vzt_hierarchy~".~"name~", ~"vzt_hierarchy~".~"id~",
+			~"vzt_part~".dept ,
+			~"instdept~".dept_longdesc 
+
+;
+" )
+text(band=header alignment="0" text="Part Usage Alert" border="0" color="33554432" x="1275" y="12" height="84" width="901" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Partname" border="2" color="33554432" x="9" y="192" height="56" width="864" html.valueishtml="0"  name=vzt_part_partname_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Description" border="2" color="33554432" x="887" y="192" height="56" width="850" html.valueishtml="0"  name=vzt_part_description_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text=" Usage " border="2" color="33554432" x="1755" y="192" height="56" width="169" html.valueishtml="0"  name=usage_count_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Reorder Qty " border="2" color="33554432" x="1943" y="192" height="56" width="393" html.valueishtml="0"  name=vzt_part_qty_reorder_point_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="2" text="Date Alert Sent" border="2" color="33554432" x="2935" y="192" height="56" width="393" html.valueishtml="0"  name=vzt_part_date_alert_last_sent_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text=" Alert Distlist" border="2" color="33554432" x="2354" y="192" height="56" width="567" html.valueishtml="0"  name=vzt_part_alert_distlist_id_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text=" Department" border="2" color="33554432" x="3346" y="192" height="56" width="859" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="5" y="4" height="60" width="878" format="[general]" html.valueishtml="0"  name=partname visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="887" y="4" height="60" width="850" format="[general]" html.valueishtml="0"  name=description visible="1" edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="2" color="33554432" x="1755" y="0" height="64" width="169" format="[general]" html.valueishtml="0"  name=usage_count visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="16777215~t If (usage_count >  qty_reorder_point , RGB(255,0, 0), RGB(100,255,50) )" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="1947" y="4" height="60" width="329" format="[general]" html.valueishtml="0"  name=qty_reorder_point visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2944" y="4" height="60" width="366" format="[shortdate] [time]" html.valueishtml="0"  name=date_alert_last_sent visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2350" y="4" height="56" width="571" format="[general]" html.valueishtml="0"  name=distlist visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="3360" y="4" height="56" width="841" format="[general]" html.valueishtml="0"  name=instdept_dept_longdesc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="4466" y="4" height="56" width="69" format="[general]" html.valueishtml="0"  name=vzt_trigger visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="2" text="!!!" border="0" color="255" x="4215" y="4" height="64" width="110" html.valueishtml="0"  name=t_2 visible="1~tif ( vzt_trigger  < 0, 1,0)"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=detail alignment="2" text="O" border="0" color="255" x="4334" y="4" height="64" width="119" html.valueishtml="0"  name=t_3 visible="1~tif ( vzt_trigger  < 0, 1,0)"  font.face="Wingdings" font.height="-11" font.weight="700"  font.family="1" font.pitch="2" font.charset="2" background.mode="2" background.color="65535" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

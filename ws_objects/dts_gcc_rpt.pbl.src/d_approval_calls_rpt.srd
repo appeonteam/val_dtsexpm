@@ -1,0 +1,221 @@
+﻿$PBExportHeader$d_approval_calls_rpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=496 color="536870912" )
+summary(height=80 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=call_number dbname="timercalls.call_number" )
+ column=(type=datetime updatewhereclause=yes name=call_indate dbname="timercalls.call_indate" )
+ column=(type=char(2) updatewhereclause=yes name=stat_code dbname="timercalls.stat_code" )
+ column=(type=char(30) updatewhereclause=yes name=room dbname="timercalls.room" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_guest dbname="timercalls.guest" )
+ column=(type=char(30) updatewhereclause=yes name=timercalls_caller dbname="timercalls.caller" )
+ column=(type=char(25) updatewhereclause=yes name=timercalls_problem dbname="timercalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=timercalls_subproblem dbname="timercalls.subproblem" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_problem_definition dbname="timercalls.problem_definition" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_complaint dbname="timercalls.complaint" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_receiver dbname="timercalls.receiver" )
+ column=(type=char(3) updatewhereclause=yes name=timercalls_shift dbname="timercalls.shift" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_resolution dbname="timercalls.resolution" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_repairman dbname="timercalls.repairman" )
+ column=(type=datetime updatewhereclause=yes name=timercalls_call_outdate dbname="timercalls.call_outdate" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_closed_by dbname="timercalls.closed_by" )
+ column=(type=char(15) updatewhereclause=yes name=closed_bydept dbname="timercalls.closed_bydept" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_timer_number dbname="timercalls.timer_number" )
+ column=(type=datetime updatewhereclause=yes name=timercalls_timer_start dbname="timercalls.timer_start" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_caller_category dbname="timercalls.caller_category" )
+ column=(type=char(5) updatewhereclause=yes name=timercalls_problem_number dbname="timercalls.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=timercalls_subproblem_number dbname="timercalls.subproblem_number" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer1_start_min dbname="timercalls.timer1_start_min" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer2_start_min dbname="timercalls.timer2_start_min" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer1_reps dbname="timercalls.timer1_reps" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer2_reps dbname="timercalls.timer2_reps" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_auth_take_off_timer dbname="timercalls.auth_take_off_timer" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_default_status dbname="timercalls.default_status" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_pre_openable dbname="timercalls.pre_openable" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_pre_opened dbname="timercalls.pre_opened" )
+ column=(type=long updatewhereclause=yes name=timercalls_timer_level dbname="timercalls.timer_level" )
+ column=(type=char(30) updatewhereclause=yes name=timercalls_room_dsc dbname="timercalls.room_dsc" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_opened_status dbname="timercalls.opened_status" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_paging_ind dbname="timercalls.paging_ind" )
+ column=(type=long updatewhereclause=yes name=timercalls_init_paging_min dbname="timercalls.init_paging_min" )
+ column=(type=number updatewhereclause=yes name=timercalls_guest_id dbname="timercalls.guest_id" )
+ column=(type=number updatewhereclause=yes name=timercalls_gcc_id dbname="timercalls.gcc_id" )
+ column=(type=decimal(2) updatewhereclause=yes name=timercalls_amount dbname="timercalls.amount" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_recur_ind dbname="timercalls.recur_ind" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_recur_id dbname="timercalls.recur_id" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_called_back_ind dbname="timercalls.called_back_ind" )
+ column=(type=long updatewhereclause=yes name=cur_level dbname="cur_level" )
+ column=(type=long updatewhereclause=yes name=days dbname="days" )
+ column=(type=long updatewhereclause=yes name=req_level dbname="req_level" )
+ column=(type=long updatewhereclause=yes identity=yes name=part_id dbname="vzt_part.id" )
+ column=(type=char(20) updatewhereclause=yes name=part_category dbname="vzt_part.category" )
+ column=(type=char(20) updatewhereclause=yes name=part_subcategory dbname="vzt_part.subcategory" )
+ column=(type=char(100) updatewhereclause=yes name=part_partname dbname="vzt_part.partname" )
+ column=(type=char(200) updatewhereclause=yes name=part_description dbname="vzt_part.description" )
+ column=(type=long updatewhereclause=yes name=part_qty_onhand dbname="vzt_part.qty_onhand" )
+ column=(type=long updatewhereclause=yes name=part_qty_reorder_point dbname="vzt_part.qty_reorder_point" )
+ column=(type=long updatewhereclause=yes name=part_qty_to_reorder dbname="vzt_part.qty_to_reorder" )
+ column=(type=decimal(4) updatewhereclause=yes name=part_price dbname="vzt_part.price" )
+ column=(type=char(20) updatewhereclause=yes name=part_expcategory dbname="vzt_part.expcategory" )
+ column=(type=char(5) updatewhereclause=yes name=part_problem_number dbname="vzt_part.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_subproblem_number dbname="vzt_part.subproblem_number" )
+ column=(type=char(10) updatewhereclause=yes name=part_ptype dbname="vzt_part.ptype" )
+ column=(type=datetime updatewhereclause=yes name=part_date_alert_last_sent dbname="vzt_part.date_alert_last_sent" )
+ column=(type=char(10) updatewhereclause=yes name=part_alert_distlist_id dbname="vzt_part.alert_distlist_id" )
+ column=(type=char(5) updatewhereclause=yes name=part_autotask dbname="vzt_part.autotask" )
+ column=(type=char(20) updatewhereclause=yes name=part_dept dbname="vzt_part.dept" )
+ column=(type=char(100) updatewhereclause=yes name=pref_vendor dbname="pref_vendor" )
+ column=(type=long updatewhereclause=yes name=vendor_part_vendor_id dbname="vzt_vendor_part.vendor_id" )
+ column=(type=long updatewhereclause=yes name=vendor_part_part_id dbname="vzt_vendor_part.part_id" )
+ column=(type=long updatewhereclause=yes name=vendor_part_pref_order dbname="vzt_vendor_part.pref_order" )
+ column=(type=char(50) updatewhereclause=yes name=vendor_part_vendor_sku dbname="vzt_vendor_part.vendor_sku" )
+ column=(type=char(20) updatewhereclause=yes name=vendor_part_unit dbname="vzt_vendor_part.unit" )
+ column=(type=long updatewhereclause=yes name=vendor_part_unit_qty dbname="vzt_vendor_part.unit_qty" )
+ column=(type=long updatewhereclause=yes name=vendor_part_qty_to_reorder dbname="vzt_vendor_part.qty_to_reorder" )
+ column=(type=decimal(4) updatewhereclause=yes name=vendor_part_price dbname="vzt_vendor_part.price" )
+ column=(type=long updatewhereclause=yes name=appr_level dbname="approved_calls.appr_level" )
+ column=(type=datetime updatewhereclause=yes name=appr_date dbname="approved_calls.appr_date" )
+ column=(type=char(50) updatewhereclause=yes name=appr_by dbname="approved_calls.appr_by" )
+ column=(type=char(300) updatewhereclause=yes name=approved_calls_comments dbname="approved_calls.comments" )
+ column=(type=long updatewhereclause=yes name=approved_calls_appr_by_id dbname="approved_calls.appr_by_id" )
+ retrieve="  SELECT ~"timercalls~".~"call_number~",   
+         ~"timercalls~".~"call_indate~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"room~",   
+         ~"timercalls~".~"guest~",   
+         ~"timercalls~".~"caller~",   
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"complaint~",   
+         ~"timercalls~".~"receiver~",   
+         ~"timercalls~".~"shift~",    
+         ~"timercalls~".~"resolution~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"call_outdate~",   
+         ~"timercalls~".~"closed_by~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"timer_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"caller_category~",   
+         ~"timercalls~".~"problem_number~",   
+         ~"timercalls~".~"subproblem_number~",   
+         ~"timercalls~".~"timer1_start_min~",   
+         ~"timercalls~".~"timer2_start_min~",   
+         ~"timercalls~".~"timer1_reps~",   
+         ~"timercalls~".~"timer2_reps~",   
+         ~"timercalls~".~"auth_take_off_timer~",   
+         ~"timercalls~".~"default_status~",   
+         ~"timercalls~".~"pre_openable~",   
+         ~"timercalls~".~"pre_opened~",   
+         ~"timercalls~".~"timer_level~",   
+         ~"timercalls~".~"room_dsc~",   
+         ~"timercalls~".~"opened_status~",   
+         ~"timercalls~".~"paging_ind~",   
+         ~"timercalls~".~"init_paging_min~",   
+         ~"timercalls~".~"guest_id~",   
+         ~"timercalls~".~"gcc_id~",   
+         ~"timercalls~".~"amount~",   
+         ~"timercalls~".~"recur_ind~",   
+         ~"timercalls~".~"recur_id~",   
+         ~"timercalls~".~"called_back_ind~",
+			vzt_hew_preq_approved_level ( ~"timercalls~".call_number ) as cur_level  ,
+         getdate() - ~"timercalls~".~"call_indate~" as days ,
+			vzt_hew_preq_approval_levels_req (0, ~"timercalls~".~"amount~" ) as req_level  ,
+
+  			~"vzt_part~".~"id~",   
+         ~"vzt_part~".~"category~",   
+         ~"vzt_part~".~"subcategory~",   
+         ~"vzt_part~".~"partname~",   
+         ~"vzt_part~".~"description~",   
+         ~"vzt_part~".~"qty_onhand~",   
+         ~"vzt_part~".~"qty_reorder_point~",   
+         ~"vzt_part~".~"qty_to_reorder~",   
+         ~"vzt_part~".~"price~",   
+         ~"vzt_part~".~"expcategory~",   
+         ~"vzt_part~".~"problem_number~",   
+         ~"vzt_part~".~"subproblem_number~",   
+         ~"vzt_part~".~"ptype~",   
+         ~"vzt_part~".~"date_alert_last_sent~",   
+         ~"vzt_part~".~"alert_distlist_id~",   
+         ~"vzt_part~".~"autotask~",   
+         ~"vzt_part~".~"dept~"  ,
+
+ 		vzt_get_pref_vendor_name( ~"vzt_part~".~"id~" )   pref_vendor,
+
+			~"vzt_vendor_part~".~"vendor_id~",   
+         ~"vzt_vendor_part~".~"part_id~",   
+         ~"vzt_vendor_part~".~"pref_order~",   
+         ~"vzt_vendor_part~".~"vendor_sku~",   
+         ~"vzt_vendor_part~".~"unit~",   
+         ~"vzt_vendor_part~".~"unit_qty~",   
+         ~"vzt_vendor_part~".~"qty_to_reorder~",   
+         ~"vzt_vendor_part~".~"price~"  ,
+			
+         ~"approved_calls~".~"appr_level~",   
+         ~"approved_calls~".~"appr_date~",   
+         ~"approved_calls~".~"appr_by~",   
+         ~"approved_calls~".~"comments~",   
+         ~"approved_calls~".~"appr_by_id~"  
+       
+    
+   FROM ~"timercalls~" , ~"PROBLEM~" , ~"vzt_part~"  , ~"vzt_vendor_part~" , ~"approved_calls~"
+   WHERE  
+				UPPER(~"PROBLEM~".~"problem_desc~")  = 'USAGE ALERT' 
+			and ~"timercalls~".~"problem_number~"   = ~"PROBLEM~".~"problem_number~"
+			and ~"vzt_part~".id 						= floor (~"timercalls~".~"room_dsc~")
+			and ~"vzt_vendor_part~".~"vendor_id~" 	= vzt_get_pref_vendor_id ( ~"vzt_part~".~"id~" ) 
+			and ~"vzt_vendor_part~".~"part_id~" 		= ~"vzt_part~".~"id~" 
+			and cur_level >= req_level 
+			and ~"approved_calls~".call_number = ~"timercalls~".~"call_number~" 
+			AND ~"approved_calls~".~"appr_level~" IN (SELECT MAX(~"approved_calls~".~"appr_level~") 
+											FROM  ~"approved_calls~" 
+											WHERE ~"approved_calls~".call_number = ~"timercalls~".~"call_number~")
+
+	/*1
+			 AND
+				( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"timercalls~".~"call_indate~" BETWEEN 
+					{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+				)
+	 AND ( '*ALL*' IN (';VENDOR') OR '' IN  (';VENDOR') OR ~"vzt_vendor_part~".~"vendor_id~" IN (';VENDOR') )
+ 	 AND ( '*ALL*' IN (':DEPT')   OR '' IN  (':DEPT')   OR ~"timercalls~".~"closed_bydept~"  IN (':DEPT') )
+
+	1*/	
+ "  sort="closed_bydept A part_partname A pref_vendor A " )
+group(level=1 header.height=80 trailer.height=88 by=("closed_bydept" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Approved Purchase Requests By Department " border="0" color="0" x="1285" y="16" height="80" width="1879" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Department" border="2" color="0" x="18" y="368" height="56" width="549" html.valueishtml="0"  name=closed_bydept_t visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Created " border="2" color="33554432" x="590" y="368" height="116" width="256" html.valueishtml="0"  name=timercalls_call_indate_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Part Name" border="2" color="33554432" x="873" y="368" height="116" width="887" html.valueishtml="0"  name=part_partname_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Qty To Reorder" border="2" color="33554432" x="1778" y="368" height="116" width="306" html.valueishtml="0"  name=part_qty_to_reorder_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=header.1 id=17 alignment="0" tabsequence=32766 border="0" color="8388608" x="23" y="4" height="72" width="818" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="581" y="4" height="64" width="270" format="[shortdate]" html.valueishtml="0"  name=call_indate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=75 alignment="0" tabsequence=32766 border="0" color="8388608" x="9856" y="4" height="64" width="1161" format="[general]" html.valueishtml="0"  name=approved_calls_appr_by_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=48 alignment="0" tabsequence=32766 border="0" color="33554432" x="882" y="4" height="64" width="887" format="[general]" html.valueishtml="0"  name=part_partname visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="0" expression="'Total for '+  closed_bydept "border="0" color="8388608" x="27" y="16" height="64" width="946" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="0" expression="'Grand Total'"border="0" color="128" x="18" y="4" height="64" width="946" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Unit" border="2" color="33554432" x="2098" y="368" height="116" width="311" html.valueishtml="0"  name=vendor_part_unit_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=67 alignment="0" tabsequence=32766 border="0" color="33554432" x="2098" y="8" height="60" width="311" format="[general]" html.valueishtml="0"  name=vendor_part_unit visible="1" edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Price" border="2" color="33554432" x="2427" y="368" height="116" width="343" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Amount" border="2" color="0" x="2789" y="368" height="116" width="315" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=70 alignment="1" tabsequence=32766 border="0" color="0" x="2437" y="8" height="60" width="302" format="[currency]" html.valueishtml="0"  name=vendor_part_price visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=detail x="78" y="72" height="12" width="4475"  name=r_1 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="16777215"  background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Vendor Sku" border="2" color="33554432" x="3122" y="368" height="116" width="421" html.valueishtml="0"  name=vendor_part_vendor_sku_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=66 alignment="0" tabsequence=32766 border="0" color="33554432" x="3122" y="8" height="60" width="421" format="[general]" html.valueishtml="0"  name=vendor_part_vendor_sku visible="1" edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pref Vendor" border="2" color="33554432" x="3561" y="368" height="116" width="1088" html.valueishtml="0"  name=pref_vendor_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=62 alignment="0" tabsequence=32766 border="0" color="33554432" x="3579" y="4" height="64" width="1102" format="[general]" html.valueishtml="0"  name=pref_vendor visible="1" edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="vendor_part_unit_qty  * vendor_part_price *  vendor_part_qty_to_reorder "border="0" color="128" x="2793" y="4" height="64" width="315" format="$#,##0.00;[RED]($#,##0.00)" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="1" expression="sum(vendor_part_unit_qty  * vendor_part_price *  vendor_part_qty_to_reorder for group 1)"border="0" color="8388608" x="2793" y="8" height="68" width="315" format="$#,##0.00;[RED]($#,##0.00)" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(vendor_part_unit_qty  * vendor_part_price *  vendor_part_qty_to_reorder  for all)"border="0" color="128" x="2793" y="12" height="68" width="315" format="$#,##0.00;[RED]($#,##0.00)" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=73 alignment="0" tabsequence=32766 border="0" color="8388608" x="91" y="4" height="64" width="489" format="[general]" html.valueishtml="0"  name=appr_by visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Approved By" border="2" color="0" x="91" y="428" height="56" width="475" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=69 alignment="1" tabsequence=0 border="0" color="33554432" x="1801" y="8" height="56" width="256" html.valueishtml="0"  name=vendor_part_qty_to_reorder visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

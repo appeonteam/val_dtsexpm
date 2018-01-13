@@ -1,0 +1,18 @@
+﻿$PBExportHeader$str_vzt_present.srs
+global type str_vzt_present from structure
+	string		fontface
+	integer		fontsize
+	string		fontweight
+	string		fontescape
+	string		fontitalic
+	string		fontunderline
+	double		fontfgcolor
+	string		mode
+	double		fontbgcolor
+	integer		height
+	integer		width
+	integer		x
+	integer		y_before
+	integer		y_after
+end type
+

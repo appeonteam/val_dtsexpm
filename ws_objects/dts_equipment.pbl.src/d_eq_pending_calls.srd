@@ -1,0 +1,364 @@
+﻿$PBExportHeader$d_eq_pending_calls.srd
+$PBExportComments$Pending Calls Browse DataWindow
+release 10.5;
+datawindow(units=0 timer_interval=60000 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 grid.columnmove=no selected.mouse=no )
+header(height=92 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(40) updatewhereclause=yes name=room dbname="area.area_name" )
+ column=(type=char(25) updatewhereclause=yes name=problem dbname="pendingcalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=subproblem dbname="pendingcalls.subproblem" )
+ column=(type=char(15) updatewhereclause=yes name=closed_bydept dbname="pendingcalls.closed_bydept" )
+ column=(type=char(35) updatewhereclause=yes name=repairman dbname="pendingcalls.repairman" )
+ column=(type=char(32766) updatewhereclause=no name=problem_definition dbname="pendingcalls.problem_definition" )
+ column=(type=char(10) updatewhereclause=yes name=call_number dbname="pendingcalls.call_number" )
+ column=(type=datetime updatewhereclause=yes name=timer_start dbname="pendingcalls.timer_start" )
+ column=(type=char(2) updatewhereclause=yes name=stat_code dbname="pendingcalls.stat_code" )
+ column=(type=datetime updatewhereclause=yes name=call_indate dbname="pendingcalls.call_indate" )
+ column=(type=decimal(1) updatewhereclause=yes name=status_group dbname="status_group" )
+ column=(type=char(10) updatewhereclause=yes name=callstat_stat_desc dbname="callstat.stat_desc" )
+ column=(type=char(1) updatewhereclause=yes name=paging_ind dbname="pendingcalls.paging_ind" )
+ column=(type=long updatewhereclause=yes name=init_paging_min dbname="pendingcalls.init_paging_min" )
+ column=(type=char(5) updatewhereclause=yes name=problem_number dbname="pendingcalls.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=subproblem_number dbname="pendingcalls.subproblem_number" )
+ column=(type=char(35) updatewhereclause=yes name=guest dbname="pendingcalls.guest" )
+ column=(type=char(2) updatewhereclause=yes name=area_unit_type dbname="area.unit_type" )
+ column=(type=char(35) updatewhereclause=yes name=caller_category dbname="pendingcalls.caller_category" )
+ column=(type=char(30) updatewhereclause=yes name=room_num dbname="pendingcalls.room" )
+ retrieve="  SELECT ~"area~".~"area_name~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"call_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"call_indate~",   
+         7 status_group,
+		   ~"callstat~".~"stat_desc~", 
+			~"pendingcalls~".~"paging_ind~",
+			~"pendingcalls~".~"init_paging_min~",
+			~"pendingcalls~".~"problem_number~",
+			~"pendingcalls~".~"subproblem_number~",
+			~"pendingcalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"pendingcalls~".~"caller_category~",
+			~"pendingcalls~".~"room~"
+    FROM ~"pendingcalls~",~"area~",~"callstat~"  
+   WHERE (~"pendingcalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"pendingcalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND  ~"pendingcalls~".~"stat_code~" >= '20'
+	  AND  ~"pendingcalls~".~"stat_code~" < '40'
+     AND ~"pendingcalls~".~"repairman~" <> ''
+	  AND ~"pendingcalls~".~"caller_category~" <> 'GST' 
+
+	AND 	~"pendingcalls~".~"room~" = :as_area_number
+
+  UNION
+  SELECT ~"area~".~"area_name~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"call_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"call_indate~",   
+         6,
+		   ~"callstat~".~"stat_desc~", 
+			~"pendingcalls~".~"paging_ind~",
+			~"pendingcalls~".~"init_paging_min~",
+			~"pendingcalls~".~"problem_number~",
+			~"pendingcalls~".~"subproblem_number~",
+			~"pendingcalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"pendingcalls~".~"caller_category~",
+			~"pendingcalls~".~"room~"
+    FROM ~"pendingcalls~",~"area~",~"callstat~"  
+   WHERE (~"pendingcalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"pendingcalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND (~"pendingcalls~".~"stat_code~" = '10'
+	  OR  (~"pendingcalls~".~"stat_code~" >  '11'
+	  AND  ~"pendingcalls~".~"stat_code~" < '20')
+	  OR  (~"pendingcalls~".~"stat_code~" >= '40'
+ 	  AND  ~"pendingcalls~".~"stat_code~" < '99'))
+     AND ~"pendingcalls~".~"repairman~" <> ''
+	  AND ~"pendingcalls~".~"caller_category~" <> 'GST'
+
+	AND 	~"pendingcalls~".~"room~" = :as_area_number
+
+  UNION
+  SELECT ~"area~".~"area_name~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"call_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"call_indate~",   
+         5,
+		   ~"callstat~".~"stat_desc~", 
+			~"pendingcalls~".~"paging_ind~",
+			~"pendingcalls~".~"init_paging_min~",
+			~"pendingcalls~".~"problem_number~",
+			~"pendingcalls~".~"subproblem_number~",
+			~"pendingcalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"pendingcalls~".~"caller_category~",
+			~"pendingcalls~".~"room~"
+    FROM ~"pendingcalls~",~"area~",~"callstat~"  
+   WHERE (~"pendingcalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"pendingcalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ~"pendingcalls~".~"stat_code~" = '11'
+     AND ~"pendingcalls~".~"repairman~" <> ''
+	  AND ~"pendingcalls~".~"caller_category~" <> 'GST'
+
+	AND 	~"pendingcalls~".~"room~" = :as_area_number
+
+   UNION   
+  SELECT ~"area~".~"area_name~",    
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"call_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"call_indate~",   
+         4 ,
+		   ~"callstat~".~"stat_desc~", 
+			~"timercalls~".~"paging_ind~",
+			~"timercalls~".~"init_paging_min~",
+			~"timercalls~".~"problem_number~",
+			~"timercalls~".~"subproblem_number~",
+			~"timercalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"timercalls~".~"caller_category~",
+			~"timercalls~".~"room~"
+    FROM ~"timercalls~",~"area~",~"callstat~" 
+   WHERE (~"timercalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"timercalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ((~"timercalls~".~"stat_code~" < '10'
+	  AND ~"timercalls~".~"repairman~" <> '')
+	  OR  (~"timercalls~".~"stat_code~" = '00'
+	  AND ~"timercalls~".~"paging_ind~" = 'P'))
+     AND ~"timercalls~".~"caller_category~" <> 'GST'
+
+	AND 	~"timercalls~".~"room~" = :as_area_number
+
+   UNION
+  SELECT ~"area~".~"area_name~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"call_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"call_indate~",   
+         3.5,
+		   ~"callstat~".~"stat_desc~", 
+			~"pendingcalls~".~"paging_ind~",
+			~"pendingcalls~".~"init_paging_min~",
+			~"pendingcalls~".~"problem_number~",
+			~"pendingcalls~".~"subproblem_number~",
+			~"pendingcalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"pendingcalls~".~"caller_category~",
+			~"pendingcalls~".~"room~"
+    FROM ~"pendingcalls~",~"area~",~"callstat~"  
+   WHERE (~"pendingcalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"pendingcalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ~"pendingcalls~".~"stat_code~" >= '10'
+     AND ~"pendingcalls~".~"repairman~" <> ''
+	  AND ~"pendingcalls~".~"stat_code~" <> '11'
+     AND ~"pendingcalls~".~"caller_category~" = 'GST'
+
+	AND 	~"pendingcalls~".~"room~" = :as_area_number
+
+  UNION
+  SELECT ~"area~".~"area_name~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"call_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"call_indate~",   
+         2,
+		   ~"callstat~".~"stat_desc~", 
+			~"pendingcalls~".~"paging_ind~",
+			~"pendingcalls~".~"init_paging_min~",
+			~"pendingcalls~".~"problem_number~",
+			~"pendingcalls~".~"subproblem_number~",
+			~"pendingcalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"pendingcalls~".~"caller_category~",
+			~"pendingcalls~".~"room~"
+    FROM ~"pendingcalls~",~"area~",~"callstat~"  
+   WHERE (~"pendingcalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"pendingcalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ~"pendingcalls~".~"stat_code~" = '11'
+     AND ~"pendingcalls~".~"repairman~" <> ''
+	  AND ~"pendingcalls~".~"caller_category~" = 'GST'
+
+	AND 	~"pendingcalls~".~"room~" = :as_area_number
+
+   UNION   
+  SELECT ~"area~".~"area_name~",    
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"call_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"call_indate~",   
+         1 ,
+		   ~"callstat~".~"stat_desc~", 
+			~"timercalls~".~"paging_ind~",
+			~"timercalls~".~"init_paging_min~",
+			~"timercalls~".~"problem_number~",
+			~"timercalls~".~"subproblem_number~",
+			~"timercalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"timercalls~".~"caller_category~",
+			~"timercalls~".~"room~"
+    FROM ~"timercalls~",~"area~",~"callstat~" 
+   WHERE (~"timercalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"timercalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ((~"timercalls~".~"stat_code~" < '10'
+	  AND ~"timercalls~".~"repairman~" <> '')
+	  OR  (~"timercalls~".~"stat_code~" = '00'
+	  AND ~"timercalls~".~"paging_ind~" = 'P'))
+	  AND ~"timercalls~".~"caller_category~" = 'GST'
+
+	AND 	~"timercalls~".~"room~" = :as_area_number
+
+   UNION
+  SELECT ~"area~".~"area_name~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"call_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"call_indate~",   
+         0,
+		   ~"callstat~".~"stat_desc~", 
+			~"pendingcalls~".~"paging_ind~",
+			~"pendingcalls~".~"init_paging_min~",
+			~"pendingcalls~".~"problem_number~",
+			~"pendingcalls~".~"subproblem_number~",
+			~"pendingcalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"pendingcalls~".~"caller_category~",
+			~"pendingcalls~".~"room~"
+    FROM ~"pendingcalls~",~"area~",~"callstat~"  
+   WHERE (~"pendingcalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"pendingcalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ~"pendingcalls~".~"stat_code~" >= '10'
+	  AND ~"pendingcalls~".~"repairman~" = ''
+	  AND ~"pendingcalls~".~"paging_ind~" <> 'P'
+
+	AND 	~"pendingcalls~".~"room~" = :as_area_number
+
+   UNION 
+  SELECT ~"area~".~"area_name~",    
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"call_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"call_indate~",   
+         0 ,
+		   ~"callstat~".~"stat_desc~", 
+			~"timercalls~".~"paging_ind~",
+			~"timercalls~".~"init_paging_min~",
+			~"timercalls~".~"problem_number~",
+			~"timercalls~".~"subproblem_number~",
+			~"timercalls~".~"guest~",
+			~"area~".~"unit_type~",
+			~"timercalls~".~"caller_category~",
+			~"timercalls~".~"room~"
+    FROM ~"timercalls~",~"area~",~"callstat~" 
+   WHERE (~"timercalls~".~"room~" = ~"area~".~"area_number~"
+	  AND  ~"timercalls~".~"stat_code~" = ~"callstat~".~"stat_code~")
+	  AND ~"timercalls~".~"stat_code~" < '10'
+	  AND ~"timercalls~".~"repairman~" = ''
+	  AND ~"timercalls~".~"paging_ind~" <> 'P'
+
+	AND 	~"timercalls~".~"room~" = :as_area_number
+
+ORDER BY 11 ASC,
+	      8 ASC 
+" arguments=(("as_area_number", string))  sort="status_group A timer_start A " )
+text(band=header alignment="2" text="Room" border="6" color="15793151" x="9" y="8" height="64" width="494" html.valueishtml="0"  name=t_7 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="" border="6" color="15793151" x="512" y="8" height="64" width="69" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217729" )
+bitmap(band=header filename="smartpaging_light_icon_16.jpg" x="512" y="8" height="64" width="73" border="0"  name=p_1 visible="1" )
+text(band=header alignment="2" text="Caller Category" border="6" color="15793151" x="590" y="8" height="64" width="494" html.valueishtml="0"  name=t_6 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Caller" border="6" color="15793151" x="1093" y="8" height="64" width="599" html.valueishtml="0"  name=t_5 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Task" border="6" color="15793151" x="1701" y="8" height="64" width="507" html.valueishtml="0"  name=problem_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Sub-Task" border="6" color="15793151" x="2217" y="8" height="64" width="709" html.valueishtml="0"  name=subproblem_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Duration" border="6" color="15793151" x="2935" y="8" height="64" width="274" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Dept" border="6" color="15793151" x="3218" y="8" height="64" width="544" html.valueishtml="0"  name=closed_bydept_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Handled By" border="6" color="15793151" x="3771" y="8" height="64" width="635" html.valueishtml="0"  name=repairman_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Task Definition" border="6" color="15793151" x="4416" y="8" height="64" width="759" html.valueishtml="0"  name=problem_definition_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Scheduled" border="6" color="15793151" x="5184" y="8" height="64" width="425" html.valueishtml="0"  name=timer_start_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Status" border="6" color="15793151" x="5618" y="8" height="64" width="297" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Call #" border="6" color="15793151" x="5925" y="8" height="64" width="283" html.valueishtml="0"  name=t_3 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Auto" border="0" color="15793151" x="6217" y="8" height="64" width="151" html.valueishtml="0"  name=t_4 visible="0"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="0" text="Room Num" border="6" color="0" x="6976" y="8" height="64" width="800" html.valueishtml="0"  name=room_num_t visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Status Group" border="0" color="0" x="7785" y="12" height="64" width="393" html.valueishtml="0"  name=status_group_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="6" color="0" x="9" y="4" height="68" width="494" format="[general]" html.valueishtml="0"  name=room visible="1" edit.limit=0 edit.case=any edit.autoselect=no edit.displayonly=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="6" color="0" x="1093" y="4" height="68" width="599" format="[general]" html.valueishtml="0"  name=guest visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="6" color="0" x="1701" y="4" height="68" width="507" format="[general]" html.valueishtml="0"  name=problem visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="6" color="0" x="3218" y="4" height="68" width="544" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="6" color="0" x="3771" y="4" height="68" width="635" format="[general]" html.valueishtml="0"  name=repairman visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="6" color="0" x="4416" y="4" height="68" width="759" format="[general]" html.valueishtml="0"  name=problem_definition visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="6" color="0" x="5184" y="4" height="68" width="425" format="[shortdate] [time]" html.valueishtml="0"  name=timer_start visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="6" color="0" x="5618" y="4" height="68" width="297" format="[general]" html.valueishtml="0"  name=callstat_stat_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="number( call_number )"border="6" color="0" x="5925" y="4" height="68" width="283" format="[general]" html.valueishtml="0"  name=call_number_numeric visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="6" color="0" x="2217" y="4" height="68" width="709" format="[general]" html.valueishtml="0"  name=subproblem visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="1" expression="if (abs(daysafter(Date( f_dt_to_d_str(timer_start) ), Date( f_dt_to_d_str(today() ) ))) > 0, string(daysafter(Date( f_dt_to_d_str(timer_start) ), Date( f_dt_to_d_str(today() ) )))+' day(s)', 
+
+if (abs(SecondsAfter(time( timer_start),Now())) > 3600, string(int (SecondsAfter(time( timer_start ),Now() ) / 3600))+' hr(s)',
+string(int(SecondsAfter(time(timer_start),now()) / 60))+' min(s)' ))
+"border="6" color="0" x="2935" y="4" height="68" width="274" format="[general]" html.valueishtml="0"  name=durationminutesopen visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="2" expression="if( paging_ind='P','Y',paging_ind) "border="0" color="0" x="6217" y="4" height="68" width="151" format="[general]" html.valueishtml="0"  name=pagingind visible="0"  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="if (timer_start < today() , 'Negative','Positive')"border="0" color="0" x="6377" y="4" height="68" width="306" format="[GENERAL]" html.valueishtml="0"  name=compute_4 visible="0"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="String((daysafter( Date( f_dt_to_d_str(timer_start) ), Date( f_dt_to_d_str(today() ) )) * 1440) + (secondsafter( Time( String( timer_start, ~"hh:mm:ss~" ) ), Time( String( Now(), ~"hh:mm:ss~" ) ) ) / 60), ~"#######0.0~" ) "border="0" color="0" x="6693" y="4" height="68" width="274" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="0"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="6" color="0" x="590" y="4" height="68" width="494" format="[general]" html.valueishtml="0"  name=caller_category visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="bitmap (if (paging_ind='',if((integer(stat_code) >= 20 and integer(stat_code) <= 40),if(repairman='',~"nopage_unassigned.bmp~",~"recurring.bmp~"),
+if(integer(stat_code) = 11,~"commentcard.bmp~",if((integer(stat_code) >= 1 and integer(stat_code) < 10),if(repairman='',~"page_unassigned.bmp~",~"no_page_timer.bmp~"),
+if(repairman='',~"nopage_unassigned.bmp~",~"pending.bmp~")))),  
+if (paging_ind='P', ~"page_unassigned.bmp~",if(paging_ind='0',if(repairman='',~"page_unassigned.bmp~",~"page_assigned.bmp~"),
+if(repairman='',~"page_supervisor.bmp~",~"page_sent.bmp~")))))"border="6" color="0" x="512" y="4" height="68" width="69" format="[General]" html.valueishtml="0"  name=paged visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="6" color="0" x="6976" y="4" height="68" width="800" format="[general]" html.valueishtml="0"  name=room_num visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="2" tabsequence=20 border="0" color="0" x="7790" y="8" height="64" width="389" format="[general]" html.valueishtml="0"  name=status_group visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

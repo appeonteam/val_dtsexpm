@@ -1,0 +1,22 @@
+﻿$PBExportHeader$d_qset_edit_qlist_all_ml.srd
+$PBExportComments$multilevel qset questions only
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="8388608" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes identity=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=decimal(0) updatewhereclause=yes identity=yes name=qgen_qset_qsetid dbname="qgen_qset.qsetid" )
+ column=(type=long updatewhereclause=yes name=qgen_qset_sortorder dbname="qgen_qset.sortorder" )
+ column=(type=long updatewhereclause=yes name=qgen_qset_questions_sortorder dbname="qgen_qset_questions.sortorder" )
+ column=(type=char(200) updatewhereclause=yes name=qgen_qset_descr dbname="qgen_qset.descr" )
+ column=(type=char(1) updatewhereclause=yes name=qgen_qset_use_hierarchy dbname="qgen_qset.use_hierarchy" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"qgen_questions~" ALIAS=~"qq~" )  TABLE(NAME=~"qgen_qset~" )  TABLE(NAME=~"qgen_qset_questions~" ) COLUMN(NAME=~"qq.questionid~") COLUMN(NAME=~"qq.questiontxt~") COLUMN(NAME=~"qgen_qset.qsetid~") COLUMN(NAME=~"qgen_qset.sortorder~") COLUMN(NAME=~"qgen_qset_questions.sortorder~") COLUMN(NAME=~"qgen_qset.descr~") COLUMN(NAME=~"qgen_qset.use_hierarchy~")    JOIN (LEFT=~"qgen_qset.qsetid~"    OP =~"=~"RIGHT=~"qgen_qset_questions.qsetid~" )    JOIN (LEFT=~"qq.questionid~"    OP =~"=~"RIGHT=~"qgen_qset_questions.questionid~" )WHERE(    EXP1 =~"~~~"qgen_qset~~~".~~~"use_hierarchy~~~"~"   OP =~"=~"    EXP2 =~"'Y'~" ) ) ORDER(NAME=~"qq.questionid~" ASC=yes ) "  sort="qgen_qset_sortorder A qgen_qset_questions_sortorder A " )
+group(level=1 header.height=72 trailer.height=0 by=("qgen_qset_qsetid" ) header.color="536870912" trailer.color="536870912" )
+column(band=header.1 id=6 alignment="0" tabsequence=32766 border="0" color="128" x="23" y="4" height="56" width="1221" format="[general]"  name=qgen_qset_descr edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0" x="73" y="4" height="56" width="201" format="[general]"  name=questionid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="288" y="4" height="56" width="1051" format="[general]"  name=questiontxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+
+sparse(names="qgen_qset_descr")htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,2 @@
+﻿$PBExportHeader$rjt_zone3.srq
+PBSELECT( VERSION(400) TABLE(NAME="area" )  TABLE(NAME="zone" ) COLUMN(NAME="zone.zone_name") COLUMN(NAME="area.room_type") COLUMN(NAME="area.area_number")WHERE(    EXP1 ="~"area~".~"unit_type~""   OP ="="    EXP2 ="~"zone~".~"zone_code~"" ) ) ORDER(NAME="area.unit_type" ASC=yes )  ORDER(NAME="area.room_type" ASC=yes )  ORDER(NAME="area.area_number" ASC=yes ) 

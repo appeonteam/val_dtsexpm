@@ -1,0 +1,55 @@
+﻿$PBExportHeader$d_equipment_print_recurringcalls.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=316 color="536870912" )
+summary(height=96 color="536870912" )
+footer(height=96 color="536870912" )
+detail(height=96 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes identity=yes name=recurring_recur_id dbname="recurring.recur_id" )
+ column=(type=date updatewhereclause=yes name=recurring_start_date dbname="recurring.start_date" )
+ column=(type=date updatewhereclause=yes name=recurring_end_date dbname="recurring.end_date" )
+ column=(type=char(5) updatewhereclause=yes name=recurring_task_no dbname="recurring.task_no" )
+ column=(type=char(5) updatewhereclause=yes name=recurring_subtask_no dbname="recurring.subtask_no" )
+ column=(type=char(32766) updatewhereclause=no name=recurring_task_definition dbname="recurring.task_definition" )
+ column=(type=char(30) updatewhereclause=yes name=recurring_room dbname="recurring.room" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"area~" )  TABLE(NAME=~"recurring~" ) COLUMN(NAME=~"recurring.recur_id~") COLUMN(NAME=~"recurring.start_date~") COLUMN(NAME=~"recurring.end_date~") COLUMN(NAME=~"recurring.task_no~") COLUMN(NAME=~"recurring.subtask_no~") COLUMN(NAME=~"recurring.task_definition~") COLUMN(NAME=~"recurring.room~")    JOIN (LEFT=~"recurring.room~"    OP =~"=~"RIGHT=~"area.area_number~" )WHERE(    EXP1 =~"~~~"area~~~".~~~"room_type~~~"~"   OP =~"=~"    EXP2 =~"'E'~"    LOGIC =~"And~" ) WHERE(    EXP1 =~"~~~"recurring~~~".~~~"room~~~"~"   OP =~"=~"    EXP2 =~":prm_area_number~" ) ) ARG(NAME = ~"prm_area_number~" TYPE = string) " arguments=(("prm_area_number", string))  sort="recurring_room A " )
+group(level=1 header.height=96 trailer.height=96 by=("recurring_room" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Recurring
+Recur Id" border="0" color="33554432" x="18" y="168" height="128" width="329" html.valueishtml="0"  name=recurring_recur_id_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recurring
+Start Date" border="0" color="33554432" x="366" y="168" height="128" width="329" html.valueishtml="0"  name=recurring_start_date_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recurring
+End Date" border="0" color="33554432" x="713" y="168" height="128" width="329" html.valueishtml="0"  name=recurring_end_date_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recurring
+Task No" border="0" color="33554432" x="1061" y="168" height="128" width="265" html.valueishtml="0"  name=recurring_task_no_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recurring
+Subtask No" border="0" color="33554432" x="1344" y="168" height="128" width="288" html.valueishtml="0"  name=recurring_subtask_no_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recurring
+Task Definition" border="0" color="33554432" x="1650" y="168" height="128" width="4384" html.valueishtml="0"  name=recurring_task_definition_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recurring
+Room" border="0" color="33554432" x="6053" y="168" height="128" width="850" html.valueishtml="0"  name=recurring_room_t visible="1"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=header x="0" y="132" height="16" width="6921"  name=r_1 visible="1" brush.hatch="6" brush.color="0" pen.style="5" pen.width="9" pen.color="553648127"  background.mode="1" background.color="553648127" )
+rectangle(band=header x="0" y="296" height="16" width="6921"  name=r_2 visible="1" brush.hatch="6" brush.color="0" pen.style="5" pen.width="9" pen.color="553648127"  background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Recurring Calls Report" border="0" color="33554432" x="0" y="4" height="64" width="1189" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="33554432" x="0" y="68" height="64" width="562" format="[shortdate]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="6053" y="16" height="76" width="850" format="[general]" html.valueishtml="0"  name=recurring_room visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="18" y="16" height="76" width="329" format="[general]" html.valueishtml="0"  name=recurring_recur_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="366" y="16" height="76" width="329" format="[general]" html.valueishtml="0"  name=recurring_start_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="713" y="16" height="76" width="329" format="[general]" html.valueishtml="0"  name=recurring_end_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1061" y="16" height="76" width="165" format="[general]" html.valueishtml="0"  name=recurring_task_no visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1344" y="16" height="76" width="165" format="[general]" html.valueishtml="0"  name=recurring_subtask_no visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1650" y="16" height="76" width="4384" format="[general]" html.valueishtml="0"  name=recurring_task_definition visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="1" expression="sum(recurring_recur_id for group 1)"border="0" color="33554432" x="18" y="16" height="76" width="329" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(recurring_recur_id for all)"border="0" color="33554432" x="18" y="16" height="76" width="329" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="33554432" x="5" y="4" height="64" width="530" format="[general]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

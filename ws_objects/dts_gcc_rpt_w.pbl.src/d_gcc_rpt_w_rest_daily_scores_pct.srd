@@ -1,0 +1,164 @@
+﻿$PBExportHeader$d_gcc_rpt_w_rest_daily_scores_pct.srd
+$PBExportComments$not used
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 2 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=228 color="536870912" )
+summary(height=108 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=0 color="536870912" )
+table(column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=decimal(0) updatewhereclause=yes name=answerid dbname="qgen_qset_answers.answerid" )
+ column=(type=datetime updatewhereclause=yes name=ansdate dbname="ansdate" )
+ column=(type=datetime updatewhereclause=yes name=minansdate dbname="minansdate" )
+ column=(type=date updatewhereclause=yes name=fdate dbname="fdate" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_01 dbname="r_01" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_02 dbname="r_02" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_06 dbname="r_06" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_14 dbname="r_14" )
+ column=(type=decimal(2) updatewhereclause=yes name=ty_qgoal dbname="ty_qgoal" )
+ column=(type=long updatewhereclause=yes name=tc01 dbname="tc01" )
+ column=(type=long updatewhereclause=yes name=tc02 dbname="tc02" )
+ column=(type=long updatewhereclause=yes name=tc06 dbname="tc06" )
+ column=(type=long updatewhereclause=yes name=tc14 dbname="tc14" )
+ column=(type=long updatewhereclause=yes name=tc15 dbname="tc15" )
+ column=(type=long updatewhereclause=yes name=qs_order dbname="qs_order" )
+ column=(type=long updatewhereclause=yes name=q_order dbname="q_order" )
+ column=(type=decimal(0) updatewhereclause=yes name=qsetid dbname="qsetid" )
+ column=(type=char(300) updatewhereclause=yes name=hier_parent dbname="hier_parent" )
+ column=(type=long updatewhereclause=yes name=hier_q_order dbname="hier_q_order" )
+ column=(type=long updatewhereclause=yes name=hier_p_order dbname="hier_p_order" )
+ column=(type=char(7) updatewhereclause=yes name=parent_id dbname="parent_id" )
+ column=(type=long updatewhereclause=yes name=hier_f_order dbname="hier_f_order" )
+ retrieve="  SELECT DISTINCT qgen_questions.questiontxt  		questiontxt,
+			qgen_questions.questionid 			questionid,
+			A1.answerid 							answerid,
+			MAX(A1.ansdate) 						ansdate,
+			MIN(A1.ansdate) 						minansdate,
+			vzt_date(':fdate') 					fdate,
+/* prev month MTD to the end of month */
+vzt_gcc_tot_ans_score_pct_of_max ( vzt_date_bom( vzt_date_bom(vzt_date(':fdate'))-1), vzt_date_eom( vzt_date_bom(vzt_date(':fdate'))-1), qgen_questions.questionid, ':NA', ';comp',7) r_01,
+/* daily results */
+vzt_gcc_tot_ans_score_pct_of_max ( vzt_date(':fdate'), vzt_date(':fdate'), qgen_questions.questionid, ':NA', ';comp',7) r_02,
+/* MTD */
+vzt_gcc_tot_ans_score_pct_of_max ( vzt_date_bom(vzt_date(':fdate')), vzt_date(':fdate'), qgen_questions.questionid, ':NA', ';comp',7) r_06,
+/*avg:
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-01-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-12-01')), qgen_questions.questionid, ':NA', ';comp') r_13,
+*/
+/* YTD: */
+vzt_gcc_tot_ans_score_pct_of_max ( vzt_date_boyear( vzt_date(':fdate'),0), vzt_date(':fdate'), qgen_questions.questionid, ':NA', ';comp',7) r_14,
+
+vzt_get_qgoal ( convert(char(4), year(vzt_date(':fdate')) ), 'YEAR', qgen_questions.questionid, 7 ) ty_qgoal, 
+
+/* prev month cards */
+vzt_gcc_totcards_in_range(vzt_date_bom( vzt_date_bom(vzt_date(':fdate'))-1), vzt_date_eom( vzt_date_bom(vzt_date(':fdate'))-1)) tc01, 
+/* daily cards */
+vzt_gcc_totcards_in_range(vzt_date(':fdate'), vzt_date(':fdate')) tc02, 
+/* tot cards MTD: */
+vzt_gcc_totcards_in_range( vzt_date_bom( vzt_date(':fdate')) , vzt_date(':fdate') ) tc06,
+/* tot cards YTD: */
+vzt_gcc_totcards_in_range( vzt_date_boyear( vzt_date(':fdate'),0), vzt_date(':fdate') ) tc14, 
+/* tot cards YTD last year: */
+vzt_gcc_totcards_in_range(vzt_date_boyear( vzt_date(':fdate'),-1),vzt_date_year_today(vzt_date(':fdate'),-1) ) tc15, 
+
+max(qgen_qset.sortorder) qs_order,
+max( qq.sortorder) q_order,
+max(qgen_qset.qsetid) qsetid,
+max( h2.~"name~") hier_parent,
+max( h1.orderingroup) hier_q_order,
+max( h2.orderingroup) hier_p_order,
+max( h1.parent_id ) parent_id,
+max( h1.flatorder) hier_f_order
+
+FROM 		qgen_qset_answers A1,   
+         qgen_questions  ,
+			qgen_qset,
+			qgen_qset_questions qq,
+			gcc, guest,
+			vzt_hierarchy h1,
+			vzt_hierarchy h2
+
+   WHERE  /* A1.qsetid = 9 AND */
+         A1.questionid = qgen_questions.questionid  
+         and A1.headerid > 0 
+			and gcc.guest_account = guest.account /* company chg */
+			AND qgen_qset.qsetid = A1.qsetid
+			AND qgen_questions.qtypeid NOT IN ('FF1', 'FF2', 'FF3', 'FF4', 'MC3', 'SCT') 
+			AND qgen_questions.scorable = 'Y' 
+			AND qq.qsetid = A1.qsetid AND qq.questionid = A1.questionid 
+		   AND A1.headerid = gcc.gccid  	
+			AND h1.treetype = 'QSETORG' and h1.nodetype = 'QUESTION' and h1.reportid = string ( qq.questionid ) 
+			AND h1.top_parent_node = string( qgen_qset.qsetid )
+/*			AND vzt_is_descendant_of_external( h1.id, string( qgen_qset.qsetid ), 'QSET') = 'Y' */
+			and h2.id = h1.parent_id 
+
+			
+			/*1  AND ((':NA' = 'Y') OR ( ':NA'='N' AND answerid <> 999999000 )) 1*/
+			/*
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					A1.ansdate BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			*/
+			/*
+			 AND
+				( 	{ts ':ARRDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':DEPDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.checkin_dt BETWEEN 
+					{ts ':ARRDATE 00:00:00.000000'} AND {ts ':DEPDATE 23:59:59.777000'} 
+				) 
+			*/
+			/*2 AND ( string(0)=';qset' 		OR qgen_qset.qsetid 				IN (;qset)  ) 		2*/	
+			/*3 AND ( string(0)=';question' 	OR qgen_questions.questionid 	IN (;question) ) 	3*/	
+/*2 AND ( '*ALL*' IN (';COMP') OR '' IN  (';COMP') OR guest.comp_name IN (';COMP') ) 2*/	
+
+GROUP BY 	questionid, answerid, questiontxt
+
+
+ "  sort="hier_f_order A " )
+group(level=1 header.height=60 trailer.height=52 by=("parent_id" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=44 trailer.height=0 by=("parent_id" , "questionid" ) header.color="536870912" trailer.color="536870912" )
+column(band=header id=6 alignment="0" tabsequence=32766 border="0" color="65535" x="41" y="164" height="56" width="146" format="yyyy"  name=fdate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Goal"border="0" color="65535" x="169" y="164" height="56" width="137"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="RESTAURANT COMMENT CARD SCORES"border="0" color="0" x="1106" y="20" height="64" width="1211"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="string ( fdate ,'dddd, mmmm dd, yyyy ')  "border="0" color="0" x="1289" y="92" height="56" width="690" format="[general]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Daily Tally"border="0" color="65535" x="704" y="164" height="56" width="265"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Current MTD"border="0" color="65535" x="2423" y="164" height="56" width="370"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="YTD "border="0" color="65535" x="2779" y="164" height="56" width="215"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+column(band=header.1 id=20 alignment="0" tabsequence=32766 border="2" color="0" x="997" y="4" height="52" width="1440" format="[general]"  name=hier_parent edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=header.2 id=11 alignment="2" tabsequence=32766 border="0" color="0" x="96" y="0" height="56" width="151" format="[general]"  name=ty_qgoal edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.2 id=1 alignment="0" tabsequence=32766 border="0" color="128" x="997" y="0" height="56" width="1435" format="[general]"  name=questiontxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="2" expression="string (  r_14, '0.00' ) + '%'  "border="2" color="0" x="2807" y="0" height="56" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  r_14 )" )
+compute(band=header.2 alignment="2" expression="string (  r_06, '0.00' ) + '%' "border="2" color="0" x="2501" y="0" height="56" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  r_06 )" )
+compute(band=header.2 alignment="2" expression="string (  r_01, '0.00' ) + '%'"border="2" color="0" x="361" y="0" height="56" width="183" format="[general]"  name=n1  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  r_01 )" )
+compute(band=header.2 alignment="2" expression="string (  r_02, '0.00' ) + '%' "border="2" color="0" x="718" y="0" height="56" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  r_02 )" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="1723" y="12" height="56" width="183" format="##0.0"  name=r_01 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="1925" y="12" height="56" width="183" format="##0.0"  name=r_02 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="2729" y="12" height="56" width="183" format="##0.0"  name=r_06 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2171" y="8" height="56" width="183" format="##0.0"  name=r_14 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="128" x="2368" y="16" height="44" width="183" format="[general]" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=trailer.1 x="32" y="0" height="4" width="2967" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=trailer.1 alignment="0" text="Category Average:"border="0" color="0" x="1001" y="0" height="44" width="544"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="2" expression="string( sum ( r_06  for group 1)  / sum( if( r_06  > 0, 1, 0 ) for group 1  ), '0.00' ) + '%' "border="2" color="0" x="2501" y="4" height="44" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_06  for group 1)  / sum( if( r_06  > 0, 1, 0 ) for group 1  ) )" )
+compute(band=trailer.1 alignment="2" expression="string( sum ( r_14  for group 1)  / sum( if( r_14  > 0, 1, 0 ) for group 1  ), '0.00' ) + '%' "border="2" color="0" x="2807" y="4" height="44" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_14  for group 1)  / sum( if( r_14  > 0, 1, 0 ) for group 1  ) )" )
+compute(band=trailer.1 alignment="2" expression="string( sum ( r_02  for group 1)  / sum( if( r_02  > 0, 1, 0 ) for group 1  ), '0.00' ) + '%' "border="2" color="0" x="718" y="4" height="44" width="183" format="[general]"  name=avg02  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_02  for group 1)  / sum( if( r_02  > 0, 1, 0 ) for group 1  ) )" )
+compute(band=trailer.1 alignment="2" expression="string( sum ( r_01  for group 1)  / sum( if( r_01  > 0, 1, 0 ) for group 1 ), '0.00' ) + '%' 
+"border="2" color="0" x="361" y="4" height="44" width="183" format="[general]"  name=avg01  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_01  for group 1)  / sum( if( r_01  > 0, 1, 0 ) for group 1  ) )" )
+compute(band=trailer.1 alignment="2" expression="string( avg(   ty_qgoal  for group 1 ), '0.00' ) "border="0" color="0" x="96" y="4" height="44" width="155" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="string( avg(   ty_qgoal  for all ), '0.00' ) "border="0" color="0" x="96" y="8" height="48" width="155" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=summary x="974" y="0" height="8" width="1435" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=summary alignment="0" text="OVERALL AVERAGE:"border="0" color="0" x="1001" y="8" height="44" width="599"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=summary alignment="0" text="Total Cards:"border="0" color="0" x="1001" y="60" height="40" width="357"  font.face="Arial" font.height="-7" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="string( sum ( r_02 for all)  / sum( if( r_02  > 0, 1, 0 ) for all ), '0.00' ) + '%' "border="2" color="0" x="718" y="4" height="48" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_02 for all)  / sum( if( r_02  > 0, 1, 0 ) for all ) )" )
+column(band=summary id=13 alignment="2" tabsequence=32766 border="2" color="0" x="718" y="56" height="40" width="183" format="[general]"  name=tc02 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="string( sum ( r_01  for all)  / sum( if( r_01  > 0, 1, 0 ) for all  ), '0.00' ) + '%' 
+"border="2" color="0" x="361" y="4" height="48" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_01  for all)  / sum( if( r_01  > 0, 1, 0 ) for all  ) )" )
+column(band=summary id=12 alignment="2" tabsequence=32766 border="2" color="0" x="361" y="56" height="40" width="183" format="[general]"  name=tc01 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="string( sum ( r_06 for all)  / sum( if( r_06 > 0, 1, 0 ) for all ), '0.00' ) + '%' "border="2" color="0" x="2501" y="4" height="48" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_06 for all)  / sum( if( r_06 > 0, 1, 0 ) for all ) )" )
+compute(band=summary alignment="2" expression="string( sum ( r_14 for all)  / sum( if( r_14 > 0, 1, 0 ) for all ), '0.00' ) + '%' "border="2" color="0" x="2807" y="4" height="48" width="183" format="[general]"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tf_vzt_get_color('RPTPCTCOLORBG',  sum ( r_14 for all)  / sum( if( r_14 > 0, 1, 0 ) for all ) )" )
+column(band=summary id=14 alignment="2" tabsequence=32766 border="2" color="0" x="2501" y="56" height="40" width="183" format="[general]"  name=tc06 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=summary id=15 alignment="2" tabsequence=32766 border="2" color="0" x="2807" y="56" height="40" width="183" format="[general]"  name=tc14 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="string ( relativedate(  fdate , -31) ,'mmmm')+ '  YTD'"border="0" color="65535" x="306" y="164" height="56" width="421" format="[general]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

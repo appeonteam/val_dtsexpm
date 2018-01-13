@@ -1,0 +1,33 @@
+﻿$PBExportHeader$f_proper_case.srf
+global type f_proper_case from function_object
+end type
+
+forward prototypes
+global function string f_proper_case (string as_string)
+end prototypes
+
+global function string f_proper_case (string as_string);int 		li_len, li_char
+string	ls_ret, ls_char, ls_pchar, ls_pstr
+
+ls_ret = '' 
+li_len = len( as_string)
+If li_len >= 0 then 
+	ls_ret = Upper(mid (as_string, 1, 1) )
+
+	For li_char = 2 to li_len
+		ls_pchar	=	mid (as_string, li_char - 1, 1) 
+		ls_pstr	= 	mid (as_string, 1, li_char - 1 ) 
+		ls_char	=	mid (as_string, li_char , 1) 
+		If ls_pchar = ' ' or ls_pchar = '-' or ls_pchar = "'" or ls_pchar = '.' &
+			or ( (UPPER(ls_pstr) = 'MC' or UPPER(ls_pstr) = 'MAC') and UPPER(ls_char)='C') then
+			ls_ret = ls_ret + Upper(ls_char)
+		Else
+			ls_ret = ls_ret + lower(ls_char)
+		END IF
+	Next
+END IF
+
+return ls_ret
+
+end function
+

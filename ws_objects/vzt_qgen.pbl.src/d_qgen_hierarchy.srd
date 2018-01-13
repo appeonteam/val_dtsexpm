@@ -1,0 +1,59 @@
+﻿$PBExportHeader$d_qgen_hierarchy.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=56 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes key=yes name=id dbname="vzt_hierarchy.id" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=parent_id dbname="vzt_hierarchy.parent_id" )
+ column=(type=char(300) update=yes updatewhereclause=yes name=name dbname="vzt_hierarchy.name" )
+ column=(type=long update=yes updatewhereclause=yes name=orderingroup dbname="vzt_hierarchy.orderingroup" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=treetype dbname="vzt_hierarchy.treetype" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=leafind dbname="vzt_hierarchy.leafind" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=reportid dbname="vzt_hierarchy.reportid" )
+ column=(type=char(1000) update=yes updatewhereclause=yes name=descr dbname="vzt_hierarchy.descr" )
+ column=(type=number update=yes updatewhereclause=yes name=present_id dbname="vzt_hierarchy.present_id" )
+ column=(type=number update=yes updatewhereclause=yes name=graphic_id dbname="vzt_hierarchy.graphic_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=nodetype dbname="vzt_hierarchy.nodetype" )
+ retrieve="  SELECT ~"vzt_hierarchy~".~"id~",   
+         ~"vzt_hierarchy~".~"parent_id~",   
+         ~"vzt_hierarchy~".~"name~",   
+         ~"vzt_hierarchy~".~"orderingroup~",   
+         ~"vzt_hierarchy~".~"treetype~",   
+         ~"vzt_hierarchy~".~"leafind~",   
+         ~"vzt_hierarchy~".~"reportid~",   
+         ~"vzt_hierarchy~".~"descr~",   
+         ~"vzt_hierarchy~".~"present_id~",   
+         ~"vzt_hierarchy~".~"graphic_id~",   
+         ~"vzt_hierarchy~".~"nodetype~"  
+    FROM ~"vzt_hierarchy~"   
+
+WHERE trim(~"vzt_hierarchy~".~"treetype~") = 'QSETORG' AND 
+		~"vzt_hierarchy~".~"parent_id~" = rtrim(:as_parent_id)
+ 	  
+order by ~"vzt_hierarchy~".~"parent_id~" ASC , ~"vzt_hierarchy~".~"orderingroup~" ASC
+" update="vzt_hierarchy" updatewhere=1 updatekeyinplace=no arguments=(("as_parent_id", string)) )
+text(band=header alignment="2" text="Id"border="0" color="0" x="9" y="8" height="56" width="219"  name=id_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Parent Id"border="0" color="0" x="238" y="8" height="56" width="229"  name=parent_id_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Name"border="0" color="0" x="475" y="8" height="56" width="805"  name=name_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Orderingroup"border="0" color="0" x="1289" y="8" height="56" width="352"  name=orderingroup_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Treetype"border="0" color="0" x="1650" y="8" height="56" width="302"  name=treetype_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Leafind"border="0" color="0" x="1961" y="8" height="56" width="187"  name=leafind_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Reportid"border="0" color="0" x="2158" y="8" height="56" width="219"  name=reportid_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Descr"border="0" color="0" x="2386" y="8" height="56" width="571"  name=descr_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Present Id"border="0" color="0" x="2967" y="8" height="56" width="329"  name=present_id_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Graphic Id"border="0" color="0" x="3305" y="8" height="56" width="329"  name=graphic_id_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Nodetype"border="0" color="0" x="3643" y="8" height="56" width="576"  name=nodetype_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="0" height="52" width="219" format="[general]"  name=id edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="238" y="0" height="52" width="229" format="[general]"  name=parent_id edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="475" y="0" height="52" width="805" format="[general]"  name=name edit.limit=70 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="0" x="1289" y="0" height="52" width="352" format="[general]"  name=orderingroup edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="1650" y="0" height="52" width="302" format="[general]"  name=treetype edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="0" color="0" x="1961" y="0" height="52" width="187" format="[general]"  name=leafind edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=70 border="0" color="0" x="2158" y="0" height="52" width="219" format="[general]"  name=reportid edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=80 border="0" color="0" x="2386" y="0" height="52" width="571" format="[general]"  name=descr edit.limit=1000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=90 border="0" color="0" x="2967" y="0" height="52" width="329" format="[general]"  name=present_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=100 border="0" color="0" x="3305" y="0" height="52" width="329" format="[general]"  name=graphic_id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=110 border="0" color="0" x="3643" y="0" height="52" width="576" format="[general]"  name=nodetype edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

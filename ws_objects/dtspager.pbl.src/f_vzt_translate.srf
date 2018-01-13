@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_vzt_translate.srf
+global type f_vzt_translate from function_object
+end type
+
+forward prototypes
+global function string f_vzt_translate (string as_id, string as_language, string as_default)
+end prototypes
+
+global function string f_vzt_translate (string as_id, string as_language, string as_default);string ls_text
+ls_text = as_default
+
+IF f_nvl(as_language,'') <> '' then 
+	SELECT "text" INTO :ls_text FROM vzt_text WHERE id = :as_id AND language = :as_language ;
+	ls_text = f_nvl( ls_text, '')
+	IF ls_text = '' then ls_text = as_default
+END IF
+
+RETURN ls_text 
+end function
+

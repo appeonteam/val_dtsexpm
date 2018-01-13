@@ -1,0 +1,212 @@
+﻿$PBExportHeader$d_gcc_rpt_monthly_trend_pm_071402.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=228 color="536870912" )
+summary(height=12 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=0 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=pstat dbname="pstat" )
+ column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="questiontxt" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="questionid" )
+ column=(type=decimal(0) updatewhereclause=yes name=answerid dbname="answerid" )
+ column=(type=char(200) updatewhereclause=yes name=rtitle dbname="rtitle" )
+ column=(type=datetime updatewhereclause=yes name=ansdate dbname="ansdate" )
+ column=(type=datetime updatewhereclause=yes name=minansdate dbname="minansdate" )
+ column=(type=datetime updatewhereclause=yes name=fdate dbname="fdate" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_01 dbname="r_01" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_02 dbname="r_02" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_03 dbname="r_03" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_04 dbname="r_04" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_05 dbname="r_05" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_06 dbname="r_06" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_07 dbname="r_07" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_08 dbname="r_08" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_09 dbname="r_09" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_10 dbname="r_10" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_11 dbname="r_11" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_12 dbname="r_12" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_13 dbname="r_13" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_14 dbname="r_14" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_15 dbname="r_15" )
+ column=(type=decimal(2) updatewhereclause=yes name=ty_qgoal dbname="ty_qgoal" )
+ column=(type=long updatewhereclause=yes name=tc01 dbname="tc01" )
+ column=(type=long updatewhereclause=yes name=tc02 dbname="tc02" )
+ column=(type=long updatewhereclause=yes name=tc03 dbname="tc03" )
+ column=(type=long updatewhereclause=yes name=tc04 dbname="tc04" )
+ column=(type=long updatewhereclause=yes name=tc05 dbname="tc05" )
+ column=(type=long updatewhereclause=yes name=tc06 dbname="tc06" )
+ column=(type=long updatewhereclause=yes name=tc07 dbname="tc07" )
+ column=(type=long updatewhereclause=yes name=tc08 dbname="tc08" )
+ column=(type=long updatewhereclause=yes name=tc09 dbname="tc09" )
+ column=(type=long updatewhereclause=yes name=tc10 dbname="tc10" )
+ column=(type=long updatewhereclause=yes name=tc11 dbname="tc11" )
+ column=(type=long updatewhereclause=yes name=tc12 dbname="tc12" )
+ column=(type=long updatewhereclause=yes name=tc13 dbname="tc13" )
+ column=(type=long updatewhereclause=yes name=tc14 dbname="tc14" )
+ column=(type=long updatewhereclause=yes name=tc15 dbname="tc15" )
+ column=(type=char(6) updatewhereclause=yes name=year dbname="year" )
+ column=(type=long updatewhereclause=yes name=qs_order dbname="qs_order" )
+ column=(type=long updatewhereclause=yes name=q_order dbname="q_order" )
+ column=(type=long updatewhereclause=yes name=qsetid dbname="qsetid" )
+ column=(type=char(200) updatewhereclause=yes name=hier_parent dbname="hier_parent" )
+ column=(type=long updatewhereclause=yes name=hier_q_order dbname="hier_q_order" )
+ column=(type=long updatewhereclause=yes name=hier_p_order dbname="hier_p_order" )
+ column=(type=char(20) updatewhereclause=yes name=parent_id dbname="parent_id" )
+ column=(type=long updatewhereclause=yes name=hier_f_order dbname="hier_f_order" )
+ retrieve="SELECT vzt_monthly_trend_func(':year',':NA',';comp',';qset',';question') pstat,
+' ' questiontxt,
+0 questionid,
+0 answerid,
+/* modify DW source for title length !!!! on every update!!!! */ 
+';rtitle' rtitle,
+vzt_sysdate() ansdate,
+vzt_sysdate() minansdate,
+vzt_sysdate() fdate,
+0 r_01,
+0 r_02,
+0 r_03,
+0 r_04,
+0 r_05,
+0 r_06,
+0 r_07,
+0 r_08,
+0 r_09,
+0 r_10,
+0 r_11,
+0 r_12,
+0 r_13,
+0 r_14,
+0 r_15,
+0 ty_qgoal, 
+0 tc01, 
+0 tc02, 
+0 tc03, 
+0 tc04, 
+0 tc05, 
+0 tc06, 
+0 tc07, 
+0 tc08, 
+0 tc09, 
+0 tc10, 
+0 tc11, 
+0 tc12,
+0 tc13, 
+0 tc14, 
+0 tc15, 
+'year' yeAR,
+
+0 qs_order,
+0 q_order,
+0 qsetid,
+' ' hier_parent,
+0 hier_q_order,
+0 hier_p_order,
+' ' parent_id,
+0 hier_f_order
+
+FROM 		dummy
+UNION
+  SELECT 
+'report'  pstat,
+questiontxt,
+questionid,
+answerid,
+';rtitle' rtitle,
+ansdate,
+minansdate,
+d1 fdate,
+r_01,
+r_02,
+r_03,
+r_04,
+r_05,
+r_06,
+r_07,
+r_08,
+r_09,
+r_10,
+r_11,
+r_12,
+r_13,
+r_14,
+r_15,
+ty_goal ty_qgoal, 
+tc01, 
+tc02, 
+tc03, 
+tc04, 
+tc05, 
+tc06, 
+tc07, 
+tc08, 
+tc09, 
+tc10, 
+tc11, 
+tc12, 
+tc13, 
+tc14, 
+tc15, 
+':year'+ ' ' yeAR,
+
+qs_order,
+q_order,
+qsetid,
+hier_parent,
+hier_q_order,
+hier_p_order,
+parent_id,
+hier_f_order
+
+FROM 		vzt_trend_rpt 
+ 
+;
+
+
+ " filter=" lower (pstat ) = 'report'"  sort="hier_f_order A " )
+group(level=1 header.height=72 trailer.height=16 by=("parent_id" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=76 trailer.height=0 by=("parent_id" , "questionid" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="GCC Monthly Scores Report "border="0" color="255" x="18" y="16" height="80" width="1024" visible="1~t0"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Jan"border="0" color="65535" x="1710" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Feb"border="0" color="65535" x="1911" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Mar"border="0" color="65535" x="2112" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Apr"border="0" color="65535" x="2313" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="May"border="0" color="65535" x="2510" y="164" height="56" width="210"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Jun"border="0" color="65535" x="2715" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Jul"border="0" color="65535" x="2917" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Aug"border="0" color="65535" x="3118" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Sep"border="0" color="65535" x="3319" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Oct"border="0" color="65535" x="3520" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Nov"border="0" color="65535" x="3721" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Dec"border="0" color="65535" x="3922" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Avg"border="0" color="65535" x="4123" y="164" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1714" y="24" height="80" width="2267" format="[general]"  name=rtitle edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=44 alignment="0" tabsequence=32766 border="0" color="8388608" x="18" y="4" height="56" width="4101" format="[general]"  name=hier_parent edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=header.1 x="9" y="68" height="8" width="1696" brush.hatch="6" brush.color="8388608" pen.style="0" pen.width="5" pen.color="8388608"  background.mode="2" background.color="8388608" )
+column(band=header.2 id=2 alignment="0" tabsequence=32766 border="0" color="128" x="69" y="12" height="56" width="1641" format="[general]"  name=questiontxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_01, '0.0' ) + ' %' "border="0" color="16711680" x="1723" y="12" height="56" width="183" format="[general]"  name=n1  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_02, '0.0' ) + ' %' "border="0" color="16711680" x="1925" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_03, '0.0' ) + ' %' "border="0" color="16711680" x="2126" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_04, '0.0' ) + ' %' "border="0" color="16711680" x="2327" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_05, '0.0' ) + ' %' "border="0" color="16711680" x="2528" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_06, '0.0' ) + ' %' "border="0" color="16711680" x="2729" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_07, '0.0' ) + ' %' "border="0" color="16711680" x="2930" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_08, '0.0' ) + ' %' "border="0" color="16711680" x="3131" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_09, '0.0' ) + ' %' "border="0" color="16711680" x="3333" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_10, '0.0' ) + ' %' "border="0" color="16711680" x="3534" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_11, '0.0' ) + ' %' "border="0" color="16711680" x="3735" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_12, '0.0' ) + ' %' "border="0" color="16711680" x="3936" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.2 alignment="1" expression="string (  r_13, '0.0' ) + ' %' "border="0" color="16711680" x="4137" y="12" height="56" width="183" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="1234" y="128" height="56" width="133" format=""  name=r_01 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="0" x="1385" y="128" height="56" width="133" format="[general]"  name=r_02 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="0" x="1536" y="128" height="56" width="133" format="[general]"  name=r_03 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="0" color="0" x="1687" y="128" height="56" width="133" format="[general]"  name=r_04 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="0" x="1842" y="128" height="56" width="128" format="[general]"  name=r_05 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="1" tabsequence=32766 border="0" color="0" x="1989" y="128" height="56" width="133" format="[general]"  name=r_06 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="1" tabsequence=32766 border="0" color="0" x="2139" y="128" height="56" width="133" format="[general]"  name=r_07 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="1" tabsequence=32766 border="0" color="0" x="2290" y="128" height="56" width="133" format="[general]"  name=r_08 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="1" tabsequence=32766 border="0" color="0" x="2441" y="128" height="56" width="133" format="[general]"  name=r_09 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="0" color="0" x="2592" y="128" height="56" width="133" format="[general]"  name=r_10 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="1" tabsequence=32766 border="0" color="0" x="2743" y="128" height="56" width="133" format="[general]"  name=r_11 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="1" tabsequence=32766 border="0" color="0" x="2894" y="128" height="56" width="133" format="[general]"  name=r_12 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="3099" y="128" height="56" width="133" format="[general]"  name=r_13 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

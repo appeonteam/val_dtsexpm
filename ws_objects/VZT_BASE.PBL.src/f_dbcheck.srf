@@ -1,0 +1,34 @@
+﻿$PBExportHeader$f_dbcheck.srf
+global type f_dbcheck from function_object
+end type
+
+forward prototypes
+global function integer f_dbcheck (ref transaction at_tran, string as_header, string as_goodmsg, string as_badmsg, boolean ab_commit)
+end prototypes
+
+global function integer f_dbcheck (ref transaction at_tran, string as_header, string as_goodmsg, string as_badmsg, boolean ab_commit);string ls_error, ls_code
+If at_tran.SQLCode <> 0 Then       // Database ERROR...lost connection...who knows?
+        ls_error =  at_tran.SQLerrtext
+        ls_code =  string( at_tran.SQLCode) 
+        ROLLBACK USING at_tran;
+		  If f_nvl(as_header,'') <> '' and f_nvl(as_badmsg,'') <> '' then
+        	MessageBox(as_header, as_badmsg+'~r~n~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+			END IF 
+		  	return -1
+END IF
+
+If ab_commit then
+	COMMIT USING at_tran;
+	If at_tran.SQLCode <> 0 Then        
+        ls_error =  at_tran.SQLerrtext
+        ls_code =  string( at_tran.SQLCode) 
+        ROLLBACK	USING at_tran;
+        If f_nvl(as_header,'') <> '' and f_nvl(as_badmsg,'') <> '' then
+        	MessageBox(as_header, as_badmsg+'~r~n~r~nFailed on commit.~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+			END IF 
+			return -1
+	END IF
+	return 1
+END IF
+end function
+

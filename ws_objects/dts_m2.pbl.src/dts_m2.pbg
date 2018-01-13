@@ -1,0 +1,14 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dts_m2.pbl" "";
+@end;
+@begin Objects 
+ "w_adhoc.srw" "dts_m2.pbl";
+ "w_call_upd.srw" "dts_m2.pbl";
+ "w_callback_upd.srw" "dts_m2.pbl";
+ "w_complaint_mod_upd.srw" "dts_m2.pbl";
+ "w_mod_view_complaint.srw" "dts_m2.pbl";
+ "w_pending_calls.srw" "dts_m2.pbl";
+ "w_pm_call_upd.srw" "dts_m2.pbl";
+ "w_timer_calls.srw" "dts_m2.pbl";
+@end;

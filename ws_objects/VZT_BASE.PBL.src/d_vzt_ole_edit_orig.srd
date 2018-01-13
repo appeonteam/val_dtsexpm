@@ -1,0 +1,15 @@
+﻿$PBExportHeader$d_vzt_ole_edit_orig.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=220 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=idauto dbname="ole.idauto" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=id dbname="ole.id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=description dbname="ole.description" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ole~" ) COLUMN(NAME=~"ole.idauto~") COLUMN(NAME=~"ole.id~") COLUMN(NAME=~"ole.description~")) " update="ole" updatewhere=0 updatekeyinplace=yes )
+text(band=detail alignment="0" text="Title:"border="0" color="0" x="23" y="16" height="56" width="146"  name=id_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Description:"border="0" color="0" x="23" y="92" height="56" width="306"  name=description_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="347" y="92" height="112" width="686" format="[general]"  name=description edit.limit=0 edit.case=any edit.autoselect=yes edit.autovscroll=yes edit.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="347" y="16" height="52" width="686" format="[general]"  name=id edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,33 @@
+﻿$PBExportHeader$batch_server_vzhome.srj
+EXE:c:\data\vztech\metromedia\he9\commentator\vztbserv.exe,,0,1
+CMP:0,0,0,2,0,0
+COM:Metromedia Software Inc.
+DES:
+CPY:
+PRD:VZT Batch Server Compoent
+VER:
+PBD:c:\data\vztech\Metromedia\HE9\commentator\Vzt_batch.pbl,,0
+PBD:C:\data\vztech\Metromedia\HE9\commentator\vzt_rpt.pbl,,0
+PBD:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,,0
+OBJ:c:\data\vztech\rpt\vzt_batch.pbl,w_vzt_error,w
+OBJ:C:\data\vztech\vzt_base.pbl,nvo_vzt_appman,u
+OBJ:C:\data\vztech\vzt_base.pbl,f_wait,f
+OBJ:C:\data\vztech\vzt_base.pbl,n_cst_vzt_language,u
+OBJ:C:\data\vztech\vzt_base.pbl,w_vzt_base_error,w
+OBJ:C:\data\vztech\vzt_base.pbl,f_get_string_value_ds,f
+OBJ:c:\data\vztech\rpt\vzt_batch.pbl,w_vzt_noparms,w
+OBJ:C:\data\vztech\vzt_base.pbl,str_response,s
+OBJ:c:\data\vztech\rpt\vzt_batch.pbl,vzt_batch_server,a
+OBJ:C:\data\vztech\vzt_base.pbl,f_sysdatet,f
+OBJ:C:\data\vztech\vzt_base.pbl,f_vzt_clipboard,f
+OBJ:C:\data\vztech\vzt_base.pbl,d_vzt_error,d
+OBJ:C:\data\vztech\vzt_base.pbl,f_replace,f
+OBJ:C:\data\vztech\vzt_base.pbl,f_nvl,f
+OBJ:C:\data\vztech\vzt_base.pbl,uo_vzt_dwbase,u
+OBJ:C:\data\vztech\vzt_base.pbl,n_cst_vzt_security,u
+OBJ:C:\data\vztech\vzt_base.pbl,n_cst_vzt_error,u
+OBJ:C:\data\vztech\vzt_base.pbl,f_mail_error_to_string,f
+OBJ:C:\data\vztech\vzt_base.pbl,uo_vzt_mail,u
+OBJ:C:\data\vztech\vzt_base.pbl,str_reporter_reportparms,s
+OBJ:C:\data\vztech\vzt_base.pbl,n_cst_dw_field_sort,u
+OBJ:C:\data\vztech\vzt_base.pbl,w_vzt_base_response,w

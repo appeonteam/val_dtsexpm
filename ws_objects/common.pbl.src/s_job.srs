@@ -1,0 +1,11 @@
+﻿$PBExportHeader$s_job.srs
+global type s_job from structure
+	string		call_number
+	string		job_type
+	datetime		job_start
+	datetime		job_end
+	string		task
+	string		subtask
+	string		room_equip
+end type
+

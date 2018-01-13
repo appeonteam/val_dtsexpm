@@ -1,0 +1,20 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_alec.pbl" "";
+@end;
+@begin Objects 
+ "d_dddw_department.srd" "vzt_alec.pbl";
+ "d_outlook_import.srd" "vzt_alec.pbl";
+ "d_vzt_alec_about.srd" "vzt_alec.pbl";
+ "d_vzt_mm_rpt_list.srd" "vzt_alec.pbl";
+ "m_gcc_main.srm" "vzt_alec.pbl";
+ "m_vzt_alec_main.srm" "vzt_alec.pbl";
+ "nvo_vzt_alec_appman.sru" "vzt_alec.pbl";
+ "w_gcc_main.srw" "vzt_alec.pbl";
+ "w_vzt_alec_about.srw" "vzt_alec.pbl";
+ "w_vzt_alec_about_flash.srw" "vzt_alec.pbl";
+ "w_vzt_alec_contact_edit.srw" "vzt_alec.pbl";
+ "w_vzt_alec_distlist_tv_edit.srw" "vzt_alec.pbl";
+ "w_vzt_alec_report_def.srw" "vzt_alec.pbl";
+ "w_vzt_alec_schedule.srw" "vzt_alec.pbl";
+@end;

@@ -1,0 +1,23 @@
+﻿$PBExportHeader$r_department.srd
+$PBExportComments$Report dw for w_tables1
+release 4;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=257 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=73 color="536870912" )
+table(column=(type=char(15) update=yes name=dept dbname="instdept.dept" )
+ column=(type=char(40) update=yes name=dept_longdesc dbname="instdept.dept_longdesc" )
+ column=(type=char(10) update=yes key=yes name=dept_number dbname="instdept.dept_number" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"instdept~" ) COLUMN(NAME=~"instdept.dept~") COLUMN(NAME=~"instdept.dept_longdesc~") COLUMN(NAME=~"instdept.dept_number~")) " update="instdept" updatewhere=1 updatekeyinplace=no )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="23" y="4" height="53" width="526" format="[shortdate]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Department Report"border="0" color="0" x="23" y="64" height="57" width="481"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="now()"border="0" color="0" x="572" y="4" height="53" width="503" format="hh:mm:ss"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="0" x="1820" y="4" height="53" width="476" format="[general]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=header x="1" y="132" height="9" width="2327" brush.hatch="6" brush.color="0" pen.style="5" pen.width="10" pen.color="553648127"  background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Dept Number"border="0" color="0" x="5" y="184" height="65" width="417"  name=dept_number_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Short Desc"border="0" color="0" x="613" y="184" height="65" width="279"  name=dept_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Long Description"border="0" color="0" x="1399" y="184" height="65" width="435"  name=dept_longdesc_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="0" color="0" x="5" y="4" height="57" width="417" format="[general]"  name=dept_number edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="0" color="0" x="494" y="4" height="57" width="517" format="[general]"  name=dept edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=20 border="0" color="0" x="1052" y="4" height="57" width="1125" format="[general]"  name=dept_longdesc edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

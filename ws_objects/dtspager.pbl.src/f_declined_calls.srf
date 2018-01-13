@@ -1,0 +1,254 @@
+﻿$PBExportHeader$f_declined_calls.srf
+global type f_declined_calls from function_object
+end type
+
+forward prototypes
+global function boolean f_declined_calls (string in_call_number, integer call_tbl_ind, string username)
+end prototypes
+
+global function boolean f_declined_calls (string in_call_number, integer call_tbl_ind, string username);string autoAssign, assignDept, declinedEmpId, declinedEmpName, employeeId, empName, pgrId, zoneId, roomNo
+int timerMin
+datetime timerStart
+// get all past declined employee_id from declined call
+string dclEmpId[]
+int dclIndx 
+DECLARE dclEmp CURSOR for
+select	emp_id
+from		declinedcalls
+where		call_number = :in_call_number;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+OPEN dclEmp;
+dclIndx = 1
+
+FETCH dclEmp into :dclEmpId[dclIndx];
+DO WHILE sqlca.sqlcode = 0
+	dclIndx++
+	FETCH dclEmp into :dclEmpId[dclIndx];
+LOOP
+
+
+// insert declinedcalls 
+s_pageassignment ass
+
+// call_tbl_ind 1 = timercalls
+//              2 = pendingcalls
+
+if trim(username) = '' then
+	SetNull(username)
+end if
+
+if call_tbl_ind = 1 then
+	insert into declinedcalls 
+	(				call_number,
+					emp_id,
+					emp_name,
+					emp_dept,
+					time_assigned,
+					time_declined,
+					task_no,
+					sub_task_no,
+					room,
+					lst_upd,
+					declined_caller)
+			
+	select 	a.call_number,
+				b.emp_id,
+				b.emp_name,
+				b.dept_assigned,
+				b.time_assigned,
+				time_declined=getdate(),
+				a.problem_number,
+				a.subproblem_number,
+				room,
+				lst_upd=getdate(),
+				isnull(:userName,repairman)
+	from		timercalls a, pageassignment b
+	where		a.call_number = :in_call_number
+	and		a.call_number = b.call_number;
+else
+	insert into declinedcalls 
+	(				call_number,
+					emp_id,
+					emp_name,
+					emp_dept,
+					time_assigned,
+					time_declined,
+					task_no,
+					sub_task_no,
+					room,
+					lst_upd )
+			
+	select 	a.call_number,
+				b.emp_id,
+				b.emp_name,
+				b.dept_assigned,
+				b.time_assigned,
+				time_declined=getdate(),
+				a.problem_number,
+				a.subproblem_number,
+				room,
+				lst_upd=getdate()	
+	from		pendingcalls a, pageassignment b
+	where		a.call_number = :in_call_number
+	and		a.call_number = b.call_number;
+end if
+if sqlca.sqlcode < 0 then
+//	egm_sqlerror(sqlca,'declinedcalls',in_call_number)
+//	MessageBox("insert error", sqlca.sqlerrtext)
+	return false
+end if
+
+
+// get current declined call employee id
+select	emp_id
+into		:declinedEmpId
+from		pageassignment
+where		call_number = :in_call_number
+and		assignment_cd = 'T';
+if sqlca.sqlcode < 0 then
+//	egm_sqlerror(sqlca)
+	return false
+end if
+
+
+
+// get auto_assign_ind from subproblem table
+if call_tbl_ind = 1 then
+	select auto_assign_ind, b.timer1_start_min, repairman, closed_bydept, unit_type, room, timer_start
+	into	 :autoAssign, :timerMin, :declinedEmpName, :assignDept, :zoneId, :roomNo, :timerStart
+	from 	 timercalls a, subproblem b, area c
+	where  call_number=:in_call_number
+	and 	 a.problem_number = b.problem_number
+	and 	 a.subproblem_number = b.subproblem_number
+	and	 a.room = c.area_number;
+else
+	select auto_assign_ind, b.timer1_start_min, repairman, closed_bydept, unit_type, room, timer_start
+	into	 :autoAssign, :timerMin, :declinedEmpName, :assignDept, :zoneId, :roomNo, :timerStart
+	from 	 pendingcalls a, subproblem b, area c
+	where  call_number=:in_call_number
+	and 	 a.problem_number = b.problem_number
+	and 	 a.subproblem_number = b.subproblem_number
+	and	 a.room = area_number;
+end if
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+int reAssignCnt 
+reAssignCnt = 0
+TaskReAssignment:
+reAssignCnt = reAssignCnt + 1 
+if autoAssign = 'Y' then
+	if f_find_pager_id_wo_declined (assignDept,empName, employeeId, pgrId, roomNo, dclEmpId[], timerStart) then
+		if employeeId <> declinedEmpId then
+		// update timer/pending call with new employee and new timer start time
+			if call_tbl_ind = 1 then 
+				update	timercalls
+				set		repairman = :empName,
+							timer_start = dateadd(minute,:timerMin, getdate()),
+							paging_ind = 0
+				where		call_number = :in_call_number;
+			else
+				update	pendingcalls
+				set		repairman = :empName,
+							timer_start = dateadd(minute,:timerMin, getdate()),
+							paging_ind = 0
+				where		call_number = :in_call_number;	
+			end if
+			if sqlca.sqlcode < 0 then
+				egm_sqlerror(sqlca)
+				return false
+			end if
+			// remove declined pageassignment call
+			f_remove_declined_pageassignment(in_call_number)
+			// setup pageassignment 
+			ass.assignment_id = string(today(),"yyyymmddhhmmss")
+			ass.assignment_cd = 'T'
+			ass.dept_assigned = assignDept
+			ass.emp_id = employeeId
+			ass.emp_name = empName
+			ass.pager_id = pgrId
+			ass.time_assigned = string(today(),"yyyy/mm/dd hh:mm:ss")
+			SetNull(ass.time_completed)
+			ass.call_number = in_call_number
+			//	SetNull(ass.page_sent)
+			ass.page_sent = 'N'
+			ass.special_msg = ''
+			f_insert_assignment(ass)
+		else
+			if reAssignCnt = 1 then 
+				goto TaskReAssignment
+			end if
+			f_remove_declined_pageassignment(in_call_number)
+			// same employee as declined employee is found from pager pool
+			ass.assignment_id = string(today(),"yyyymmddhhmmss")
+	   	ass.assignment_cd = 'N'
+ 	  	 	ass.dept_assigned = assignDept
+	  	 	ass.emp_id = '8888888888'
+	  	 	ass.emp_name = 'NONE'
+     	 	ass.time_assigned = string(today(),"yyyy/mm/dd hh:mm:ss")
+	  		SetNull(ass.time_completed)
+	 	  	ass.call_number = in_call_number 
+	   	ass.page_sent = 'N'
+			ass.special_msg = 'Auto assigned call # ' + in_call_number + &
+			 ' was declined. It has failed to allocate a new pager!'
+			ass.pager_id = f_find_supervisor_pager(assignDept,roomNo,timerStart)
+			f_insert_assignment(ass)	
+			if f_clear_auto_assignment(call_tbl_ind, in_call_number, timerMin) = false then
+				return false
+			end if
+		end if
+
+	else // no pager or employee found. setup page for manager
+		f_remove_declined_pageassignment(in_call_number)
+		ass.assignment_id = string(today(),"yyyymmddhhmmss")
+	   ass.assignment_cd = 'N'
+ 	   ass.dept_assigned = assignDept
+	   ass.emp_id = '8888888888'
+	   ass.emp_name = 'NONE'
+      ass.time_assigned = string(today(),"yyyy/mm/dd hh:mm:ss")
+	   SetNull(ass.time_completed)
+	   ass.call_number = in_call_number 
+	   ass.page_sent = 'N'
+		ass.special_msg = 'Auto assigned call # ' + in_call_number + &
+		 ' was declined. It has failed to allocate a new pager!'
+		ass.pager_id = f_find_supervisor_pager(assignDept,roomNo,timerStart)
+		f_insert_assignment(ass)	
+		if f_clear_auto_assignment(call_tbl_ind, in_call_number, timerMin) = false then
+			return false
+		end if
+	end if
+else // clear assign dept and employee and set notification to manager if it is not an auto-assign task
+	f_remove_declined_pageassignment(in_call_number)
+	ass.assignment_id = string(today(),"yyyymmddhhmmss")
+	ass.assignment_cd = 'N'
+ 	ass.dept_assigned = assignDept
+	ass.emp_id = '8888888888'
+	ass.emp_name = 'NONE'
+   ass.time_assigned = string(today(),"yyyy/mm/dd hh:mm:ss")
+	SetNull(ass.time_completed)
+	ass.call_number = in_call_number 
+	ass.page_sent = 'N'
+	ass.special_msg = 'Auto assigned call # ' + in_call_number + &
+		 ' was declined!'
+	ass.pager_id = f_find_supervisor_pager(assignDept,roomNo,timerStart)
+	f_insert_assignment(ass)	
+	if f_clear_auto_assignment(call_tbl_ind, in_call_number, timerMin) = false then
+		return false
+	end if
+	
+end if
+commit;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return false
+end if
+return true
+			
+end function
+

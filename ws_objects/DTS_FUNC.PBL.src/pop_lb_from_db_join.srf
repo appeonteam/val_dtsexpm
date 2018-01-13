@@ -1,0 +1,54 @@
+﻿$PBExportHeader$pop_lb_from_db_join.srf
+global type pop_lb_from_db_join from function_object
+end type
+
+forward prototypes
+global function integer pop_lb_from_db_join (string col1_parm, string col2_parm, string tab1_parm, string tab2_parm, string tab1_join_col_parm, string tab2_join_col_parm, listbox lb_parm, ref string lb_code[], ref string lb_desc[], ref integer max_lb_code)
+end prototypes
+
+global function integer pop_lb_from_db_join (string col1_parm, string col2_parm, string tab1_parm, string tab2_parm, string tab1_join_col_parm, string tab2_join_col_parm, listbox lb_parm, ref string lb_code[], ref string lb_desc[], ref integer max_lb_code);string add_string, select_string, lb_col1_str, lb_col2_str
+max_lb_code = 0
+setpointer(hourglass!)
+
+// Set up select statement using passed parameters
+select_string = "SELECT DISTINCT " + tab1_parm + "."+col1_parm + ", " 
+select_string = select_string + tab2_parm + "." + col2_parm 
+select_string = select_string + " FROM " + tab1_parm + ", " + tab2_parm 
+select_string = select_string + " where " + tab1_parm + "." + tab1_join_col_parm + & 
+					" = " + tab2_parm + "." + tab2_join_col_parm + &
+					" order by " + col2_parm
+
+PREPARE sqlsa FROM :select_string;
+
+DECLARE dyn_cursor DYNAMIC CURSOR FOR sqlsa;
+
+OPEN DYNAMIC dyn_cursor;  
+if sqlca.sqlcode < 0 then
+	MessageBox("DataBase Error!", sqlca.sqlerrtext)
+	return sqlca.sqlcode
+end if 
+
+lb_parm.SetRedraw(false)
+lb_parm.Reset( )
+
+Do While sqlca.sqlcode = 0
+	Fetch dyn_cursor into :lb_col1_str,  :lb_col2_str;
+	if sqlca.sqlcode = 0 then
+		max_lb_code ++
+		lb_desc[max_lb_code] = lb_col2_str
+		lb_code[max_lb_code] = lb_col1_str
+		add_string = lb_col2_str // + " - " + lb_col1_str
+		lb_parm.AddItem(add_string)
+	elseif sqlca.sqlcode < 0 then
+		MessageBox("DataBase Error", sqlca.sqlerrtext)
+		return sqlca.sqlcode
+	else
+		exit
+	end if
+Loop
+
+lb_parm.SetRedraw(true)
+Close dyn_cursor;
+return 0
+end function
+

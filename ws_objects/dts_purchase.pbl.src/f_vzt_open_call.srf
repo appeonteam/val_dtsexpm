@@ -1,0 +1,35 @@
+﻿$PBExportHeader$f_vzt_open_call.srf
+global type f_vzt_open_call from function_object
+end type
+
+forward prototypes
+global function w_call_upd_profile f_vzt_open_call ()
+end prototypes
+
+global function w_call_upd_profile f_vzt_open_call ();w_call_upd_profile  w_call
+
+If IsValid(w_call) THEN
+	w_call.openMode = '0'
+	open(w_call)
+	w_call.cb_add.TriggerEvent("clicked")
+	if IsValid(w_call) then
+		if w_call.WindowState = Minimized! then
+			w_call.WindowState = Normal!
+		end if
+	end if
+ELSE
+   OpenWIthParm( w_call, "0", "w_call_upd_profile" 	 )
+	If IsValid(w_call) THEN
+		w_call.openMode = '0'
+		open(w_call)
+		w_call.cb_add.TriggerEvent("clicked")
+		if w_call.WindowState = Minimized! then
+			w_call.WindowState = Normal!
+		end if
+	end if
+
+END IF
+
+return w_call
+end function
+

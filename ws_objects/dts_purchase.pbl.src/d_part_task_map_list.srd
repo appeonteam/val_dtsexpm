@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_part_task_map_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=1 grid.columnmove=no selected.mouse=no )
+header(height=68 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=part_id dbname="vzt_part_task_map.part_id" )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=problem_number dbname="vzt_part_task_map.problem_number" )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=subproblem_number dbname="vzt_part_task_map.subproblem_number" )
+ column=(type=char(35) updatewhereclause=yes name=subproblem_subproblem_desc dbname="subproblem.subproblem_desc" )
+ column=(type=char(35) updatewhereclause=yes name=problem_problem_desc dbname="problem.problem_desc" )
+ column=(type=long updatewhereclause=yes name=id dbname="id" )
+ retrieve="  SELECT ~"vzt_part_task_map~".~"part_id~",   
+         ~"vzt_part_task_map~".~"problem_number~",   
+         ~"vzt_part_task_map~".~"subproblem_number~",   
+         ~"subproblem~".~"subproblem_desc~",   
+         ~"problem~".~"problem_desc~"  ,
+			CONVERT(integer, ~"vzt_part_task_map~".~"problem_number~") * 100000 + CONVERT(integer, ~"vzt_part_task_map~".~"subproblem_number~") ~"id~"
+
+    FROM ~"vzt_part_task_map~",   
+         ~"problem~",   
+         ~"subproblem~"  
+   WHERE ( ~"vzt_part_task_map~".~"problem_number~" = ~"problem~".~"problem_number~" ) and  
+         ( ~"vzt_part_task_map~".~"subproblem_number~" = ~"subproblem~".~"subproblem_number~" ) and  
+         ( ~"vzt_part_task_map~".~"problem_number~" = ~"subproblem~".~"problem_number~" )  
+			AND part_id = :al_part  
+" update="vzt_part_task_map" updatewhere=0 updatekeyinplace=yes arguments=(("al_part", number)) )
+text(band=header alignment="0" text="Task" border="6" color="16777215" x="27" y="12" height="72" width="197" html.valueishtml="0"  name=problem_number_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Task Description" border="6" color="16777215" x="256" y="12" height="64" width="553" html.valueishtml="0"  name=problem_desc_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Subtask" border="6" color="16777215" x="850" y="12" height="64" width="274" html.valueishtml="0"  name=subproblem_number_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Subproblem Desc" border="6" color="16777215" x="1157" y="12" height="64" width="581" html.valueishtml="0"  name=subproblem_desc_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="9" y="4" height="48" width="9" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="233" y="0" height="68" width="14" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="1134" y="0" height="68" width="14" format="[GENERAL]" html.valueishtml="0"  name=compute_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="818" y="0" height="68" width="23" format="[GENERAL]" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="27" y="0" height="68" width="197" format="[general]" html.valueishtml="0"  name=problem_number visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="1746" y="0" height="68" width="242" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1998" y="0" height="68" width="503" format="P:00000 S:00000" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="256" y="4" height="68" width="553" format="[general]" html.valueishtml="0"  name=problem_problem_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="850" y="0" height="68" width="274" format="[general]" html.valueishtml="0"  name=subproblem_number visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1157" y="0" height="68" width="581" format="[general]" html.valueishtml="0"  name=subproblem_subproblem_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

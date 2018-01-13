@@ -1,0 +1,8 @@
+﻿$PBExportHeader$s_lnk_task.srs
+global type s_lnk_task from structure
+	boolean		view
+	string		lnk_task
+	string		lnk_subtask
+	string		title
+end type
+

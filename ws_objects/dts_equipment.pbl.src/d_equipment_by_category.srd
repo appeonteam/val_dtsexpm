@@ -1,0 +1,79 @@
+﻿$PBExportHeader$d_equipment_by_category.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=9 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=yes grid.lines=0 )
+header(height=88 color="67108864" )
+summary(height=8 color="67108864" )
+footer(height=16 color="67108864" )
+detail(height=56 color="67108864" )
+table(column=(type=char(50) updatewhereclause=yes name=category dbname="equipment_master.category" )
+ column=(type=char(50) updatewhereclause=yes name=manufacturer dbname="equipment_master.manufacturer" )
+ column=(type=char(40) updatewhereclause=yes name=area_name dbname="equipment_master.area_name" )
+ column=(type=char(8) updatewhereclause=yes name=area_number dbname="equipment_master.area_number" )
+ column=(type=char(50) updatewhereclause=yes name=serialno dbname="equipment_master.serialno" )
+ column=(type=char(50) updatewhereclause=yes name=model dbname="equipment_master.model" )
+ column=(type=char(100) updatewhereclause=yes name=vzt_contact_firstname dbname="vzt_contact.firstname" )
+ column=(type=long updatewhereclause=yes name=vendor dbname="equipment_master.vendor" )
+ column=(type=decimal(2) updatewhereclause=yes name=purchasecost dbname="equipment_master.purchasecost" )
+ column=(type=char(2) updatewhereclause=yes name=zone_code dbname="equipment_master.zone_code" )
+ column=(type=char(2) updatewhereclause=yes name=zone_group_code dbname="equipment_master.zone_group_code" )
+ column=(type=datetime updatewhereclause=yes name=purchasedate dbname="equipment_master.purchasedate" )
+ column=(type=datetime updatewhereclause=yes name=extended_warranty dbname="equipment_master.extended_warranty" )
+ column=(type=datetime updatewhereclause=yes name=warranty_expires dbname="equipment_master.warranty_expires" )
+ column=(type=char(500) updatewhereclause=yes name=descr dbname="equipment_master.descr" )
+ column=(type=char(50) updatewhereclause=yes name=prim_phone dbname="prim_phone" )
+ column=(type=char(150) updatewhereclause=yes name=email dbname="prim_email" )
+ retrieve="SELECT 
+		~"equipment_master~".~"category~",   
+         ~"equipment_master~".~"manufacturer~",   
+         ~"equipment_master~".~"area_name~",   
+         ~"equipment_master~".~"area_number~",   
+         ~"equipment_master~".~"serialno~",   
+         ~"equipment_master~".~"model~",   
+         ~"vzt_contact~".~"firstname~",   
+         ~"equipment_master~".~"vendor~",   
+         ~"equipment_master~".~"purchasecost~",   
+         ~"equipment_master~".~"zone_code~",   
+         ~"equipment_master~".~"zone_group_code~",   
+         ~"equipment_master~".~"purchasedate~",   
+         ~"equipment_master~".~"extended_warranty~",   
+         ~"equipment_master~".~"warranty_expires~",   
+         ~"equipment_master~".~"descr~"  ,
+         vzt_hew_contact_prim_phone ( ~"vzt_contact~".~"id~" ) prim_phone,   
+         vzt_hew_contact_prim_email ( ~"vzt_contact~".~"id~" ) prim_email  
+    FROM {oj ~"vzt_contact~" RIGHT OUTER JOIN ~"equipment_master~" ON ~"vzt_contact~".~"id~" = ~"equipment_master~".~"vendor~"}   
+"  sort="category A area_name A area_number A " )
+group(level=1 header.height=56 trailer.height=0 by=("category" ) header.color="134217728" trailer.color="134217728" )
+text(band=header alignment="0" text=" Equipment Name" border="6" color="16777215" x="9" y="16" height="56" width="1248" html.valueishtml="0"  name=area_name_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text=" Email" border="6" color="16777215" x="4064" y="16" height="56" width="914" html.valueishtml="0"  name=prim_email_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="2" text="Vendor" border="6" color="16777215" x="2976" y="16" height="56" width="617" html.valueishtml="0"  name=vzt_contact_firstname_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text=" No." border="6" color="16777215" x="1266" y="16" height="56" width="270" html.valueishtml="0"  name=area_number_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="2" text="Model" border="6" color="16777215" x="1545" y="16" height="56" width="709" html.valueishtml="0"  name=model_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="2" text="Manufacturer" border="6" color="16777215" x="2263" y="16" height="56" width="704" html.valueishtml="0"  name=manufacturer_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text=" Phone" border="6" color="16777215" x="3602" y="16" height="56" width="453" html.valueishtml="0"  name=prim_phone_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text=" Email" border="6" color="16777215" x="4064" y="16" height="56" width="914" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text="Send" border="6" color="16777215" x="4987" y="16" height="56" width="229" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="21130554" )
+column(band=header.1 id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="283" y="0" height="68" width="974" format="[general]" html.valueishtml="0"  name=category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header.1 alignment="0" expression="' '"border="0" color="33554432" x="283" y="16" height="76" width="974" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="4064" y="0" height="64" width="914" format="[general]" html.valueishtml="0"  name=email visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="411" y="0" height="68" width="846" format="[general]" html.valueishtml="0"  name=area_name visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1266" y="0" height="68" width="270" format="[general]" html.valueishtml="0"  name=area_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="1545" y="0" height="68" width="709" format="[general]" html.valueishtml="0"  name=model visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="2263" y="0" height="68" width="704" format="[general]" html.valueishtml="0"  name=manufacturer visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2976" y="0" height="68" width="617" format="[general]" html.valueishtml="0"  name=vzt_contact_firstname visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="3602" y="0" height="64" width="453" format="[general]" html.valueishtml="0"  name=prim_phone visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+button(band=detail text="" filename="mail.bmp" enabled=yes action="0" border="0" color="0" x="4987" y="0" height="84" width="110" vtextalign="0" htextalign="0"  name=b_email visible="1~tif ( email = '' or email = '*** UNSPECIFIED ***' , 0,1)"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="4987" y="60" height="32" width="229" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Tahoma" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+tree(type=1 showconnectlines=yes showleafnodeconnectLines=yes  indent=128 showtreenodeicon=yes defaultexpandtolevel=2 stateiconalignmode=0 selectnodebymouse=yes rtollayout=no 
+level=(expandedtreenodeiconname="gear.jpg" collapsedtreenodeIconname="toolbox16.bmp" expandedtreenodeicontranscolor="553648127" collapsedtreenodeicontranscolor="553648127" )
+level=(expandedtreenodeiconname="pmgear.bmp" expandedtreenodeicontranscolor="553648127" collapsedtreenodeicontranscolor="553648127" )
+) 

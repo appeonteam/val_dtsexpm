@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_vzt_open_sheet.srf
+global type f_vzt_open_sheet from function_object
+end type
+
+forward prototypes
+global function integer f_vzt_open_sheet (ref window aw_target)
+end prototypes
+
+global function integer f_vzt_open_sheet (ref window aw_target); SetPointer( HourGlass! )
+If IsValid(aw_target) THEN
+	open(aw_target)
+	if aw_target.WindowState = Minimized! then
+		aw_target.WindowState = Normal!
+	end if
+ELSE
+	   OpenSheetWithParm( aw_target, "0", gnv_appman.iw_frame, 0, Original! )
+END IF
+ 
+return 1
+end function
+

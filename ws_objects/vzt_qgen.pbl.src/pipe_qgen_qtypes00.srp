@@ -1,0 +1,13 @@
+﻿$PBExportHeader$pipe_qgen_qtypes00.srp
+PIPELINE(source_connect=gcc,destination_connect=gcc_demo,type=update,commit=1,errors=100,keyname="qgen_qtypes")
+SOURCE(name="qgen_qtypes",COLUMN(type=varchar,name="qtypeid",dbtype="char(3)",key=yes,nulls_allowed=no)
+ COLUMN(type=varchar,name="descr",dbtype="varchar(200)",nulls_allowed=no)
+ COLUMN(type=long,name="maxchoices",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=varchar,name="active",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="defgraphtype",dbtype="char(2)",nulls_allowed=yes))
+RETRIEVE(statement="PBSELECT(TABLE(NAME=~"qgen_qtypes~") COLUMN(NAME=~"qgen_qtypes.qtypeid~")COLUMN(NAME=~"qgen_qtypes.descr~")COLUMN(NAME=~"qgen_qtypes.maxchoices~")COLUMN(NAME=~"qgen_qtypes.active~")COLUMN(NAME=~"qgen_qtypes.defgraphtype~"))")
+DESTINATION(name="qgen_qtypes",COLUMN(type=varchar,name="qtypeid",dbtype="char(3)",key=yes,nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="descr",dbtype="varchar(200)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=long,name="maxchoices",dbtype="integer",nulls_allowed=no,initial_value="0")
+ COLUMN(type=varchar,name="active",dbtype="char(1)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="defgraphtype",dbtype="char(2)",nulls_allowed=yes))

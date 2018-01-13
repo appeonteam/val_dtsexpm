@@ -1,0 +1,16 @@
+﻿$PBExportHeader$ddw_emp_pgr.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no grid.lines=0 )
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=73 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=instemp_dept dbname="instemp.dept" )
+ column=(type=char(35) updatewhereclause=yes name=employee dbname="instemp.employee" )
+ column=(type=char(10) updatewhereclause=yes name=instemp_employee_number dbname="instemp.employee_number" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"instemp~" ALIAS=~"instemp_a~" )  TABLE(NAME=~"pager_emp~" )  TABLE(NAME=~"instemp~" ALIAS=~"instemp_b~" ) COLUMN(NAME=~"instemp_a.dept~") COLUMN(NAME=~"instemp_a.employee~") COLUMN(NAME=~"instemp_b.employee_number~")    JOIN (LEFT=~"pager_emp.emp_id~"    OP =~"=~"RIGHT=~"instemp_a.employee_number~" )    JOIN (LEFT=~"pager_emp.emp_id~"    OP =~"=~"RIGHT=~"instemp_b.employee_number~" )) " )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="165" y="8" height="61" width="517" format="[general]"  name=employee edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="700" y="8" height="57" width="302"  name=instemp_employee_number  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Instemp Employee Number"border="0" color="0" x="695" y="4" height="77" width="307"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="10" y="8" height="57" width="147"  name=instemp_dept  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Instemp Dept"border="0" color="0" x="5" y="4" height="57" width="151"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

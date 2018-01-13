@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_get_batch_rowaccess.srf
+global type f_get_batch_rowaccess from function_object
+end type
+
+forward prototypes
+global function string f_get_batch_rowaccess (string as_submitter)
+end prototypes
+
+global function string f_get_batch_rowaccess (string as_submitter);string ls_access , ls_row_group 
+
+	ls_access = ""
+	if NOT isvalid( gnv_appman.inv_security) then return 'WA' 
+	
+	ls_row_group = gnv_appman.inv_security.uf_get_groupid( as_submitter )
+	If TRIM(gnv_appman.is_userid) = as_submitter then 
+		ls_access = "W"
+	ELSE
+//		If POS(_accessflags, "A") > 0 then // check access to other users...
+			ls_access = ls_access + gnv_appman.inv_security.uf_user_has_rights ( "REPORTQ" , "USERS_*", false ) // all users
+			ls_access = ls_access + gnv_appman.inv_security.uf_user_has_rights ( "REPORTQ" , "USERS_"+trim( ls_row_group ), false ) // check specific group
+			If gnv_appman.inv_security.uf_same_group_as( as_submitter ) then 	// check same group as the current user
+					ls_access = ls_access + gnv_appman.inv_security.uf_user_has_rights ( "REPORTQ" , "USERS_WITHIN_GROUP", false ) 
+			End If 
+			ls_access = ls_access  + gnv_appman.inv_security.uf_user_has_rights ( "REPORTQ" , "USERS_"+trim(as_submitter ), false ) // check current user's access to the specific user's reports 
+//		End IF					
+	End IF		
+
+return ls_access 
+
+end function
+

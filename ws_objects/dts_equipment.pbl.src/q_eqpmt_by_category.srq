@@ -1,0 +1,2 @@
+﻿$PBExportHeader$q_eqpmt_by_category.srq
+PBSELECT( VERSION(400) TABLE(NAME="area" )  TABLE(NAME="equipment_master" ) COLUMN(NAME="equipment_master.category") COLUMN(NAME="area.area_name") COLUMN(NAME="area.area_number")    JOIN (LEFT="area.area_number"    OP ="="RIGHT="equipment_master.area_number" )) 

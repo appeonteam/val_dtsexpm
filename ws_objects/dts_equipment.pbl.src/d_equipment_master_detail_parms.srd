@@ -1,0 +1,84 @@
+﻿$PBExportHeader$d_equipment_master_detail_parms.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=0 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1080 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=category dbname="equipment_master.category" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=manufacturer dbname="equipment_master.manufacturer" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=area_name dbname="equipment_master.area_name" )
+ column=(type=char(8) update=yes updatewhereclause=yes key=yes name=area_number dbname="equipment_master.area_number" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=serialno dbname="equipment_master.serialno" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=model dbname="equipment_master.model" )
+ column=(type=char(100) updatewhereclause=yes name=vzt_contact_firstname dbname="vzt_contact.firstname" )
+ column=(type=long update=yes updatewhereclause=yes name=vendor dbname="equipment_master.vendor" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=purchasecost dbname="equipment_master.purchasecost" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=zone_code dbname="equipment_master.zone_code" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=zone_group_code dbname="equipment_master.zone_group_code" )
+ column=(type=datetime update=yes updatewhereclause=yes name=purchasedate dbname="equipment_master.purchasedate" )
+ column=(type=datetime update=yes updatewhereclause=yes name=extended_warranty dbname="equipment_master.extended_warranty" )
+ column=(type=datetime update=yes updatewhereclause=yes name=warranty_expires dbname="equipment_master.warranty_expires" )
+ column=(type=char(500) update=yes updatewhereclause=yes name=descr dbname="equipment_master.descr" )
+ column=(type=char(50) updatewhereclause=yes name=prim_phone dbname="prim_phone" )
+ column=(type=char(150) updatewhereclause=yes name=prim_email dbname="prim_email" )
+ retrieve="SELECT 
+		~"equipment_master~".~"category~",   
+         ~"equipment_master~".~"manufacturer~",   
+         ~"equipment_master~".~"area_name~",   
+         ~"equipment_master~".~"area_number~",   
+         ~"equipment_master~".~"serialno~",   
+         ~"equipment_master~".~"model~",  
+         ~"vzt_contact~".~"firstname~",   
+         ~"equipment_master~".~"vendor~",   
+         ~"equipment_master~".~"purchasecost~",   
+         ~"equipment_master~".~"zone_code~",   
+         ~"equipment_master~".~"zone_group_code~",   
+         ~"equipment_master~".~"purchasedate~",   
+         ~"equipment_master~".~"extended_warranty~",   
+         ~"equipment_master~".~"warranty_expires~",   
+         ~"equipment_master~".~"descr~"  ,
+         vzt_hew_contact_prim_phone ( ~"vzt_contact~".~"id~" ) prim_phone,   
+         vzt_hew_contact_prim_email ( ~"vzt_contact~".~"id~" ) prim_email  
+    FROM {oj ~"vzt_contact~" RIGHT OUTER JOIN ~"equipment_master~" ON ~"vzt_contact~".~"id~" = ~"equipment_master~".~"vendor~"}   
+
+WHERE ~"equipment_master~".~"area_number~" = :as_area_number" update="equipment_master" updatewhere=0 updatekeyinplace=yes arguments=(("as_area_number", string)) )
+text(band=detail alignment="1" text="No:" border="0" color="8388608" x="366" y="268" height="68" width="169" html.valueishtml="0"  name=area_number_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Equipment:" border="0" color="8388608" x="37" y="164" height="68" width="507" html.valueishtml="0"  name=area_name_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Location:" border="0" color="8388608" x="37" y="380" height="68" width="507" html.valueishtml="0"  name=zone_code_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Model:" border="0" color="8388608" x="37" y="484" height="68" width="507" html.valueishtml="0"  name=model_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Serial No:" border="0" color="8388608" x="37" y="592" height="64" width="507" html.valueishtml="0"  name=serialno_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Category:" border="0" color="8388608" x="37" y="56" height="68" width="507" html.valueishtml="0"  name=category_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Comment:" border="0" color="8388608" x="37" y="712" height="64" width="507" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Group" border="0" color="8388608" x="1093" y="380" height="68" width="201" html.valueishtml="0"  name=zone_group_code_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Purchase cost:" border="0" color="8388608" x="2034" y="268" height="68" width="654" html.valueishtml="0"  name=purchasecost_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Purchase date:" border="0" color="8388608" x="2034" y="380" height="68" width="654" html.valueishtml="0"  name=purchasedate_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Warranty Expires:" border="0" color="8388608" x="2034" y="484" height="68" width="654" html.valueishtml="0"  name=warranty_expires_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Extended Warranty:" border="0" color="8388608" x="2034" y="592" height="68" width="654" html.valueishtml="0"  name=extended_warranty_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Vendor:" border="0" color="8388608" x="2034" y="156" height="68" width="425" html.valueishtml="0"  name=vendor_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Manufacturer:" border="0" color="8388608" x="2030" y="56" height="68" width="425" html.valueishtml="0"  name=manufacturer_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="21130554" x="571" y="56" height="68" width="1422" format="[general]" html.valueishtml="0"  name=category visible="1" dddw.name=d_equipment_category_lookup dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="21130554" x="571" y="164" height="68" width="1417" format="[general]" html.valueishtml="0"  name=area_name visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="21130554" x="571" y="268" height="68" width="366" format="[general]" html.valueishtml="0"  name=area_number visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=10 alignment="0" tabsequence=40 border="5" color="21130554" x="571" y="380" height="68" width="503" format="[general]" html.valueishtml="0"  name=zone_code visible="1" dddw.name=dddw_zones_vz dddw.displaycolumn=zone_name dddw.datacolumn=zone_code dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=11 alignment="0" tabsequence=50 border="5" color="21130554" x="1317" y="380" height="68" width="686" format="[general]" html.valueishtml="0"  name=zone_group_code visible="1" dddw.name=dddw_zone_groups_vz dddw.displaycolumn=zone_group_name dddw.datacolumn=zone_group_code dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="21130554" x="571" y="484" height="68" width="1422" format="[general]" html.valueishtml="0"  name=model visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=5 alignment="0" tabsequence=70 border="5" color="21130554" x="571" y="592" height="68" width="1422" format="[general]" html.valueishtml="0"  name=serialno visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=15 alignment="0" tabsequence=140 border="5" color="21130554" x="567" y="708" height="220" width="2715" format="[general]" html.valueishtml="0"  name=descr visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=2 alignment="0" tabsequence=80 border="5" color="21130554" x="2491" y="56" height="68" width="800" format="[general]" html.valueishtml="0"  name=manufacturer visible="1" dddw.name=d_equipment_category_lookup_new dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.nilisnull=yes dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=8 alignment="0" tabsequence=90 border="5" color="21130554" x="2491" y="152" height="68" width="800" format="[general]" html.valueishtml="0"  name=vendor visible="1" dddw.name=d_dddw_vendor_lookup dddw.displaycolumn=firstname dddw.datacolumn=id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=9 alignment="1" tabsequence=100 border="5" color="21130554" x="2743" y="268" height="68" width="539" format="$#,##0;($#,##0)" html.valueishtml="0"  name=purchasecost visible="1" edit.name="###,###.00" editmask.mask="###,###.00" editmask.focusrectangle=no  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=12 alignment="0" tabsequence=110 border="5" color="21130554" x="2743" y="380" height="68" width="539" format="[shortdate]" html.valueishtml="0"  name=purchasedate visible="1" edit.name="DD/MM/YY HH:MM:SS" editmask.ddcalendar=yes editmask.mask="MM/DD/YYYY" editmask.focusrectangle=no  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=14 alignment="0" tabsequence=130 border="5" color="21130554" x="2743" y="484" height="68" width="539" format="[shortdate]" html.valueishtml="0"  name=warranty_expires visible="1" edit.name="DD/MM/YY HH:MM:SS" editmask.ddcalendar=yes editmask.mask="MM/DD/YYYY" editmask.focusrectangle=no  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=13 alignment="0" tabsequence=120 border="5" color="21130554" x="2743" y="592" height="68" width="539" format="[shortdate]" html.valueishtml="0"  name=extended_warranty visible="1" edit.name="DD/MM/YY HH:MM:SS" editmask.ddcalendar=yes editmask.mask="MM/DD/YYYY" editmask.focusrectangle=no  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="1" font.charset="0" background.mode="2" background.color="67108864" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

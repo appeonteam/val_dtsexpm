@@ -1,0 +1,24 @@
+﻿$PBExportHeader$f_vzt_html_retrieve_dw.srf
+global type f_vzt_html_retrieve_dw from function_object
+end type
+
+forward prototypes
+global function long f_vzt_html_retrieve_dw (string as_url, string as_args, ref datawindow adw_target)
+end prototypes
+
+global function long f_vzt_html_retrieve_dw (string as_url, string as_args, ref datawindow adw_target);string		ls_data 
+long 			ll_ret 
+ll_ret = 0
+
+if len(as_url) < 1 or len(as_args) < 1 then return -1 
+ls_data 	= f_vzt_html_get_data( as_url, as_args )  
+if len(ls_data) > 3 and ls_data <> 'error' and ls_data <> 'norows' and not IsNull(ls_data) then 
+	ll_ret 	= adw_target.ImportString( ls_data ) 
+ENd if
+if ll_ret < 0 then // write trace 
+ELSE
+end if 
+	
+return ll_ret
+end function
+

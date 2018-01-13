@@ -1,0 +1,11 @@
+﻿$PBExportHeader$f_vzt_clipboard.srf
+global type f_vzt_clipboard from function_object
+end type
+
+forward prototypes
+global function string f_vzt_clipboard (string as_string)
+end prototypes
+
+global function string f_vzt_clipboard (string as_string);return clipboard ( as_string )
+end function
+

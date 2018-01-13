@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_getseclabel.srf
+global type f_getseclabel from function_object
+end type
+
+forward prototypes
+global function string f_getseclabel (string as_seclevel, ref transaction a_tran)
+end prototypes
+
+global function string f_getseclabel (string as_seclevel, ref transaction a_tran);string ls_seclabel 
+
+SELECT reportlabel INTO :ls_seclabel FROM vzt_secclass 
+WHERE securitylevel = :as_seclevel USING a_tran;
+
+If IsNull( ls_seclabel ) then ls_seclabel = ''
+Return ls_seclabel 
+end function
+

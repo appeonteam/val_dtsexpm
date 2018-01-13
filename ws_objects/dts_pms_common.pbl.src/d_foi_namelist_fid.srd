@@ -1,0 +1,60 @@
+﻿$PBExportHeader$d_foi_namelist_fid.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=30388123 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=64 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=guest_last_name dbname="room_registry.guest_lname" )
+ column=(type=char(50) updatewhereclause=yes name=guest_first_name dbname="room_registry.guest_fname" )
+ column=(type=char(50) updatewhereclause=yes name=share1_fname dbname="room_registry.share1_fname" )
+ column=(type=char(50) updatewhereclause=yes name=share2_lname dbname="room_registry.share2_lname" )
+ column=(type=char(50) updatewhereclause=yes name=share2_fname dbname="room_registry.share2_fname" )
+ column=(type=char(50) updatewhereclause=yes name=share3_lname dbname="room_registry.share3_lname" )
+ column=(type=char(50) updatewhereclause=yes name=guest_number dbname="room_registry.share3_fname" )
+ column=(type=char(100) updatewhereclause=yes name=msg dbname="room_registry.msg" )
+ column=(type=char(102) updatewhereclause=yes name=guest_name dbname="guest_name" )
+ column=(type=long updatewhereclause=yes name=shares dbname="shares" )
+ column=(type=number updatewhereclause=yes name=guest_account dbname="room_registry.guest_account" )
+ column=(type=char(5) updatewhereclause=yes name=guest_record dbname="guest_record" )
+ retrieve="  SELECT ~"guest_lname~",   
+         ~"guest_fname~",   
+         ~"share1_fname~",   
+         ~"share2_lname~",   
+         ~"share2_fname~",   
+         ~"share3_lname~",   
+         ~"share3_fname~",   
+         ~"msg~",  
+			trim(~"guest_lname~")+', '+ trim(~"guest_fname~") as guest_name 
+			,0 as shares ,
+			guest_account,
+			'=====' as guest_record 
+    FROM ~"room_registry~"   
+	where room_code = :as_room 
+	UNION 
+  SELECT ~"guest_lname~",   
+         ~"guest_fname~",   
+         ~"share1_fname~",   
+         ~"share2_lname~",   
+         ~"share2_fname~",   
+         ~"share3_lname~",   
+         ~"share3_fname~",   
+         ~"msg~" , 
+			trim(~"guest_lname~")+', '+~"guest_fname~" as guest_name
+			,1,
+			guest_account,
+			'' as guest_record
+    FROM ~"room_registry_shares~"   
+	where room_code = :as_room 
+" arguments=(("as_room", string))  sort="shares A guest_name A " )
+text(band=header alignment="2" text="Number" border="0" color="16777215" x="553" y="0" height="60" width="256" html.valueishtml="0"  name=share3_fname_t visible="1"  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Guest Name" border="0" color="16777215" x="9" y="0" height="60" width="535" html.valueishtml="0"  name=guest_name_t visible="1"  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Account" border="0" color="16777215" x="818" y="0" height="60" width="302" html.valueishtml="0"  name=guest_account_t visible="1"  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="33554432" x="553" y="0" height="56" width="256" format="[general]" html.valueishtml="0"  name=guest_number visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="56" width="535" format="[general]" html.valueishtml="0"  name=guest_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="33554432" x="818" y="0" height="56" width="302" format="[general]" html.valueishtml="0"  name=guest_account visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

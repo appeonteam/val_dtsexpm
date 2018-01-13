@@ -1,0 +1,11 @@
+﻿$PBExportHeader$f_dt_to_t_str.srf
+global type f_dt_to_t_str from function_object
+end type
+
+forward prototypes
+global function string f_dt_to_t_str (datetime dtStr)
+end prototypes
+
+global function string f_dt_to_t_str (datetime dtStr);return string(dtStr,cTimeFormatStr)
+end function
+

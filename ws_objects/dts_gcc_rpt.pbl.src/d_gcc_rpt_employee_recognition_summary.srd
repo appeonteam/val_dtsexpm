@@ -1,0 +1,95 @@
+﻿$PBExportHeader$d_gcc_rpt_employee_recognition_summary.srd
+$PBExportComments$By dept
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=304 color="536870912" )
+summary(height=68 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=0 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=ddvalue dbname="qgen_qset_answers.ddvalue" )
+ column=(type=decimal(0) updatewhereclause=yes identity=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=decimal(0) updatewhereclause=yes name=answerid dbname="qgen_qset_answers.answerid" )
+ column=(type=decimal(0) updatewhereclause=yes name=qgen_qset_answers_responderid dbname="qgen_qset_answers.responderid" )
+ column=(type=char(300) updatewhereclause=yes name=freeform dbname="qgen_qset_answers.freeform" )
+ column=(type=number updatewhereclause=yes identity=yes name=gcc_gccid dbname="gcc.gccid" )
+ column=(type=char(40) updatewhereclause=yes name=instdept_dept_longdesc dbname="instdept.dept_longdesc" )
+ column=(type=char(35) updatewhereclause=yes name=instemp_employee dbname="instemp.employee" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=datetime updatewhereclause=yes name=ansdate dbname="qgen_qset_answers.ansdate" )
+ column=(type=char(5) updatewhereclause=yes name=posneg dbname="qgen_qset_answers.posneg" )
+ retrieve="  SELECT A1.ddvalue,   
+         qgen_questions.questionid,   
+         A1.answerid,   
+         A1.responderid,   
+         A1.freeform,   
+         gcc.gccid,   
+         instdept.dept_longdesc,   
+         instemp.employee,   
+         guest.last_name,   
+         guest.first_name  ,
+			A1.ansdate
+			,a1.posneg
+
+    FROM qgen_qset_answers A1,   
+         qgen_questions,   
+         gcc,   
+         guest,   
+         instdept,   
+         instemp  
+   WHERE ( A1.questionid = qgen_questions.questionid ) and  
+         ( gcc.guest_account = guest.account ) and  
+         ( instdept.dept = instemp.dept ) and  
+         ( instemp.employee = A1.ddvalue ) and  
+         ( A1.headerid = gcc.gccid ) 
+         /*  A1.questionid = 7 */
+		/*3 AND ( string(0)=';question' 	OR A1.questionid 	IN (;question) ) 	3*/		 		
+
+			/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					A1.ansdate BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			1*/
+			/*1
+			 AND
+				( 	{ts ':ARRDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':DEPDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.checkin_dt BETWEEN 
+					{ts ':ARRDATE 00:00:00.000000'} AND {ts ':DEPDATE 23:59:59.777000'} 
+				) 
+			1*/
+
+			/*2
+			 AND ( '*ALL*' IN (':DEPT') OR '' IN  (':DEPT') OR instdept.dept IN (':DEPT') )
+			2*/	
+	/*2
+		 	 AND ( '*ALL*' IN (';POSNEG') OR '' IN  (';POSNEG') OR A1.POSNEG IN (';POSNEG') )
+		2*/	
+
+			/*3
+			 AND ( '*ALL*' IN (':empl') OR '' IN  (':empl') OR instemp.employee IN (':empl') )
+			3*/	"  sort="instdept_dept_longdesc A instemp_employee A " )
+group(level=1 header.height=0 trailer.height=64 by=("instdept_dept_longdesc" , "instemp_employee" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Employee Recognition Summary By Department" border="0" color="0" x="997" y="4" height="64" width="1431" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="From:" border="0" color="0" x="1175" y="92" height="56" width="155" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="min ( ansdate )"border="0" color="0" x="1349" y="92" height="56" width="325" format="[shortdate]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="To:" border="0" color="0" x="1723" y="92" height="56" width="91" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="max ( ansdate )"border="0" color="0" x="1842" y="92" height="56" width="325" format="[shortdate]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Employee" border="0" color="65535" x="855" y="236" height="64" width="654" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Department" border="0" color="65535" x="297" y="236" height="64" width="553" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Frequency" border="0" color="65535" x="1509" y="236" height="64" width="521" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+column(band=trailer.1 id=7 alignment="0" tabsequence=32766 border="0" color="128" x="297" y="4" height="56" width="544" format="[general]" html.valueishtml="0"  name=instdept_dept_longdesc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=trailer.1 id=8 alignment="0" tabsequence=32766 border="0" color="128" x="855" y="4" height="56" width="631" format="[general]" html.valueishtml="0"  name=instemp_employee visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="1" expression="count(1 for group 1)"border="0" color="8388608" x="1545" y="4" height="56" width="183" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="0" expression="count(  instdept_dept_longdesc  for all )"border="0" color="8388608" x="690" y="12" height="52" width="183" format="[general]" html.valueishtml="0"  name=compute_4 visible="1~t0"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=summary alignment="0" text="Total:" border="0" color="0" x="293" y="12" height="56" width="165" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=summary x="261" y="0" height="4" width="1669"  name=r_2 visible="1" brush.hatch="6" brush.color="8388608" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="8388608" )
+compute(band=summary alignment="1" expression="count(1 for all)"border="0" color="8388608" x="1545" y="12" height="52" width="183" format="[general]" html.valueishtml="0"  name=compute_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

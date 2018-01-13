@@ -1,0 +1,11 @@
+﻿$PBExportHeader$d_pager.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79349703 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes key=yes name=pager_id dbname="pagers.pager_id" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"pagers~" ) COLUMN(NAME=~"pagers.pager_id~")) " update="pagers" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="0" text="Pager Id"border="0" color="0" x="9" y="4" height="76" width="471"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="2" color="0" x="9" y="4" height="60" width="471" format="[general]"  name=pager_id dddw.name=ddw_pager dddw.displaycolumn=pagers_pager_id dddw.datacolumn=pagers_pager_id dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

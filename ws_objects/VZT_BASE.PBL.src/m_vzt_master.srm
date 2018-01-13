@@ -1,0 +1,1468 @@
+﻿$PBExportHeader$m_vzt_master.srm
+forward
+global type m_vzt_master from menu
+end type
+type m_file from menu within m_vzt_master
+end type
+type m_new from menu within m_file
+end type
+type m_open from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_dash11 from menu within m_file
+end type
+type m_save from menu within m_file
+end type
+type m_saveas from menu within m_file
+end type
+type m_dash12 from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_printall from menu within m_file
+end type
+type m_printpreview from menu within m_file
+end type
+type m_pagesetup from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_dash13 from menu within m_file
+end type
+type m_delete from menu within m_file
+end type
+type m_properties from menu within m_file
+end type
+type m_dash14 from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_vzt_master
+m_new m_new
+m_open m_open
+m_close m_close
+m_dash11 m_dash11
+m_save m_save
+m_saveas m_saveas
+m_dash12 m_dash12
+m_print m_print
+m_printall m_printall
+m_printpreview m_printpreview
+m_pagesetup m_pagesetup
+m_printscreen m_printscreen
+m_dash13 m_dash13
+m_delete m_delete
+m_properties m_properties
+m_dash14 m_dash14
+m_exit m_exit
+end type
+type m_edit from menu within m_vzt_master
+end type
+type m_undo from menu within m_edit
+end type
+type m_dash21 from menu within m_edit
+end type
+type m_cut from menu within m_edit
+end type
+type m_copy from menu within m_edit
+end type
+type m_paste from menu within m_edit
+end type
+type m_clear from menu within m_edit
+end type
+type m_dash22 from menu within m_edit
+end type
+type m_selectall from menu within m_edit
+end type
+type m_dash23 from menu within m_edit
+end type
+type m_find from menu within m_edit
+end type
+type m_replace from menu within m_edit
+end type
+type m_- from menu within m_edit
+end type
+type m_edit from menu within m_vzt_master
+m_undo m_undo
+m_dash21 m_dash21
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+m_clear m_clear
+m_dash22 m_dash22
+m_selectall m_selectall
+m_dash23 m_dash23
+m_find m_find
+m_replace m_replace
+m_- m_-
+end type
+type m_view from menu within m_vzt_master
+end type
+type m_ruler from menu within m_view
+end type
+type m_dash31 from menu within m_view
+end type
+type m_largeicon from menu within m_view
+end type
+type m_smallicons from menu within m_view
+end type
+type m_list from menu within m_view
+end type
+type m_details from menu within m_view
+end type
+type m_dash32 from menu within m_view
+end type
+type m_arrangeicons from menu within m_view
+end type
+type m_by1 from menu within m_arrangeicons
+end type
+type m_dash33 from menu within m_arrangeicons
+end type
+type m_autoarrange from menu within m_arrangeicons
+end type
+type m_arrangeicons from menu within m_view
+m_by1 m_by1
+m_dash33 m_dash33
+m_autoarrange m_autoarrange
+end type
+type m_dash34 from menu within m_view
+end type
+type m_first from menu within m_view
+end type
+type m_nextpage from menu within m_view
+end type
+type m_priorpage from menu within m_view
+end type
+type m_lastpage from menu within m_view
+end type
+type m_dash35 from menu within m_view
+end type
+type m_sort from menu within m_view
+end type
+type m_filter from menu within m_view
+end type
+type m_dash36 from menu within m_view
+end type
+type m_zoom from menu within m_view
+end type
+type m_view from menu within m_vzt_master
+m_ruler m_ruler
+m_dash31 m_dash31
+m_largeicon m_largeicon
+m_smallicons m_smallicons
+m_list m_list
+m_details m_details
+m_dash32 m_dash32
+m_arrangeicons m_arrangeicons
+m_dash34 m_dash34
+m_first m_first
+m_nextpage m_nextpage
+m_priorpage m_priorpage
+m_lastpage m_lastpage
+m_dash35 m_dash35
+m_sort m_sort
+m_filter m_filter
+m_dash36 m_dash36
+m_zoom m_zoom
+end type
+type m_insert from menu within m_vzt_master
+end type
+type m_insertfile from menu within m_insert
+end type
+type m_picture from menu within m_insert
+end type
+type m_dash41 from menu within m_insert
+end type
+type m_object from menu within m_insert
+end type
+type m_insert from menu within m_vzt_master
+m_insertfile m_insertfile
+m_picture m_picture
+m_dash41 m_dash41
+m_object m_object
+end type
+type m_tools from menu within m_vzt_master
+end type
+type m_toolbars from menu within m_tools
+end type
+type m_tools from menu within m_vzt_master
+m_toolbars m_toolbars
+end type
+type m_window from menu within m_vzt_master
+end type
+type m_cascade from menu within m_window
+end type
+type m_tilehorizontal from menu within m_window
+end type
+type m_tilevertical from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_dash51 from menu within m_window
+end type
+type m_minimizeall from menu within m_window
+end type
+type m_undoarrange from menu within m_window
+end type
+type m_window from menu within m_vzt_master
+m_cascade m_cascade
+m_tilehorizontal m_tilehorizontal
+m_tilevertical m_tilevertical
+m_layer m_layer
+m_dash51 m_dash51
+m_minimizeall m_minimizeall
+m_undoarrange m_undoarrange
+end type
+type m_help from menu within m_vzt_master
+end type
+type m_helptopics from menu within m_help
+end type
+type m_dash61 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_vzt_master
+m_helptopics m_helptopics
+m_dash61 m_dash61
+m_about m_about
+end type
+end forward
+
+global type m_vzt_master from menu
+m_file m_file
+m_edit m_edit
+m_view m_view
+m_insert m_insert
+m_tools m_tools
+m_window m_window
+m_help m_help
+end type
+global m_vzt_master m_vzt_master
+
+forward prototypes
+public function integer of_sendmessage (string as_message)
+public subroutine of_localize ()
+end prototypes
+
+public function integer of_sendmessage (string as_message);//////////////////////////////////////////////////////////////////////////////
+	if IsValid (parentwindow) then
+		 parentwindow.dynamic event pfc_messagerouter (as_message)
+	end if
+
+return 1
+
+end function
+
+public subroutine of_localize ();//  this.m_file.m_new.text = 'Neue' 
+end subroutine
+
+on m_vzt_master.create
+m_vzt_master=this
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_view=create m_view
+this.m_insert=create m_insert
+this.m_tools=create m_tools
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[]={this.m_file, &
+this.m_edit, &
+this.m_view, &
+this.m_insert, &
+this.m_tools, &
+this.m_window, &
+this.m_help}
+end on
+
+on m_vzt_master.destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_view)
+destroy(this.m_insert)
+destroy(this.m_tools)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_vzt_master
+m_new m_new
+m_open m_open
+m_close m_close
+m_dash11 m_dash11
+m_save m_save
+m_saveas m_saveas
+m_dash12 m_dash12
+m_print m_print
+m_printall m_printall
+m_printpreview m_printpreview
+m_pagesetup m_pagesetup
+m_printscreen m_printscreen
+m_dash13 m_dash13
+m_delete m_delete
+m_properties m_properties
+m_dash14 m_dash14
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.MergeOption=FileMenu!
+this.m_new=create m_new
+this.m_open=create m_open
+this.m_close=create m_close
+this.m_dash11=create m_dash11
+this.m_save=create m_save
+this.m_saveas=create m_saveas
+this.m_dash12=create m_dash12
+this.m_print=create m_print
+this.m_printall=create m_printall
+this.m_printpreview=create m_printpreview
+this.m_pagesetup=create m_pagesetup
+this.m_printscreen=create m_printscreen
+this.m_dash13=create m_dash13
+this.m_delete=create m_delete
+this.m_properties=create m_properties
+this.m_dash14=create m_dash14
+this.m_exit=create m_exit
+this.Item[]={this.m_new, &
+this.m_open, &
+this.m_close, &
+this.m_dash11, &
+this.m_save, &
+this.m_saveas, &
+this.m_dash12, &
+this.m_print, &
+this.m_printall, &
+this.m_printpreview, &
+this.m_pagesetup, &
+this.m_printscreen, &
+this.m_dash13, &
+this.m_delete, &
+this.m_properties, &
+this.m_dash14, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_new)
+destroy(this.m_open)
+destroy(this.m_close)
+destroy(this.m_dash11)
+destroy(this.m_save)
+destroy(this.m_saveas)
+destroy(this.m_dash12)
+destroy(this.m_print)
+destroy(this.m_printall)
+destroy(this.m_printpreview)
+destroy(this.m_pagesetup)
+destroy(this.m_printscreen)
+destroy(this.m_dash13)
+destroy(this.m_delete)
+destroy(this.m_properties)
+destroy(this.m_dash14)
+destroy(this.m_exit)
+end on
+
+type m_new from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_new")
+end event
+
+on m_new.create
+this.Text="&New~tCtrl+N"
+this.Microhelp="New"
+this.ToolBarItemName="ScriptNo!"
+this.ToolBarItemText="New"
+this.ToolBarItemOrder=10
+this.Shortcut=334
+end on
+
+type m_open from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_open")
+end event
+
+on m_open.create
+this.Text="&Open...~tCtrl+O"
+this.Microhelp="Open"
+this.ToolBarItemName="Custom050!"
+this.ToolBarItemText="Open"
+this.ToolBarItemOrder=15
+this.Shortcut=335
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;of_SendMessage ("pfc_close")
+end on
+
+on m_close.create
+this.Text="&Close"
+this.Microhelp="Close"
+this.ToolBarItemName="Custom039!"
+this.ToolBarItemText="Close"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=20
+end on
+
+type m_dash11 from menu within m_file
+end type
+
+on m_dash11.create
+this.Text="-"
+end on
+
+type m_save from menu within m_file
+end type
+
+on clicked;of_SendMessage ("pfc_save")
+end on
+
+on m_save.create
+this.Text="&Save~tCtrl+S"
+this.Microhelp="Save"
+this.ToolBarItemName="Save!"
+this.ToolBarItemText="Save"
+this.ToolBarItemOrder=25
+this.Shortcut=339
+end on
+
+type m_saveas from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_saveas")
+end event
+
+on m_saveas.create
+this.Text="Save &As..."
+this.Microhelp="Save As"
+this.ToolBarItemName="SaveAs!"
+this.ToolBarItemText="Save As"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=30
+end on
+
+type m_dash12 from menu within m_file
+end type
+
+on m_dash12.create
+this.Text="-"
+end on
+
+type m_print from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_print")
+end event
+
+on m_print.create
+this.Text="&Print ~tCtrl+P"
+this.Microhelp="Prints the item"
+this.Shortcut=336
+end on
+
+type m_printall from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_print_all")
+end event
+
+on m_printall.create
+this.Text="Print All"
+end on
+
+type m_printpreview from menu within m_file
+end type
+
+on clicked;of_SendMessage ("pfc_printpreview")
+end on
+
+on m_printpreview.create
+this.Text="Print Pre&view"
+this.Microhelp="View pages as they will be printed"
+this.ToolBarItemName="EditDataFreeform!"
+this.ToolBarItemText="Print Preview"
+this.Visible=false
+this.ToolBarItemOrder=40
+end on
+
+type m_pagesetup from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_pagesetup")
+end event
+
+on m_pagesetup.create
+this.Text="Page Set&up..."
+this.Microhelp="Changes page layout settings"
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+event clicked;//of_SendMessage ("pfc_printimmediate")
+long Job
+
+Job = PrintOpen( )
+PrintScreen(Job, 100,100)
+PrintClose(Job)
+end event
+
+on m_printscreen.create
+this.Text="Print Screen"
+this.Microhelp="Prints the item"
+this.ToolBarItemName="RunReport5!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=35
+this.ToolBarItemSpace=2
+end on
+
+type m_dash13 from menu within m_file
+end type
+
+on m_dash13.create
+this.Text="-"
+this.Visible=false
+end on
+
+type m_delete from menu within m_file
+end type
+
+on m_delete.create
+this.Text="&Delete~tCtrl+D"
+this.Microhelp="Deletes the item"
+this.ToolBarItemName="Custom009!"
+this.ToolBarItemText="Delete"
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=60
+this.ToolBarItemSpace=2
+this.Shortcut=324
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_del")
+end event
+
+type m_properties from menu within m_file
+end type
+
+on m_properties.create
+this.Text="P&roperties"
+this.Microhelp="Displays or changes properties of the item"
+this.ToolBarItemName="Properties!"
+this.ToolBarItemText="Properties"
+this.Visible=false
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=65
+this.Enabled=false
+end on
+
+type m_dash14 from menu within m_file
+end type
+
+on m_dash14.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;If IsValid( parentwindow)  then close( parentwindow)
+end event
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Quits the application"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ShiftToRight=true
+this.MenuItemType=MenuItemTypeExit!
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=9999
+this.ToolBarItemSpace=2
+end on
+
+type m_edit from menu within m_vzt_master
+m_undo m_undo
+m_dash21 m_dash21
+m_cut m_cut
+m_copy m_copy
+m_paste m_paste
+m_clear m_clear
+m_dash22 m_dash22
+m_selectall m_selectall
+m_dash23 m_dash23
+m_find m_find
+m_replace m_replace
+m_- m_-
+end type
+
+on m_edit.create
+this.Text="&Edit"
+this.Visible=false
+this.Enabled=false
+this.m_undo=create m_undo
+this.m_dash21=create m_dash21
+this.m_cut=create m_cut
+this.m_copy=create m_copy
+this.m_paste=create m_paste
+this.m_clear=create m_clear
+this.m_dash22=create m_dash22
+this.m_selectall=create m_selectall
+this.m_dash23=create m_dash23
+this.m_find=create m_find
+this.m_replace=create m_replace
+this.m_-=create m_-
+this.Item[]={this.m_undo, &
+this.m_dash21, &
+this.m_cut, &
+this.m_copy, &
+this.m_paste, &
+this.m_clear, &
+this.m_dash22, &
+this.m_selectall, &
+this.m_dash23, &
+this.m_find, &
+this.m_replace, &
+this.m_-}
+end on
+
+on m_edit.destroy
+destroy(this.m_undo)
+destroy(this.m_dash21)
+destroy(this.m_cut)
+destroy(this.m_copy)
+destroy(this.m_paste)
+destroy(this.m_clear)
+destroy(this.m_dash22)
+destroy(this.m_selectall)
+destroy(this.m_dash23)
+destroy(this.m_find)
+destroy(this.m_replace)
+destroy(this.m_-)
+end on
+
+type m_undo from menu within m_edit
+end type
+
+on clicked;of_SendMessage ("pfc_undo")
+end on
+
+on m_undo.create
+this.Text="&Undo~tCtrl+Z"
+this.Microhelp="Reverses last action"
+this.ToolBarItemName="Undo!"
+this.ToolBarItemText="Undo"
+this.ToolBarItemOrder=95
+this.ToolBarItemSpace=2
+this.Shortcut=346
+end on
+
+type m_dash21 from menu within m_edit
+end type
+
+on m_dash21.create
+this.Text="-"
+end on
+
+type m_cut from menu within m_edit
+end type
+
+on clicked;of_SendMessage ("pfc_cut")
+end on
+
+on m_cut.create
+this.Text="Cu&t~tCtrl+X"
+this.Microhelp="Moves the selection to the Clipboard"
+this.ToolBarItemName="Cut!"
+this.ToolBarItemText="Cut"
+this.ToolBarItemOrder=70
+this.ToolBarItemSpace=2
+this.Shortcut=344
+end on
+
+type m_copy from menu within m_edit
+end type
+
+on clicked;of_SendMessage ("pfc_copy")
+end on
+
+on m_copy.create
+this.Text="&Copy~tCtrl+Shift+C"
+this.Microhelp="Copies the selection to the Clipboard"
+this.ToolBarItemName="Copy!"
+this.ToolBarItemText="Copy"
+this.ToolBarItemOrder=75
+this.Shortcut=1347
+end on
+
+type m_paste from menu within m_edit
+end type
+
+on clicked;of_SendMessage ("pfc_paste")
+end on
+
+on m_paste.create
+this.Text="&Paste~tCtrl+Shift+V"
+this.Microhelp="Inserts Clipboard contents at current insertion point"
+this.ToolBarItemName="Paste!"
+this.ToolBarItemText="Paste"
+this.ToolBarItemOrder=80
+this.Shortcut=1366
+end on
+
+type m_clear from menu within m_edit
+end type
+
+on clicked;of_SendMessage ("pfc_clear")
+end on
+
+on m_clear.create
+this.Text="Cle&ar"
+this.Microhelp="Removes the selection"
+this.ToolBarItemName="Clear!"
+this.ToolBarItemText="Clear"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=85
+end on
+
+type m_dash22 from menu within m_edit
+end type
+
+on m_dash22.create
+this.Text="-"
+end on
+
+type m_selectall from menu within m_edit
+end type
+
+on clicked;of_SendMessage ("pfc_selectall")
+end on
+
+on m_selectall.create
+this.Text="Select A&ll~tCtrl+A"
+this.Microhelp="Selects all items or information"
+this.ToolBarItemName="SelectAll!"
+this.ToolBarItemText="Select All"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=90
+this.Shortcut=321
+end on
+
+type m_dash23 from menu within m_edit
+end type
+
+on m_dash23.create
+this.Text="-"
+end on
+
+type m_find from menu within m_edit
+end type
+
+on m_find.create
+this.Text="&Find...~tCtrl+F"
+this.Microhelp="Finds the specified text"
+this.ToolBarItemName="Find!"
+this.ToolBarItemText="Find"
+this.ToolBarItemOrder=100
+this.ToolBarItemSpace=2
+this.Shortcut=326
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_finddlg")
+end event
+
+type m_replace from menu within m_edit
+end type
+
+on m_replace.create
+this.Text="&Replace...~tCtrl+H"
+this.Microhelp="Replaces specific text with different text"
+this.ToolBarItemName="Replace!"
+this.ToolBarItemText="Replace"
+this.ToolBarItemOrder=105
+this.Shortcut=328
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_replacedlg")
+end event
+
+type m_- from menu within m_edit
+end type
+
+on m_-.create
+this.Text="-"
+end on
+
+type m_view from menu within m_vzt_master
+m_ruler m_ruler
+m_dash31 m_dash31
+m_largeicon m_largeicon
+m_smallicons m_smallicons
+m_list m_list
+m_details m_details
+m_dash32 m_dash32
+m_arrangeicons m_arrangeicons
+m_dash34 m_dash34
+m_first m_first
+m_nextpage m_nextpage
+m_priorpage m_priorpage
+m_lastpage m_lastpage
+m_dash35 m_dash35
+m_sort m_sort
+m_filter m_filter
+m_dash36 m_dash36
+m_zoom m_zoom
+end type
+
+on m_view.create
+this.Text="&View"
+this.Visible=false
+this.Enabled=false
+this.m_ruler=create m_ruler
+this.m_dash31=create m_dash31
+this.m_largeicon=create m_largeicon
+this.m_smallicons=create m_smallicons
+this.m_list=create m_list
+this.m_details=create m_details
+this.m_dash32=create m_dash32
+this.m_arrangeicons=create m_arrangeicons
+this.m_dash34=create m_dash34
+this.m_first=create m_first
+this.m_nextpage=create m_nextpage
+this.m_priorpage=create m_priorpage
+this.m_lastpage=create m_lastpage
+this.m_dash35=create m_dash35
+this.m_sort=create m_sort
+this.m_filter=create m_filter
+this.m_dash36=create m_dash36
+this.m_zoom=create m_zoom
+this.Item[]={this.m_ruler, &
+this.m_dash31, &
+this.m_largeicon, &
+this.m_smallicons, &
+this.m_list, &
+this.m_details, &
+this.m_dash32, &
+this.m_arrangeicons, &
+this.m_dash34, &
+this.m_first, &
+this.m_nextpage, &
+this.m_priorpage, &
+this.m_lastpage, &
+this.m_dash35, &
+this.m_sort, &
+this.m_filter, &
+this.m_dash36, &
+this.m_zoom}
+end on
+
+on m_view.destroy
+destroy(this.m_ruler)
+destroy(this.m_dash31)
+destroy(this.m_largeicon)
+destroy(this.m_smallicons)
+destroy(this.m_list)
+destroy(this.m_details)
+destroy(this.m_dash32)
+destroy(this.m_arrangeicons)
+destroy(this.m_dash34)
+destroy(this.m_first)
+destroy(this.m_nextpage)
+destroy(this.m_priorpage)
+destroy(this.m_lastpage)
+destroy(this.m_dash35)
+destroy(this.m_sort)
+destroy(this.m_filter)
+destroy(this.m_dash36)
+destroy(this.m_zoom)
+end on
+
+type m_ruler from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_ruler")
+end event
+
+on m_ruler.create
+this.Text="&Ruler"
+this.Microhelp="Shows or hides the ruler"
+this.ShiftToRight=true
+end on
+
+type m_dash31 from menu within m_view
+end type
+
+on m_dash31.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_largeicon from menu within m_view
+end type
+
+on m_largeicon.create
+this.Text="Lar&ge Icons"
+this.Microhelp="Displays items by using large icons"
+this.ToolBarItemName="largeico.bmp"
+this.ToolBarItemText="Large Icons"
+this.Visible=false
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=145
+this.ToolBarItemSpace=2
+this.Enabled=false
+end on
+
+type m_smallicons from menu within m_view
+end type
+
+on m_smallicons.create
+this.Text="S&mall Icons"
+this.Microhelp="Displays items by using small icons"
+this.ToolBarItemName="smallico.bmp"
+this.ToolBarItemText="Small Icons"
+this.Visible=false
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=150
+this.Enabled=false
+end on
+
+type m_list from menu within m_view
+end type
+
+on m_list.create
+this.Text="&List"
+this.Microhelp="Displays items in a list"
+this.ToolBarItemName="listv.bmp"
+this.ToolBarItemText="List"
+this.Visible=false
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=155
+this.Enabled=false
+end on
+
+type m_details from menu within m_view
+end type
+
+on m_details.create
+this.Text="&Details"
+this.Microhelp="Displays information about each item"
+this.ToolBarItemName="detailsv.bmp"
+this.ToolBarItemText="Details"
+this.Visible=false
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=160
+this.Enabled=false
+end on
+
+type m_dash32 from menu within m_view
+end type
+
+on m_dash32.create
+this.Text="-"
+this.Visible=false
+this.ShiftToRight=true
+end on
+
+type m_arrangeicons from menu within m_view
+m_by1 m_by1
+m_dash33 m_dash33
+m_autoarrange m_autoarrange
+end type
+
+on m_arrangeicons.create
+this.Text="Arrange &Icons"
+this.Microhelp="Contains commands for arranging items"
+this.Visible=false
+this.ShiftToRight=true
+this.Enabled=false
+this.m_by1=create m_by1
+this.m_dash33=create m_dash33
+this.m_autoarrange=create m_autoarrange
+this.Item[]={this.m_by1, &
+this.m_dash33, &
+this.m_autoarrange}
+end on
+
+on m_arrangeicons.destroy
+destroy(this.m_by1)
+destroy(this.m_dash33)
+destroy(this.m_autoarrange)
+end on
+
+type m_by1 from menu within m_arrangeicons
+end type
+
+on m_by1.create
+this.Text="by"
+this.Microhelp="Arrange by"
+end on
+
+type m_dash33 from menu within m_arrangeicons
+end type
+
+on m_dash33.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_autoarrange from menu within m_arrangeicons
+end type
+
+on m_autoarrange.create
+this.Text="&Auto Arrange"
+this.Microhelp="Arranges the icons automatically"
+this.ShiftToRight=true
+end on
+
+type m_dash34 from menu within m_view
+end type
+
+on m_dash34.create
+this.Text="-"
+this.Visible=false
+this.ShiftToRight=true
+end on
+
+type m_first from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_firstpage")
+end event
+
+on m_first.create
+this.Text="&First"
+this.Microhelp="First"
+this.ToolBarItemName="VCRFirst!"
+this.ToolBarItemText="First"
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=165
+this.ToolBarItemSpace=2
+end on
+
+type m_nextpage from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_nextpage")
+end event
+
+on m_nextpage.create
+this.Text="&Next"
+this.Microhelp="Next"
+this.ToolBarItemName="VCRNext!"
+this.ToolBarItemText="Next"
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=170
+end on
+
+type m_priorpage from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_previouspage")
+end event
+
+on m_priorpage.create
+this.Text="&Prior"
+this.Microhelp="Prior"
+this.ToolBarItemName="VCRPrior!"
+this.ToolBarItemText="Prior"
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=175
+end on
+
+type m_lastpage from menu within m_view
+end type
+
+event clicked;of_SendMessage ("pfc_lastpage")
+end event
+
+on m_lastpage.create
+this.Text="L&ast"
+this.Microhelp="Last"
+this.ToolBarItemName="VCRLast!"
+this.ToolBarItemText="Last"
+this.ShiftToRight=true
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=180
+end on
+
+type m_dash35 from menu within m_view
+end type
+
+on m_dash35.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_sort from menu within m_view
+end type
+
+on m_sort.create
+this.Text="&Sort..."
+this.Microhelp="Sorts items"
+this.ToolBarItemText="Sort"
+this.ShiftToRight=true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_sortdlg")
+end event
+
+type m_filter from menu within m_view
+end type
+
+on m_filter.create
+this.Text="Fil&ter..."
+this.Microhelp="Filters items"
+this.ToolBarItemText="Filter"
+this.ShiftToRight=true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_filterdlg")
+end event
+
+type m_dash36 from menu within m_view
+end type
+
+on m_dash36.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_zoom from menu within m_view
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_zoom")
+end event
+
+on m_zoom.create
+this.Text="&Zoom..."
+this.Microhelp="Scales the display of the print preview"
+this.ShiftToRight=true
+end on
+
+type m_insert from menu within m_vzt_master
+m_insertfile m_insertfile
+m_picture m_picture
+m_dash41 m_dash41
+m_object m_object
+end type
+
+on m_insert.create
+this.Text="&Insert"
+this.Visible=false
+this.Enabled=false
+this.m_insertfile=create m_insertfile
+this.m_picture=create m_picture
+this.m_dash41=create m_dash41
+this.m_object=create m_object
+this.Item[]={this.m_insertfile, &
+this.m_picture, &
+this.m_dash41, &
+this.m_object}
+end on
+
+on m_insert.destroy
+destroy(this.m_insertfile)
+destroy(this.m_picture)
+destroy(this.m_dash41)
+destroy(this.m_object)
+end on
+
+type m_insertfile from menu within m_insert
+end type
+
+on m_insertfile.create
+this.Text="&File..."
+this.Microhelp="Inserts the text of another file"
+this.ShiftToRight=true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_insertfile")
+end event
+
+type m_picture from menu within m_insert
+end type
+
+on m_picture.create
+this.Text="&Picture..."
+this.Microhelp="Inserts a picture from a graphics file"
+this.ShiftToRight=true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_insertpicture")
+end event
+
+type m_dash41 from menu within m_insert
+end type
+
+on m_dash41.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_object from menu within m_insert
+end type
+
+on m_object.create
+this.Text="&Object..."
+this.Microhelp="Inserts an object"
+this.ShiftToRight=true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_insertobject")
+end event
+
+type m_tools from menu within m_vzt_master
+m_toolbars m_toolbars
+end type
+
+on m_tools.create
+this.Text="&Tools"
+this.Visible=false
+this.Enabled=false
+this.m_toolbars=create m_toolbars
+this.Item[]={this.m_toolbars}
+end on
+
+on m_tools.destroy
+destroy(this.m_toolbars)
+end on
+
+type m_toolbars from menu within m_tools
+end type
+
+on m_toolbars.create
+this.Text="&Customize Toolbars..."
+this.Microhelp="Arranges toolbar buttons"
+this.ShiftToRight=true
+end on
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_toolbars")
+end event
+
+type m_window from menu within m_vzt_master
+m_cascade m_cascade
+m_tilehorizontal m_tilehorizontal
+m_tilevertical m_tilevertical
+m_layer m_layer
+m_dash51 m_dash51
+m_minimizeall m_minimizeall
+m_undoarrange m_undoarrange
+end type
+
+on m_window.create
+this.Text="&Window"
+this.Visible=false
+this.ShiftToRight=true
+this.MergeOption=WindowMenu!
+this.Enabled=false
+this.m_cascade=create m_cascade
+this.m_tilehorizontal=create m_tilehorizontal
+this.m_tilevertical=create m_tilevertical
+this.m_layer=create m_layer
+this.m_dash51=create m_dash51
+this.m_minimizeall=create m_minimizeall
+this.m_undoarrange=create m_undoarrange
+this.Item[]={this.m_cascade, &
+this.m_tilehorizontal, &
+this.m_tilevertical, &
+this.m_layer, &
+this.m_dash51, &
+this.m_minimizeall, &
+this.m_undoarrange}
+end on
+
+on m_window.destroy
+destroy(this.m_cascade)
+destroy(this.m_tilehorizontal)
+destroy(this.m_tilevertical)
+destroy(this.m_layer)
+destroy(this.m_dash51)
+destroy(this.m_minimizeall)
+destroy(this.m_undoarrange)
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on m_cascade.create
+this.Text="&Cascade"
+this.Microhelp="Cascade windows so that each title bar is visible"
+this.ToolBarItemName="Cascade!"
+this.ToolBarItemText="Cascade"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=220
+this.ToolBarItemSpace=2
+end on
+
+event clicked;of_SendMessage ("pfc_cascade")
+end event
+
+type m_tilehorizontal from menu within m_window
+end type
+
+on m_tilehorizontal.create
+this.Text="Tile &Horizontal"
+this.Microhelp="Tile windows horizontally so that none are overlapping"
+this.ToolBarItemName="Horizontal!"
+this.ToolBarItemText="Tile Horizontal"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=225
+end on
+
+event clicked;of_SendMessage ("pfc_tilehorizontal")
+end event
+
+type m_tilevertical from menu within m_window
+end type
+
+on m_tilevertical.create
+this.Text="Tile &Vertical"
+this.Microhelp="Tile windows vertically so that none are overlapping"
+this.ToolBarItemName="Tile!"
+this.ToolBarItemText="Tile Vertical"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=230
+end on
+
+event clicked;of_SendMessage ("pfc_tilevertical")
+end event
+
+type m_layer from menu within m_window
+end type
+
+on m_layer.create
+this.Text="&Layer"
+this.Microhelp="Layer windows so that each one completely covers the one below it"
+this.ToolBarItemName="Layer!"
+this.ToolBarItemText="Layer"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=235
+end on
+
+event clicked;of_SendMessage ("pfc_layer")
+end event
+
+type m_dash51 from menu within m_window
+end type
+
+on m_dash51.create
+this.Text="-"
+end on
+
+type m_minimizeall from menu within m_window
+end type
+
+on m_minimizeall.create
+this.Text="&Minimize All Windows"
+this.Microhelp="Minimizes all windows"
+end on
+
+event clicked;of_SendMessage ("pfc_minimizeall")
+end event
+
+type m_undoarrange from menu within m_window
+end type
+
+on m_undoarrange.create
+this.Text="&Undo"
+this.Microhelp="Undo"
+end on
+
+event clicked;of_SendMessage ("pfc_undoarrange")
+end event
+
+type m_help from menu within m_vzt_master
+m_helptopics m_helptopics
+m_dash61 m_dash61
+m_about m_about
+end type
+
+on m_help.create
+this.Text="&Help"
+this.Visible=false
+this.ShiftToRight=true
+this.Enabled=false
+this.m_helptopics=create m_helptopics
+this.m_dash61=create m_dash61
+this.m_about=create m_about
+this.Item[]={this.m_helptopics, &
+this.m_dash61, &
+this.m_about}
+end on
+
+on m_help.destroy
+destroy(this.m_helptopics)
+destroy(this.m_dash61)
+destroy(this.m_about)
+end on
+
+type m_helptopics from menu within m_help
+end type
+
+on clicked;of_SendMessage ("pfc_help")
+end on
+
+on m_helptopics.create
+this.Text="&Help Topics"
+this.Microhelp="Displays help topics"
+this.ToolBarItemName="helptop.bmp"
+this.ToolBarItemText="Help Topics"
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=255
+this.ToolBarItemSpace=2
+end on
+
+type m_dash61 from menu within m_help
+end type
+
+on m_dash61.create
+this.Text="-"
+this.ShiftToRight=true
+end on
+
+type m_about from menu within m_help
+end type
+
+event clicked;SetPointer (hourglass!)
+
+
+end event
+
+on m_about.create
+this.Text="&About"
+this.Microhelp="Displays program information"
+this.ShiftToRight=true
+this.MenuItemType=MenuItemTypeAbout!
+end on
+

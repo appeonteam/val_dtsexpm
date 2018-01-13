@@ -1,0 +1,7 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "Dts_bitmaps.pbl" "";
+@end;
+@begin Objects
+ "d_placeholder.srd" "Dts_bitmaps.pbl";
+@end;

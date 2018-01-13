@@ -1,0 +1,13 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dtsmssql.pbl" "";
+@end;
+@begin Objects 
+ "d_adhoc_master_dw_mssql.srd" "dtsmssql.pbl";
+ "d_closed_calls_mssql.srd" "dtsmssql.pbl";
+ "d_pending_calls_mssql.srd" "dtsmssql.pbl";
+ "d_tabdata_shift_mssql.srd" "dtsmssql.pbl";
+ "d_timer_calls_mssql.srd" "dtsmssql.pbl";
+ "d_timercalls_upd_mssql.srd" "dtsmssql.pbl";
+ "u_secondtrans.sru" "dtsmssql.pbl";
+@end;

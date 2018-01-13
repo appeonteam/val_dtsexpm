@@ -1,0 +1,37 @@
+﻿$PBExportHeader$d_vzt_ole_list.srd
+$PBExportComments$This is a list of ole objects contained in the OLE table
+release 10.5;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=56 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=56 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=idauto dbname="ole.idauto" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=id dbname="ole.id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=description dbname="ole.description" )
+ column=(type=char(4000) updatewhereclause=yes name=longdesc dbname="ole.longdesc" )
+ column=(type=char(200) updatewhereclause=yes name=subject dbname="ole.subject" )
+ retrieve="  SELECT ~"ole~".~"idauto~",   
+         ~"ole~".~"id~",   
+         ~"ole~".~"description~",   
+         ~"ole~".~"longdesc~",   
+         ~"ole~".~"subject~"  
+    FROM ~"ole~"  
+ORDER BY ~"ole~".~"id~" ASC   
+" update="ole" updatewhere=0 updatekeyinplace=yes )
+text(band=header alignment="0" text="Description" border="0" color="16777215" x="594" y="0" height="52" width="338" html.valueishtml="0"  name=description_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Title" border="0" color="16777215" x="59" y="0" height="52" width="128" html.valueishtml="0"  name=id_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="27" y="0" height="52" width="544" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=30 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="594" y="0" height="52" width="1166" format="[general]" html.valueishtml="0"  name=description visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1783" y="4" height="48" width="425" format="[general]" html.valueishtml="0"  name=subject visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

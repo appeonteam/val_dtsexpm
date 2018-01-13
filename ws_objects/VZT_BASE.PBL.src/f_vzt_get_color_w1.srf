@@ -1,0 +1,27 @@
+﻿$PBExportHeader$f_vzt_get_color_w1.srf
+global type f_vzt_get_color_w1 from function_object
+end type
+
+forward prototypes
+global function long f_vzt_get_color_w1 (decimal ad_value, decimal ad_goal)
+end prototypes
+
+global function long f_vzt_get_color_w1 (decimal ad_value, decimal ad_goal);long ll_color, ll_maxcolor
+decimal{2} ld_value
+
+If ad_value = 0 or isNull (ad_value) then 
+	ll_color = 16777215 // default to white (using bg at first ) 
+ELSE
+//	select MAX(value) INTO :ld_value FROM qgen_lookup l1 where name= :as_colortype ;
+//	select code INTO ll_maxcolor FROM qgen_lookup l1 where name= :as_colortype 
+//		and value = ld_value ;
+	
+	select vzt_get_color_w_pct (:ad_value, :ad_goal) INTO :ll_color from dummy ;
+	/* get the least value that is >= than the parm */
+	if IsNUll( ll_color ) or ll_color <= 0 then ll_color = 16777215 
+	
+END IF
+
+return ll_color
+end function
+

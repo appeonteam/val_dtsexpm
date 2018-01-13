@@ -1,0 +1,43 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "DTSADHOC.PBL" "";
+@end;
+@begin Objects 
+ "m_adhoc.srm" "DTSADHOC.PBL";
+ "m_graph.srm" "DTSADHOC.PBL";
+ "m_reports.srm" "DTSADHOC.PBL";
+ "w_g_avgminsxdept.srw" "DTSADHOC.PBL";
+ "w_g_avgminsxdisp.srw" "DTSADHOC.PBL";
+ "w_g_avgminsxemp.srw" "DTSADHOC.PBL";
+ "w_g_avgminsxprob.srw" "DTSADHOC.PBL";
+ "w_g_avgminsxshift.srw" "DTSADHOC.PBL";
+ "w_g_avgminsxsubprob.srw" "DTSADHOC.PBL";
+ "w_g_qtydatexemployee.srw" "DTSADHOC.PBL";
+ "w_g_qtydatexhour.srw" "DTSADHOC.PBL";
+ "w_g_qtydatexprob.srw" "DTSADHOC.PBL";
+ "w_g_qtyxemployee.srw" "DTSADHOC.PBL";
+ "w_g_qtyxhour.srw" "DTSADHOC.PBL";
+ "w_r_callsxdate.srw" "DTSADHOC.PBL";
+ "w_r_callsxdept.srw" "DTSADHOC.PBL";
+ "w_r_callsxduration.srw" "DTSADHOC.PBL";
+ "w_r_callsxdurationsum.srw" "DTSADHOC.PBL";
+ "w_r_callsxemployee.srw" "DTSADHOC.PBL";
+ "w_r_callsxguest.srw" "DTSADHOC.PBL";
+ "w_r_callsxhour.srw" "DTSADHOC.PBL";
+ "w_r_callsxprob.srw" "DTSADHOC.PBL";
+ "w_r_callsxproblemsum.srw" "DTSADHOC.PBL";
+ "w_r_callsxproblemsum_new.srw" "DTSADHOC.PBL";
+ "w_r_callsxproblemsum_top10.srw" "DTSADHOC.PBL";
+ "w_r_callsxroom.srw" "DTSADHOC.PBL";
+ "w_r_callsxroom_most_call.srw" "DTSADHOC.PBL";
+ "w_r_callsxstatus.srw" "DTSADHOC.PBL";
+ "w_r_callsxsubprob.srw" "DTSADHOC.PBL";
+ "w_r_dailyresp.srw" "DTSADHOC.PBL";
+ "w_r_declinedcalls.srw" "DTSADHOC.PBL";
+ "w_r_dndcalls.srw" "DTSADHOC.PBL";
+ "w_r_equipment.srw" "DTSADHOC.PBL";
+ "w_r_fail_benchmark.srw" "DTSADHOC.PBL";
+ "w_r_guest_called_back.srw" "DTSADHOC.PBL";
+ "w_r_purchase_requests.srw" "DTSADHOC.PBL";
+ "w_r_weeklyresp.srw" "DTSADHOC.PBL";
+@end;

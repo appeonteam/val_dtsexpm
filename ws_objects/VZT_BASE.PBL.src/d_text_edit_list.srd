@@ -1,0 +1,26 @@
+﻿$PBExportHeader$d_text_edit_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=61 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(20) update=yes updatewhereclause=yes key=yes name=vzt_text_id dbname="vzt_text.id" )
+ column=(type=char(50) update=yes updatewhereclause=yes key=yes name=vzt_text_language dbname="vzt_text.language" )
+ column=(type=char(400) update=yes updatewhereclause=yes name=vzt_text_text dbname="vzt_text.text" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=vzt_text_descr dbname="vzt_text.descr" )
+ retrieve="  SELECT ~"vzt_text~".~"id~",   
+         ~"vzt_text~".~"language~",   
+         ~"vzt_text~".~"text~",   
+         ~"vzt_text~".~"descr~"  
+    FROM ~"vzt_text~" 
+ WHERE ~"vzt_text~".~"language~" = 'ENGLISH-US' 
+
+" update="vzt_text" updatewhere=0 updatekeyinplace=yes  sort="vzt_text_id A " )
+text(band=header alignment="2" text="Id"border="0" color="16777215" x="15" y="3" height="48" width="55"  name=vzt_text_id_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Descr"border="0" color="16777215" x="1825" y="0" height="48" width="172"  name=vzt_text_descr_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Text"border="0" color="16777215" x="549" y="3" height="48" width="124"  name=vzt_text_text_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="11" y="3" height="54" width="501" format="[general]"  name=vzt_text_id edit.limit=20 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1825" y="3" height="54" width="549" format="[general]"  name=vzt_text_descr edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="549" y="3" height="54" width="1247" format="[general]"  name=vzt_text_text edit.limit=400 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

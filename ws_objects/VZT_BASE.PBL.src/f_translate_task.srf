@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_translate_task.srf
+global type f_translate_task from function_object
+end type
+
+forward prototypes
+global function string f_translate_task (string as_tasknum, string as_subtasknum, ref string as_tasktran, ref string as_subtasktran)
+end prototypes
+
+global function string f_translate_task (string as_tasknum, string as_subtasknum, ref string as_tasktran, ref string as_subtasktran);string ls_ret 
+
+  SELECT "desc_tran"  into :as_tasktran
+    FROM "problem"  
+   WHERE "problem_number" 		= :as_tasknum 	;
+
+  SELECT "desc_tran"  into :as_subtasktran
+    FROM "subproblem"  
+   WHERE "problem_number" 		= :as_tasknum  		AND  
+         "subproblem_number" 	= :as_subtasknum    ;
+		
+as_tasktran 	= f_upper_cyrillic(as_tasktran +'/'+ as_subtasktran ) 		
+as_subtasktran	= f_upper_cyrillic(as_subtasktran) 		
+//as_tasktran 	= f_appollo_cyrillic(as_tasktran) 		
+//as_subtasktran	= f_appollo_cyrillic(as_subtasktran) 		
+
+ls_ret = ''
+
+return ls_ret
+
+
+end function
+

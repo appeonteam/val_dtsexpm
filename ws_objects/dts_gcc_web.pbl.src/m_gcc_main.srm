@@ -1,0 +1,1742 @@
+﻿$PBExportHeader$m_gcc_main.srm
+forward
+global type m_gcc_main from menu
+end type
+type m_file from menu within m_gcc_main
+end type
+type m_opengcc from menu within m_file
+end type
+type m_setfilter from menu within m_file
+end type
+type m_opencalls from menu within m_setfilter
+end type
+type m_callslast1dau from menu within m_setfilter
+end type
+type m_callslast3days from menu within m_setfilter
+end type
+type m_callslast5days from menu within m_setfilter
+end type
+type m_callslastweek from menu within m_setfilter
+end type
+type m_callslastmonth from menu within m_setfilter
+end type
+type m_callslastyear from menu within m_setfilter
+end type
+type m_setfilter from menu within m_file
+m_opencalls m_opencalls
+m_callslast1dau m_callslast1dau
+m_callslast3days m_callslast3days
+m_callslast5days m_callslast5days
+m_callslastweek m_callslastweek
+m_callslastmonth m_callslastmonth
+m_callslastyear m_callslastyear
+end type
+type m_print from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_copy from menu within m_file
+end type
+type m_clipboard from menu within m_file
+end type
+type m_-4 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_gcc_main
+m_opengcc m_opengcc
+m_setfilter m_setfilter
+m_print m_print
+m_printscreen m_printscreen
+m_printersetup m_printersetup
+m_-2 m_-2
+m_copy m_copy
+m_clipboard m_clipboard
+m_-4 m_-4
+m_close m_close
+m_exit m_exit
+end type
+type m_data from menu within m_gcc_main
+end type
+type m_opencalls1 from menu within m_data
+end type
+type m_-5 from menu within m_data
+end type
+type m_graphics from menu within m_data
+end type
+type m_-1 from menu within m_data
+end type
+type m_admin1 from menu within m_data
+end type
+type m_systemoptions from menu within m_data
+end type
+type m_employeerecognition from menu within m_data
+end type
+type m_categories1 from menu within m_data
+end type
+type m_tables from menu within m_data
+end type
+type m_maintainquestions1 from menu within m_data
+end type
+type m_maintainquestionnaires from menu within m_data
+end type
+type m_maintaintemplates from menu within m_data
+end type
+type m_maintainquestionnairestv from menu within m_data
+end type
+type m_maintainemployees from menu within m_data
+end type
+type m_maintainconferences from menu within m_data
+end type
+type m_websurveysetup from menu within m_data
+end type
+type m_1 from menu within m_data
+end type
+type m_data from menu within m_gcc_main
+m_opencalls1 m_opencalls1
+m_-5 m_-5
+m_graphics m_graphics
+m_-1 m_-1
+m_admin1 m_admin1
+m_systemoptions m_systemoptions
+m_employeerecognition m_employeerecognition
+m_categories1 m_categories1
+m_tables m_tables
+m_maintainquestions1 m_maintainquestions1
+m_maintainquestionnaires m_maintainquestionnaires
+m_maintaintemplates m_maintaintemplates
+m_maintainquestionnairestv m_maintainquestionnairestv
+m_maintainemployees m_maintainemployees
+m_maintainconferences m_maintainconferences
+m_websurveysetup m_websurveysetup
+m_1 m_1
+end type
+type m_view from menu within m_gcc_main
+end type
+type m_allcalls from menu within m_view
+end type
+type m_pendingcalls from menu within m_view
+end type
+type m_timercalls from menu within m_view
+end type
+type m_reportdef from menu within m_view
+end type
+type m_qgenreports from menu within m_view
+end type
+type m_view from menu within m_gcc_main
+m_allcalls m_allcalls
+m_pendingcalls m_pendingcalls
+m_timercalls m_timercalls
+m_reportdef m_reportdef
+m_qgenreports m_qgenreports
+end type
+type m_window from menu within m_gcc_main
+end type
+type m_tile from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_arrangemenuicons from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_systemsettings from menu within m_window
+end type
+type m_toolbaroptions from menu within m_window
+end type
+type m_timecalculator from menu within m_window
+end type
+type m_-6 from menu within m_window
+end type
+type m_messagepaging from menu within m_window
+end type
+type m_window from menu within m_gcc_main
+m_tile m_tile
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_systemsettings m_systemsettings
+m_toolbaroptions m_toolbaroptions
+m_timecalculator m_timecalculator
+m_-6 m_-6
+m_messagepaging m_messagepaging
+end type
+type m_help from menu within m_gcc_main
+end type
+type m_context from menu within m_help
+end type
+type m_index from menu within m_help
+end type
+type m_search from menu within m_help
+end type
+type m_- from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_gcc_main
+m_context m_context
+m_index m_index
+m_search m_search
+m_- m_-
+m_about m_about
+end type
+global type m_gcc_main from menu
+m_file m_file
+m_data m_data
+m_view m_view
+m_window m_window
+m_help m_help
+end type
+end forward
+
+global type m_gcc_main from menu
+m_file m_file
+m_data m_data
+m_view m_view
+m_window m_window
+m_help m_help
+end type
+global m_gcc_main m_gcc_main
+
+forward prototypes
+public subroutine of_localize ()
+end prototypes
+
+public subroutine of_localize ();
+end subroutine
+
+on m_gcc_main.create
+m_gcc_main=this
+call super::create
+this.m_file=create m_file
+this.m_data=create m_data
+this.m_view=create m_view
+this.m_window=create m_window
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_data
+this.Item[UpperBound(this.Item)+1]=this.m_view
+this.Item[UpperBound(this.Item)+1]=this.m_window
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_gcc_main.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_data)
+destroy(this.m_view)
+destroy(this.m_window)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_gcc_main
+m_opengcc m_opengcc
+m_setfilter m_setfilter
+m_print m_print
+m_printscreen m_printscreen
+m_printersetup m_printersetup
+m_-2 m_-2
+m_copy m_copy
+m_clipboard m_clipboard
+m_-4 m_-4
+m_close m_close
+m_exit m_exit
+end type
+
+event clicked;this.m_printscreen.enabled =  IsValid(parentwindow.getactivesheet()) 
+this.m_print.enabled =  IsValid(parentwindow.getactivesheet()) 
+	
+	
+
+//TriggerEvent (GetActiveSheet(ParentWindow), "copy_to_clipboard")
+
+end event
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.microhelp = "File Options."
+this.m_opengcc=create m_opengcc
+this.m_setfilter=create m_setfilter
+this.m_print=create m_print
+this.m_printscreen=create m_printscreen
+this.m_printersetup=create m_printersetup
+this.m_-2=create m_-2
+this.m_copy=create m_copy
+this.m_clipboard=create m_clipboard
+this.m_-4=create m_-4
+this.m_close=create m_close
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_opengcc
+this.Item[UpperBound(this.Item)+1]=this.m_setfilter
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printscreen
+this.Item[UpperBound(this.Item)+1]=this.m_printersetup
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_copy
+this.Item[UpperBound(this.Item)+1]=this.m_clipboard
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_close
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_opengcc)
+destroy(this.m_setfilter)
+destroy(this.m_print)
+destroy(this.m_printscreen)
+destroy(this.m_printersetup)
+destroy(this.m_-2)
+destroy(this.m_copy)
+destroy(this.m_clipboard)
+destroy(this.m_-4)
+destroy(this.m_close)
+destroy(this.m_exit)
+end on
+
+type m_opengcc from menu within m_file
+end type
+
+on m_opengcc.create
+call super::create
+this.text = "Open Guest Feedback Sheet~tCtrl+Shift+F8"
+this.shortcut = 1399
+this.toolbaritemname = "SelectScript!"
+this.toolbaritemtext = "GCC"
+this.toolbaritemorder = 1
+end on
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_gcc_feedback) THEN
+	open(w_gcc_feedback)
+	if w_gcc_feedback.WindowState = Minimized! then
+//		or w_gcc_feedback.WindowState = Maximized! then
+		w_gcc_feedback.WindowState = Normal!
+	Else
+//		w_gcc_feedback.WindowState = Maximized! 
+	END IF
+	
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "FO" ) ) Then
+	   OpenSheetWithParm( w_gcc_feedback, 1, gnv_appman.iw_frame, 0, Layered! )
+   end if
+END IF
+end event
+
+on m_opengcc.destroy
+call super::destroy
+end on
+
+type m_setfilter from menu within m_file
+m_opencalls m_opencalls
+m_callslast1dau m_callslast1dau
+m_callslast3days m_callslast3days
+m_callslast5days m_callslast5days
+m_callslastweek m_callslastweek
+m_callslastmonth m_callslastmonth
+m_callslastyear m_callslastyear
+end type
+
+on m_setfilter.create
+call super::create
+this.visible = false
+this.text = "Set Filter"
+this.enabled = false
+this.microhelp = "Change the current filter (e.g., open calls, all calls for last day, week...etc.) for the current window."
+this.m_opencalls=create m_opencalls
+this.m_callslast1dau=create m_callslast1dau
+this.m_callslast3days=create m_callslast3days
+this.m_callslast5days=create m_callslast5days
+this.m_callslastweek=create m_callslastweek
+this.m_callslastmonth=create m_callslastmonth
+this.m_callslastyear=create m_callslastyear
+this.Item[UpperBound(this.Item)+1]=this.m_opencalls
+this.Item[UpperBound(this.Item)+1]=this.m_callslast1dau
+this.Item[UpperBound(this.Item)+1]=this.m_callslast3days
+this.Item[UpperBound(this.Item)+1]=this.m_callslast5days
+this.Item[UpperBound(this.Item)+1]=this.m_callslastweek
+this.Item[UpperBound(this.Item)+1]=this.m_callslastmonth
+this.Item[UpperBound(this.Item)+1]=this.m_callslastyear
+end on
+
+on m_setfilter.destroy
+call super::destroy
+destroy(this.m_opencalls)
+destroy(this.m_callslast1dau)
+destroy(this.m_callslast3days)
+destroy(this.m_callslast5days)
+destroy(this.m_callslastweek)
+destroy(this.m_callslastmonth)
+destroy(this.m_callslastyear)
+end on
+
+type m_opencalls from menu within m_setfilter
+end type
+
+on m_opencalls.create
+call super::create
+this.text = "Open Calls"
+end on
+
+on m_opencalls.destroy
+call super::destroy
+end on
+
+type m_callslast1dau from menu within m_setfilter
+end type
+
+on m_callslast1dau.create
+call super::create
+this.text = "Calls last 1 dau"
+end on
+
+on m_callslast1dau.destroy
+call super::destroy
+end on
+
+type m_callslast3days from menu within m_setfilter
+end type
+
+on m_callslast3days.create
+call super::create
+this.text = "Calls last 3 days"
+end on
+
+on m_callslast3days.destroy
+call super::destroy
+end on
+
+type m_callslast5days from menu within m_setfilter
+end type
+
+on m_callslast5days.create
+call super::create
+this.text = "Calls last 5 days"
+end on
+
+on m_callslast5days.destroy
+call super::destroy
+end on
+
+type m_callslastweek from menu within m_setfilter
+end type
+
+on m_callslastweek.create
+call super::create
+this.text = "Calls last week"
+end on
+
+on m_callslastweek.destroy
+call super::destroy
+end on
+
+type m_callslastmonth from menu within m_setfilter
+end type
+
+on m_callslastmonth.create
+call super::create
+this.text = "Calls last month"
+end on
+
+on m_callslastmonth.destroy
+call super::destroy
+end on
+
+type m_callslastyear from menu within m_setfilter
+end type
+
+on m_callslastyear.create
+call super::create
+this.text = "Calls last year"
+end on
+
+on m_callslastyear.destroy
+call super::destroy
+end on
+
+type m_print from menu within m_file
+end type
+
+event clicked;window activesheet
+activesheet = gnv_appman.iw_frame.getactivesheet()
+if isvalid(activesheet) THEN
+//   TriggerEvent (GetActiveSheet(ParentWindow), "ue_print")
+   TriggerEvent (GetActiveSheet(ParentWindow), "ue_printreport")
+end if
+
+end event
+
+on m_print.create
+call super::create
+this.text = "&Print~tCtrl+P"
+this.enabled = false
+this.shortcut = 336
+this.microhelp = "Print"
+this.toolbaritemname = "Print!"
+this.toolbaritemtext = "Print"
+this.toolbaritemorder = 49
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+event clicked;window activesheet
+activesheet = gnv_appman.iw_frame.getactivesheet()
+if isvalid(activesheet) THEN
+   TriggerEvent (GetActiveSheet(ParentWindow), "ue_printscreen")
+end if
+end event
+
+on m_printscreen.create
+call super::create
+this.text = "Print &Screen"
+this.microhelp = "Print Screen"
+this.toolbaritemname = "Window!"
+this.toolbaritemtext = "Print Screen"
+this.toolbaritemorder = 50
+end on
+
+on m_printscreen.destroy
+call super::destroy
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on clicked;SetPointer( HourGlass! )
+PrintSetup()
+end on
+
+on m_printersetup.create
+call super::create
+this.text = "Printer Se&tup..."
+this.microhelp = "Setup printer using the currently selected Windows Printer Driver (modifiable from the Windows Control Panel in the Main group)"
+this.toolbaritemname = "Custom074!"
+this.toolbaritemtext = "Setup"
+this.toolbaritemorder = 51
+end on
+
+on m_printersetup.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_copy from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "copy_to_clipboard")
+
+end on
+
+on m_copy.create
+call super::create
+this.text = "C&opy to ClipBoard"
+this.enabled = false
+this.microhelp = "Copy the currently selected Text or Picture to the WIndows Clipboard."
+end on
+
+on m_copy.destroy
+call super::destroy
+end on
+
+type m_clipboard from menu within m_file
+end type
+
+on clicked;SetPointer( HourGlass! )
+Run ("clipbrd.exe")
+end on
+
+on m_clipboard.create
+call super::create
+this.text = "&View ClipBoard"
+this.microhelp = "View the current Text, Report or Graph (if any) currently contained in the WIndows clipboard."
+this.toolbaritemname = "Custom014!"
+this.toolbaritemtext = "View Clip"
+this.toolbaritemorder = 60
+end on
+
+on m_clipboard.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_file
+end type
+
+on m_-4.create
+call super::create
+this.visible = false
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_close from menu within m_file
+end type
+
+event clicked;window activesheet
+activesheet = gnv_appman.iw_frame.getactivesheet()
+IF isvalid(activesheet) Then
+   TriggerEvent (GetActiveSheet(ParentWindow), "close")
+End if
+end event
+
+on m_close.create
+call super::create
+this.text = "C&lose~tCtrl+L"
+this.enabled = false
+this.shortcut = 332
+this.microhelp = "Close Window"
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;SetPointer( HourGlass! )
+Close( gnv_appman.iw_frame )
+
+end event
+
+on m_exit.create
+call super::create
+this.text = "E&xit~tCtrl+Shift+X"
+this.shortcut = 1368
+this.microhelp = "Leave (shut down) the application."
+this.toolbaritemname = "Exit!"
+this.toolbaritemtext = "Exit App"
+this.toolbaritemorder = 999
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_data from menu within m_gcc_main
+m_opencalls1 m_opencalls1
+m_-5 m_-5
+m_graphics m_graphics
+m_-1 m_-1
+m_admin1 m_admin1
+m_systemoptions m_systemoptions
+m_employeerecognition m_employeerecognition
+m_categories1 m_categories1
+m_tables m_tables
+m_maintainquestions1 m_maintainquestions1
+m_maintainquestionnaires m_maintainquestionnaires
+m_maintaintemplates m_maintaintemplates
+m_maintainquestionnairestv m_maintainquestionnairestv
+m_maintainemployees m_maintainemployees
+m_maintainconferences m_maintainconferences
+m_websurveysetup m_websurveysetup
+m_1 m_1
+end type
+
+on m_data.create
+call super::create
+this.text = " Da&ta"
+this.microhelp = "Data Options."
+this.m_opencalls1=create m_opencalls1
+this.m_-5=create m_-5
+this.m_graphics=create m_graphics
+this.m_-1=create m_-1
+this.m_admin1=create m_admin1
+this.m_systemoptions=create m_systemoptions
+this.m_employeerecognition=create m_employeerecognition
+this.m_categories1=create m_categories1
+this.m_tables=create m_tables
+this.m_maintainquestions1=create m_maintainquestions1
+this.m_maintainquestionnaires=create m_maintainquestionnaires
+this.m_maintaintemplates=create m_maintaintemplates
+this.m_maintainquestionnairestv=create m_maintainquestionnairestv
+this.m_maintainemployees=create m_maintainemployees
+this.m_maintainconferences=create m_maintainconferences
+this.m_websurveysetup=create m_websurveysetup
+this.m_1=create m_1
+this.Item[UpperBound(this.Item)+1]=this.m_opencalls1
+this.Item[UpperBound(this.Item)+1]=this.m_-5
+this.Item[UpperBound(this.Item)+1]=this.m_graphics
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_admin1
+this.Item[UpperBound(this.Item)+1]=this.m_systemoptions
+this.Item[UpperBound(this.Item)+1]=this.m_employeerecognition
+this.Item[UpperBound(this.Item)+1]=this.m_categories1
+this.Item[UpperBound(this.Item)+1]=this.m_tables
+this.Item[UpperBound(this.Item)+1]=this.m_maintainquestions1
+this.Item[UpperBound(this.Item)+1]=this.m_maintainquestionnaires
+this.Item[UpperBound(this.Item)+1]=this.m_maintaintemplates
+this.Item[UpperBound(this.Item)+1]=this.m_maintainquestionnairestv
+this.Item[UpperBound(this.Item)+1]=this.m_maintainemployees
+this.Item[UpperBound(this.Item)+1]=this.m_maintainconferences
+this.Item[UpperBound(this.Item)+1]=this.m_websurveysetup
+this.Item[UpperBound(this.Item)+1]=this.m_1
+end on
+
+on m_data.destroy
+call super::destroy
+destroy(this.m_opencalls1)
+destroy(this.m_-5)
+destroy(this.m_graphics)
+destroy(this.m_-1)
+destroy(this.m_admin1)
+destroy(this.m_systemoptions)
+destroy(this.m_employeerecognition)
+destroy(this.m_categories1)
+destroy(this.m_tables)
+destroy(this.m_maintainquestions1)
+destroy(this.m_maintainquestionnaires)
+destroy(this.m_maintaintemplates)
+destroy(this.m_maintainquestionnairestv)
+destroy(this.m_maintainemployees)
+destroy(this.m_maintainconferences)
+destroy(this.m_websurveysetup)
+destroy(this.m_1)
+end on
+
+type m_opencalls1 from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+//If UnitsToPixels( nScreenWidth, XUnitsToPixels! ) > 650 Then	// after 640x480 is 800x600
+//	OpenSheet( w_call_de2, "w_call_de2", w_main, 0, Original! )	// uses d_call_de800x600
+//Else
+//	OpenSheet( w_call_de, "w_call_de", w_main, 0, Original! )	// uses d_call_de640x480
+//	OpenSheetWithParm( w_call_de, "", "w_call_de", 	w_main, 0, Original! )
+//End If
+
+If IsValid(w_gcc_call_upd) THEN
+	w_gcc_call_upd.openMode = '0'
+	open(w_gcc_call_upd)
+	w_gcc_call_upd.cb_add.TriggerEvent("clicked")
+	if w_gcc_call_upd.WindowState = Minimized! then
+		w_gcc_call_upd.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "CN" ) ) Then
+	   OpenSheetWithParm( w_gcc_call_upd, "0", "w_gcc_call_upd", 	gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_opencalls1.create
+call super::create
+this.visible = false
+this.text = "Calls Screen~tCtrl+Shift+F2"
+this.shortcut = 1393
+this.microhelp = "Add/edit/delete or print New and Existing Call information."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom020!"
+this.toolbaritemtext = "Open Call"
+this.toolbaritemorder = 2
+end on
+
+on m_opencalls1.destroy
+call super::destroy
+end on
+
+type m_-5 from menu within m_data
+end type
+
+on m_-5.create
+call super::create
+this.visible = false
+this.text = "-"
+end on
+
+on m_-5.destroy
+call super::destroy
+end on
+
+type m_graphics from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+//* parm = 1 is password required
+if InitLoadCnt = 1 then
+	InitLoadCnt += 1
+else
+	ccommandparm=""
+end if
+
+OpenSheetwithparm( w_gcc_adhoc, 1, "w_gcc_adhoc", gnv_appman.iw_frame, 0, Layered! )
+
+
+end event
+
+on m_graphics.create
+call super::create
+this.text = "GCC &Q&&A~tCtrl+Shift+F6"
+this.shortcut = 1397
+this.microhelp = "Ad-hoc (user-defined) call data query with assorted Graphics and Reports."
+this.toolbaritemname = "Custom065!"
+this.toolbaritemtext = "Q&A"
+this.toolbaritemorder = 9
+this.toolbaritemspace = 1
+end on
+
+on m_graphics.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_data
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_admin1 from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_admin) THEN
+	open(w_vzt_sysoptions_edit)
+	if w_admin.WindowState = Minimized! then
+		w_admin.WindowState = Normal!
+	end if
+ELSE
+   //If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+		OpenSheet( w_admin, "w_admin", gnv_appman.iw_frame, 0, Original! )
+  //end if
+END IF
+
+
+end event
+
+on m_admin1.create
+call super::create
+this.text = "&Security Admin ~tCtrl+Shift+F3"
+this.shortcut = 1394
+this.microhelp = "Add/edit/delete or print Security Administration information."
+this.toolbaritemname = "CreateIndex!"
+this.toolbaritemtext = "Admin"
+this.toolbaritemorder = 10
+this.toolbaritemspace = 2
+end on
+
+on m_admin1.destroy
+call super::destroy
+end on
+
+type m_systemoptions from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_vzt_sysoptions_edit) THEN
+	open(w_vzt_sysoptions_edit)
+	if w_vzt_sysoptions_edit.WindowState = Minimized! then
+		w_vzt_sysoptions_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_sysoptions_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_systemoptions.create
+call super::create
+this.text = "System Options"
+end on
+
+on m_systemoptions.destroy
+call super::destroy
+end on
+
+type m_employeerecognition from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_gcc_employee_kudos) THEN
+	if w_gcc_employee_kudos.WindowState = Minimized! then w_gcc_employee_kudos.WindowState = Normal!
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "FO" ) ) Then
+	   OpenSheetWithParm( w_gcc_employee_kudos, 1, gnv_appman.iw_frame, 0, Layered! )
+   end if
+END IF
+end event
+
+on m_employeerecognition.create
+call super::create
+this.text = "Employee Recognition"
+this.toolbaritemname = "Picture!"
+this.toolbaritemtext = "employee"
+this.toolbaritemorder = 150
+end on
+
+on m_employeerecognition.destroy
+call super::destroy
+end on
+
+type m_categories1 from menu within m_data
+end type
+
+event clicked;SetPointer(HourGlass!)
+OpenSheet( w_probsubprob, "w_probsubprob", gnv_appman.iw_frame, 0, Original! )
+
+end event
+
+on m_categories1.create
+call super::create
+this.text = "Problem Cate&gories~tCtrl+Shift+F4"
+this.shortcut = 1395
+this.microhelp = "Add/edit/delete or print Category and Sub-Category information."
+this.toolbaritemname = "CreateLibrary!"
+this.toolbaritemtext = "Categories"
+this.toolbaritemorder = 12
+end on
+
+on m_categories1.destroy
+call super::destroy
+end on
+
+type m_tables from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+OpenSheet( w_tables1, "w_tables1", gnv_appman.iw_frame, 0, Original! )
+end event
+
+on m_tables.create
+call super::create
+this.text = "Validation Ta&bles~tCtrl+Shift+F5"
+this.shortcut = 1396
+this.microhelp = "Add/edit/delete or print Validaton Table and Lookup Description information."
+this.toolbaritemname = "Sort!"
+this.toolbaritemtext = "Tables"
+this.toolbaritemorder = 14
+end on
+
+on m_tables.destroy
+call super::destroy
+end on
+
+type m_maintainquestions1 from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_qgen_question_edit) THEN
+	 
+	open(w_qgen_question_edit)
+ 
+	if w_qgen_question_edit.WindowState = Minimized! then
+		w_qgen_question_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QE" ) ) Then
+	   OpenSheetWithParm( w_qgen_question_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_maintainquestions1.create
+call super::create
+this.text = "Maintain Questions~tCtrl+F1"
+this.shortcut = 368
+this.toolbaritemname = "Where!"
+this.toolbaritemtext = "questions"
+this.toolbaritemorder = 111
+this.toolbaritemspace = 2
+end on
+
+on m_maintainquestions1.destroy
+call super::destroy
+end on
+
+type m_maintainquestionnaires from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_qgen_qset_edit) THEN
+	 
+	open(w_qgen_qset_edit)
+ 
+	if w_qgen_qset_edit.WindowState = Minimized! then
+		w_qgen_qset_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QE" ) ) Then
+	   OpenSheetWithParm( w_qgen_qset_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_maintainquestionnaires.create
+call super::create
+this.text = "Maintain Questionnaires~tCtrl+F2"
+this.shortcut = 369
+this.toolbaritemname = "Having!"
+this.toolbaritemtext = "surveys"
+this.toolbaritemorder = 122
+end on
+
+on m_maintainquestionnaires.destroy
+call super::destroy
+end on
+
+type m_maintaintemplates from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_gcc_ole) THEN
+	 
+	open(w_gcc_ole)
+ 
+	if w_gcc_ole.WindowState = Minimized! then
+		w_gcc_ole.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QE" ) ) Then
+	   OpenSheetWithParm( w_gcc_ole, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+
+
+
+end event
+
+on m_maintaintemplates.create
+call super::create
+this.text = "Maintain Templates~tCtrl+F3"
+this.shortcut = 370
+this.toolbaritemname = "Custom001!"
+this.toolbaritemtext = "templates"
+this.toolbaritemorder = 133
+this.toolbaritemspace = 1
+end on
+
+on m_maintaintemplates.destroy
+call super::destroy
+end on
+
+type m_maintainquestionnairestv from menu within m_data
+end type
+
+on m_maintainquestionnairestv.create
+call super::create
+this.text = "Maintain Questionnaires TV~tCtrl+F4"
+this.shortcut = 371
+this.toolbaritemname = "TreeView1!"
+this.toolbaritemtext = "tree"
+this.toolbaritemorder = 124
+end on
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_qgen_qset_tv_edit) THEN
+
+	open(w_qgen_qset_tv_edit)
+ 
+	if w_qgen_qset_tv_edit.WindowState = Minimized! then
+		w_qgen_qset_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QE" ) ) Then
+	   OpenSheetWithParm( w_qgen_qset_tv_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_maintainquestionnairestv.destroy
+call super::destroy
+end on
+
+type m_maintainemployees from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_gcc_employee) THEN
+	if w_gcc_employee.WindowState = Minimized! then w_gcc_employee.WindowState = Normal!
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_gcc_employee, 1, gnv_appman.iw_frame, 0, Layered! )
+   end if
+END IF
+end event
+
+on m_maintainemployees.create
+call super::create
+this.text = "Maintain Employees~tCtrl+F5"
+this.shortcut = 372
+end on
+
+on m_maintainemployees.destroy
+call super::destroy
+end on
+
+type m_maintainconferences from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_vzt_web_conf_edit) THEN
+	open(w_vzt_web_conf_edit)
+	if w_vzt_web_conf_edit.WindowState = Minimized! then
+		w_vzt_web_conf_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_web_conf_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_maintainconferences.create
+call super::create
+this.text = "Maintain Conferences~tCtrl+F6"
+this.shortcut = 373
+this.toolbaritemtext = "conf"
+end on
+
+on m_maintainconferences.destroy
+call super::destroy
+end on
+
+type m_websurveysetup from menu within m_data
+end type
+
+on m_websurveysetup.create
+call super::create
+this.text = "WEB Survey Setup~tCtrl+F7"
+this.shortcut = 374
+this.toolbaritemname = "Custom042!"
+this.toolbaritemtext = "web"
+this.toolbaritemorder = 150
+end on
+
+on m_websurveysetup.destroy
+call super::destroy
+end on
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_vzt_web_style_edit) THEN
+	open(w_vzt_web_style_edit)
+	if w_vzt_web_style_edit.WindowState = Minimized! then
+		w_vzt_web_style_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_web_style_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+type m_1 from menu within m_data
+end type
+
+on m_1.create
+call super::create
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_view from menu within m_gcc_main
+m_allcalls m_allcalls
+m_pendingcalls m_pendingcalls
+m_timercalls m_timercalls
+m_reportdef m_reportdef
+m_qgenreports m_qgenreports
+end type
+
+on m_view.create
+call super::create
+this.text = "&View"
+this.microhelp = "View Options."
+this.m_allcalls=create m_allcalls
+this.m_pendingcalls=create m_pendingcalls
+this.m_timercalls=create m_timercalls
+this.m_reportdef=create m_reportdef
+this.m_qgenreports=create m_qgenreports
+this.Item[UpperBound(this.Item)+1]=this.m_allcalls
+this.Item[UpperBound(this.Item)+1]=this.m_pendingcalls
+this.Item[UpperBound(this.Item)+1]=this.m_timercalls
+this.Item[UpperBound(this.Item)+1]=this.m_reportdef
+this.Item[UpperBound(this.Item)+1]=this.m_qgenreports
+end on
+
+on m_view.destroy
+call super::destroy
+destroy(this.m_allcalls)
+destroy(this.m_pendingcalls)
+destroy(this.m_timercalls)
+destroy(this.m_reportdef)
+destroy(this.m_qgenreports)
+end on
+
+type m_allcalls from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+//OpenSheet( w_all_calls, "w_all_calls", w_main, 0, Original! )
+//OpenSheet( w_closed_calls, "w_closed_calls", w_main, 0, Original! )
+
+end event
+
+on m_allcalls.create
+call super::create
+this.visible = false
+this.text = "&Closed Calls"
+this.enabled = false
+this.microhelp = "View a browse screen of all Closed calls currently on-line."
+this.toolbaritemvisible = false
+this.toolbaritemtext = "Closed Calls"
+this.toolbaritemorder = 8
+end on
+
+on m_allcalls.destroy
+call super::destroy
+end on
+
+type m_pendingcalls from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_gcc_pending_calls) THEN
+	if w_gcc_pending_calls.WindowState = Minimized! then w_gcc_pending_calls.WindowState = Normal!
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+	   OpenSheetWithParm( w_gcc_pending_calls,'1', gnv_appman.iw_frame, 0, Layered! )
+   end if
+END IF
+
+
+end event
+
+on m_pendingcalls.create
+call super::create
+this.visible = false
+this.text = "&Pending Calls~tCtrl+Shift+F7"
+this.enabled = false
+this.shortcut = 1398
+this.microhelp = "View a browse screen of OPEN and PRE-OPEN calls."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom038!"
+this.toolbaritemtext = "Pending"
+this.toolbaritemorder = 4
+end on
+
+on m_pendingcalls.destroy
+call super::destroy
+end on
+
+type m_timercalls from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+//OpenSheet( w_timer_calls, "w_timer_calls", w_main, 0, Original! )
+
+end event
+
+on m_timercalls.create
+call super::create
+this.visible = false
+this.text = "&Timer Calls~tCtrl+Shift+F8"
+this.enabled = false
+this.shortcut = 1399
+this.microhelp = "View a browse screen of all TIMER calls (currently exceeding their alotted sub-category resolution times) with alarm."
+this.toolbaritemvisible = false
+this.toolbaritemname = "CLOCK1.BMP"
+this.toolbaritemtext = "Timer"
+this.toolbaritemorder = 6
+end on
+
+on m_timercalls.destroy
+call super::destroy
+end on
+
+type m_reportdef from menu within m_view
+end type
+
+on m_reportdef.create
+call super::create
+this.text = "GCC Reports"
+this.toolbaritemname = "Properties!"
+this.toolbaritemtext = "reports"
+this.toolbaritemorder = 5
+end on
+
+event clicked;//setpointer(hourglass!)
+////Open (w_vzt_mm_report_def)
+//OpenSheetWithParm( w_vzt_mm_report_def,' ', gnv_appman.iw_frame, 0, Layered! )
+//
+SetPointer( HourGlass! )
+
+If IsValid(w_vzt_mm_report_def) THEN
+	if w_vzt_mm_report_def.WindowState = Minimized! then w_vzt_mm_report_def.WindowState = Normal!
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+	   OpenSheetWithParm( w_vzt_mm_report_def,'1', gnv_appman.iw_frame, 0, Layered! )
+   end if
+END IF
+
+end event
+
+on m_reportdef.destroy
+call super::destroy
+end on
+
+type m_qgenreports from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_qgen_report_def) THEN
+	if w_vzt_mm_report_def_gr.WindowState = Minimized! then w_vzt_mm_report_def_gr.WindowState = Normal!
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+	   OpenSheetWithParm( w_vzt_mm_report_def_gr,'1', gnv_appman.iw_frame, 0, Layered! )
+   end if
+END IF
+
+
+//If IsValid(w_qgen_report_def) THEN
+//	if w_qgen_report_def.WindowState = Minimized! then w_qgen_report_def.WindowState = Normal!
+//ELSE
+//   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+//	   OpenSheetWithParm( w_qgen_report_def,'1', gnv_appman.iw_frame, 0, Layered! )
+//   end if
+//END IF
+//
+end event
+
+on m_qgenreports.create
+call super::create
+this.text = "Questionnaire Graphs"
+this.toolbaritemname = "Graph!"
+this.toolbaritemtext = "graphs"
+this.toolbaritemorder = 6
+end on
+
+on m_qgenreports.destroy
+call super::destroy
+end on
+
+type m_window from menu within m_gcc_main
+m_tile m_tile
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_systemsettings m_systemsettings
+m_toolbaroptions m_toolbaroptions
+m_timecalculator m_timecalculator
+m_-6 m_-6
+m_messagepaging m_messagepaging
+end type
+
+on m_window.create
+call super::create
+this.text = "&Window"
+this.microhelp = "Window Options."
+this.m_tile=create m_tile
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_arrangemenuicons=create m_arrangemenuicons
+this.m_-3=create m_-3
+this.m_systemsettings=create m_systemsettings
+this.m_toolbaroptions=create m_toolbaroptions
+this.m_timecalculator=create m_timecalculator
+this.m_-6=create m_-6
+this.m_messagepaging=create m_messagepaging
+this.Item[UpperBound(this.Item)+1]=this.m_tile
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_arrangemenuicons
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_systemsettings
+this.Item[UpperBound(this.Item)+1]=this.m_toolbaroptions
+this.Item[UpperBound(this.Item)+1]=this.m_timecalculator
+this.Item[UpperBound(this.Item)+1]=this.m_-6
+this.Item[UpperBound(this.Item)+1]=this.m_messagepaging
+end on
+
+on m_window.destroy
+call super::destroy
+destroy(this.m_tile)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_arrangemenuicons)
+destroy(this.m_-3)
+destroy(this.m_systemsettings)
+destroy(this.m_toolbaroptions)
+destroy(this.m_timecalculator)
+destroy(this.m_-6)
+destroy(this.m_messagepaging)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Tile! )
+end on
+
+on m_tile.create
+call super::create
+this.text = "T&ile"
+this.microhelp = "Arrange all open windows at roughly equal size, all showing with no overlap."
+this.toolbaritemname = "Tile!"
+this.toolbaritemtext = "Tile"
+this.toolbaritemorder = 92
+this.toolbaritemspace = 1
+end on
+
+on m_tile.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Layer! )
+end on
+
+on m_layer.create
+call super::create
+this.visible = false
+this.text = "&Layer"
+this.microhelp = "Zoom all windows (almost maximize but keep title bars) and overlap w/layer order; reverse order as last accessed."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Layer!"
+this.toolbaritemtext = "Layer"
+this.toolbaritemorder = 94
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Cascade! )
+end on
+
+on m_cascade.create
+call super::create
+this.visible = false
+this.text = "&Cascade"
+this.microhelp = "Regularize (approx 25% screen size) all windows, overlap and layer as last accessed."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Cascade!"
+this.toolbaritemtext = "Cascade"
+this.toolbaritemorder = 96
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_arrangemenuicons from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Icons! )
+end on
+
+on m_arrangemenuicons.create
+call super::create
+this.visible = false
+this.text = "Arrange Menu &Icons"
+this.microhelp = "Arrange Minimized Windows (Icons) along bottom of screen, left-to-right as last accessed."
+this.toolbaritemvisible = false
+this.toolbaritemname = "ArrangeIcons!"
+this.toolbaritemtext = "Icons"
+this.toolbaritemorder = 98
+end on
+
+on m_arrangemenuicons.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_systemsettings from menu within m_window
+end type
+
+event clicked;Run("Notepad.exe " + cINIPath + "he_dts.ini", Maximized! )
+// Now let's re-read all global INI settngs, anythng else
+// will need to be reset by whatever opens or timers it...keep
+// that in mind when hooking up window or system var's to the .INI file.
+If not f_System_Setup() Then  
+	MessageBox(	"System ERROR", "Unable to properly reset System Settings!", &
+					Exclamation!)
+	HALT CLOSE	// OK, so password prompts can stop us...we're not perfect.
+End If
+end event
+
+on m_systemsettings.create
+call super::create
+this.visible = false
+this.text = "S&ystem Settings"
+this.enabled = false
+this.microhelp = "Modify the Windows INI file used to hold System Settings."
+this.toolbaritemvisible = false
+this.toolbaritemtext = "System"
+this.toolbaritemorder = 43
+this.toolbaritemspace = 1
+end on
+
+on m_systemsettings.destroy
+call super::destroy
+end on
+
+type m_toolbaroptions from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+OpenWithParm (w_set_toolbars, ParentWindow)
+
+// Open( w_r_ToolBarOptions, w_main )
+end on
+
+on m_toolbaroptions.create
+call super::create
+this.text = "Tool&bar Options..."
+this.microhelp = "Show, hide and place Application Toolbar and/or its~' text."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Custom041!"
+this.toolbaritemtext = "Toolbar"
+this.toolbaritemorder = 45
+end on
+
+on m_toolbaroptions.destroy
+call super::destroy
+end on
+
+type m_timecalculator from menu within m_window
+end type
+
+event clicked;// open calculator
+//SetPointer( HourGlass! )
+//Open( w_calc_time, gnv_appman.iw_frame )
+end event
+
+on m_timecalculator.create
+call super::create
+this.visible = false
+this.text = "Time Calc&ulator~tCtrl+Shift+F9"
+this.enabled = false
+this.shortcut = 1400
+this.microhelp = "A pop-up time duration Calculator used to convert seconds, minutes, hours, days, weeks, months and years amongst each other."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Compute!"
+this.toolbaritemtext = "Calculator"
+this.toolbaritemorder = 40
+this.toolbaritemspace = 1
+end on
+
+on m_timecalculator.destroy
+call super::destroy
+end on
+
+type m_-6 from menu within m_window
+end type
+
+on m_-6.create
+call super::create
+this.text = "-"
+end on
+
+on m_-6.destroy
+call super::destroy
+end on
+
+type m_messagepaging from menu within m_window
+end type
+
+on m_messagepaging.create
+call super::create
+this.visible = false
+this.text = "&Message Paging"
+this.enabled = false
+this.toolbaritemvisible = false
+this.toolbaritemname = "PAGER.BMP"
+this.toolbaritemtext = "Message Paging"
+this.toolbaritemorder = 41
+end on
+
+on m_messagepaging.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_gcc_main
+m_context m_context
+m_index m_index
+m_search m_search
+m_- m_-
+m_about m_about
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Help Options."
+this.m_context=create m_context
+this.m_index=create m_index
+this.m_search=create m_search
+this.m_-=create m_-
+this.m_about=create m_about
+this.Item[UpperBound(this.Item)+1]=this.m_context
+this.Item[UpperBound(this.Item)+1]=this.m_index
+this.Item[UpperBound(this.Item)+1]=this.m_search
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_about
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_context)
+destroy(this.m_index)
+destroy(this.m_search)
+destroy(this.m_-)
+destroy(this.m_about)
+end on
+
+type m_context from menu within m_help
+end type
+
+event clicked;ShowHelp( cHelpPath + cHelpFile, index! )
+
+end event
+
+on m_context.create
+call super::create
+this.visible = false
+this.text = "Co&ntext"
+this.microhelp = "Context-Sensitive Help, based on the last selected screen object, within the Help Index."
+end on
+
+on m_context.destroy
+call super::destroy
+end on
+
+type m_index from menu within m_help
+end type
+
+event clicked;ShowHelp( cHelpPath + cHelpFile, index! )
+
+
+end event
+
+on m_index.create
+call super::create
+this.text = "&Index~tF1"
+this.shortcut = 112
+this.microhelp = "Show the Help Index (i.e., Help Table-of-Contents)."
+this.toolbaritemname = "Help!"
+this.toolbaritemtext = "F1 - Help"
+this.toolbaritemorder = 990
+this.toolbaritemspace = 2
+end on
+
+on m_index.destroy
+call super::destroy
+end on
+
+type m_search from menu within m_help
+end type
+
+event clicked;ShowHelp( cHelpPath + cHelpFile, index! )
+
+end event
+
+on m_search.create
+call super::create
+this.visible = false
+this.text = "&Search~tCtrl+F1"
+this.shortcut = 368
+this.microhelp = "Search the Help Index for application related key words and phrases."
+end on
+
+on m_search.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_help
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_about from menu within m_help
+end type
+
+event clicked;SetPointer( HourGlass! )
+//OpenSheet( w_about, "w_about", w_main, 3, Original! )
+Open( w_gcc_about, gnv_appman.iw_frame )
+end event
+
+on m_about.create
+call super::create
+this.text = "&About"
+this.microhelp = "Application version, copyright and available memory information."
+this.toolbaritemtext = "About"
+this.toolbaritemorder = 98
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+

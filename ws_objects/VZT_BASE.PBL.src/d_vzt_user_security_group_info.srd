@@ -1,0 +1,89 @@
+﻿$PBExportHeader$d_vzt_user_security_group_info.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=0 )
+header(height=64 color="27289189" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=char(50) updatewhereclause=yes name=application dbname="vzt_users_access.application" )
+ column=(type=char(200) updatewhereclause=yes name=window dbname="vzt_users_access.window" )
+ column=(type=char(200) updatewhereclause=yes name=control dbname="vzt_users_access.control" )
+ column=(type=number updatewhereclause=yes name=contact_id dbname="vzt_users_access.contact_id" )
+ column=(type=char(1) updatewhereclause=yes name=access_create dbname="vzt_users_access.access_create" initial="N" values="	Y/	N" )
+ column=(type=char(1) updatewhereclause=yes name=access_read dbname="vzt_users_access.access_read" initial="N" values="	Y/	N" )
+ column=(type=char(1) updatewhereclause=yes name=access_update dbname="vzt_users_access.access_update" initial="N" values="	Y/	N" )
+ column=(type=char(1) updatewhereclause=yes name=access_delete dbname="vzt_users_access.access_delete" initial="N" values="	Y/	N" )
+ column=(type=char(50) updatewhereclause=yes name=object_type dbname="vzt_users_access_template.object_type" )
+ column=(type=char(1) updatewhereclause=yes name=allowed dbname="allowed" values="	Y/	N" )
+ column=(type=number updatewhereclause=yes name=object_id dbname="vzt_users_access.object_id" )
+ column=(type=char(250) updatewhereclause=yes name=description dbname="vzt_users_access_template.description" )
+ retrieve="  SELECT ~"vzt_users_access~".~"APPLICATION~",   
+         ~"vzt_users_access~".~"WINDOW~",   
+         ~"vzt_users_access~".~"CONTROL~",   
+
+         ~"vzt_users_access~".~"contact_ID~",   
+         ~"vzt_users_access~".~"ACCESS_CREATE~",   
+         ~"vzt_users_access~".~"ACCESS_READ~",   
+         ~"vzt_users_access~".~"ACCESS_UPDATE~",   
+         ~"vzt_users_access~".~"ACCESS_DELETE~",   
+         ~"vzt_users_access_template~".~"OBJECT_TYPE~"  ,
+			'Y' as allowed ,
+			~"vzt_users_access~".~"OBJECT_ID~",
+			~"vzt_users_access_template~".~"DESCRIPTION~" 
+
+    FROM ~"vzt_users_access~",   
+         ~"vzt_users_access_template~"  
+   WHERE 				/*  ( ~"vzt_users_access_template~".~"APPLICATION~" = ~"vzt_users_access~".~"APPLICATION~" ) and  */
+         ( ~"vzt_users_access_template~".~"WINDOW~" = ~"vzt_users_access~".~"WINDOW~" ) and  
+         ( ~"vzt_users_access_template~".~"CONTROL~" = ~"vzt_users_access~".~"CONTROL~" )    
+         AND ~"vzt_users_access~".~"contact_ID~" = :an_userid
+
+UNION 
+
+  SELECT ~"vzt_users_access_template~".~"APPLICATION~",   
+         ~"vzt_users_access_template~".~"WINDOW~",   
+         ~"vzt_users_access_template~".~"CONTROL~",   
+
+         :an_userid,   
+			'N','N','N','N',  
+         ~"vzt_users_access_template~".~"OBJECT_TYPE~"  ,
+			'N' as allowed ,
+         ~"vzt_users_access_template~".~"ID~" ,
+			~"vzt_users_access_template~".~"DESCRIPTION~" 
+
+    FROM ~"vzt_users_access_template~"  
+   WHERE NOT EXISTS ( SELECT * FROM ~"vzt_users_access~" WHERE 
+			~"vzt_users_access~".~"contact_id~" = :an_userid AND 
+		/*	 ~"vzt_users_access_template~".~"APPLICATION~" = ~"vzt_users_access~".~"APPLICATION~" and  */
+          ~"vzt_users_access_template~".~"WINDOW~" = ~"vzt_users_access~".~"WINDOW~"  and  
+          ~"vzt_users_access_template~".~"CONTROL~" = ~"vzt_users_access~".~"CONTROL~" 
+         )
+
+" arguments=(("an_userid", number)) )
+text(band=header alignment="2" text="Window" border="0" color="16777215" x="2848" y="0" height="56" width="841" html.valueishtml="0"  name=window_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Control" border="0" color="16777215" x="1851" y="0" height="56" width="608" html.valueishtml="0"  name=control_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Object Type" border="0" color="16777215" x="2469" y="0" height="56" width="370" html.valueishtml="0"  name=vzt_users_access_template_object_type_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text=" Description" border="0" color="16777215" x="777" y="0" height="56" width="1065" html.valueishtml="0"  name=vzt_users_access_template_description_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Create" border="0" color="0" x="9" y="0" height="56" width="178" html.valueishtml="0"  name=access_create_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Read" border="0" color="0" x="197" y="0" height="56" width="160" html.valueishtml="0"  name=access_read_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Update" border="0" color="0" x="366" y="0" height="56" width="201" html.valueishtml="0"  name=access_update_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Delete" border="0" color="0" x="576" y="0" height="56" width="187" html.valueishtml="0"  name=access_delete_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( allowed = 'Y', RGB(55, 20,170), RGB(0,0,0) ) " x="2848" y="4" height="56" width="841" format="[general]" html.valueishtml="0"  name=window visible="1" edit.limit=64 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( allowed = 'Y', 800,  400 ) "  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( allowed = 'Y', RGB(55, 170,50), RGB(0,0,0) ) " x="1851" y="4" height="56" width="608" format="[general]" html.valueishtml="0"  name=control visible="1" edit.limit=128 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( allowed = 'Y', 800,  400 ) "  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="2469" y="4" height="56" width="370" format="[general]" html.valueishtml="0"  name=object_type visible="1" edit.limit=24 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432~tif ( allowed = 'Y', RGB(55, 20,170), RGB(0,0,0) ) " x="777" y="0" height="60" width="1065" format="[general]" html.valueishtml="0"  name=description visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400~tif ( allowed = 'Y', 800,  400 ) "  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=10 border="0" color="33554432" x="9" y="4" height="56" width="178" format="[general]" html.valueishtml="0"  name=access_create visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27486535" )
+column(band=detail id=6 alignment="2" tabsequence=20 border="0" color="33554432" x="197" y="4" height="56" width="160" format="[general]" html.valueishtml="0"  name=access_read visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27486535" )
+column(band=detail id=7 alignment="2" tabsequence=30 border="0" color="33554432" x="366" y="4" height="56" width="201" format="[general]" html.valueishtml="0"  name=access_update visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27486535" )
+column(band=detail id=8 alignment="2" tabsequence=40 border="0" color="33554432" x="576" y="4" height="56" width="187" format="[general]" html.valueishtml="0"  name=access_delete visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27486535" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

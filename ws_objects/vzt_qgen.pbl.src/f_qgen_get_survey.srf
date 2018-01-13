@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_qgen_get_survey.srf
+global type f_qgen_get_survey from function_object
+end type
+
+forward prototypes
+global function double f_qgen_get_survey (long al_parm1)
+end prototypes
+
+global function double f_qgen_get_survey (long al_parm1);str_response lstr_parms
+
+lstr_parms.num1 = al_parm1
+
+OpenWIthParm( w_get_survey_list, lstr_parms)
+
+lstr_parms = Message.PowerObjectParm
+if not isValid( lstr_parms) then return 0
+If lstr_parms.rc <= 0 then return 0
+
+return lstr_parms.num1
+end function
+

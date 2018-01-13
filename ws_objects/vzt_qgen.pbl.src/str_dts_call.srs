@@ -1,0 +1,29 @@
+﻿$PBExportHeader$str_dts_call.srs
+global type str_dts_call from structure
+	double		gccid
+	window		w_caller
+	integer		rc
+	string		dtsparm
+	string		room
+	string		callnumber
+	integer		coltoset
+	string		openmode
+	double		id
+	string		guestname
+	string		guestemail
+	decimal { 2 }		amount
+	string		offer
+	string		guest_phone
+	string		gcc_url
+	string		return_after_call_closed
+	datawindow		dw_distribution
+	string		url[]
+	string		batch
+	long		batch_do_one
+	datetime		ansdate
+	double		account
+	integer		batch_new_gcc
+	string		batch_auto
+	nvo_websurvey		batch_uo
+end type
+

@@ -1,0 +1,18 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_alec_rpt.pbl" "";
+@end;
+@begin Objects 
+ "d_calendar.srd" "vzt_alec_rpt.pbl";
+ "d_gcc_rpt_question_score_alert.srd" "vzt_alec_rpt.pbl";
+ "d_gcc_rpt_question_score_alert0.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_calls_by_duration_alert.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_calls_by_duration_alert_no_task.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_calls_by_duration_detail.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_calls_by_duration_summary.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_calls_by_duration_summary_notsk.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_callsxdurationsum.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_callsxproblemsum_new.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_sched_calls_by_dept_date_task.srd" "vzt_alec_rpt.pbl";
+ "d_he_rpt_sched_calls_by_room.srd" "vzt_alec_rpt.pbl";
+@end;

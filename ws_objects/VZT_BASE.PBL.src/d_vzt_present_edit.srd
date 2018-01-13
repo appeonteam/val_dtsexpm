@@ -1,0 +1,67 @@
+﻿$PBExportHeader$d_vzt_present_edit.srd
+$PBExportComments$DataWindow using an OLE 2.0 blob
+release 6;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=652 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=fontface dbname="vzt_presentation.fontface" )
+ column=(type=long update=yes updatewhereclause=yes name=fontsize dbname="vzt_presentation.fontsize" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=bold dbname="vzt_presentation.bold" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=italic dbname="vzt_presentation.italic" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=under dbname="vzt_presentation.under" values="	Y/	N" )
+ column=(type=number update=yes updatewhereclause=yes name=fgcolor dbname="vzt_presentation.fgcolor" )
+ column=(type=number update=yes updatewhereclause=yes name=bgcolor dbname="vzt_presentation.bgcolor" )
+ column=(type=number update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="vzt_presentation.id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=parentkey dbname="vzt_presentation.parentkey" )
+ column=(type=long update=yes updatewhereclause=yes name=height dbname="vzt_presentation.height" )
+ column=(type=long update=yes updatewhereclause=yes name=width dbname="vzt_presentation.width" )
+ column=(type=long update=yes updatewhereclause=yes name=x dbname="vzt_presentation.x" )
+ column=(type=long update=yes updatewhereclause=yes name=y_before dbname="vzt_presentation.y_before" )
+ column=(type=long update=yes updatewhereclause=yes name=y_after dbname="vzt_presentation.y_after" )
+ retrieve="  SELECT ~"vzt_presentation~".~"fontface~",   
+         ~"vzt_presentation~".~"fontsize~",   
+         ~"vzt_presentation~".~"bold~",   
+         ~"vzt_presentation~".~"italic~",   
+         ~"vzt_presentation~".~"under~",   
+         ~"vzt_presentation~".~"fgcolor~",   
+         ~"vzt_presentation~".~"bgcolor~",   
+         ~"vzt_presentation~".~"id~",   
+         ~"vzt_presentation~".~"parentkey~",   
+         ~"vzt_presentation~".~"height~",   
+         ~"vzt_presentation~".~"width~",   
+         ~"vzt_presentation~".~"x~",   
+         ~"vzt_presentation~".~"y_before~",   
+         ~"vzt_presentation~".~"y_after~"  
+    FROM ~"vzt_presentation~"   
+WHERE  ~"vzt_presentation~".~"id~" = :ad_id" update="vzt_presentation" updatewhere=0 updatekeyinplace=yes arguments=(("ad_id", number)) )
+groupbox(band=detail text=""border="5" color="16711680" x="23" y="436" height="204" width="1221"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+groupbox(band=detail text=""border="5" color="16711680" x="23" y="20" height="392" width="1221"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=detail alignment="2" text="Sample"border="0" color="0~t fgcolor" x="37" y="296" height="104" width="1143"  font.face="Arial" font.height="-8~tif ( fontsize > 0 and  fontsize < 80,  (-1)*abs(fontsize ), -8 )" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="536870912~tif ( bgcolor = 999999999 , RGB(192,192,192),  bgcolor )" )
+text(band=detail alignment="1" text="Font:"border="0" color="0" x="50" y="52" height="56" width="151"  name=fontface_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="16711680" x="219" y="52" height="56" width="489" format="[general]"  name=fontface edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="x:"border="0" color="0" x="123" y="456" height="56" width="55"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=80 border="5" color="16711680" x="215" y="456" height="56" width="174" format="[general]"  name=x editmask.spin=yes editmask.mask="###0" editmask.spinrange="0~~4000" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="y before:"border="0" color="0" x="407" y="456" height="56" width="219"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=90 border="5" color="16711680" x="649" y="456" height="56" width="151" format="[general]"  name=y_before editmask.spin=yes editmask.mask="##0" editmask.spinrange="0~~400" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="width:"border="0" color="0" x="41" y="532" height="56" width="142"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=110 border="5" color="16711680" x="215" y="540" height="56" width="174" format="[general]"  name=width editmask.spin=yes editmask.mask="###0" editmask.spinrange="0~~4000" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="height:"border="0" color="0" x="357" y="544" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=120 border="5" color="16711680" x="645" y="540" height="56" width="155" format="[general]"  name=height editmask.spin=yes editmask.mask="##0" editmask.spinrange="0~~400" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Size:"border="0" color="0" x="55" y="136" height="56" width="151"  name=fontsize_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=70 border="5" color="16711680" x="224" y="140" height="56" width="174" format="[general]"  name=fontsize editmask.spin=yes editmask.mask="###" editmask.spinrange="2~~150" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Color:"border="0" color="0" x="594" y="144" height="56" width="151"  name=fgcolor_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="BG Color:"border="0" color="0" x="512" y="224" height="56" width="233"  name=bgcolor_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=50 border="5" color="16711680" x="763" y="144" height="56" width="315" format="[general]"  name=fgcolor edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="1" tabsequence=60 border="5" color="16711680" x="763" y="224" height="56" width="315" format="[general]"  name=bgcolor edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+button(band=detail text="?"filename=""action="0" border="0" color="16711680" x="1102" y="140" height="68" width="73" vtextalign="0" htextalign="0"  name=btn_fg  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+button(band=detail text="?"filename=""action="0" border="0" color="16711680" x="1102" y="220" height="64" width="73" vtextalign="0" htextalign="0"  name=btn_bg  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+text(band=detail alignment="1" text="y after:"border="0" color="0" x="832" y="456" height="56" width="174"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=100 border="5" color="16711680" x="1029" y="456" height="56" width="174" format="[general]"  name=y_after editmask.spin=yes editmask.mask="##0" editmask.spinrange="0~~400" editmask.spinincr=1 editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="0" color="0" x="754" y="52" height="52" width="59" format="[general]"  name=bold checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269528" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="0" color="0" x="910" y="52" height="52" width="55" format="[general]"  name=italic checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="80269528" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="0" color="0" x="1047" y="52" height="52" width="59" format="[general]"  name=under checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="80269528" )
+text(band=detail alignment="0" text="B"border="0" color="0" x="827" y="48" height="56" width="32"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269528" )
+text(band=detail alignment="0" text="I"border="0" color="0" x="987" y="52" height="52" width="23"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="80269528" )
+text(band=detail alignment="0" text="U"border="0" color="0" x="1125" y="52" height="56" width="46"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.underline="1" background.mode="2" background.color="80269528" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

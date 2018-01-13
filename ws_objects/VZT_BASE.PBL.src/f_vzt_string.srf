@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_vzt_string.srf
+global type f_vzt_string from function_object
+end type
+
+forward prototypes
+global function string f_vzt_string (ref blob as_blob)
+end prototypes
+
+global function string f_vzt_string (ref blob as_blob);
+String 				 ls_data
+
+If gnv_appman.is_unicode = 'Y' then 
+	ls_data = string(as_blob, EncodingUTF16LE! ) 
+ELSE
+	ls_data = string(as_blob, EncodingANSI!) 
+END IF
+
+
+return ls_data 
+end function
+

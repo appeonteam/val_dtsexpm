@@ -1,0 +1,83 @@
+﻿$PBExportHeader$f_dw_to_syntax_and_data.srf
+global type f_dw_to_syntax_and_data from function_object
+end type
+
+forward prototypes
+global function integer f_dw_to_syntax_and_data (ref datawindow adw_report, boolean ab_to_string, ref blob blob_syntax_and_data)
+end prototypes
+
+global function integer f_dw_to_syntax_and_data (ref datawindow adw_report, boolean ab_to_string, ref blob blob_syntax_and_data);string 	ls_syntax, ls_data, ls_delim = "..####.." , ls_preview
+long 		ll_slen , ll_dlen , ll_rc , brc
+blob  	blob_out
+
+adw_report.Setredraw( false) 	
+
+If ab_to_string then 
+	// convert dw to string including data
+	ls_syntax 	= adw_report.Describe("DataWindow.Syntax") 
+	f_dwdata_for_export ( adw_report, true)
+	ls_data 		= adw_report.Describe("DataWindow.Data")
+	ls_syntax 	= string (len(ls_syntax ), "00000000") +string (len(ls_data ), "00000000") + ls_syntax + ls_data 
+	If len ( blob_syntax_and_data ) > 0 then
+		//al_next = blobedit( blob_syntax_and_data , al_next , ls_syntax ) 
+		blob_syntax_and_data = blob_syntax_and_data + blob (  ls_syntax )
+	ELSE
+		blob_syntax_and_data = blob (  ls_syntax )
+	END IF
+Else
+	// convert string (syntax and data) to dw 
+	ls_preview = string( BLOBmid( blob_syntax_and_data, 1, 100) ) 
+	ls_preview = string( BLOBmid( blob_syntax_and_data, 1, 100) , gnv_appman.i_encoding ) 
+
+	If gnv_appman.is_unicode = 'Y' then 
+		If Not IsNull( gnv_appman.is_encoding ) then 
+			ll_slen = long (string( BLOBmid( blob_syntax_and_data, 1, 16)   ,gnv_appman.i_encoding ))
+			ll_dlen = long (string( BLOBmid( blob_syntax_and_data, 17, 16) ,gnv_appman.i_encoding ))
+		ELSE
+			ll_slen = long (string( BLOBmid( blob_syntax_and_data, 1, 16)    )) 
+			ll_dlen = long (string( BLOBmid( blob_syntax_and_data, 17, 16)  ))
+		END IF
+	ELSE
+//		ll_slen = long (string( BLOBmid( blob_syntax_and_data, 1, 8) ,EncodingANSI!))
+//		ll_dlen = long (string( BLOBmid( blob_syntax_and_data, 9, 8) ,EncodingANSI!))
+		ll_slen = long (string( BLOBmid( blob_syntax_and_data, 1, 8) ))
+		ll_dlen = long (string( BLOBmid( blob_syntax_and_data, 9, 8) ))
+	END IF
+	ls_preview = string( BLOBmid( blob_syntax_and_data, 1, 100) ,EncodingANSI!) 
+	ls_preview = string( BLOBmid( blob_syntax_and_data, 1, 100) ) 
+	
+	If ll_slen  > 0 then 
+		If gnv_appman.is_unicode = 'Y' then  
+			If Not IsNull( gnv_appman.is_encoding ) then 
+				ls_syntax = string( blobMID 	(blob_syntax_and_data, 33, ll_slen * 2 ) ,gnv_appman.i_encoding )
+				ls_data   = string( blobMID 	(blob_syntax_and_data, 33 +(ll_slen * 2), ll_dlen * 2  ) ,gnv_appman.i_encoding )
+			ELSE	
+				ls_syntax = string( blobMID 	(blob_syntax_and_data, 33, ll_slen * 2 ) )
+				ls_data   = string( blobMID 	(blob_syntax_and_data, 33 +(ll_slen * 2), ll_dlen * 2  )  )
+			END IF
+			blob_syntax_and_data =blobMID	(blob_syntax_and_data, 33 +(ll_slen * 2)  +(ll_dlen * 2)   ) //the rest
+		ELSE 
+//			ls_syntax = string( blobMID 	(blob_syntax_and_data, 17, ll_slen  ) ,EncodingANSI!)
+//			ls_data   = string( blobMID 	(blob_syntax_and_data, 17 +ll_slen, ll_dlen  ) ,EncodingANSI!)
+//			blob_syntax_and_data =blobMID	(blob_syntax_and_data, 17 +ll_slen +ll_dlen  ) //the rest
+			ls_syntax = string( blobMID 	(blob_syntax_and_data, 17, ll_slen  ) )
+			ls_data   = string( blobMID 	(blob_syntax_and_data, 17 +ll_slen, ll_dlen  ) )
+			blob_syntax_and_data =blobMID	(blob_syntax_and_data, 17 +ll_slen +ll_dlen  ) //the rest
+		END IF
+		ls_preview = string( BLOBmid( blob_syntax_and_data, 1, 100) ,EncodingANSI!) 
+		ls_preview = string( BLOBmid( blob_syntax_and_data, 1, 100) ) 
+		
+		adw_report.Create( ls_syntax, ls_preview ) 
+		adw_report.Setredraw( false) 			
+		adw_report.ImportString( ls_data ) 
+		f_dwdata_for_export ( adw_report, false)  // convert back
+		adw_report.sort()
+		adw_report.GroupCalc ()
+	Else
+		ll_rc = -1
+	End If 
+End if
+adw_report.Setredraw( true ) 
+return ll_rc 
+end function
+

@@ -1,0 +1,9 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "dts_gcc_common.pbl" "";
+@end;
+@begin Objects
+ "d_gcc_guest_edit_dup.srd" "dts_gcc_common.pbl";
+ "d_gcc_guest_list.srd" "dts_gcc_common.pbl";
+ "w_gcc_dupguest.srw" "dts_gcc_common.pbl";
+@end;

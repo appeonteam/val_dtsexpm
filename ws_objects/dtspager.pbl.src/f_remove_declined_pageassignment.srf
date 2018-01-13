@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_remove_declined_pageassignment.srf
+global type f_remove_declined_pageassignment from function_object
+end type
+
+forward prototypes
+global function boolean f_remove_declined_pageassignment (string in_call_number)
+end prototypes
+
+global function boolean f_remove_declined_pageassignment (string in_call_number);// remove declined pageassignment call
+	delete 	from pageassignment
+	where		call_number = :in_call_number
+	and		assignment_cd = 'T';
+	if sqlca.sqlcode < 0 then
+		egm_sqlerror(sqlca)
+		return false
+	end if
+	return true;
+end function
+

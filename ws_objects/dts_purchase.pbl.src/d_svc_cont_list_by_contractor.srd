@@ -1,0 +1,62 @@
+﻿$PBExportHeader$d_svc_cont_list_by_contractor.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 selected.mouse=no )
+header(height=72 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=long updatewhereclause=yes key=yes identity=yes name=id dbname="vzt_service_cont.id" )
+ column=(type=long updatewhereclause=yes name=contact_id dbname="vzt_service_cont.contact_id" )
+ column=(type=char(100) updatewhereclause=yes name=descr dbname="vzt_service_cont.descr" )
+ column=(type=datetime updatewhereclause=yes name=start_date dbname="vzt_service_cont.start_date" )
+ column=(type=datetime updatewhereclause=yes name=end_date dbname="vzt_service_cont.end_date" )
+ column=(type=datetime updatewhereclause=yes name=renew_date dbname="vzt_service_cont.renew_date" )
+ column=(type=long updatewhereclause=yes name=alert_days dbname="vzt_service_cont.alert_days" )
+ column=(type=char(30) updatewhereclause=yes name=alert_dist dbname="vzt_service_cont.alert_dist" )
+ column=(type=datetime updatewhereclause=yes name=ins_exp_date dbname="vzt_service_cont.ins_exp_date" )
+ column=(type=decimal(4) updatewhereclause=yes name=amount dbname="vzt_service_cont.amount" )
+ column=(type=char(10) updatewhereclause=yes name=freq dbname="vzt_service_cont.freq" )
+ column=(type=char(4000) updatewhereclause=yes name=long_desc dbname="vzt_service_cont.long_desc" )
+ retrieve="  SELECT vzt_service_cont.id,   
+         vzt_service_cont.contact_id,   
+         vzt_service_cont.descr,   
+         vzt_service_cont.start_date,   
+         vzt_service_cont.end_date,   
+         vzt_service_cont.renew_date,   
+         vzt_service_cont.alert_days,   
+         vzt_service_cont.alert_dist,   
+         vzt_service_cont.ins_exp_date,   
+         vzt_service_cont.amount,   
+         vzt_service_cont.freq,   
+         vzt_service_cont.long_desc  
+  FROM vzt_service_cont where contact_id = :al_contractor" update="vzt_service_cont" updatewhere=1 updatekeyinplace=no arguments=(("al_contractor", number)) )
+text(band=header alignment="2" text="Id" border="6" color="16777215" x="9" y="8" height="64" width="219" html.valueishtml="0"  name=id_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Provider/Vendor" border="6" color="16777215" x="270" y="8" height="64" width="517" html.valueishtml="0"  name=contact_id_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text=" Descr" border="6" color="16777215" x="841" y="8" height="64" width="873" html.valueishtml="0"  name=descr_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Start Date" border="6" color="16777215" x="1774" y="8" height="64" width="297" html.valueishtml="0"  name=start_date_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="End Date" border="6" color="16777215" x="2080" y="8" height="64" width="315" html.valueishtml="0"  name=end_date_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Renew Date" border="6" color="16777215" x="2405" y="8" height="64" width="370" html.valueishtml="0"  name=renew_date_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Alert Days" border="6" color="16777215" x="2784" y="8" height="64" width="325" html.valueishtml="0"  name=alert_days_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Alert Dist List" border="6" color="16777215" x="3118" y="8" height="64" width="489" html.valueishtml="0"  name=alert_dist_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Ins Exp Date" border="6" color="16777215" x="3616" y="8" height="64" width="398" html.valueishtml="0"  name=ins_exp_date_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Amount" border="6" color="16777215" x="4023" y="8" height="64" width="320" html.valueishtml="0"  name=amount_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Freq" border="6" color="16777215" x="4352" y="8" height="64" width="279" html.valueishtml="0"  name=freq_t visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="795" y="4" height="52" width="37" format="[general]" html.valueishtml="0"  name=obj_1398218582 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="238" y="12" height="40" width="23" format="[general]" html.valueishtml="0"  name=c1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="1723" y="12" height="40" width="41" format="[general]" html.valueishtml="0"  name=obj_1398214866 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="134217729" x="9" y="0" height="56" width="219" format="[general]" html.valueishtml="0"  name=id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="134217729" x="270" y="0" height="76" width="517" format="[general]" html.valueishtml="0"  name=contact_id visible="1" dddw.name=d_vendor_list dddw.displaycolumn=firstname dddw.datacolumn=id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="134217729" x="841" y="0" height="76" width="873" format="[general]" html.valueishtml="0"  name=descr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="134217729" x="1774" y="0" height="76" width="297" format="[shortdate]" html.valueishtml="0"  name=start_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="134217729" x="2080" y="0" height="76" width="315" format="[shortdate] [time]" html.valueishtml="0"  name=end_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="134217729" x="2405" y="0" height="76" width="370" format="[shortdate] [time]" html.valueishtml="0"  name=renew_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="134217729" x="2784" y="0" height="76" width="325" format="[general]" html.valueishtml="0"  name=alert_days visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="134217729" x="3118" y="0" height="76" width="489" format="[general]" html.valueishtml="0"  name=alert_dist visible="1" dddw.name=none dddw.displaycolumn=none dddw.datacolumn=none dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="2" tabsequence=32766 border="0" color="134217729" x="3616" y="0" height="76" width="398" format="[shortdate] [time]" html.valueishtml="0"  name=ins_exp_date visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="134217729" x="4023" y="0" height="76" width="320" format="#,##0.00" html.valueishtml="0"  name=amount visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="2" tabsequence=32766 border="0" color="134217729" x="4352" y="0" height="76" width="279" format="[general]" html.valueishtml="0"  name=freq visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=-32560 savemetadata=-12165 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

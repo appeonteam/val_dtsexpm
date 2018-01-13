@@ -1,0 +1,32 @@
+﻿$PBExportHeader$d_vzt_user_rights_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=76 color="8421376" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=char(20) update=yes updatewhereclause=yes key=yes name=userid dbname="vzt_objectpermissions.userid" )
+ column=(type=char(100) update=yes updatewhereclause=yes key=yes name=objectclass dbname="vzt_objectpermissions.objectclass" initial="WINDOW" values="WINDOW	WINDOW/REPORT	REPORT/MENUITEM	MENUITEM/DATAWINDOW	DATAWINDOW/REPORTQ	REPORTQ/WEB	WEB/TABPAGE	TABPAGE/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=permissionflag dbname="vzt_objectpermissions.permissionflag" initial="1" values="Allow	1/Protect	0/" )
+ column=(type=char(100) update=yes updatewhereclause=yes key=yes name=objectname dbname="vzt_objectpermissions.objectname" )
+ column=(type=datetime update=yes updatewhereclause=yes name=expdate dbname="vzt_objectpermissions.expdate" initial="12/31/2300" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=accessrights dbname="vzt_objectpermissions.accessrights" )
+ retrieve="  SELECT  ~"vzt_objectpermissions~".~"userid~" , 
+          ~"vzt_objectpermissions~".~"objectclass~" ,   
+        ~"vzt_objectpermissions~".~"permissionflag~" ,   
+        ~"vzt_objectpermissions~".~"objectname~" ,       
+    ~"vzt_objectpermissions~".~"expdate~" ,         
+  ~"vzt_objectpermissions~".~"accessrights~"     
+        FROM ~"vzt_objectpermissions~"      
+        WHERE ( ~"vzt_objectpermissions~".~"USERID~" = :userid )   " update="vzt_objectpermissions" updatewhere=0 updatekeyinplace=yes arguments=(("userid", string)) )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="23" y="8" height="56" width="411" format="[general]"  name=objectclass ddlb.limit=0 ddlb.sorted=yes ddlb.allowedit=no ddlb.case=upper ddlb.useasborder=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=20 border="5" color="0" x="466" y="8" height="56" width="946" format="[general]"  name=objectname edit.limit=70 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="0" x="1449" y="8" height="56" width="297" format="[general]"  name=permissionflag edit.name="permission_flag" ddlb.limit=1 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="0" x="1769" y="8" height="52" width="293"  name=accessrights  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="0" x="2094" y="8" height="56" width="283" format="m/d/yyyy"  name=expdate editmask.mask="mm/dd/yyyy" editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Class:"border="0" color="16777215" x="137" y="8" height="60" width="187"  name=objectclass_t  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Object Name:"border="0" color="16777215" x="466" y="8" height="60" width="398"  name=objectname_t  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Permission:"border="0" color="16777215" x="1417" y="8" height="60" width="357"  name=permissionflag_t  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Rights:"border="0" color="16777215" x="1815" y="8" height="60" width="210"  name=accessflags_t  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Exp. Date"border="0" color="16777215" x="2094" y="8" height="60" width="288"  name=expdate_t  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

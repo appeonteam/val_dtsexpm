@@ -1,0 +1,334 @@
+﻿$PBExportHeader$f_close_a_call_original.srf
+global type f_close_a_call_original from function_object
+end type
+
+forward prototypes
+global function boolean f_close_a_call_original (string callnumber, string targettable)
+end prototypes
+
+global function boolean f_close_a_call_original (string callnumber, string targettable);// targetTable '1' = timercalls
+//					'2' = pendingcalls
+
+
+string      sCallNumber
+datetime 	dtCallIndate
+string      sStatCode
+string      sRoom
+string      sGuest
+string      sCaller
+string      sProblem
+string      sSubproblem
+string      sProblemDefinition
+string      sComplaint
+string      sReceiver
+string      sShift
+string      sResolution
+string      sRepairman
+datetime 	dtCallOutdate
+string      sClosedBy
+string      sClosedBydept
+string      sTimerNumber
+datetime 	dtTimerStart
+string      sCallerCategory
+string      sProblemNumber
+string      sSubproblemNumber
+double    	dTimer1StartMin
+double    	dTimer2StartMin
+double    	dTimer1Reps
+double   	dTimer2Reps
+string      sAuthTakeOffTimer
+string      sDefaultStatus   
+string      sPreOpenable
+string      sPreOpened
+int         iTimerLevel
+string      sRoomDsc
+string      sOpenedStatus
+string		sPagingInd
+string 		sTimeCompleted
+
+// select from timer/pending call table
+if targetTable = '1' then
+  SELECT "timercalls"."call_number",   
+         "timercalls"."call_indate",   
+         "timercalls"."stat_code",   
+         "timercalls"."room",   
+         "timercalls"."guest",   
+         "timercalls"."caller",   
+         "timercalls"."problem",   
+         "timercalls"."subproblem",   
+         "timercalls"."problem_definition",   
+         "timercalls"."complaint",   
+         "timercalls"."receiver",   
+         "timercalls"."shift",   
+         "timercalls"."resolution",   
+         "timercalls"."repairman",   
+         "timercalls"."call_outdate",   
+         "timercalls"."closed_by",   
+         "timercalls"."closed_bydept",   
+         "timercalls"."timer_number",   
+         "timercalls"."timer_start",   
+         "timercalls"."caller_category",   
+         "timercalls"."problem_number",   
+         "timercalls"."subproblem_number",   
+         "timercalls"."timer1_start_min",   
+         "timercalls"."timer2_start_min",   
+         "timercalls"."timer1_reps",   
+         "timercalls"."timer2_reps",   
+         "timercalls"."auth_take_off_timer",   
+         "timercalls"."default_status",   
+         "timercalls"."pre_openable",   
+         "timercalls"."pre_opened",   
+         "timercalls"."timer_level",   
+         "timercalls"."room_dsc",   
+         "timercalls"."opened_status",
+			"timercalls"."paging_ind"  
+    INTO :sCallNumber,   
+         :dtCallIndate,   
+         :sStatCode,   
+         :sRoom,   
+         :sGuest,   
+         :sCaller,   
+         :sProblem,   
+         :sSubproblem,   
+         :sProblemDefinition,   
+         :sComplaint,   
+         :sReceiver,   
+         :sShift,   
+         :sResolution,   
+         :sRepairman,   
+         :dtCallOutdate,   
+         :sClosedBy,   
+         :sClosedBydept,   
+         :sTimerNumber,   
+         :dtTimerStart,   
+         :sCallerCategory,   
+         :sProblemNumber,   
+         :sSubproblemNumber,   
+         :dTimer1StartMin,   
+         :dTimer2StartMin,   
+         :dTimer1Reps,   
+         :dTimer2Reps,   
+         :sAuthTakeOffTimer,   
+         :sDefaultStatus,   
+         :sPreOpenable,   
+         :sPreOpened,   
+         :iTimerLevel,   
+         :sRoomDsc,   
+         :sOpenedStatus,  
+			:sPagingInd
+    FROM "timercalls"  
+   WHERE "timercalls"."call_number" = :callNumber   ;
+else
+  SELECT "pendingcalls"."call_number",   
+         "pendingcalls"."call_indate",   
+         "pendingcalls"."stat_code",   
+         "pendingcalls"."room",   
+         "pendingcalls"."guest",   
+         "pendingcalls"."caller",   
+         "pendingcalls"."problem",   
+         "pendingcalls"."subproblem",   
+         "pendingcalls"."problem_definition",   
+         "pendingcalls"."complaint",   
+         "pendingcalls"."receiver",   
+         "pendingcalls"."shift",   
+         "pendingcalls"."resolution",   
+         "pendingcalls"."repairman",   
+         "pendingcalls"."call_outdate",   
+         "pendingcalls"."closed_by",   
+         "pendingcalls"."closed_bydept",   
+         "pendingcalls"."timer_number",   
+         "pendingcalls"."timer_start",   
+         "pendingcalls"."caller_category",   
+         "pendingcalls"."problem_number",   
+         "pendingcalls"."subproblem_number",   
+         "pendingcalls"."timer1_start_min",   
+         "pendingcalls"."timer2_start_min",   
+         "pendingcalls"."timer1_reps",   
+         "pendingcalls"."timer2_reps",   
+         "pendingcalls"."auth_take_off_timer",   
+         "pendingcalls"."default_status",   
+         "pendingcalls"."pre_openable",   
+         "pendingcalls"."pre_opened",   
+         "pendingcalls"."timer_level",   
+         "pendingcalls"."room_dsc",   
+         "pendingcalls"."opened_status",
+			"pendingcalls"."paging_ind" 
+    INTO :sCallNumber,   
+         :dtCallIndate,   
+         :sStatCode,   
+         :sRoom,   
+         :sGuest,   
+         :sCaller,   
+         :sProblem,   
+         :sSubproblem,   
+         :sProblemDefinition,   
+         :sComplaint,   
+         :sReceiver,   
+         :sShift,   
+         :sResolution,   
+         :sRepairman,   
+         :dtCallOutdate,   
+         :sClosedBy,   
+         :sClosedBydept,   
+         :sTimerNumber,   
+         :dtTimerStart,   
+         :sCallerCategory,   
+         :sProblemNumber,   
+         :sSubproblemNumber,   
+         :dTimer1StartMin,   
+         :dTimer2StartMin,   
+         :dTimer1Reps,   
+         :dTimer2Reps,   
+         :sAuthTakeOffTimer,   
+         :sDefaultStatus,   
+         :sPreOpenable,   
+         :sPreOpened,   
+         :iTimerLevel,   
+         :sRoomDsc,   
+         :sOpenedStatus,
+			:sPagingInd  
+    FROM "pendingcalls"  
+   WHERE "pendingcalls"."call_number" = :callNumber   ;	
+end if
+
+if sqlca.sqlcode = 100 then
+	MessageBox("Error","Call number " + sCallNumber + " may have already been closed! It should not appear in your " + &
+	           "Pending calls or Timer calls screen after the next refresh!")
+	return true
+end if
+
+if sqlca.sqlcode <> 0 then
+//	MessageBox("DB Error","Select error on timercalls/pendingcalls table: " + callNumber)
+	rollback;
+	egm_sqlerror(sqlca)
+	return false
+end if	
+
+
+// delete from timer/pending call table
+if targetTable = '1' then
+	DELETE FROM "timercalls"  
+   		WHERE "timercalls"."call_number" = :callNumber   ;
+elseif targetTable = '2' then
+	DELETE FROM "pendingcalls"  
+   		WHERE "pendingcalls"."call_number" = :callNumber   ;
+end if
+
+if sqlca.sqlcode <> 0 then
+//	MessageBox("DB Error","Delete error on timercalls/pendingcalls table: " + callNumber)
+	rollback;
+	egm_sqlerror(sqlca)
+	return false
+end if
+	
+
+//insert into closedcalls table
+sStatCode = '99'
+dtCallOutdate = datetime(today(),now())
+//sClosedBy = userName
+sClosedBy = cpassusername
+INSERT INTO "closedcalls"  
+         ( "call_number",   
+           "call_indate",   
+           "stat_code",   
+           "room",   
+           "guest",   
+           "caller",   
+           "problem",   
+           "subproblem",   
+           "problem_definition",   
+           "complaint",   
+           "receiver",   
+           "shift",   
+           "resolution",   
+           "repairman",   
+           "call_outdate",   
+           "closed_by",   
+           "closed_bydept",   
+           "timer_number",   
+           "timer_start",   
+           "caller_category",   
+           "problem_number",   
+           "subproblem_number",   
+           "timer1_start_min",   
+           "timer2_start_min",   
+           "timer1_reps",   
+           "timer2_reps",   
+           "auth_take_off_timer",   
+           "default_status",   
+           "pre_openable",   
+           "pre_opened",   
+           "timer_level",   
+           "room_dsc",   
+           "opened_status",
+			  "paging_ind" )  
+  VALUES ( :sCallNumber,   
+           :dtCallIndate,   
+           :sStatCode,   
+           :sRoom,   
+           :sGuest,   
+           :sCaller,   
+           :sProblem,   
+           :sSubproblem,   
+           :sProblemDefinition,   
+           :sComplaint,   
+           :sReceiver,   
+           :sShift,   
+           :sResolution,   
+           :sRepairman,   
+           :dtCallOutdate,   
+           :sClosedBy,   
+           :sClosedBydept,   
+           :sTimerNumber,   
+           :dtTimerStart,   
+           :sCallerCategory,   
+           :sProblemNumber,   
+           :sSubproblemNumber,   
+           :dTimer1StartMin,   
+           :dTimer2StartMin,   
+           :dTimer1Reps,   
+           :dTimer2Reps,   
+           :sAuthTakeOffTimer,   
+           :sDefaultStatus,   
+           :sPreOpenable,   
+           :sPreOpened,   
+           :iTimerLevel,   
+           :sRoomDsc,   
+           :sOpenedStatus,
+			  :sPagingInd )  ;
+
+if sqlca.sqlcode <> 0 then
+//	MessageBox("DB Error","Delete error on timercalls/pendingcalls table: " + callNumber)
+	rollback;
+	egm_sqlerror(sqlca)
+	if sqlca.sqlcode <> 0 then
+		MessageBox("DB Error","Rollback error for Callnumber: " + callNumber)
+	end if
+	return false
+end if
+
+if sPagingInd <> '' then
+	sTimeCompleted = string(today(),"yyyy/mm/dd hh:mm:ss")
+	update pageassignment
+		set time_completed = :sTimeCompleted
+	WHERE pageassignment.call_number = :callnumber   ;
+	if sqlca.sqlcode <> 0 then
+		rollback;
+		egm_sqlerror(sqlca)
+		if sqlca.sqlcode <> 0 then
+			MessageBox("DB Error","Rollback error for Callnumber: " + callNumber)
+		end if
+		return false
+	end if
+end if
+
+commit;
+if sqlca.sqlcode <> 0 then
+//	MessageBox("DB Error","Commit error : " + callNumber)
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+return true
+end function
+

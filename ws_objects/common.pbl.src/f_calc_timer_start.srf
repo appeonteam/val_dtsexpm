@@ -1,0 +1,38 @@
+﻿$PBExportHeader$f_calc_timer_start.srf
+global type f_calc_timer_start from function_object
+end type
+
+forward prototypes
+global function datetime f_calc_timer_start (datetime callopendatetime, long timermin)
+end prototypes
+
+global function datetime f_calc_timer_start (datetime callopendatetime, long timermin);datetime	timer_start
+int day_incr 
+long min_remainder, sec_remainder
+long sec_diff, min_diff
+time open_time, time_incr_base
+
+open_time = Time(callOpenDateTime)
+sec_diff = 86400 - (SecondsAfter(Time("00:00:00"), Time(callOpenDateTime)))
+min_diff = sec_diff / 60
+time_incr_base = time(callOpenDateTime)
+
+// calc day increment
+day_incr = int(timerMin / 1440) 
+
+min_remainder = timerMin  - day_incr * 1440
+sec_remainder = min_remainder * 60
+
+if sec_diff < (min_remainder * 60) then  // check if time is pass midnight
+	day_incr = day_incr + 1
+	sec_remainder = timerMin * 60 - sec_diff
+	min_remainder = int(timerMin - sec_diff / 60)
+	time_incr_base = Time("00:00:00")
+end if
+
+timer_start = DateTime( RelativeDate(Date(callOpenDateTime), day_incr), &
+								RelativeTime(time_incr_base, sec_remainder ) )				  
+
+return timer_start
+end function
+

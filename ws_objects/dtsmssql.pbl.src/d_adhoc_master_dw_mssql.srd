@@ -1,0 +1,111 @@
+﻿$PBExportHeader$d_adhoc_master_dw_mssql.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no grid.lines=0 )
+header(height=77 color="536870912" )
+summary(height=1 color="-1" )
+footer(height=1 color="-1" )
+detail(height=77 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=opencall_call_number dbname="closedcalls.call_number" initial="spaces" )
+ column=(type=datetime updatewhereclause=yes name=opencall_call_indate dbname="closedcalls.call_indate" initial="today" )
+ column=(type=char(2) updatewhereclause=yes name=opencall_stat_code dbname="closedcalls.stat_code" initial="spaces" )
+ column=(type=char(30) updatewhereclause=yes name=opencall_room dbname="closedcalls.room" initial="spaces" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_guest dbname="closedcalls.guest" initial="spaces" )
+ column=(type=char(255) updatewhereclause=yes name=compute_0006 dbname="compute_0006" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_receiver dbname="closedcalls.receiver" )
+ column=(type=char(3) updatewhereclause=yes name=opencall_shift dbname="closedcalls.shift" )
+ column=(type=char(255) updatewhereclause=yes name=compute_0009 dbname="compute_0009" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_repairman dbname="closedcalls.repairman" )
+ column=(type=datetime updatewhereclause=yes name=opencall_call_outdate dbname="closedcalls.call_outdate" initial="today" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_closed_by dbname="closedcalls.closed_by" )
+ column=(type=char(15) updatewhereclause=yes name=opencall_closed_bydept dbname="closedcalls.closed_bydept" )
+ column=(type=datetime updatewhereclause=yes name=opencall_timer_start dbname="closedcalls.timer_start" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_caller_category dbname="closedcalls.caller_category" )
+ column=(type=char(5) updatewhereclause=yes name=opencall_problem_number dbname="closedcalls.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=opencall_subproblem_number dbname="closedcalls.subproblem_number" )
+ column=(type=decimal(-1) updatewhereclause=yes name=compute_0018 dbname="compute_0018" )
+ column=(type=char(35) updatewhereclause=yes name=problem_problem_desc dbname="problem.problem_desc" )
+ column=(type=char(35) updatewhereclause=yes name=subproblem_subproblem_desc dbname="subproblem.subproblem_desc" )
+ column=(type=decimal(-1) updatewhereclause=yes name=compute_0021 dbname="compute_0021" )
+ column=(type=decimal(-1) updatewhereclause=yes name=compute_0022 dbname="compute_0022" )
+ column=(type=decimal(-1) updatewhereclause=yes name=compute_0023 dbname="compute_0023" )
+ column=(type=decimal(-1) updatewhereclause=yes name=compute_0024 dbname="compute_0024" )
+ retrieve="  SELECT closedcalls.call_number,   
+         closedcalls.call_indate,   
+         closedcalls.stat_code,   
+         closedcalls.room,   
+         closedcalls.guest,   
+         Convert(varchar(255),closedcalls.problem_definition),   
+         closedcalls.receiver,   
+         closedcalls.shift,   
+         Convert(varchar(255),closedcalls.resolution),   
+         closedcalls.repairman,   
+         closedcalls.call_outdate,   
+         closedcalls.closed_by,   
+         closedcalls.closed_bydept,   
+         closedcalls.timer_start,   
+         closedcalls.caller_category,   
+         closedcalls.problem_number,   
+         closedcalls.subproblem_number, 
+         convert(decimal,datediff(minute,call_indate,call_outdate)), 
+         problem.problem_desc,   
+         subproblem.subproblem_desc,   
+         (convert(decimal,closedcalls.problem_number) * 100000) + (convert(decimal,closedcalls.subproblem_number)),
+         convert(decimal,subproblem.timer1_start_min),   
+         convert(decimal,subproblem.timer2_start_min),   
+         convert(decimal,datediff(second,dateadd(second, - subproblem.timer1_start_min * 60 ,timer_start ),call_outdate)  / 60)  
+    FROM closedcalls,   
+         problem,   
+         subproblem  
+   WHERE ( closedcalls.problem_number = problem.problem_number ) and  
+         ( closedcalls.subproblem_number = subproblem.subproblem_number ) and  
+         ( problem.problem_number = subproblem.problem_number )   
+ORDER BY closedcalls.call_indate DESC   
+"  sort="opencall_call_indate A " )
+text(band=header alignment="2" text="Call Number"border="0" color="0" x="10" y="8" height="65" width="325"  name=opencall_call_number_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Indate"border="0" color="0" x="343" y="8" height="65" width="385"  name=opencall_call_indate_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Stat Code"border="0" color="0" x="737" y="8" height="65" width="266"  name=opencall_stat_code_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Room"border="0" color="0" x="1011" y="8" height="65" width="604"  name=opencall_room_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Guest"border="0" color="0" x="1623" y="8" height="65" width="604"  name=opencall_guest_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Receiver"border="0" color="0" x="2236" y="8" height="65" width="695"  name=opencall_receiver_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Shift"border="0" color="0" x="2940" y="8" height="65" width="119"  name=opencall_shift_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Repairman"border="0" color="0" x="3068" y="8" height="65" width="695"  name=opencall_repairman_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Outdate"border="0" color="0" x="3772" y="8" height="65" width="385"  name=opencall_call_outdate_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Closed By"border="0" color="0" x="4165" y="8" height="65" width="695"  name=opencall_closed_by_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Closed Bydept"border="0" color="0" x="4869" y="8" height="65" width="389"  name=opencall_closed_bydept_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer Start"border="0" color="0" x="5267" y="8" height="65" width="385"  name=opencall_timer_start_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Caller Category"border="0" color="0" x="5660" y="8" height="65" width="695"  name=opencall_caller_category_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Problem Number"border="0" color="0" x="6364" y="8" height="65" width="444"  name=opencall_problem_number_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subproblem Number"border="0" color="0" x="6817" y="8" height="65" width="540"  name=opencall_subproblem_number_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="((days(call Indate,call Outda"border="0" color="0" x="7365" y="8" height="65" width="741"  name=compute_0018_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Problem Desc"border="0" color="0" x="8115" y="8" height="65" width="695"  name=problem_problem_desc_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subproblem Desc"border="0" color="0" x="8819" y="8" height="65" width="471"  name=subproblem_subproblem_desc_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="(closedcalls.problem Number*1000"border="0" color="0" x="9299" y="8" height="65" width="842"  name=compute_0021_t  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Compute 0024"border="0" color="0" x="10149" y="4" height="69" width="887"  font.face="Arial" font.height="-11" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Compute 0022"border="0" color="0" x="11045" y="4" height="65" width="1194"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Compute 0023"border="0" color="0" x="12247" y="4" height="65" width="1194"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Compute 0006"border="0" color="0" x="13450" y="4" height="77" width="2181"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Compute 0009"border="0" color="0" x="15639" y="4" height="77" width="2181"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="10" y="8" height="65" width="325" format="[general]"  name=opencall_call_number edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="343" y="8" height="65" width="385" format="[shortdate] [time]"  name=opencall_call_indate edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="737" y="8" height="65" width="266" format="[general]"  name=opencall_stat_code edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1011" y="8" height="65" width="604" format="[general]"  name=opencall_room edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1623" y="8" height="65" width="604" format="[general]"  name=opencall_guest edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2236" y="8" height="65" width="695" format="[general]"  name=opencall_receiver edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2940" y="8" height="65" width="119" format="[general]"  name=opencall_shift edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3068" y="8" height="65" width="695" format="[general]"  name=opencall_repairman edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3772" y="8" height="65" width="385" format="[shortdate] [time]"  name=opencall_call_outdate edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="4165" y="8" height="65" width="695" format="[general]"  name=opencall_closed_by edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="4869" y="8" height="65" width="389" format="[general]"  name=opencall_closed_bydept edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="5267" y="8" height="65" width="385" format="[shortdate] [time]"  name=opencall_timer_start edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="5660" y="8" height="65" width="695" format="[general]"  name=opencall_caller_category edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="6364" y="8" height="65" width="444" format="[general]"  name=opencall_problem_number edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="6817" y="8" height="65" width="540" format="[general]"  name=opencall_subproblem_number edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="0" color="0" x="7365" y="8" height="77" width="741" format="[general]"  name=compute_0018 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="8115" y="8" height="57" width="695" format="[general]"  name=problem_problem_desc edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="8819" y="8" height="65" width="471" format="[general]"  name=subproblem_subproblem_desc edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="1" tabsequence=32766 border="0" color="0" x="9299" y="8" height="77" width="842" format="[general]"  name=compute_0021 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="10149" y="12" height="57" width="887" format="[general]"  name=compute_0024 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="11045" y="0" height="65" width="1194" format="[general]"  name=compute_0022 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="12247" y="0" height="65" width="1194" format="[general]"  name=compute_0023 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="13450" y="0" height="65" width="2181" format="[general]"  name=compute_0006 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="15639" y="0" height="65" width="2181" format="[general]"  name=compute_0009 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

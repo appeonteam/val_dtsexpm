@@ -1,0 +1,9 @@
+﻿$PBExportHeader$pipe_qgen_qset_questions00.srp
+PIPELINE(source_connect=gcc,destination_connect=gcc_demo,type=update,commit=100,errors=0,keyname="qgen_qset_questions")
+SOURCE(name="qgen_qset_questions",COLUMN(type=decimal,name="qsetid",dbtype="numeric(9,0)",key=yes,nulls_allowed=no)
+ COLUMN(type=decimal,name="questionid",dbtype="numeric(9,0)",key=yes,nulls_allowed=no)
+ COLUMN(type=long,name="sortorder",dbtype="integer",nulls_allowed=yes))
+RETRIEVE(statement="PBSELECT(TABLE(NAME=~"qgen_qset_questions~") COLUMN(NAME=~"qgen_qset_questions.qsetid~")COLUMN(NAME=~"qgen_qset_questions.questionid~")COLUMN(NAME=~"qgen_qset_questions.sortorder~"))")
+DESTINATION(name="qgen_qset_questions",COLUMN(type=decimal,name="qsetid",dbtype="numeric(9,0)",key=yes,nulls_allowed=no,initial_value="0")
+ COLUMN(type=decimal,name="questionid",dbtype="numeric(9,0)",key=yes,nulls_allowed=no,initial_value="0")
+ COLUMN(type=long,name="sortorder",dbtype="integer",nulls_allowed=yes))

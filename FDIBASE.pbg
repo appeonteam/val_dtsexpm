@@ -1,0 +1,48 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "FDIBASE.PBL" "";
+@end;
+@begin Objects
+ "w_about.srw" "FDIBASE.PBL";
+ "gf_get_sybase_date.srf" "FDIBASE.PBL";
+ "d_dl_problem_pm.srd" "FDIBASE.PBL";
+ "d_dl_probsubproblem.srd" "FDIBASE.PBL";
+ "gf_createfile.srf" "FDIBASE.PBL";
+ "d_dl_subproblem.srd" "FDIBASE.PBL";
+ "gf_populate_lb.srf" "FDIBASE.PBL";
+ "u_select_data.sru" "FDIBASE.PBL";
+ "gf_subtractyear.srf" "FDIBASE.PBL";
+ "w_progress_window.srw" "FDIBASE.PBL";
+ "d_dl_problem.srd" "FDIBASE.PBL";
+ "gf_monthname.srf" "FDIBASE.PBL";
+ "u_dw_graph_drilldown.sru" "FDIBASE.PBL";
+ "dp_pkhe_subtask.srp" "FDIBASE.PBL";
+ "d_dl_employee.srd" "FDIBASE.PBL";
+ "d_dl_room_pm.srd" "FDIBASE.PBL";
+ "gf_subtractmonth.srf" "FDIBASE.PBL";
+ "gf_emptystring.srf" "FDIBASE.PBL";
+ "w_set_toolbars.srw" "FDIBASE.PBL";
+ "gf_daysinmonth.srf" "FDIBASE.PBL";
+ "d_calendar.srd" "FDIBASE.PBL";
+ "dp_user_rights.srp" "FDIBASE.PBL";
+ "d_sort_by.srd" "FDIBASE.PBL";
+ "gf_addyear.srf" "FDIBASE.PBL";
+ "dp_pager_type.srp" "FDIBASE.PBL";
+ "d_sort_columns.srd" "FDIBASE.PBL";
+ "dp_timeshift.srp" "FDIBASE.PBL";
+ "dp_instdept.srp" "FDIBASE.PBL";
+ "gf_addmonth.srf" "FDIBASE.PBL";
+ "d_dl_status.srd" "FDIBASE.PBL";
+ "dp_pkhe_task.srp" "FDIBASE.PBL";
+ "dp_zone_group.srp" "FDIBASE.PBL";
+ "d_dl_dept.srd" "FDIBASE.PBL";
+ "w_calc_time.srw" "FDIBASE.PBL";
+ "u_cb_base.sru" "FDIBASE.PBL";
+ "d_dl_room.srd" "FDIBASE.PBL";
+ "dp_area.srp" "FDIBASE.PBL";
+ "dp_instemp.srp" "FDIBASE.PBL";
+ "dp_callstat.srp" "FDIBASE.PBL";
+ "str_progress.srs" "FDIBASE.PBL";
+ "dp_zone.srp" "FDIBASE.PBL";
+ "d_dl_problem_subproblem.srd" "FDIBASE.PBL";
+@end;

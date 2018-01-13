@@ -1,0 +1,380 @@
+﻿$PBExportHeader$d_prearrival_rpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=356 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=56 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=tbl dbname="tbl" )
+ column=(type=long updatewhereclause=yes name=compute_0002 dbname="compute_0002" )
+ column=(type=long updatewhereclause=yes name=totguests dbname="totguests" )
+ column=(type=datetime updatewhereclause=yes name=for_date dbname="for_date" )
+ column=(type=char(35) updatewhereclause=yes name=closedcalls_problem dbname="closedcalls.problem" )
+ column=(type=char(35) updatewhereclause=yes name=closedcalls_subproblem dbname="closedcalls.subproblem" )
+ column=(type=char(5) updatewhereclause=yes name=problem_number111 dbname="closedcalls.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=subproblem_number dbname="closedcalls.subproblem_number" )
+ column=(type=number updatewhereclause=yes name=closedcalls_guest_id dbname="closedcalls.guest_id" )
+ column=(type=char(50) updatewhereclause=yes name=guest_guest_id dbname="guest.guest_id" )
+ column=(type=number updatewhereclause=yes name=guest_guest_no dbname="guest.guest_no" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(2) updatewhereclause=yes name=guest_middle_init dbname="guest.middle_init" )
+ column=(type=char(20) updatewhereclause=yes name=guest_title dbname="guest.title" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr1 dbname="guest.addr1" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr2 dbname="guest.addr2" )
+ column=(type=char(20) updatewhereclause=yes name=guest_city dbname="guest.city" )
+ column=(type=char(20) updatewhereclause=yes name=guest_state dbname="guest.state" )
+ column=(type=char(10) updatewhereclause=yes name=guest_zip dbname="guest.zip" )
+ column=(type=char(20) updatewhereclause=yes name=guest_country dbname="guest.country" )
+ column=(type=char(100) updatewhereclause=yes name=guest_comp_name dbname="guest.comp_name" )
+ column=(type=char(18) updatewhereclause=yes name=guest_phone dbname="guest.phone" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_checkin_dt dbname="guest.last_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_depart_dt dbname="guest.last_depart_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_checkin_dt dbname="guest.prev_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_depart_dt dbname="guest.prev_depart_dt" )
+ column=(type=char(15) updatewhereclause=yes name=guest_room_last_checkin dbname="guest.room_last_checkin" )
+ column=(type=char(4) updatewhereclause=yes name=guest_accom_code dbname="guest.accom_code" )
+ column=(type=char(20) updatewhereclause=yes name=guest_block_code dbname="guest.block_code" )
+ column=(type=char(30) updatewhereclause=yes name=guest_grp_mstr_name dbname="guest.grp_mstr_name" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_1 dbname="guest.sr_code_1" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_2 dbname="guest.sr_code_2" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_3 dbname="guest.sr_code_3" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_4 dbname="guest.sr_code_4" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_5 dbname="guest.sr_code_5" )
+ column=(type=long updatewhereclause=yes name=guest_no_adult dbname="guest.no_adult" )
+ column=(type=char(20) updatewhereclause=yes name=guest_pg_id dbname="guest.pg_id" )
+ column=(type=datetime updatewhereclause=yes name=guest_date_created dbname="guest.date_created" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_upd dbname="guest.last_upd" )
+ column=(type=char(20) updatewhereclause=yes name=guest_prefix dbname="guest.prefix" )
+ column=(type=number updatewhereclause=yes name=guest_account dbname="guest.account" )
+ column=(type=char(150) updatewhereclause=yes name=guest_email dbname="guest.email" )
+ column=(type=char(10) updatewhereclause=yes name=subproblem_retcode dbname="subproblem.retcode" )
+ column=(type=long updatewhereclause=yes name=tasking_offset dbname="tasking_offset" )
+ column=(type=long updatewhereclause=yes name=depart_offset dbname="depart_offset" )
+ column=(type=long updatewhereclause=yes name=resp_offset dbname="resp_offset" )
+ column=(type=long updatewhereclause=yes name=resp_depart_offset dbname="resp_depart_offset" )
+ column=(type=char(35) updatewhereclause=yes name=resp_problem dbname="resp_problem" )
+ column=(type=char(35) updatewhereclause=yes name=resp_subproblem dbname="resp_subproblem" )
+ column=(type=char(5) updatewhereclause=yes name=problem_number dbname="problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=subproblem_num dbname="subproblem_number" )
+ column=(type=char(50) updatewhereclause=yes name=retcodes_descr dbname="retcodes.descr" )
+ column=(type=char(2) updatewhereclause=yes name=default_status dbname="subproblem.default_status" )
+ column=(type=datetime updatewhereclause=yes name=checkin_dt dbname="guest.checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=depart_dt dbname="guest.depart_dt" )
+ column=(type=decimal(2) updatewhereclause=yes name=amount dbname="subproblem.amount" )
+ column=(type=long updatewhereclause=yes name=ssort dbname="ssort" )
+ retrieve="SELECT DISTINCT 3 tbl, 
+0,
+( SELECT count(*) FROM ~"guest~" WHERE date(~"guest~".~"last_checkin_dt~") between vzt_DATE(';FDATE') and vzt_DATE(';TDATE') ) totguests,
+getdate(*)+1 	for_date,
+         ~"closedcalls~".~"problem~",   
+         ~"closedcalls~".~"subproblem~",   
+         ~"closedcalls~".~"problem_number~",   
+         ~"closedcalls~".~"subproblem_number~",   
+         ~"closedcalls~".~"guest_id~",   
+  			~"guest~".~"guest_id~",   
+         ~"guest~".~"guest_no~",   
+         ~"guest~".~"last_name~",   
+         ~"guest~".~"first_name~",   
+         ~"guest~".~"middle_init~",   
+         ~"guest~".~"title~",   
+         ~"guest~".~"addr1~",   
+         ~"guest~".~"addr2~",   
+         ~"guest~".~"city~",   
+         ~"guest~".~"state~",   
+         ~"guest~".~"zip~",   
+         ~"guest~".~"country~",   
+         ~"guest~".~"comp_name~",   
+         ~"guest~".~"phone~",   
+         ~"guest~".~"last_checkin_dt~",   
+         ~"guest~".~"last_depart_dt~",   
+         ~"guest~".~"prev_checkin_dt~",   
+         ~"guest~".~"prev_depart_dt~",   
+         ~"guest~".~"room_last_checkin~",   
+         ~"guest~".~"accom_code~",   
+         ~"guest~".~"block_code~",   
+         ~"guest~".~"grp_mstr_name~",   
+         ~"guest~".~"sr_code_1~",   
+         ~"guest~".~"sr_code_2~",   
+         ~"guest~".~"sr_code_3~",   
+         ~"guest~".~"sr_code_4~",   
+         ~"guest~".~"sr_code_5~",   
+         ~"guest~".~"no_adult~",   
+         ~"guest~".~"pg_id~",   
+         ~"guest~".~"date_created~",   
+         ~"guest~".~"last_upd~",   
+         ~"guest~".~"prefix~",   
+         ~"guest~".~"account~",   
+         ~"guest~".~"email~"  ,
+		~"subPROBLEM~".~"retcode~",
+		
+		isnull(~"subPROBLEM~".~"tasking_offset~",0) as tasking_offset
+		,isnull(~"subPROBLEM~".~"depart_offset~",0) as depart_offset
+		,isnull(~"RESpSub~".~"tasking_offset~",0) as resp_offset
+		,isnull(~"RESpSub~".~"depart_offset~",0) as  resp_depart_offset
+
+,isNull(~"RESpProb~".~"problem_desc~",	'')         resp_problem  
+,isNull(~"RESpSub~".~"subproblem_desc~", '')     resp_subproblem
+,isNull(~"RESpProb~".~"problem_number~"  , ~"subPROBLEM~".~"problem_number~")  problem_number
+,isNull(~"RESpSub~".~"subproblem_number~", ~"subPROBLEM~".~"subproblem_number~")  subproblem_number
+, retcodes.descr  
+,~"RESpSub~".~"default_status~" default_status 
+,~"guest~".~"last_checkin_dt~" checkin_dt 
+,~"guest~".~"last_dePart_dt~" dePart_dt
+,~"RESpSub~".~"post_amt~" amount
+, 0 ssort
+
+    FROM ~"guest~", ~"closedcalls~", ~"subPROBLEM~" ,
+			~"PROBLEM~" RESpProb, ~"subPROBLEM~" RESpSUB  , retcodes
+   WHERE 
+			~"closedcalls~".~"guest_id~" = ~"guest~".~"account~"
+
+/* ~"guest~".~"last_checkin_dt~" between DATE(GETDATE(*) + 1 ) and DATE(GETDATE(*) + 2 )   
+*/
+			/*1
+			 AND
+				( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					 ~"guest~".~"last_checkin_dt~" BETWEEN 
+					{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+				)
+			1*/
+
+		AND ~"closedcalls~".~"guest_id~" = ~"guest~".~"account~"
+		AND isnull(~"subPROBLEM~".~"retcode~",'') <> '' 
+		and retcodes.code = ~"subPROBLEM~".~"retcode~" 
+		and retcodes.prearrival = 'P' 
+    	and ~"closedcalls~".~"problem_number~"   =  ~"subPROBLEM~".~"problem_number~"   
+      and ~"closedcalls~".~"SUBproblem_number~"= ~"subPROBLEM~".~"SUBproblem_number~"    
+    
+          /* get response task if any */ 
+
+    	and ~"subPROBLEM~".~"RESP_TASK_NO~" 		*=  ~"RESpProb~".~"problem_number~"   
+    	and ~"subPROBLEM~".~"RESP_TASK_NO~" 		*=  ~"RESpSub~".~"problem_number~"   
+    	and ~"subPROBLEM~".~"RESP_SUBTASK_NO~" 	*=  ~"RESpSub~".~"subproblem_number~"   
+
+ UNION 
+		  SELECT DISTINCT  0 tbl, 
+0,
+( SELECT count(*) FROM ~"guest~" WHERE date(~"guest~".~"last_checkin_dt~") between vzt_DATE(';FDATE') and vzt_DATE(';TDATE') ) totguests,
+getdate(*)+1 	for_date,
+      ~"problem~".~"problem_desc~",   
+      ~"subproblem~".~"subproblem_desc~",   
+       ~"pref~".~"problem_number~",   
+       ~"pref~".~"subproblem_number~",   
+     guest.~"account~",   
+  			~"guest~".~"guest_id~",   
+         ~"guest~".~"guest_no~",   
+         ~"guest~".~"last_name~",   
+         ~"guest~".~"first_name~",   
+         ~"guest~".~"middle_init~",   
+         ~"guest~".~"title~",   
+         ~"guest~".~"addr1~",   
+         ~"guest~".~"addr2~",   
+         ~"guest~".~"city~",   
+         ~"guest~".~"state~",   
+         ~"guest~".~"zip~",   
+         ~"guest~".~"country~",   
+         ~"guest~".~"comp_name~",   
+         ~"guest~".~"phone~",   
+         ~"guest~".~"last_checkin_dt~",   
+         ~"guest~".~"last_depart_dt~",   
+         ~"guest~".~"prev_checkin_dt~",   
+         ~"guest~".~"prev_depart_dt~",   
+         ~"guest~".~"room_last_checkin~",   
+         ~"guest~".~"accom_code~",   
+         ~"guest~".~"block_code~",   
+         ~"guest~".~"grp_mstr_name~",   
+         ~"guest~".~"sr_code_1~",   
+         ~"guest~".~"sr_code_2~",   
+         ~"guest~".~"sr_code_3~",   
+         ~"guest~".~"sr_code_4~",   
+         ~"guest~".~"sr_code_5~",   
+         ~"guest~".~"no_adult~",   
+         ~"guest~".~"pg_id~",   
+         ~"guest~".~"date_created~",   
+         ~"guest~".~"last_upd~",   
+         ~"guest~".~"prefix~",   
+         ~"guest~".~"account~",   
+         ~"guest~".~"email~"  ,
+		~"subPROBLEM~".~"retcode~",
+		
+		isnull(~"subPROBLEM~".~"tasking_offset~",0) as tasking_offset
+		,isnull(~"subPROBLEM~".~"depart_offset~",0) as depart_offset 
+		,isnull(~"RESpSub~".~"tasking_offset~",0) as resp_offset
+		,isnull(~"RESpSub~".~"depart_offset~",0) as  resp_depart_offset
+
+,''  
+ ,''
+, ~"PROBLEM~".~"problem_number~"   
+, ~"SUBPROBLEM~".~"subproblem_number~"   
+, retcodes.descr  
+,~"subproblem~".~"default_status~" default_status, 
+~"guest~".~"last_checkin_dt~" checkin_dt,
+~"guest~".~"last_dePart_dt~" dePart_dt
+,0.00 amount
+, 0 ssort
+
+    FROM ~"guest~", ~"vzt_contact~", ~"vzt_contact_preferences~" as pref, ~"PROBLEM~" , ~"subPROBLEM~" ,
+			~"PROBLEM~" RESpProb, ~"subPROBLEM~" RESpSUB  , retcodes
+   WHERE 
+			 ~"vzt_contact~".~"id~" = ~"pref~".~"contact_id~"
+			 and  ~"vzt_contact~".~"fkey~" = ~"guest~".~"account~"
+
+/* ~"guest~".~"last_checkin_dt~" between DATE(GETDATE(*) + 1 ) and DATE(GETDATE(*) + 2 )   
+*/
+			/*1
+			 AND
+				( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					 ~"guest~".~"last_checkin_dt~" BETWEEN 
+					{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+				)
+			1*/
+
+		AND isnull(~"subPROBLEM~".~"retcode~",'') <> '' 
+		and retcodes.code = ~"subPROBLEM~".~"retcode~" 
+		and retcodes.prearrival = 'P' 
+    	and ~"pref~".~"problem_number~"   =  ~"PROBLEM~".~"problem_number~"   
+    	and ~"pref~".~"problem_number~"   =  ~"subPROBLEM~".~"problem_number~"   
+      and ~"pref~".~"SUBproblem_number~"= ~"subPROBLEM~".~"SUBproblem_number~"    
+     and not exists (SELECT * FROM ~"closedcalls~" WHERE ~"closedcalls~".~"guest_id~" = ~"guest~".~"account~" 
+				    		and ~"closedcalls~".~"problem_number~"    =  ~"PROBLEM~".~"problem_number~"   
+      					and ~"closedcalls~".~"SUBproblem_number~" = ~"subPROBLEM~".~"SUBproblem_number~" )
+
+          /* get response task if any */ 
+
+    	and ~"subPROBLEM~".~"RESP_TASK_NO~" 		*=  ~"RESpProb~".~"problem_number~"   
+    	and ~"subPROBLEM~".~"RESP_TASK_NO~" 		*=  ~"RESpSub~".~"problem_number~"   
+    	and ~"subPROBLEM~".~"RESP_SUBTASK_NO~" 	*=  ~"RESpSub~".~"subproblem_number~"   
+
+/*================================================================================================*/
+/*===RETURNING guests with no problems ===========================================================*/
+/*================================================================================================*/
+
+UNION 
+SELECT DISTINCT  0 tbl, 
+0,
+( SELECT count(*) FROM ~"guest~" WHERE date(~"guest~".~"last_checkin_dt~") between vzt_DATE(';FDATE') and vzt_DATE(';TDATE') ) totguests,
+getdate(*)+1 	for_date,
+      ' ' ,   
+      ' ' ,   
+      ' ' ,   
+     ' ' ,   
+	     guest.~"account~",   
+  			~"guest~".~"guest_id~",   
+         ~"guest~".~"guest_no~",   
+         ~"guest~".~"last_name~",   
+         ~"guest~".~"first_name~",   
+         ~"guest~".~"middle_init~",   
+         ~"guest~".~"title~",   
+         ~"guest~".~"addr1~",   
+         ~"guest~".~"addr2~",   
+         ~"guest~".~"city~",   
+         ~"guest~".~"state~",   
+         ~"guest~".~"zip~",   
+         ~"guest~".~"country~",   
+         ~"guest~".~"comp_name~",   
+         ~"guest~".~"phone~",   
+         ~"guest~".~"last_checkin_dt~",   
+         ~"guest~".~"last_depart_dt~",   
+         ~"guest~".~"prev_checkin_dt~",   
+         ~"guest~".~"prev_depart_dt~",   
+         ~"guest~".~"room_last_checkin~",   
+         ~"guest~".~"accom_code~",   
+         ~"guest~".~"block_code~",   
+         ~"guest~".~"grp_mstr_name~",   
+         ~"guest~".~"sr_code_1~",   
+         ~"guest~".~"sr_code_2~",   
+         ~"guest~".~"sr_code_3~",   
+         ~"guest~".~"sr_code_4~",   
+         ~"guest~".~"sr_code_5~",   
+         ~"guest~".~"no_adult~",   
+         ~"guest~".~"pg_id~",   
+         ~"guest~".~"date_created~",   
+         ~"guest~".~"last_upd~",   
+         ~"guest~".~"prefix~",   
+         ~"guest~".~"account~",   
+         ~"guest~".~"email~"  ,
+			' '  ,
+		isnull(~"subPROBLEM~".~"tasking_offset~",0) as tasking_offset ,
+		isnull(~"subPROBLEM~".~"depart_offset~",0) as depart_offset ,
+		0 as resp_offset,
+		0 as resp_depart_offset
+
+,isNull(~"PROBLEM~".~"problem_desc~",	'')         resp_problem  
+,isNull(~"SUBPROBLEM~".~"subproblem_desc~", '')     resp_subproblem
+
+, ~"SUBPROBLEM~".~"problem_number~"   
+, ~"SUBPROBLEM~".~"subproblem_number~"   
+, retcodes.descr  
+,~"subproblem~".~"default_status~" default_status 
+,~"guest~".~"last_checkin_dt~" checkin_dt 
+,~"guest~".~"last_dePart_dt~" dePart_dt
+,0.00 amount 
+, 1 ssort
+
+ FROM ~"guest~", ~"PROBLEM~", ~"subproblem~" ,  retcodes
+ WHERE 1 < (SELECT count(*) FROM ~"guest_stay~" WHERE ~"guest_stay~".~"guest_account~" = ~"guest~".~"account~" ) /*MORE THAN ONE stay = RETURNING */
+/*	AND 0 = (SELECT count(*) FROM ~"closedcalls~" WHERE ~"closedcalls~".~"guest_id~" = ~"guest~".~"account~" )
+	AND 0 = (SELECT count(*) FROM ~"vzt_contact~", ~"vzt_contact_preferences~" as pref
+								 WHERE 		~"vzt_contact~".~"id~" 	= ~"pref~".~"contact_id~" 
+										and  	~"vzt_contact~".~"fkey~" = ~"guest~".~"account~") 
+*/
+	AND  LOCATE(','+trim(subproblem.ext_pref_code)+',',  ',HERG,') > 0 /* HE returning guest related tasks */
+		AND isnull(~"subPROBLEM~".~"retcode~",'') <> '' 
+		and retcodes.code = ~"subPROBLEM~".~"retcode~" 
+		and retcodes.prearrival = 'P' 
+		and ~"PROBLEM~".~"problem_number~" = ~"SUBPROBLEM~".~"problem_number~"
+ 
+
+/* ~"guest~".~"last_checkin_dt~" between DATE(GETDATE(*) + 1 ) and DATE(GETDATE(*) + 2 )   
+*/
+			/*1
+			 AND
+				( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					 ~"guest~".~"last_checkin_dt~" BETWEEN 
+					{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+				)
+			1*/
+
+	"  sort="ssort A guest_last_name A guest_first_name A guest_middle_init A guest_phone A guest_account A subproblem_retcode A " )
+group(level=1 header.height=76 trailer.height=0 by=("guest_last_name" , "guest_first_name" , "guest_middle_init" , "guest_phone" , "guest_account" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=92 trailer.height=0 by=("subproblem_retcode" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="PreArrivals Report " border="0" color="0" x="1129" y="24" height="64" width="549" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text=" Guest" border="2" color="0" x="9" y="284" height="56" width="640" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Recovery Task" border="0" color="0" x="667" y="280" height="64" width="1509" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header alignment="0" text="For " border="0" color="0" x="1129" y="100" height="64" width="128" html.valueishtml="0"  name=t_2 visible="1~t if ( totguests > 0, 1, 0)"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1266" y="100" height="64" width="448" format="[shortdate]" html.valueishtml="0"  name=for_date visible="1~t if ( totguests > 0, 1, 0)" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Total Guests Arriving:" border="0" color="0" x="645" y="200" height="64" width="645" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Original Problem / Preference" border="0" color="8388608" x="2208" y="280" height="64" width="1202" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=header alignment="2" expression=" IF( totguests > 0,  totguests , 0)"border="2" color="0" x="1317" y="200" height="64" width="256" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=header alignment="0" text="Total Tasks:" border="0" color="0" x="1669" y="200" height="64" width="343" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="count(1 for all )"border="2" color="0" x="2025" y="200" height="64" width="347" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=header alignment="2" text="No data found for dates specified" border="0" color="0" x="928" y="104" height="64" width="983" html.valueishtml="0"  name=t_8 visible="1~t if ( totguests > 0, 0, 1)"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=12 alignment="0" tabsequence=32766 border="0" color="16711680" x="5" y="0" height="72" width="475" format="[general]" html.valueishtml="0"  name=guest_last_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=13 alignment="0" tabsequence=32766 border="0" color="16711680" x="498" y="0" height="72" width="347" format="[general]" html.valueishtml="0"  name=guest_first_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=14 alignment="0" tabsequence=32766 border="0" color="16711680" x="869" y="0" height="72" width="46" format="[general]" html.valueishtml="0"  name=guest_middle_init visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=23 alignment="0" tabsequence=32766 border="0" color="16711680" x="987" y="0" height="72" width="553" format="[general]" html.valueishtml="0"  name=guest_phone visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=42 alignment="0" tabsequence=32766 border="0" color="0" x="1600" y="4" height="64" width="293" format="[general]" html.valueishtml="0"  name=guest_account visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header.2 alignment="0" expression="' ' + trim( retcodes_descr )"border="1" color="128" x="37" y="4" height="68" width="1883" format="[GENERAL]" html.valueishtml="0"  name=cretcode visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.2 id=56 alignment="2" tabsequence=32766 border="1" color="0" x="2802" y="4" height="68" width="407" format="[shortdate]" html.valueishtml="0"  name=depart_dt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.2 id=55 alignment="2" tabsequence=32766 border="1" color="0" x="2194" y="4" height="68" width="439" format="[shortdate]" html.valueishtml="0"  name=checkin_dt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="From:" border="0" color="0" x="1979" y="4" height="68" width="183" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text="To:" border="0" color="0" x="2665" y="4" height="68" width="110" html.valueishtml="0"  name=t_10 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="8388608" x="2208" y="0" height="56" width="576" format="[general]" html.valueishtml="0"  name=closedcalls_problem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="8388608" x="2807" y="0" height="56" width="585" format="[general]" html.valueishtml="0"  name=closedcalls_subproblem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=49 alignment="0" tabsequence=32766 border="0" color="0" x="677" y="0" height="68" width="667" format="[general]" html.valueishtml="0"  name=resp_problem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=50 alignment="0" tabsequence=32766 border="0" color="0" x="1362" y="0" height="64" width="809" format="[general]" html.valueishtml="0"  name=resp_subproblem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=51 alignment="2" tabsequence=32766 border="0" color="0" x="27" y="0" height="64" width="238" format="[general]" html.valueishtml="0"  name=problem_number visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=52 alignment="2" tabsequence=32766 border="0" color="0" x="311" y="0" height="64" width="242" format="[general]" html.valueishtml="0"  name=subproblem_num visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+column(band=detail id=45 alignment="2" tabsequence=32766 border="2" color="0" x="3570" y="4" height="48" width="55" format="[general]" html.valueishtml="0"  name=tasking_offset visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=47 alignment="2" tabsequence=32766 border="2" color="0" x="3707" y="4" height="48" width="55" format="[general]" html.valueishtml="0"  name=resp_offset visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=46 alignment="2" tabsequence=32766 border="2" color="0" x="3639" y="4" height="48" width="55" format="[general]" html.valueishtml="0"  name=depart_offset visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=48 alignment="2" tabsequence=32766 border="2" color="0" x="3781" y="4" height="48" width="59" format="[general]" html.valueishtml="0"  name=resp_depart_offset visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

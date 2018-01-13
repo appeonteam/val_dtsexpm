@@ -1,0 +1,49 @@
+﻿$PBExportHeader$f_vzt_calc_lrc.srf
+global type f_vzt_calc_lrc from function_object
+end type
+
+forward prototypes
+global function string f_vzt_calc_lrc (string as_string)
+end prototypes
+
+global function string f_vzt_calc_lrc (string as_string);string 	ls_lrc, ls_curr_char 	
+int 		li_len, li_char, 			li_byte, li_power, li_temp_char
+int		li_bits[8] = {0,0,0,0,0,0,0,0} 
+
+ls_lrc=CHAR(0)
+
+//as_string ='12345' + char(3) 
+li_len = LEN (as_string)
+
+li_byte = 0 
+IF li_len > 0 then 
+	FOR li_char = 1 to li_len  
+		ls_curr_char = MID(as_string, li_char,1)
+		li_temp_char = ASC( ls_curr_char )
+	 	int li_bit
+		FOR li_bit = 1 to 8 
+			li_power = 2^(8 - li_bit) 
+			IF li_temp_char >= li_power then 				// '1'
+				li_temp_char = li_temp_char - li_power 
+				if li_bits[li_bit] = 1 then 
+					li_bits[li_bit] = 0 
+				else
+					li_bits[li_bit] = 1
+				end if
+			ELSE												// '0'
+				// 0 OR X = X, so no code needed 
+			END IF
+		NEXT 
+	NEXT 
+	
+END IF
+
+li_temp_char = 0
+FOR li_bit = 1 to 8 
+	if li_bits[li_bit] = 1 then li_temp_char = li_temp_char +  2^(8 - li_bit) 
+NEXT 
+ls_lrc = CHAR(li_temp_char )
+
+return ls_lrc
+end function
+

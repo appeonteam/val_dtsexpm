@@ -1,0 +1,119 @@
+﻿$PBExportHeader$d_gcc_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=52 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=gcc_gccid dbname="gcc.gccid" )
+ column=(type=number updatewhereclause=yes name=guest_account dbname="guest.account" )
+ column=(type=char(15) updatewhereclause=yes name=gcc_room dbname="gcc.room" )
+ column=(type=datetime updatewhereclause=yes name=gcc_checkin_dt dbname="gcc.checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=gcc_depart_dt dbname="gcc.depart_dt" )
+ column=(type=char(50) updatewhereclause=yes name=guest_guest_id dbname="guest.guest_id" )
+ column=(type=number updatewhereclause=yes name=guest_guest_no dbname="guest.guest_no" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(2) updatewhereclause=yes name=guest_middle_init dbname="guest.middle_init" )
+ column=(type=char(20) updatewhereclause=yes name=guest_title dbname="guest.title" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr1 dbname="guest.addr1" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr2 dbname="guest.addr2" )
+ column=(type=char(20) updatewhereclause=yes name=guest_city dbname="guest.city" )
+ column=(type=char(20) updatewhereclause=yes name=guest_state dbname="guest.state" )
+ column=(type=char(10) updatewhereclause=yes name=guest_zip dbname="guest.zip" )
+ column=(type=char(20) updatewhereclause=yes name=guest_country dbname="guest.country" )
+ column=(type=char(100) updatewhereclause=yes name=guest_comp_name dbname="guest.comp_name" )
+ column=(type=char(150) updatewhereclause=yes name=guest_email dbname="guest.email" )
+ column=(type=char(18) updatewhereclause=yes name=guest_phone dbname="guest.phone" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_checkin_dt dbname="guest.last_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_depart_dt dbname="guest.last_depart_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_checkin_dt dbname="guest.prev_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_depart_dt dbname="guest.prev_depart_dt" )
+ column=(type=char(15) updatewhereclause=yes name=guest_room_last_checkin dbname="guest.room_last_checkin" )
+ column=(type=char(4) updatewhereclause=yes name=guest_accom_code dbname="guest.accom_code" )
+ column=(type=char(20) updatewhereclause=yes name=guest_block_code dbname="guest.block_code" )
+ column=(type=char(30) updatewhereclause=yes name=guest_grp_mstr_name dbname="guest.grp_mstr_name" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_1 dbname="guest.sr_code_1" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_4 dbname="guest.sr_code_4" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_5 dbname="guest.sr_code_5" )
+ column=(type=long updatewhereclause=yes name=guest_no_adult dbname="guest.no_adult" )
+ column=(type=char(20) updatewhereclause=yes name=guest_pg_id dbname="guest.pg_id" )
+ column=(type=datetime updatewhereclause=yes name=guest_date_created dbname="guest.date_created" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_upd dbname="guest.last_upd" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_2 dbname="guest.sr_code_2" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_3 dbname="guest.sr_code_3" )
+ column=(type=number updatewhereclause=yes name=gcc_surveyid dbname="gcc.surveyid" )
+ column=(type=char(20) updatewhereclause=yes name=guest_prefix dbname="guest.prefix" )
+ column=(type=datetime updatewhereclause=yes name=gcc_ansdate dbname="gcc.ansdate" )
+ column=(type=char(50) updatewhereclause=yes name=gcc_openedby dbname="gcc.openedby" )
+ column=(type=char(1) updatewhereclause=yes name=gcc_webfilled dbname="gcc.webfilled" )
+ column=(type=char(30) updatewhereclause=yes name=gcc_webkey dbname="gcc.webkey" )
+ retrieve="   SELECT gcc.gccid,   
+         guest.account,   
+         gcc.room,   
+         gcc.checkin_dt,   
+         gcc.depart_dt,   
+         guest.guest_id,   
+         guest.guest_no,   
+         guest.last_name,   
+         guest.first_name,   
+         guest.middle_init,   
+         guest.title,   
+         guest.addr1,   
+         guest.addr2,   
+         guest.city,   
+         guest.state,   
+         guest.zip,   
+         guest.country,   
+         guest.comp_name,   
+  			guest.email,  
+         guest.phone,   
+         guest.last_checkin_dt,   
+         guest.last_depart_dt,   
+         guest.prev_checkin_dt,   
+         guest.prev_depart_dt,   
+         guest.room_last_checkin,   
+         guest.accom_code,   
+         guest.block_code,   
+         guest.grp_mstr_name,   
+         guest.sr_code_1,   
+         guest.sr_code_4,   
+         guest.sr_code_5,   
+         guest.no_adult,   
+         guest.pg_id,   
+         guest.date_created,   
+         guest.last_upd,   
+         guest.sr_code_2,   
+         guest.sr_code_3,   
+         gcc.surveyid,   
+         guest.prefix,   
+       
+         gcc.ansdate   ,
+         gcc.openedby,
+			gcc.webfilled,
+			gcc.webkey
+		
+	
+    FROM {oj guest  LEFT OUTER JOIN gcc  ON guest.account = gcc.guest_account}   
+"  sort="guest_last_name A guest_first_name A gcc_checkin_dt A " )
+text(band=header alignment="0" text=" GCC Date"border="6" color="0" x="14" y="8" height="48" width="242"  name=gcc_date_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="2" text=" Room"border="6" color="0" x="274" y="8" height="48" width="155"  name=gcc_room_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" Last Name"border="6" color="0" x="443" y="8" height="48" width="389"  name=guest_last_name_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" First Name"border="6" color="0" x="850" y="8" height="48" width="256"  name=guest_first_name_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" City"border="6" color="0" x="1120" y="8" height="48" width="457"  name=guest_city_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="2" text="Zip"border="6" color="0" x="1833" y="8" height="48" width="229"  name=guest_zip_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" GCC No."border="6" color="0" x="2080" y="8" height="48" width="206"  name=gcc_gccid_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" W"border="6" color="0" x="2304" y="8" height="48" width="82"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" State"border="6" color="0" x="1595" y="8" height="48" width="219"  name=guest_state_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+column(band=detail id=25 alignment="2" tabsequence=32766 border="0" color="0" x="274" y="0" height="60" width="160" format="[general]"  name=guest_room_last_checkin visible="1~tif (  gcc_gccid > 0, 0, 1 )" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="0" height="60" width="251" format="[shortdate]"  name=gcc_ansdate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="270" y="0" height="60" width="165" format="[general]"  name=gcc_room visible="1~tif (  gcc_gccid > 0, 1, 0 )" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="448" y="0" height="60" width="384" format="[general]"  name=guest_last_name edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="850" y="0" height="60" width="238" format="[general]"  name=guest_first_name edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="1111" y="0" height="60" width="489" format="[general]"  name=guest_city edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="1842" y="0" height="60" width="224" format="[general]"  name=guest_zip edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0" x="2085" y="0" height="60" width="206" format="[general]"  name=gcc_gccid edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=42 alignment="0" tabsequence=32766 border="0" color="0" x="2313" y="0" height="64" width="69" format="[general]"  name=gcc_webfilled visible="1~t if ( gcc_webfilled = 'Y' , 1, 0 )" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=43 alignment="0" tabsequence=32766 border="0" color="0" x="2386" y="0" height="64" width="690" format="[general]"  name=gcc_webkey edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="1614" y="0" height="60" width="210" format="[general]"  name=guest_state edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( gcc_webfilled = 'Y', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

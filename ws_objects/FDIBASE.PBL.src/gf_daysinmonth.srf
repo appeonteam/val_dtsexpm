@@ -1,0 +1,18 @@
+﻿$PBExportHeader$gf_daysinmonth.srf
+$PBExportComments$Return the number of days in a month.
+global type gf_daysinmonth from function_object
+end type
+
+forward prototypes
+global function int gf_daysinmonth (date ad_date)
+end prototypes
+
+global function int gf_daysinmonth (date ad_date);Date ld_part1
+Integer li_DaysInMonth
+
+ld_part1 = RelativeDate( ad_date, -Day( ad_date) )
+li_DaysInMonth = Day(RelativeDate(RelativeDate(ld_part1,35 ),&
+                          -(Day(RelativeDate(ld_part1,35)))))
+RETURN li_DaysInMonth
+end function
+

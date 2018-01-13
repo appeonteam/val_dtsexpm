@@ -1,0 +1,27 @@
+﻿$PBExportHeader$gf_subtractyear.srf
+$PBExportComments$Decrements the year of a date by one.
+global type gf_subtractyear from function_object
+end type
+
+forward prototypes
+global function date gf_subtractyear (date ad_date)
+end prototypes
+
+global function date gf_subtractyear (date ad_date);integer li_day, li_month, li_year
+date ld_return
+
+li_day	= Day( ad_date )
+li_month = Month( ad_date )
+li_year  = Year( ad_date ) - 1
+	
+ld_return = Date( li_year , li_month, li_day )
+
+DO WHILE NOT IsDate( String( ld_return ) )
+	li_day --
+	ld_return = Date( li_year, li_month, li_day )
+LOOP
+
+RETURN ld_return
+	
+end function
+

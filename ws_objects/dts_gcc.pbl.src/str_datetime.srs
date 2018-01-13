@@ -1,0 +1,5 @@
+﻿$PBExportHeader$str_datetime.srs
+global type str_datetime from structure
+	datetime		dateparm
+end type
+

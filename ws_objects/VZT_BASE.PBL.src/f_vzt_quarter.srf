@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_vzt_quarter.srf
+global type f_vzt_quarter from function_object
+end type
+
+forward prototypes
+global function integer f_vzt_quarter (integer ai_month)
+end prototypes
+
+global function integer f_vzt_quarter (integer ai_month);integer li_quarter
+CHOOSE CASE ai_month
+	CASE 1,2,3
+		li_quarter = 1
+	CASE 4,5,6
+		li_quarter = 2
+	CASE 7,8,9
+		li_quarter = 3
+	CASE 10,11,12
+		li_quarter = 4 
+	CASE ELSE
+		li_quarter = 0
+END CHOOSE
+
+return li_quarter
+end function
+

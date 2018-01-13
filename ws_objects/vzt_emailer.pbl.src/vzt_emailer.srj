@@ -1,0 +1,57 @@
+﻿$PBExportHeader$vzt_emailer.srj
+EXE:c:\data\vztech\metromedia\HE9\dts_emailer.exe,,0,1,0
+CMP:0,0,0,2,0,0
+COM:Metromedia Software Inc.
+DES:HotelEXPERT File interface
+CPY:Metromedia Software Inc. 2002-2004  
+PRD:HotelEXPERT File interface
+PVS:2.01
+PVN:2,0,0,0
+FVS:2.0
+FVN:2,0,0,0
+PBD:C:\data\vztech\Metromedia\HE9\vzt_emailer.pbl,c:\data\vztech\metromedia\he9\gcc.pbr,1
+PBD:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,,1
+PBD:C:\data\vztech\Metromedia\HE9\VZT_DISTRIBUTION.PBL,,1
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_clipboard,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_tran,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_sysdate,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_base,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_DISTRIBUTION.PBL,d_contact_list_ids,d
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_error,u
+OBJ:C:\data\vztech\Metromedia\HE9\vzt_emailer.pbl,vzt_emailer,a
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,uo_vzt_mail,u
+OBJ:C:\data\vztech\Metromedia\HE9\vzt_emailer.pbl,m_emailer_main,m
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,uo_room_registry,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,st_lookup_ret,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_base_error,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,d_vzt_error,d
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_DISTRIBUTION.PBL,d_vzt_dddw_distribution,d
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_replace,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,str_reporter_reportparms,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,m_vzt_master,m
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_is_column_null,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,uo_vzt_dwbase,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_language,u
+OBJ:C:\data\vztech\Metromedia\HE9\vzt_emailer.pbl,w_vzt_error,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_isdebug,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_nvl,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,nvo_vzt_appman,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_dw_field_sort,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,u_vzt_ddcal_inline,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_selectrow,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,str_response,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_sysdatet,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_get_string_value_ds,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_security,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,nvo_trace,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_base_response,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,u_vzt_ddcal,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_dfilter,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,st_lookup_parm,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_anymodified,f
+OBJ:C:\data\vztech\Metromedia\HE9\vzt_emailer.pbl,w_vzt_email_schedule,w
+OBJ:C:\data\vztech\Metromedia\HE9\vzt_emailer.pbl,d_directory,d
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_mail_error_to_string,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_writefile_from_blob,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,d_vzt_sysoptions_edit,d
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_sysoptions_edit,w

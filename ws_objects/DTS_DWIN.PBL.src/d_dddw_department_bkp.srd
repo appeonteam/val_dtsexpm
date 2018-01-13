@@ -1,0 +1,13 @@
+﻿$PBExportHeader$d_dddw_department_bkp.srd
+release 5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no grid.lines=0 )
+header(height=1 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=69 color="536870912" )
+table(column=(type=char(15) updatewhereclause=yes name=dept dbname="instemp.dept" )
+ column=(type=char(40) updatewhereclause=yes name=instdept_dept_longdesc dbname="instdept.dept_longdesc" )
+ retrieve="PBSELECT( VERSION(400) DISTINCT ()TABLE(NAME=~"instemp~" )  TABLE(NAME=~"instdept~" ) COLUMN(NAME=~"instemp.dept~") COLUMN(NAME=~"instdept.dept_longdesc~")    JOIN (LEFT=~"instemp.dept~"    OP =~"=~"RIGHT=~"instdept.dept~" )) ORDER(NAME=~"instemp.dept~" ASC=yes ) " )
+text(band=header alignment="0" text="Instdept Dept Longdesc"border="0" color="0" x="197" y="4" height="77" width="741"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="10" y="4" height="57" width="179" format="[general]"  name=dept edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="197" y="4" height="57" width="741" format="[general]"  name=instdept_dept_longdesc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

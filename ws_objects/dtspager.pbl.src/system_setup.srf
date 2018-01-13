@@ -1,0 +1,175 @@
+﻿$PBExportHeader$system_setup.srf
+global type system_setup from function_object
+end type
+
+forward prototypes
+global function boolean system_setup ()
+end prototypes
+
+global function boolean system_setup ();boolean lSfsg  = True
+int nStrLength = 1024
+
+// change to use ini file from hotelexpert directory if it exists. m.n. 03/24/2005
+string currPath, winPath
+
+winPath = Space( nStrLength )
+GetWindowsDirectoryA( winPath, nStrLength )
+winPath = Trim(Upper(winPath))
+if Right(winPath,1) <> "\" then
+	winPath = winPath + "\"
+end if
+
+currPath = GetCurrentDirectory()
+currPath = Trim(currPath)
+if Right(currPath,1) <> "\" then
+	currPath = currPath + "\"
+end if
+
+
+If FileExists( currPath+cINIFile ) Then
+	cINIPath = currPath
+else
+	If Not FileExists( winPath + cINIFile ) Then
+		lSfsg = False
+		MessageBox( "Initialization Failure", "Cannot locate file -->[" + cINIPath+cINIFile+"].  " + &
+						"Please ensure...", Stopsign! )	
+	else
+		cINIPath = winPath				
+	end if
+
+end if
+// end *** m.n. 03/24/2005
+
+If lSfsg Then
+	// Let's set global var's set in .INI file
+	// --------------------------------------------------
+	// Registration
+	// --------------------------------------------------
+	cRegCompany = ProfileString( cINIPath +&
+							cINIFile, "Registration", &
+							"Company", "[Un-Licensed Company]" )
+	cRegName    = ProfileString( cINIPath +&
+							cINIFile, "Registration", &
+							"Name", "[Un-Licensed User]" )
+	cRegSite    = ProfileString( cINIPath +&
+							cINIFile, "Registration", &
+							"Site", "[Un-Licensed Site]" )
+	cRegSerNumber = ProfileString( cINIPath +&
+							cINIFile, "Registration", &
+							"SerNumber", "[Un-Licensed Installation]" )
+
+	// --------------------------------------------------
+	// Application
+	// --------------------------------------------------
+	nScreenWidth = Integer( ProfileString( cINIPath + cINIFile, "Application", &
+					"ScreenWidth", "0" ) )
+	nScreenHeight = Integer( ProfileString( cINIPath + cINIFile, "Application", &
+					"ScreenHeight", "0" ) )
+	cSysName    = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"SysName", "[Un-Registered]" )
+	cSysVersion = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"SysVersion", "[Call]" )
+	cAppName    = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"AppName", "[Un-Registered]" )
+	cAppVersion = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"AppVersion", "[Call]" )
+	cAppPath    = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"ApplicationPath", cINIPath )
+	cAppPath = Trim( cAppPath )
+	If Right( cAppPath, 1 ) <> "\" Then
+		cAppPath = cAppPath + "\"
+	End If
+	cOSName     = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"OSName", "[???]" )
+	cOSVersion  = ProfileString( cINIPath +&
+							cINIFile, "Application", &
+							"OSVersion", "[???]" )
+	nDataEntryTimeout = ProfileInt( cINIPath +&
+							cINIFile, "Application", &
+							"DataEntryTimeoutSeconds", 180 )
+	nExitAppMode = ProfileInt( cINIPath +&
+							cINIFile, "Application", &
+							"ExitApplicationMode", 180 )
+
+	// --------------------------------------------------
+	// Intl
+	// --------------------------------------------------
+	cDateFormat = ProfileString( cINIPath +     &
+							cINIFile, "Intl",     &
+							"DateFormat", "mm/dd/yy" )
+	cTimeFormat = ProfileString( cINIPath +     &
+							cINIFile, "Intl",     &
+							"TimeFormat", "hh:mm:ss" )
+	//*****************
+	cDateFormatStr = ProfileString( cINIPath + cINIFile, "Intl", &
+									"DateFormat", "mm/dd/yyyy")
+	cDateTimeFormatStr = ProfileString( cINIPath + cINIFile, "Intl", &
+									"DateTimeFormat", "mm/dd/yyyy hh:mm")
+	cTimeFormatStr = ProfileString( cINIPath + cINIFile, "Intl", &
+									"TimeFormat", "hh:mm:ss")
+	cReportDateTimeFormatStr = ProfileString( cINIPath + cINIFile, "Intl", &
+									"ReportDateTimeFormat", "mm/dd/yyyy hh:mm")
+	cReportDateFormatStr = ProfileString( cINIPath + cINIFile, "Intl", &
+									"ReportDateFormat", "mm/dd/yy")
+						
+	cReportLongDateFormatStr = ProfileString( cINIPath + cINIFile, "Intl", &
+									"ReportLongDateFormat", "dddd, mmmm dd, yyyy")
+									
+	cReportLongDateFormatStr1 = ProfileString( cINIPath + cINIFile, "Intl", &
+									"ReportLongDateFormat1", "ddd, mmmm d, yyyy")
+
+	cReportLongDateFormatStr2 = ProfileString( cINIPath + cINIFile, "Intl", &
+									"ReportLongDateFormat2", "mmmm d, yyyy")
+	//*****************
+	// --------------------------------------------------
+	// Error
+	// --------------------------------------------------
+	cDBErrorMessage = ProfileString( cINIPath + &
+							cINIFile, "Error",    &
+							"DatabaseErrorMessage",   &
+							"A SERIOUS DATABASE ERROR has occurred!" )
+	cSysErrorMessage = ProfileString( cINIPath + &
+							cINIFile, "Error",    &
+							"SystemErrorMessage",   &
+							"A SERIOUS SYSTEM ERROR has occurred!" )
+	cSQLErrorMessage = ProfileString( cINIPath + &
+							cINIFile, "Error",    &
+							"SQLErrorMessage",   &
+							"A SERIOUS SQL DATA ACCESS ERROR has occurred!" )
+	cDBErrorFile	 = ProfileString( cINIPath + &
+							cINIFile, "Error",    &
+							"DataBaseErrorFile",   &
+							cINIPath + Mid( Trim( cAppName ) + "xxxxxxxx", 1, 8 ) + ".ERR" )
+	// if no path specified the add one
+	
+	If Pos( cDBErrorFile, "\" ) < 1 Then		
+		cDBErrorFile = cINIPath + cDBErrorFile
+	End If
+	cSysErrorFile	 = ProfileString( cINIPath + &
+							cINIFile, "Error",    &
+							"SystemErrorFile",   &
+							cDBErrorFile )
+	// if no path specified the add one
+	If Pos( cSysErrorFile, "\" ) < 1 Then
+		cSysErrorFile = cINIPath + cSysErrorFile
+	End If
+	cSQLErrorFile	 = ProfileString( cINIPath + &
+							cINIFile, "Error",    &
+							"SQLErrorFile",   &
+							cDBErrorFile )
+	// if no path specified the add one
+	If Pos( cSQLErrorFile, "\" ) < 1 Then
+		cSQLErrorFile = cINIPath + cSQLErrorFile
+	End If
+End If
+
+Return lSfsg
+
+end function
+

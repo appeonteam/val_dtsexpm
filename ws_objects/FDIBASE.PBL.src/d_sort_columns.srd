@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_sort_columns.srd
+$PBExportComments$Drop-down datawindow of available sort columns.
+release 3;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=1 color="536870912")
+summary(height=1 color="536870912")
+footer(height=1 color="536870912")
+detail(height=65 color="536870912")
+table(column=(type=char(25) name=s_column_name dbname="s_column_name" )
+ column=(type=char(25) name=s_column_desc dbname="s_column_desc" )
+ )
+column(band=detail id=2 border="0" alignment="0" color="0" height="53" tabsequence=20 width="787" x="42" y="8"  name=s_column_desc format="[general]" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400" font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256")

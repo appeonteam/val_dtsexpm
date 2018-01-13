@@ -1,0 +1,21 @@
+﻿$PBExportHeader$d_rpt_4s_rc_grid.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=320 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=224 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=cardid dbname="qgen_qset_answers.cardid" )
+ column=(type=char(300) updatewhereclause=yes name=comments dbname="qgen_qset_answers.comments" )
+ retrieve="  SELECT qa.headerid CardId,   
+         qa.freeform comments 
+    FROM qgen_qset_answers  qa
+	WHERE questionid = 7 and rtrim( freeform) <> '' and freeform IS NOT NULL 
+				AND qa.ansdate >= vzt_date_bom(date('2000/10/01'))
+				AND qa.ansdate <= vzt_date_eom(date('2001/05/01'))
+ORDER BY cardid" )
+text(band=header alignment="0" text="Cardid"border="0" color="0" x="9" y="256" height="56" width="229"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="56" width="229" format="[general]"  name=cardid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="251" y="4" height="216" width="2734"  name=comments edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Comments"border="0" color="0" x="247" y="264" height="56" width="2738"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

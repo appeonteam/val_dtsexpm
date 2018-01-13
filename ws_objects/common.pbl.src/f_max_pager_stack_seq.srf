@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_max_pager_stack_seq.srf
+global type f_max_pager_stack_seq from function_object
+end type
+
+forward prototypes
+global function integer f_max_pager_stack_seq ()
+end prototypes
+
+global function integer f_max_pager_stack_seq ();int max_stack
+
+select	max(stack_seq) into :max_stack
+from		pagers;
+
+if sqlca.sqlcode < 0 then
+	return -1
+end if
+
+return max_stack+1
+end function
+

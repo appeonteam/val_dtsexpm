@@ -1,0 +1,16 @@
+﻿$PBExportHeader$f_sysdate.srf
+global type f_sysdate from function_object
+end type
+
+forward prototypes
+global function datetime f_sysdate ()
+end prototypes
+
+global function datetime f_sysdate ();datetime ldt_result
+
+SELECT  vzt_getdate() INTO :ldt_result FROM vzt_sysoptions  WHERE id = 1     ;
+IF SQLCA.sqlcode <> 0 then ldt_result = datetime( today(), now()) 
+
+return ldt_result
+end function
+

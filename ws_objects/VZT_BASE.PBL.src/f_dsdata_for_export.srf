@@ -1,0 +1,57 @@
+﻿$PBExportHeader$f_dsdata_for_export.srf
+global type f_dsdata_for_export from function_object
+end type
+
+forward prototypes
+global subroutine f_dsdata_for_export (ref datastore adw_target, boolean ab_export)
+end prototypes
+
+global subroutine f_dsdata_for_export (ref datastore adw_target, boolean ab_export);long ll_colcount, counter, ll_row, ll_maxrow
+string ls_colval, mycolumn , datatype
+ll_colcount = Long(adw_target.Describe("Datawindow.Column.Count"))
+
+string  ls_null	="`" 			// í" - oracle doesnot store extended chars :((( 
+string  ls_tab		="^"
+string  ls_nline	="<@$@>"
+
+
+
+// eliminate bad characters 
+FOR counter = 1  TO ll_colcount 
+	mycolumn = "#" + string(counter)
+	datatype = Upper(adw_target.describe(mycolumn + ".ColType"))
+	
+	if isNull(datatype) then 
+			continue
+	Else
+		If upper( mid( datatype+'xxxx', 1 ,4 )) = "CHAR" then 
+			// for all rows 
+			ll_maxrow = adw_target.Rowcount()
+			If ll_maxrow > 0 then 
+				FOR ll_row = 1 to ll_maxrow
+					ls_colval = adw_target.GetItemString( ll_row, counter) 
+					If ab_export then //export
+						if isNull (ls_colval ) then 
+							ls_colval = ls_null
+						Else
+							f_replace (ls_colval , "~t", ls_tab	)			
+							f_replace (ls_colval , "~r~n", ls_nline )									
+						End If 
+					Else
+						// import
+						if ls_colval = ls_null then 
+							 SetNull (ls_colval ) 
+						Else
+							f_replace (ls_colval , ls_tab	, "~t" )			
+							f_replace (ls_colval , ls_nline, "~r~n" )									
+						End If 
+					End If
+					adw_target.SetItem( ll_row, counter, ls_colval ) 
+				NEXT 
+			End IF
+		end if
+	end if
+Next	
+
+end subroutine
+

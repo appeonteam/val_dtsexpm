@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_filter_carrige_return_char.srf
+global type f_filter_carrige_return_char from function_object
+end type
+
+forward prototypes
+global function string f_filter_carrige_return_char (string instr)
+end prototypes
+
+global function string f_filter_carrige_return_char (string instr);string iStr,ctrl
+iStr = inStr
+
+int xx
+
+ctrl = char(asc(char(13)))
+do while pos(iStr,ctrl) <> 0
+	xx = pos(iStr,ctrl)
+	iStr=replace(iStr,xx,2,', ')
+loop
+
+ctrl = '^'
+do while pos(iStr,ctrl) <> 0
+	xx = pos(iStr,ctrl)
+	iStr=replace(iStr,xx,1,', ')
+loop
+
+return iStr
+
+
+end function
+

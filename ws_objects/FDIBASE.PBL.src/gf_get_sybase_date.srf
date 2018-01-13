@@ -1,0 +1,27 @@
+﻿$PBExportHeader$gf_get_sybase_date.srf
+$PBExportComments$Returns current date from Sybase back-end.
+global type gf_get_sybase_date from function_object
+end type
+
+forward prototypes
+global function datetime gf_get_sybase_date ()
+end prototypes
+
+global function datetime gf_get_sybase_date ();datetime  ldt_wireqdate
+string    ls_cmd
+
+ls_cmd = "select getdate()"
+
+DECLARE cur1 DYNAMIC CURSOR FOR sqlsa ;
+
+PREPARE sqlsa FROM :ls_cmd ;
+
+OPEN DYNAMIC cur1 ;
+
+FETCH cur1 INTO :ldt_wireqdate ; 
+
+CLOSE cur1 ;
+
+RETURN ldt_wireqdate
+end function
+

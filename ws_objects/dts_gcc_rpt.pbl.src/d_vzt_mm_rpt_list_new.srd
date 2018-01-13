@@ -1,0 +1,77 @@
+﻿$PBExportHeader$d_vzt_mm_rpt_list_new.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=1 grid.columnmove=no selected.mouse=no )
+header(height=48 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=48 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes name=reportid dbname="vzt_reportdef.reportid" )
+ column=(type=char(16) update=yes updatewhereclause=yes name=userid dbname="vzt_reportdef.userid" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=title dbname="vzt_reportdef.title" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=keeplast dbname="vzt_reportdef.keeplast" initial="N" values="Yes	Y/No	N/" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=recurring dbname="vzt_reportdef.recurring" initial="ONETIME" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=dwdataobjectname dbname="vzt_reportdef.dwdataobjectname" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timetorun dbname="vzt_reportdef.timetorun" initial="today" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunmon dbname="vzt_reportdef.daytorunmon" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytoruntue dbname="vzt_reportdef.daytoruntue" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunwed dbname="vzt_reportdef.daytorunwed" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunthu dbname="vzt_reportdef.daytorunthu" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunfri dbname="vzt_reportdef.daytorunfri" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunsat dbname="vzt_reportdef.daytorunsat" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunsun dbname="vzt_reportdef.daytorunsun" initial="Y" values="	Y/	N" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=rptdesc dbname="vzt_reportdef.rptdesc" )
+ column=(type=long update=yes updatewhereclause=yes name=vzt_reportdef_daystokeep dbname="vzt_reportdef.daystokeep" )
+ column=(type=char(1) updatewhereclause=yes name=vzt_hierarchy_leafind dbname="vzt_hierarchy.leafind" values="Yes	Y/No	N/Group	G/" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=securitylevel dbname="vzt_reportdef.securitylevel" )
+ column=(type=long update=yes updatewhereclause=yes name=parmcount dbname="vzt_reportdef.parmcount" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=countstartdate dbname="vzt_reportdef.countstartdate" )
+ column=(type=datetime update=yes updatewhereclause=yes name=averageruntime dbname="vzt_reportdef.averageruntime" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=drilldownreportid dbname="vzt_reportdef.drilldownreportid" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timetorunend dbname="vzt_reportdef.timetorunend" )
+ column=(type=char(7) updatewhereclause=yes name=hier_id dbname="vzt_hierarchy.id" )
+ column=(type=char(3) updatewhereclause=yes name=subtype dbname="vzt_reportdef.subtype" )
+ column=(type=long updatewhereclause=yes name=corder dbname="vzt_hierarchy.corder" )
+ column=(type=char(70) updatewhereclause=yes name=vzt_hierarchy_name dbname="vzt_hierarchy.name" )
+ column=(type=char(7) updatewhereclause=yes name=vzt_hierarchy_parent_id dbname="vzt_hierarchy.parent_id" )
+ retrieve=" SELECT vzt_reportdef.reportid,   
+         vzt_reportdef.userid,   
+         vzt_reportdef.title,   
+         vzt_reportdef.keeplast,   
+         vzt_reportdef.recurring,   
+         vzt_reportdef.dwdataobjectname,   
+         vzt_reportdef.timetorun,   
+         vzt_reportdef.daytorunmon,   
+         vzt_reportdef.daytoruntue,   
+         vzt_reportdef.daytorunwed,   
+         vzt_reportdef.daytorunthu,   
+         vzt_reportdef.daytorunfri,   
+         vzt_reportdef.daytorunsat,   
+         vzt_reportdef.daytorunsun,   
+         vzt_reportdef.rptdesc,   
+         vzt_reportdef.daystokeep,   
+         vzt_hierarchy.leafind,   
+         vzt_reportdef.securitylevel,   
+         vzt_reportdef.parmcount,   
+         vzt_reportdef.countstartdate,   
+         vzt_reportdef.averageruntime,   
+         vzt_reportdef.drilldownreportid  ,
+         vzt_reportdef.timetorunend ,
+			vzt_hierarchy.id, 
+			vzt_reportdef.subtype,
+			vzt_hierarchy.orderingroup corder,
+			vzt_hierarchy.name,
+			vzt_hierarchy.parent_id
+    FROM vzt_reportdef,   
+         vzt_hierarchy   
+		    
+   WHERE vzt_reportdef.reportid =* vzt_hierarchy.reportid and  
+         vzt_hierarchy.LEAFIND IN ('Y','G')  
+"  sort="grouping A rorder A " )
+text(band=header alignment="0" text="Type"border="0" color="16777215" x="1344" y="0" height="60" width="242"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Reports and Graphs"border="0" color="16777215" x="87" y="0" height="60" width="1248"  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+compute(band=detail alignment="0" expression="' '"border="0" color="65535" x="9" y="0" height="56" width="69" format="[general]"  name=fill  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="1344" y="0" height="56" width="242" format="[general]"  name=subtype dddw.name=d_dddw_lookup_rpt_stype dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="87" y="0" height="56" width="1248" format="[general]"  name=vzt_hierarchy_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400~tif ( vzt_hierarchy_leafind = 'G', 800, 400)"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if ( vzt_hierarchy_leafind = 'G',  hier_id ,  vzt_hierarchy_parent_id )"border="0" color="16777215" x="1595" y="0" height="76" width="32"  name=grouping  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if ( vzt_hierarchy_leafind = 'G', 0,  corder )"border="0" color="16777215" x="1637" y="0" height="56" width="32"  name=rorder  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

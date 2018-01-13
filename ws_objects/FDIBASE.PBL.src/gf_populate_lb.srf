@@ -1,0 +1,64 @@
+﻿$PBExportHeader$gf_populate_lb.srf
+$PBExportComments$Populate a drop-down list box from SQL.
+global type gf_populate_lb from function_object
+end type
+
+forward prototypes
+global subroutine gf_populate_lb (string as_cols, string as_tables, string as_where, listbox alb_listbox)
+end prototypes
+
+global subroutine gf_populate_lb (string as_cols, string as_tables, string as_where, listbox alb_listbox);// Description:
+//   Fetch data from table into a cursor to populate a list box
+//
+// Arguments:
+//   AS_COLS		-	string containing comma separated column name(s)
+//   AS_TABLES		-	string containing comma separated table name(s)
+//   AS_WHERE		-	WHERE clause string
+//   ALB_LISTBOX	-	listbox object
+
+String ls_selectstring, ls_display
+Integer li_counter = 0 
+Boolean lb_continue = true
+
+// Set up select statement using passed parameters
+ls_selectstring = "SELECT DISTINCT " + as_cols + " FROM " + as_tables
+
+//  add where clause to SQL string, if passed
+IF NOT as_where <> "" THEN
+	ls_selectstring = ls_selectstring + as_where
+END IF
+
+PREPARE sqlsa FROM :ls_selectstring;
+
+//   declare a cursor to get data 
+DECLARE dyn_cursor DYNAMIC CURSOR FOR sqlsa;
+
+OPEN DYNAMIC dyn_cursor;  
+IF sqlca.sqlcode < 0 THEN
+	MessageBox ("DataBase Error 1 !", sqlca.sqlerrtext)
+	lb_continue = false
+END IF 
+
+IF lb_continue THEN
+
+	// Fetch one row at a time and store items into list box
+	DO WHILE sqlca.sqlcode = 0 AND lb_continue
+		li_counter = li_counter + 1 
+		FETCH dyn_cursor INTO :ls_display;
+		IF sqlca.sqlcode = 0 THEN
+			alb_listbox.AddItem( ls_display )
+		ELSEIF sqlca.sqlcode < 0 then
+			MessageBox ("DataBase Error 2 ", sqlca.sqlerrtext)
+			lb_continue = false
+		ELSE
+			lb_continue = false
+		END IF
+	LOOP
+
+	CLOSE dyn_cursor;
+
+END IF	
+
+RETURN 
+end subroutine
+

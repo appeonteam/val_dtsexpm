@@ -1,0 +1,70 @@
+﻿$PBExportHeader$d_contact_dates_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=72 color="21325446" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=vzt_contact_id dbname="vzt_contact.id" )
+ column=(type=char(100) updatewhereclause=yes name=firstname dbname="vzt_contact.firstname" )
+ column=(type=char(50) updatewhereclause=yes name=lastname dbname="vzt_contact.lastname" )
+ column=(type=char(100) updatewhereclause=yes name=vzt_contact_title dbname="vzt_contact.title" )
+ column=(type=date updatewhereclause=yes name=impdate dbname="vzt_contact.impdate" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_contact_contacttype dbname="vzt_contact.contacttype" )
+ column=(type=char(100) updatewhereclause=yes name=n_type dbname="vzt_contact_relation.relation_type" )
+ column=(type=number updatewhereclause=yes name=vzt_contact_relation_contact_id_from dbname="vzt_contact_relation.contact_id_from" )
+ column=(type=number updatewhereclause=yes name=vzt_contact_relation_contct_id_to dbname="vzt_contact_relation.contact_id_to" )
+ column=(type=char(50) updatewhereclause=yes name=relation_subtype dbname="vzt_contact_relation.relation_subtype" )
+ column=(type=char(1) updatewhereclause=yes name=datetype dbname="datetype" )
+ column=(type=long updatewhereclause=yes name=daysto dbname="daysto" )
+ retrieve="  SELECT ~"vzt_contact~".~"id~",   
+         ~"vzt_contact~".~"firstname~",   
+         ~"vzt_contact~".~"lastname~",   
+         ~"vzt_contact~".~"title~",   
+         ~"vzt_contact~".~"dob~"  impdate,   
+         ~"vzt_contact~".~"contacttype~",   
+         ~"vzt_contact_relation~".~"relation_type~",   
+         ~"vzt_contact_relation~".~"contact_id_from~",   
+         ~"vzt_contact_relation~".~"contact_id_to~",   
+         ~"vzt_contact_relation~".~"relation_subtype~",   
+         'B' datetype,
+			vzt_date_within_days( ~"vzt_contact~".~"dob~") daysto
+     FROM ~"vzt_contact~",   
+         ~"vzt_contact_relation~"  
+   WHERE  ~"vzt_contact~".~"id~" = ~"vzt_contact_relation~".~"contact_id_to~"  and  
+          ~"vzt_contact_relation~".~"contact_id_from~" = :ad_contact_from  AND  
+         ~"vzt_contact_relation~".~"relation_type~" = 'RELATIVE'   /*BIRTH DAYS*/ 
+UNION 
+
+ SELECT ~"vzt_contact~".~"id~",   
+         ~"vzt_contact~".~"firstname~",   
+         ~"vzt_contact~".~"lastname~",   
+         ~"vzt_contact~".~"title~",   
+         ~"vzt_contact_relation~".~"start_date~"  impdate,   
+         ~"vzt_contact~".~"contacttype~",   
+         ~"vzt_contact_relation~".~"relation_type~",   
+         ~"vzt_contact_relation~".~"contact_id_from~",   
+         ~"vzt_contact_relation~".~"contact_id_to~",   
+         ~"vzt_contact_relation~".~"relation_subtype~"  ,
+			'A' ,
+			vzt_date_within_days( ~"vzt_contact_relation~".~"start_date~")
+
+     FROM ~"vzt_contact~",   
+         ~"vzt_contact_relation~"  
+   WHERE  ~"vzt_contact~".~"id~" = ~"vzt_contact_relation~".~"contact_id_to~"  and  
+         ~"vzt_contact_relation~".~"contact_id_from~" = :ad_contact_from  AND  
+          ~"vzt_contact_relation~".~"relation_type~" = 'RELATIVE'  AND 
+          ~"vzt_contact_relation~".~"relation_subtype~" = 'SPOUSE'   /*ANNIVERSARY*/" arguments=(("ad_contact_from", number)) )
+compute(band=detail alignment="0" expression="If ( datetype = 'B',  relation_subtype +~"'S BIRTHDAY ~", 'ANNIVERSARY' )"border="0" color="0" x="32" y="4" height="56" width="594" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0" x="1339" y="4" height="56" width="325" format="[general]" html.valueishtml="0"  name=impdate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="654" y="4" height="56" width="302" format="[general]" html.valueishtml="0"  name=firstname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="974" y="4" height="56" width="283" format="[general]" html.valueishtml="0"  name=lastname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="2" expression="'coming up in ' + string(  daysto ) + ' days'"border="6" color="0" x="1682" y="4" height="56" width="558" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="0~tif (  daysto < 31 and daysto > 0 , 1, 0) "  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="255" )
+compute(band=detail alignment="2" expression="'*** UNKNOWN ***'"border="6" color="0" x="1682" y="4" height="56" width="558" format="[GENERAL]" html.valueishtml="0"  name=cunknown visible="0~tif ( isNUll( impdate ) , 1, 0) "  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="15780518" )
+text(band=header alignment="0" text="Occasion" border="0" color="16777215" x="14" y="8" height="56" width="599" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Name" border="0" color="16777215" x="645" y="8" height="56" width="599" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

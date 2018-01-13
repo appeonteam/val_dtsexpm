@@ -1,0 +1,147 @@
+﻿$PBExportHeader$m_vzt_tv_popup.srm
+forward
+global type m_vzt_tv_popup from menu
+end type
+type m_item from menu within m_vzt_tv_popup
+end type
+type m_insertafter from menu within m_item
+end type
+type m_insertchild from menu within m_item
+end type
+type m_rename from menu within m_item
+end type
+type m_delete from menu within m_item
+end type
+type m_moveup from menu within m_item
+end type
+type m_movedown from menu within m_item
+end type
+type m_item from menu within m_vzt_tv_popup
+m_insertafter m_insertafter
+m_insertchild m_insertchild
+m_rename m_rename
+m_delete m_delete
+m_moveup m_moveup
+m_movedown m_movedown
+end type
+end forward
+
+global type m_vzt_tv_popup from menu
+m_item m_item
+end type
+global m_vzt_tv_popup m_vzt_tv_popup
+
+type variables
+w_vzt_treeview_base iw_parentwindow
+end variables
+
+on m_vzt_tv_popup.create
+m_vzt_tv_popup=this
+this.m_item=create m_item
+this.Item[]={this.m_item}
+end on
+
+on m_vzt_tv_popup.destroy
+destroy(this.m_item)
+end on
+
+type m_item from menu within m_vzt_tv_popup
+m_insertafter m_insertafter
+m_insertchild m_insertchild
+m_rename m_rename
+m_delete m_delete
+m_moveup m_moveup
+m_movedown m_movedown
+end type
+
+on m_item.create
+this.Text="Item"
+this.m_insertafter=create m_insertafter
+this.m_insertchild=create m_insertchild
+this.m_rename=create m_rename
+this.m_delete=create m_delete
+this.m_moveup=create m_moveup
+this.m_movedown=create m_movedown
+this.Item[]={this.m_insertafter, &
+this.m_insertchild, &
+this.m_rename, &
+this.m_delete, &
+this.m_moveup, &
+this.m_movedown}
+end on
+
+on m_item.destroy
+destroy(this.m_insertafter)
+destroy(this.m_insertchild)
+destroy(this.m_rename)
+destroy(this.m_delete)
+destroy(this.m_moveup)
+destroy(this.m_movedown)
+end on
+
+type m_insertafter from menu within m_item
+end type
+
+event clicked;iw_parentwindow = parentwindow
+If IsValid( iw_parentwindow ) then iw_parentwindow.event dynamic ue_item_insert_sibling_after()
+end event
+
+on m_insertafter.create
+this.Text="Insert Sibling After"
+end on
+
+type m_insertchild from menu within m_item
+end type
+
+event clicked;iw_parentwindow = parentwindow
+If IsValid( iw_parentwindow ) then iw_parentwindow.event dynamic ue_item_insert_child()
+end event
+
+on m_insertchild.create
+this.Text="Insert Child"
+end on
+
+type m_rename from menu within m_item
+end type
+
+event clicked;iw_parentwindow = parentwindow
+If IsValid( iw_parentwindow ) then iw_parentwindow.event dynamic ue_item_rename()
+end event
+
+on m_rename.create
+this.Text="Rename"
+end on
+
+type m_delete from menu within m_item
+end type
+
+event clicked;iw_parentwindow = parentwindow
+If IsValid( iw_parentwindow ) then iw_parentwindow.event dynamic ue_item_delete()
+end event
+
+on m_delete.create
+this.Text="Delete"
+end on
+
+type m_moveup from menu within m_item
+end type
+
+event clicked;iw_parentwindow = parentwindow
+If IsValid( iw_parentwindow ) then iw_parentwindow.event dynamic ue_item_moveup()
+end event
+
+on m_moveup.create
+this.Text="Move Up"
+end on
+
+type m_movedown from menu within m_item
+end type
+
+event clicked;iw_parentwindow = parentwindow
+If IsValid( iw_parentwindow ) then iw_parentwindow.event dynamic ue_item_movedown()
+end event
+
+on m_movedown.create
+this.Text="Move Down"
+end on
+

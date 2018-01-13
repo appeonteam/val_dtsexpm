@@ -1,0 +1,47 @@
+﻿$PBExportHeader$f_get_next_vtask_id.srf
+global type f_get_next_vtask_id from function_object
+end type
+
+forward prototypes
+global function string f_get_next_vtask_id (string task_no, string subtask_no)
+end prototypes
+
+global function string f_get_next_vtask_id (string task_no, string subtask_no);integer taskFound
+string taskId, tid, sid, ntid, nsid, ntidt, nsidt, nvid 
+
+select count(*) into :taskFound from vtasks where problem_number = :task_no;
+
+if taskFound > 0 then
+   select max(task_id) into :taskId from vtasks where problem_number=:task_no;
+	tid=mid(taskId,1,2) 
+	sid=mid(taskId,3,2)
+	if sid = '99' then
+	   if tid = '99' then // exceed max digit
+	   	return ' '
+		end if
+		nsid = '00'
+		ntid=string(integer(tid)+1,'00')
+	else
+		ntid=tid 
+		nsid=string(integer(sid)+1,'00')
+	end if
+	   
+	nvid = ntid+nsid
+	
+else /** task not found **/
+  	select max(task_id) into :taskId from vtasks; 
+ 	tid=mid(taskId,1,2)
+	if tid = '99' then
+		return ' '
+	end if		
+	nsid = '00' 
+	ntid=string(integer(tid)+1,'00')
+	nvid = ntid+nsid
+end if
+
+
+return nvid
+
+
+end function
+

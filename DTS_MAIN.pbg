@@ -1,0 +1,38 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "DTS_MAIN.PBL" "";
+@end;
+@begin Objects
+ "dispatch_tracking_system.sra" "DTS_MAIN.PBL";
+ "w_admin.srw" "DTS_MAIN.PBL";
+ "w_find.srw" "DTS_MAIN.PBL";
+ "w_call_timer_date_new.srw" "DTS_MAIN.PBL";
+ "w_maint.srw" "DTS_MAIN.PBL";
+ "w_call_timer_date_pm.srw" "DTS_MAIN.PBL";
+ "w_main.srw" "DTS_MAIN.PBL";
+ "w_call_timer_date.srw" "DTS_MAIN.PBL";
+ "w_openlog1.srw" "DTS_MAIN.PBL";
+ "w_tables1.srw" "DTS_MAIN.PBL";
+ "w_manual_paging.srw" "DTS_MAIN.PBL";
+ "w_sort_by2.srw" "DTS_MAIN.PBL";
+ "w_find2.srw" "DTS_MAIN.PBL";
+ "u_dw_maint_tab.sru" "DTS_MAIN.PBL";
+ "w_test_recur_dt.srw" "DTS_MAIN.PBL";
+ "w_call_back.srw" "DTS_MAIN.PBL";
+ "w_screen_settings.srw" "DTS_MAIN.PBL";
+ "w_closed_calls.srw" "DTS_MAIN.PBL";
+ "w_probsubprob.srw" "DTS_MAIN.PBL";
+ "w_table_upd.srw" "DTS_MAIN.PBL";
+ "w_vtask_upd.srw" "DTS_MAIN.PBL";
+ "q_equipment_part_task_map.srq" "DTS_MAIN.PBL";
+ "w_guest_info.srw" "DTS_MAIN.PBL";
+ "w_call_timer.srw" "DTS_MAIN.PBL";
+ "w_init_login.srw" "DTS_MAIN.PBL";
+ "w_calendar.srw" "DTS_MAIN.PBL";
+ "w_link_task.srw" "DTS_MAIN.PBL";
+ "w_sort_by.srw" "DTS_MAIN.PBL";
+ "w_tab_window.srw" "DTS_MAIN.PBL";
+ "w_job_info.srw" "DTS_MAIN.PBL";
+ "w_purge.srw" "DTS_MAIN.PBL";
+ "u_dw_maint.sru" "DTS_MAIN.PBL";
+@end;

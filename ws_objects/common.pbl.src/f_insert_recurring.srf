@@ -1,0 +1,68 @@
+﻿$PBExportHeader$f_insert_recurring.srf
+global type f_insert_recurring from function_object
+end type
+
+forward prototypes
+global function double f_insert_recurring (s_timer_recur itimerrecur, string iroom, string icategory, string icaller, string itaskno, string isubtaskno, string itaskdef)
+end prototypes
+
+global function double f_insert_recurring (s_timer_recur itimerrecur, string iroom, string icategory, string icaller, string itaskno, string isubtaskno, string itaskdef);double recur_id
+date start_date, end_date
+datetime updDT
+time start_time
+
+start_date = f_str_d_to_d(iTimerRecur.recur_start_date)
+end_date = f_str_d_to_d(iTimerRecur.recur_end_date)
+start_time = time(iTimerRecur.recur_start_time)
+insert into recurring
+(	start_date,
+	end_date,
+	start_time,
+	freq_code,
+	freq_num,
+	recur_by,
+	room,
+	category,
+	caller,
+	task_no,
+	subtask_no,
+	task_definition,
+	daily_start_time,
+	daily_end_time,
+	week_day_selected,
+	lst_upd
+	)
+values
+(	:start_date,
+	:end_date,
+	:start_time,
+	:iTimerRecur.recur_freq_code,
+	:iTimerRecur.recur_freq_num,
+	:iTimerRecur.recur_by,
+	:iRoom,
+	:iCategory,
+	:iCaller,
+	:iTaskNo,
+	:iSubtaskNo,
+	:iTaskDef,
+	:iTimerRecur.daily_start_time,
+	:iTimerRecur.daily_end_time,
+	:iTimerRecur.week_day_selected,
+	getdate()
+	);
+	
+if sqlca.sqlcode < 0 then
+	MessageBox("DB Failed","insert recurring fails!!")
+	rollback;
+	return 0
+end if
+
+select recur_id into :recur_id from recurring where recur_id=@@identity;
+
+
+return recur_id
+	
+	
+	
+end function
+

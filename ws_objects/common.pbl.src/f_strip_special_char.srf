@@ -1,0 +1,29 @@
+﻿$PBExportHeader$f_strip_special_char.srf
+global type f_strip_special_char from function_object
+end type
+
+forward prototypes
+global function string f_strip_special_char (string instr)
+end prototypes
+
+global function string f_strip_special_char (string instr);int si, i, ascv
+si = len(inStr)
+string nStr
+nStr=''
+i = 1
+do while i <= si
+	ascv = asc(mid(inStr,i,1))
+	if ascv = 13 then //checking carriage return char
+		nStr=nStr+"-"
+		i++	//automatic skipping linefeed char 
+	elseif ascv = 94 then //checking char "^"
+		nStr=nStr+"-"
+	else
+		nStr=nStr+mid(inStr,i,1)
+	end if
+	i++
+loop
+	
+return nStr
+end function
+

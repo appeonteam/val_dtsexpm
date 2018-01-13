@@ -1,0 +1,113 @@
+﻿$PBExportHeader$d_pending_calls_mssql.srd
+release 5;
+datawindow(units=0 timer_interval=60000 color=16777215 processing=1 print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no grid.lines=0 )
+header(height=85 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=1 color="536870912" )
+detail(height=81 color="536870912" )
+table(column=(type=char(40) updatewhereclause=yes name=room dbname="area.area_name" )
+ column=(type=char(25) updatewhereclause=yes name=problem dbname="pendingcalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=subproblem dbname="pendingcalls.subproblem" )
+ column=(type=char(15) updatewhereclause=yes name=closed_bydept dbname="pendingcalls.closed_bydept" )
+ column=(type=char(35) updatewhereclause=yes name=repairman dbname="pendingcalls.repairman" )
+ column=(type=char(255) updatewhereclause=yes name=problem_definition dbname="problem_definition" )
+ column=(type=char(10) updatewhereclause=yes name=call_number dbname="pendingcalls.call_number" )
+ column=(type=datetime updatewhereclause=yes name=timer_start dbname="pendingcalls.timer_start" )
+ column=(type=char(2) updatewhereclause=yes name=stat_code dbname="pendingcalls.stat_code" )
+ column=(type=datetime updatewhereclause=yes name=call_indate dbname="pendingcalls.call_indate" )
+ column=(type=long updatewhereclause=yes name=compute_0011 dbname="compute_0011" )
+ column=(type=char(10) updatewhereclause=yes name=callstat_stat_desc dbname="callstat.stat_desc" )
+ retrieve="  SELECT area.area_name,   
+         pendingcalls.problem,   
+         pendingcalls.subproblem,   
+         pendingcalls.closed_bydept,   
+         pendingcalls.repairman,   
+         convert(varchar(255),pendingcalls.problem_definition) problem_definition,   
+         pendingcalls.call_number,   
+         pendingcalls.timer_start,   
+         pendingcalls.stat_code,   
+         pendingcalls.call_indate,   
+         2,
+		   callstat.stat_desc 
+    FROM pendingcalls,area,callstat  
+   WHERE (pendingcalls.room = area.area_number
+	  AND  pendingcalls.stat_code = callstat.stat_code)
+	  AND pendingcalls.stat_code >= '10'
+     AND pendingcalls.repairman <> ''
+   UNION   
+  SELECT area.area_name,    
+         timercalls.problem,   
+         timercalls.subproblem,   
+         timercalls.closed_bydept,   
+         timercalls.repairman,   
+         convert(varchar(255),timercalls.problem_definition)  problem_definition,   
+         timercalls.call_number,   
+         timercalls.timer_start,   
+         timercalls.stat_code,   
+         timercalls.call_indate,   
+         1 ,
+		   callstat.stat_desc 
+    FROM timercalls,area,callstat 
+   WHERE (timercalls.room = area.area_number
+	  AND  timercalls.stat_code = callstat.stat_code)
+	  AND timercalls.stat_code < '10'
+	  AND timercalls.repairman <> ''
+   UNION
+  SELECT area.area_name,   
+         pendingcalls.problem,   
+         pendingcalls.subproblem,   
+         pendingcalls.closed_bydept,   
+         pendingcalls.repairman,   
+         convert(varchar(255),pendingcalls.problem_definition)  problem_definition,   
+         pendingcalls.call_number,   
+         pendingcalls.timer_start,   
+         pendingcalls.stat_code,   
+         pendingcalls.call_indate,   
+         0,
+		   callstat.stat_desc 
+    FROM pendingcalls,area,callstat  
+   WHERE (pendingcalls.room = area.area_number
+	  AND  pendingcalls.stat_code = callstat.stat_code)
+	  AND pendingcalls.stat_code >= '10'
+	  AND pendingcalls.repairman = ''
+   UNION 
+  SELECT area.area_name,    
+         timercalls.problem,   
+         timercalls.subproblem,   
+         timercalls.closed_bydept,   
+         timercalls.repairman,   
+         convert(varchar(255),timercalls.problem_definition)  problem_definition,   
+         timercalls.call_number,   
+         timercalls.timer_start,   
+         timercalls.stat_code,   
+         timercalls.call_indate,   
+         0 ,
+		   callstat.stat_desc 
+    FROM timercalls,area,callstat 
+   WHERE (timercalls.room = area.area_number
+	  AND  timercalls.stat_code = callstat.stat_code)
+	  AND timercalls.stat_code < '10'
+	  AND timercalls.repairman = ''
+ORDER BY 11 ASC,
+	      8 ASC 
+"  sort="compute_0011 A timer_start A " )
+text(band=header alignment="2" text="Room"border="6" color="65535" x="10" y="8" height="65" width="485"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Task"border="6" color="65535" x="503" y="8" height="65" width="714"  name=problem_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Sub-Task"border="6" color="65535" x="1226" y="8" height="65" width="714"  name=subproblem_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Mins"border="6" color="65535" x="1948" y="8" height="65" width="307"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Dept"border="6" color="65535" x="2263" y="8" height="65" width="261"  name=closed_bydept_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Repairman"border="6" color="65535" x="2533" y="8" height="65" width="727"  name=repairman_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Task Definition"border="6" color="65535" x="3269" y="8" height="65" width="759"  name=problem_definition_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Timer Scheduled"border="6" color="65535" x="4037" y="8" height="65" width="494"  name=timer_start_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Stat"border="6" color="65535" x="4540" y="8" height="65" width="298"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Call #"border="6" color="65535" x="4846" y="8" height="65" width="284"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16711680" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="6" color="0" x="10" y="8" height="69" width="485" format="[general]"  name=room edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="6" color="0" x="503" y="8" height="69" width="714" format="[general]"  name=problem edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="6" color="0" x="1226" y="8" height="69" width="714" format="[general]"  name=subproblem edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="String((daysafter( Date( String( timer_start, ~"mm/dd/yyyy~" ) ), Date( String( Today(), ~"mm/dd/yyyy~" ) )) * 1440) + (secondsafter( Time( String( timer_start, ~"hh:mm:ss~" ) ), Time( String( Now(), ~"hh:mm:ss~" ) ) ) / 60), ~"#######0.0~" )"border="6" color="0" x="1948" y="8" height="69" width="307" format="[general]"  name=durationminutesopen  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="6" color="0" x="2263" y="8" height="69" width="261" format="[general]"  name=closed_bydept edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="6" color="0" x="2533" y="8" height="69" width="727" format="[general]"  name=repairman edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="6" color="0" x="3269" y="8" height="69" width="759" format="[general]"  name=problem_definition edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=70 border="6" color="0" x="4037" y="8" height="69" width="494" format="[shortdate] [time]"  name=timer_start edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=80 border="6" color="0" x="4540" y="8" height="69" width="298" format="[general]"  name=callstat_stat_desc edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="number( call_number )"border="6" color="0" x="4846" y="8" height="69" width="284" format="[general]"  name=call_number_numeric  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

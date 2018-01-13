@@ -1,0 +1,50 @@
+﻿$PBExportHeader$egm_dberror.srf
+global type egm_dberror from function_object
+end type
+
+forward prototypes
+global subroutine egm_dberror (datawindow dwpassed1)
+end prototypes
+
+global subroutine egm_dberror (datawindow dwpassed1);string ls_errtext
+string ls_cr_lf = Char( 13 ) + CHar( 10 )
+integer li_handle
+
+// Log error to disk
+// construct the error message
+ls_errtext = String( Today() ) + " " + String( Now() ) + ls_cr_lf + &
+				"Database Error  Number: " + String( dwPassed1.dbErrorCode() ) + ls_cr_lf + &
+				"Database Error Message: " + dwPassed1.dbErrorMessage() + ls_cr_lf
+MessageBox( "Database Error!", cDBErrorMessage )
+
+// Open error file
+li_handle = FileOpen( cDBErrorFile, &
+								linemode!, write! )
+
+If li_handle >= 0 Then
+
+	// write the message into the text file
+	FileWrite( li_handle, &
+			"*---DB Error--------------------------------" + ls_cr_lf + &
+			ls_errtext + &
+			"*-------------------------------------------" + ls_cr_lf )
+	// close the text file
+	FileClose( li_handle )
+Else
+	MessageBox( "!!! ERROR ERROR...CANNOT RECORD ERROR INFORMATION !!!", &
+					"Unable to record Error Info to File: "+cDBErrorFile + "  " + &
+					"Because " + cAppName + " is unable to record the following " + &
+					"error information, please WRITE THE FOLLOWING MESSAGE DOWN " + &
+					"WORD-FOR-WORD and give it to your supervisor so " + &
+					"support personnel have the required information to resolve " + &
+					"the problem." )
+
+	MessageBox( "Database Error...WRITE THIS DOWN!", &
+					ls_errtext )
+End If
+
+If sqlca.SQLCode < 0 Then
+	egm_SQLError( sqlca )
+End If
+end subroutine
+

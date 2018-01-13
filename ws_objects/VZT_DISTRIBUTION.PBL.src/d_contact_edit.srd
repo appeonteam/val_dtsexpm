@@ -1,0 +1,50 @@
+﻿$PBExportHeader$d_contact_edit.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=28 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=236 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="vzt_contact.id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=firstname dbname="vzt_contact.firstname" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=lastname dbname="vzt_contact.lastname" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=title dbname="vzt_contact.title" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=contacttype dbname="vzt_contact.contacttype" )
+ column=(type=date update=yes updatewhereclause=yes name=dob dbname="vzt_contact.dob" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=contactsubtype dbname="vzt_contact.contactsubtype" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=authority dbname="vzt_contact.authority" )
+ retrieve="  SELECT ~"vzt_contact~".~"id~",   
+         ~"vzt_contact~".~"firstname~",   
+         ~"vzt_contact~".~"lastname~",   
+         ~"vzt_contact~".~"title~",   
+         ~"vzt_contact~".~"contacttype~",   
+         ~"vzt_contact~".~"dob~",   
+         ~"vzt_contact~".~"contactsubtype~",   
+         ~"vzt_contact~".~"authority~"  
+    FROM ~"vzt_contact~"   
+" update="vzt_contact" updatewhere=0 updatekeyinplace=yes )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="2" color="0" x="2231" y="16" height="64" width="169" format="[General]" html.valueishtml="0"  name=id visible="1~t0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=70 border="0" color="0" x="3899" y="0" height="56" width="2299" format="[general]" html.valueishtml="0"  name=authority visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="First Name:" border="0" color="0" x="9" y="16" height="52" width="329" html.valueishtml="0"  name=firstname_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="0" x="352" y="16" height="52" width="617" format="[general]" html.valueishtml="0"  name=firstname visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Last Name:" border="0" color="0" x="9" y="92" height="52" width="329" html.valueishtml="0"  name=lastname_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="352" y="92" height="52" width="617" format="[general]" html.valueishtml="0"  name=lastname visible="1" edit.limit=60 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Title:" border="0" color="0" x="197" y="164" height="52" width="142" html.valueishtml="0"  name=title_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="0" x="352" y="164" height="52" width="919" format="[general]" html.valueishtml="0"  name=title visible="1" edit.limit=100 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="DOB:" border="0" color="0" x="1390" y="16" height="56" width="142" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="Type:" border="0" color="0" x="1390" y="92" height="52" width="142" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="1" text="SubType:" border="0" color="0" x="1321" y="164" height="52" width="210" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=50 border="5" color="0" x="1550" y="16" height="52" width="288" format="[general]" html.valueishtml="0"  name=dob visible="1" editmask.mask="[date]" editmask.focusrectangle=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="5" color="0" x="1550" y="92" height="52" width="439" format="[general]" html.valueishtml="0"  name=contacttype visible="1" dddw.name=d_dddw_lookup_cont_types2 dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=60 border="5" color="0" x="1550" y="164" height="52" width="439" format="[general]" html.valueishtml="0"  name=contactsubtype visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

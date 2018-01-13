@@ -1,0 +1,47 @@
+﻿$PBExportHeader$d_rpt_4s_rr.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=296 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=cardid dbname="qgen_qset_answers.cardid" )
+ column=(type=number updatewhereclause=yes name=questionid dbname="questionid" )
+ column=(type=number updatewhereclause=yes name=questionrating dbname="questionrating" )
+ retrieve="  SELECT qa.headerid CardId,   
+         IFNULL(q.corp_id,9999, floor(q.corp_id)) 	questionid, 
+         (SELECT IFNULL(score , 0, floor(score) )
+				FROM qgen_answer_choices ac 
+				WHERE ac.questionid = qa.questionid 
+						and ac.answerid 	= qa.answerid 
+			) questionRating 
+
+    FROM qgen_qset_answers  qa, qgen_questions q
+	WHERE 	 qa.checked 	= 1 	
+				and q.corp_id IS NOT NULL and q.corp_id <> '' 
+				AND qa.questionid = q.questionid 
+				AND q.qtypeid NOT IN ('FF1', 'FF2', 'FF3', 'FF4', 'SCT' )
+				AND q.scorable = 'Y' 
+				AND qa.answerid < 999999000 
+   /*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"qa~".~"ansdate~" BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				) 
+		1*/
+	/*2 AND ( string(0)=';qset' OR qa.qsetid IN (;qset)  ) 		2*/	
+	
+ORDER BY q.sortorder" )
+text(band=header alignment="0" text="Card ID" border="0" color="0" x="55" y="228" height="56" width="242" html.valueishtml="0"  name=qgen_qset_answers_cardid_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Corp Question ID" border="0" color="0" x="398" y="228" height="56" width="425" html.valueishtml="0"  name=qgen_qset_answers_questionid_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Question Rating" border="0" color="0" x="955" y="228" height="56" width="398" html.valueishtml="0"  name=questionrating_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="965" y="0" height="68" width="274" format="[general]" html.valueishtml="0"  name=questionrating visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="105" y="12" height="56" width="288" format="[general]" html.valueishtml="0"  name=cardid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0" x="434" y="12" height="56" width="361" format="[general]" html.valueishtml="0"  name=questionid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

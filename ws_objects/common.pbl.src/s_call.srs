@@ -1,0 +1,42 @@
+﻿$PBExportHeader$s_call.srs
+global type s_call from structure
+	string		call_number
+	datetime		call_indate
+	string		stat_code
+	string		room
+	string		guest
+	string		caller
+	string		problem
+	string		subproblem
+	string		problem_definition
+	string		complaint
+	string		receiver
+	string		shift
+	string		resolution
+	string		repairman
+	datetime		call_outdate
+	string		closed_by
+	string		closed_bydept
+	string		timer_number
+	datetime		timer_start
+	string		caller_category
+	string		problem_number
+	string		subproblem_number
+	double		timer1_start_min
+	double		timer2_start_min
+	double		timer1_reps
+	double		timer2_reps
+	string		auth_take_off_timer
+	string		default_status
+	string		pre_openable
+	string		pre_opened
+	integer		timer_level
+	string		room_dsc
+	string		opened_status
+	string		paging_ind
+	double		init_paging_min
+	string		recur_ind
+	double		recur_id
+	string		called_back_ind
+end type
+

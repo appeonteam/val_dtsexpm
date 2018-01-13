@@ -1,0 +1,73 @@
+﻿$PBExportHeader$d_qlist02q_edit_lookupsql.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=264 color="536870912" )
+table(column=(type=char(200) update=yes updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=qtypeid dbname="qgen_questions.qtypeid" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=long update=yes updatewhereclause=yes name=width dbname="qgen_questions.width" initial="300" )
+ column=(type=long update=yes updatewhereclause=yes name=ansperline dbname="qgen_questions.ansperline" initial="2" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=ddlookuptype dbname="qgen_questions.ddlookuptype" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=ddcodecol dbname="qgen_questions.ddcodecol" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=dddispcol dbname="qgen_questions.dddispcol" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=ddlookup dbname="qgen_questions.ddlookup" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=ddcoltype dbname="qgen_questions.ddcodecoltype" )
+ column=(type=long update=yes updatewhereclause=yes name=repeat dbname="qgen_questions.repeat" initial="1" )
+ column=(type=long update=yes updatewhereclause=yes name=height dbname="qgen_questions.height" initial="16" )
+ column=(type=long update=yes updatewhereclause=yes name=weight dbname="qgen_questions.weight" initial="100" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=fontface dbname="qgen_questions.fontface" initial="Arial" )
+ column=(type=long update=yes updatewhereclause=yes name=fontsize dbname="qgen_questions.fontsize" initial="8" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=bold dbname="qgen_questions.bold" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=italic dbname="qgen_questions.italic" initial="N" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=under dbname="qgen_questions.under" initial="N" values="	Y/	N" )
+ column=(type=number update=yes updatewhereclause=yes name=fgcolor dbname="qgen_questions.fgcolor" initial="0" )
+ column=(type=number update=yes updatewhereclause=yes name=bgcolor dbname="qgen_questions.bgcolor" initial="999999999" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=defgraphtype dbname="qgen_questions.defgraphtype" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=descr dbname="qgen_questions.descr" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=scorable dbname="qgen_questions.scorable" values="	Y/	N" )
+ column=(type=long update=yes updatewhereclause=yes name=sortorder dbname="qgen_questions.sortorder" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=weblookup dbname="qgen_questions.weblookup" initial="N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=same_row dbname="qgen_questions.same_row" values="Y	Y/N	N/T	T/" )
+ column=(type=char(5000) updatewhereclause=yes name=lookupsql dbname="qgen_questions.lookupsql" )
+ retrieve="  SELECT ~"DBA~".~"qgen_questions~".~"questiontxt~",   
+         ~"DBA~".~"qgen_questions~".~"qtypeid~",   
+         ~"DBA~".~"qgen_questions~".~"questionid~",   
+         ~"DBA~".~"qgen_questions~".~"width~",   
+         ~"DBA~".~"qgen_questions~".~"ansperline~",   
+         ~"DBA~".~"qgen_questions~".~"ddlookuptype~",   
+         ~"DBA~".~"qgen_questions~".~"ddcodecol~",   
+         ~"DBA~".~"qgen_questions~".~"dddispcol~",   
+         ~"DBA~".~"qgen_questions~".~"ddlookup~",   
+         ~"DBA~".~"qgen_questions~".~"ddcodecoltype~",   
+         ~"DBA~".~"qgen_questions~".~"repeat~",   
+         ~"DBA~".~"qgen_questions~".~"height~",   
+         ~"DBA~".~"qgen_questions~".~"weight~",   
+         ~"DBA~".~"qgen_questions~".~"fontface~",   
+         ~"DBA~".~"qgen_questions~".~"fontsize~",   
+         ~"DBA~".~"qgen_questions~".~"bold~",   
+         ~"DBA~".~"qgen_questions~".~"italic~",   
+         ~"DBA~".~"qgen_questions~".~"under~",   
+         ~"DBA~".~"qgen_questions~".~"fgcolor~",   
+         ~"DBA~".~"qgen_questions~".~"bgcolor~",   
+         ~"DBA~".~"qgen_questions~".~"defgraphtype~"  ,
+         ~"DBA~".~"qgen_questions~".~"descr~",
+         ~"DBA~".~"qgen_questions~".~"scorable~",
+         ~"DBA~".~"qgen_questions~".~"sortorder~",
+  			~"DBA~".~"qgen_questions~".~"weblookup~",  
+			~"DBA~".~"qgen_questions~".~"same_row~",  
+			~"DBA~".~"qgen_questions~".~"lookupsql~"  
+
+    FROM ~"DBA~".~"qgen_questions~"  
+WHERE  	~"DBA~".~"qgen_questions~".~"questionid~" = :ad_questionid
+ORDER BY ~"DBA~".~"qgen_questions~".~"questionid~" ASC   
+
+
+" update="DBA.qgen_questions" updatewhere=0 updatekeyinplace=yes arguments=(("ad_questionid", number)) )
+column(band=detail id=27 alignment="0" tabsequence=260 border="5" color="16711680" x="14" y="8" height="240" width="1824" format="[general]" html.valueishtml="0"  name=lookupsql visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes edit.imemode=0 edit.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,196 @@
+﻿$PBExportHeader$d_approval_calls_search.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=30388123 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=92 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="30388123" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=call_number dbname="timercalls.call_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_indate dbname="timercalls.call_indate" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=stat_code dbname="timercalls.stat_code" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=room dbname="timercalls.room" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=guest dbname="timercalls.guest" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=caller dbname="timercalls.caller" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=problem dbname="timercalls.problem" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=subproblem dbname="timercalls.subproblem" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=problem_definition dbname="timercalls.problem_definition" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=complaint dbname="timercalls.complaint" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=receiver dbname="timercalls.receiver" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=shift dbname="timercalls.shift" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=resolution dbname="timercalls.resolution" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=repairman dbname="timercalls.repairman" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_outdate dbname="timercalls.call_outdate" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=closed_by dbname="timercalls.closed_by" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=closed_bydept dbname="timercalls.closed_bydept" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=timer_number dbname="timercalls.timer_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timer_start dbname="timercalls.timer_start" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=caller_category dbname="timercalls.caller_category" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=problem_number dbname="timercalls.problem_number" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=subproblem_number dbname="timercalls.subproblem_number" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer1_start_min dbname="timercalls.timer1_start_min" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer2_start_min dbname="timercalls.timer2_start_min" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer1_reps dbname="timercalls.timer1_reps" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer2_reps dbname="timercalls.timer2_reps" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=auth_take_off_timer dbname="timercalls.auth_take_off_timer" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=default_status dbname="timercalls.default_status" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pre_openable dbname="timercalls.pre_openable" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pre_opened dbname="timercalls.pre_opened" )
+ column=(type=long update=yes updatewhereclause=yes name=timer_level dbname="timercalls.timer_level" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=room_dsc dbname="timercalls.room_dsc" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=opened_status dbname="timercalls.opened_status" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=paging_ind dbname="timercalls.paging_ind" )
+ column=(type=long update=yes updatewhereclause=yes name=init_paging_min dbname="timercalls.init_paging_min" )
+ column=(type=number update=yes updatewhereclause=yes name=guest_id dbname="timercalls.guest_id" )
+ column=(type=number update=yes updatewhereclause=yes name=gcc_id dbname="timercalls.gcc_id" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=amount dbname="timercalls.amount" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=recur_ind dbname="timercalls.recur_ind" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=recur_id dbname="timercalls.recur_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=called_back_ind dbname="timercalls.called_back_ind" )
+ column=(type=long updatewhereclause=yes name=cur_level dbname="cur_level" )
+ column=(type=long updatewhereclause=yes name=days dbname="days" )
+ column=(type=long updatewhereclause=yes name=req_level dbname="req_level" )
+ column=(type=long updatewhereclause=yes identity=yes name=part_id dbname="vzt_part.id" )
+ column=(type=char(20) updatewhereclause=yes name=part_category dbname="vzt_part.category" )
+ column=(type=char(20) updatewhereclause=yes name=part_subcategory dbname="vzt_part.subcategory" )
+ column=(type=char(100) updatewhereclause=yes name=part_partname dbname="vzt_part.partname" )
+ column=(type=char(200) updatewhereclause=yes name=part_description dbname="vzt_part.description" )
+ column=(type=long updatewhereclause=yes name=part_qty_onhand dbname="vzt_part.qty_onhand" )
+ column=(type=long updatewhereclause=yes name=part_qty_reorder_point dbname="vzt_part.qty_reorder_point" )
+ column=(type=long updatewhereclause=yes name=part_qty_to_reorder dbname="vzt_part.qty_to_reorder" )
+ column=(type=decimal(4) updatewhereclause=yes name=part_price dbname="vzt_part.price" )
+ column=(type=char(20) updatewhereclause=yes name=part_expcategory dbname="vzt_part.expcategory" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_problem_number dbname="vzt_part.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_subproblem_number dbname="vzt_part.subproblem_number" )
+ column=(type=char(10) updatewhereclause=yes name=vzt_part_ptype dbname="vzt_part.ptype" )
+ column=(type=datetime updatewhereclause=yes name=vzt_part_date_alert_last_sent dbname="vzt_part.date_alert_last_sent" )
+ column=(type=char(10) updatewhereclause=yes name=vzt_part_alert_distlist_id dbname="vzt_part.alert_distlist_id" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_autotask dbname="vzt_part.autotask" )
+ column=(type=char(20) updatewhereclause=yes name=part_dept dbname="vzt_part.dept" )
+ column=(type=char(100) updatewhereclause=yes name=pref_vendor dbname="pref_vendor" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_vendor_id dbname="vzt_vendor_part.vendor_id" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_part_id dbname="vzt_vendor_part.part_id" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_pref_order dbname="vzt_vendor_part.pref_order" )
+ column=(type=char(50) updatewhereclause=yes name=vendor_sku dbname="vzt_vendor_part.vendor_sku" )
+ column=(type=char(20) updatewhereclause=yes name=vendor_part_unit dbname="vzt_vendor_part.unit" )
+ column=(type=long updatewhereclause=yes name=vendor_part_unit_qty dbname="vzt_vendor_part.unit_qty" )
+ column=(type=long updatewhereclause=yes name=vendor_part_qty_to_reorder dbname="vzt_vendor_part.qty_to_reorder" )
+ column=(type=decimal(4) updatewhereclause=yes name=vendor_part_price dbname="vzt_vendor_part.price" )
+ column=(type=char(1) updatewhereclause=yes name=sel dbname="sel" values="	Y/	N" )
+ column=(type=char(50) updatewhereclause=yes name=appr_by dbname="appr_by" )
+ column=(type=long updatewhereclause=yes name=appr_by_id dbname="appr_by_id" )
+ retrieve="  SELECT ~"timercalls~".~"call_number~",   
+         ~"timercalls~".~"call_indate~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"room~",   
+         ~"timercalls~".~"guest~",   
+         ~"timercalls~".~"caller~",   
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"complaint~",   
+         ~"timercalls~".~"receiver~",   
+         ~"timercalls~".~"shift~",   
+         ~"timercalls~".~"resolution~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"call_outdate~",   
+         ~"timercalls~".~"closed_by~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"timer_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"caller_category~",   
+         ~"timercalls~".~"problem_number~",   
+         ~"timercalls~".~"subproblem_number~",   
+         ~"timercalls~".~"timer1_start_min~",   
+         ~"timercalls~".~"timer2_start_min~",   
+         ~"timercalls~".~"timer1_reps~",   
+         ~"timercalls~".~"timer2_reps~",   
+         ~"timercalls~".~"auth_take_off_timer~",   
+         ~"timercalls~".~"default_status~",   
+         ~"timercalls~".~"pre_openable~",   
+         ~"timercalls~".~"pre_opened~",   
+         ~"timercalls~".~"timer_level~",   
+         ~"timercalls~".~"room_dsc~",   
+         ~"timercalls~".~"opened_status~",   
+         ~"timercalls~".~"paging_ind~",   
+         ~"timercalls~".~"init_paging_min~",   
+         ~"timercalls~".~"guest_id~",   
+         ~"timercalls~".~"gcc_id~",   
+         ~"timercalls~".~"amount~",   
+         ~"timercalls~".~"recur_ind~",   
+         ~"timercalls~".~"recur_id~",   
+         ~"timercalls~".~"called_back_ind~",
+			vzt_hew_preq_approved_level ( ~"timercalls~".call_number ) as cur_level  ,
+         getdate() - ~"timercalls~".~"call_indate~" as days ,
+			vzt_hew_preq_approval_levels_req (0, ~"timercalls~".~"amount~" ) as req_level  ,
+
+  			~"vzt_part~".~"id~",   
+         ~"vzt_part~".~"category~",   
+         ~"vzt_part~".~"subcategory~",   
+         ~"vzt_part~".~"partname~",   
+         ~"vzt_part~".~"description~",   
+         ~"vzt_part~".~"qty_onhand~",   
+         ~"vzt_part~".~"qty_reorder_point~",   
+         ~"vzt_part~".~"qty_to_reorder~",   
+         ~"vzt_part~".~"price~",   
+         ~"vzt_part~".~"expcategory~",   
+         ~"vzt_part~".~"problem_number~",   
+         ~"vzt_part~".~"subproblem_number~",   
+         ~"vzt_part~".~"ptype~",   
+         ~"vzt_part~".~"date_alert_last_sent~",   
+         ~"vzt_part~".~"alert_distlist_id~",   
+         ~"vzt_part~".~"autotask~",   
+         ~"vzt_part~".~"dept~"  ,
+
+ 		vzt_get_pref_vendor_name( ~"vzt_part~".~"id~" )   pref_vendor,
+
+			~"vzt_vendor_part~".~"vendor_id~",   
+         ~"vzt_vendor_part~".~"part_id~",   
+         ~"vzt_vendor_part~".~"pref_order~",   
+         ~"vzt_vendor_part~".~"vendor_sku~",   
+         ~"vzt_vendor_part~".~"unit~",   
+         ~"vzt_vendor_part~".~"unit_qty~",   
+         ~"vzt_vendor_part~".~"qty_to_reorder~",   
+         ~"vzt_vendor_part~".~"price~"  ,
+			
+			'N' sel,
+
+   		ISNULL(~"approved_calls~".~"appr_by~", '',~"approved_calls~".~"appr_by~") ~"appr_by~"   ,
+         ISNULL(~"approved_calls~".~"appr_by_id~",0,~"approved_calls~".~"appr_by_id~")  ~"appr_by_id~"  
+   
+     
+     
+   FROM ~"timercalls~" , ~"PROBLEM~" , ~"vzt_part~"  , ~"vzt_vendor_part~" , ~"approved_calls~"
+   WHERE  
+				UPPER(~"PROBLEM~".~"problem_desc~")  = 'USAGE ALERT' 
+			and ~"timercalls~".~"problem_number~"   = ~"PROBLEM~".~"problem_number~"
+			and ~"vzt_part~".id 						= floor (~"timercalls~".~"room_dsc~")
+			and ~"vzt_vendor_part~".~"vendor_id~" 	= vzt_get_pref_vendor_id ( ~"vzt_part~".~"id~" ) 
+			and ~"vzt_vendor_part~".~"part_id~" 		= ~"vzt_part~".~"id~" 
+			and ~"approved_calls~".call_number 	=* ~"timercalls~".~"call_number~" 
+			AND ~"approved_calls~".~"appr_level~" IN (SELECT MAX(~"approved_calls~".~"appr_level~") 
+											FROM  ~"approved_calls~" 
+											WHERE ~"approved_calls~".call_number = ~"timercalls~".~"call_number~")
+" )
+text(band=header alignment="2" text="Days Open" border="6" color="16777215" x="9" y="8" height="76" width="338" html.valueishtml="0"  name=days_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Department" border="6" color="16777215" x="357" y="8" height="76" width="699" html.valueishtml="0"  name=closed_bydept_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Preferred Vendor" border="6" color="16777215" x="1065" y="8" height="76" width="855" html.valueishtml="0"  name=pref_vendor_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Part Subcategory" border="6" color="16777215" x="1929" y="8" height="76" width="558" html.valueishtml="0"  name=part_subcategory_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Part name" border="6" color="16777215" x="3163" y="8" height="76" width="901" html.valueishtml="0"  name=part_partname_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="0" text="Expense Category" border="6" color="16777215" x="2523" y="8" height="76" width="631" html.valueishtml="0"  name=part_expcategory_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Description" border="6" color="16777215" x="4073" y="8" height="76" width="914" html.valueishtml="0"  name=part_description_t visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="0" text="Approved By" border="6" color="16777215" x="5029" y="8" height="76" width="695" html.valueishtml="0"  name=appr_by_t visible="1"  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+column(band=detail id=43 alignment="2" tabsequence=10 border="5" color="0" x="9" y="8" height="64" width="338" format="[general]" html.valueishtml="0"  name=days visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="0" tabsequence=20 border="5" color="0" x="357" y="12" height="64" width="699" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1" dddw.name=d_dddw_department dddw.displaycolumn=dept dddw.datacolumn=dept dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=49 alignment="0" tabsequence=32766 border="5" color="0" x="4073" y="12" height="64" width="914" format="[general]" html.valueishtml="0"  name=part_description visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=47 alignment="2" tabsequence=40 border="5" color="0" x="1929" y="12" height="64" width="558" format="[general]" html.valueishtml="0"  name=part_subcategory visible="1" dddw.name=d_dddw_lookup_partsubcat dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=48 alignment="0" tabsequence=60 border="5" color="0" x="3163" y="12" height="64" width="901" format="[general]" html.valueishtml="0"  name=part_partname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=62 alignment="0" tabsequence=30 border="5" color="0" x="1065" y="12" height="64" width="855" format="[general]" html.valueishtml="0"  name=pref_vendor visible="1" dddw.name=d_vendor_list_dddw_purch dddw.displaycolumn=firstname dddw.datacolumn=firstname dddw.percentwidth=150 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="5" color="0" x="4997" y="12" height="76" width="23" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="5" color="0" x="2496" y="12" height="76" width="18" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=54 alignment="0" tabsequence=50 border="5" color="0" x="2523" y="12" height="64" width="631" format="[general]" html.valueishtml="0"  name=part_expcategory visible="1" dddw.name=d_dddw_lookup_purtype dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=72 alignment="0" tabsequence=70 border="5" color="0" x="5029" y="12" height="64" width="695" format="[general]" html.valueishtml="0"  name=appr_by visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

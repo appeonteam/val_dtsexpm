@@ -1,0 +1,39 @@
+﻿$PBExportHeader$f_vzt_parse.srf
+global type f_vzt_parse from function_object
+end type
+
+forward prototypes
+global function integer f_vzt_parse (string as_input, ref string as_array[], string as_delim)
+end prototypes
+
+global function integer f_vzt_parse (string as_input, ref string as_array[], string as_delim);int		li_len, li_pos, li_nextpos, li_index
+boolean 	lb_done
+
+If trim(as_input ) = '' then
+	li_index = 0 
+ELSE
+	as_input = as_delim + as_input + as_delim 
+	li_len = LEN ( as_input )
+
+	as_array = {''} 
+
+	li_index		= 1
+	li_nextpos	= 1 
+	li_pos		= 1 
+
+	DO WHILE li_pos >0 and li_pos < li_len 
+		If li_pos > 0 and li_pos <= li_len then 
+			li_nextpos 	= POS( as_input, as_delim, li_pos + 1 )
+			IF li_nextpos = 0 then li_nextpos = li_len + 1
+			as_array[ li_index ]	= MID( as_input, li_pos + 1, li_nextpos - li_pos - 1 ) 
+			li_index ++ 
+			li_pos = li_nextpos 
+		END IF
+	LOOP
+	li_index = MAX( li_index - 1,0)
+END IF
+
+return li_index
+
+end function
+

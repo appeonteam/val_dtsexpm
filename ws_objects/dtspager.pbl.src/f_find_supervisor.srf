@@ -1,0 +1,65 @@
+﻿$PBExportHeader$f_find_supervisor.srf
+global type f_find_supervisor from function_object
+end type
+
+forward prototypes
+global function string f_find_supervisor (string deptcd, string roomnum, datetime timerstart)
+end prototypes
+
+global function string f_find_supervisor (string deptcd, string roomnum, datetime timerstart);string supervisor, zoneCd, zoneGrp, allZone
+
+allZone = 'Z0'
+
+if f_is_a_quickcall(deptcd,timerstart) then //force dept to QUICKCALL
+	deptcd='QUICKCALL'
+end if
+
+SELECT  	unit_type, zone_group_code
+INTO		:zoneCd, :zoneGrp
+FROM		area
+WHERE		area_number = :roomnum;
+if sqlca.sqlcode < 0 then
+	MessageBox("DB Error",sqlca.sqlerrtext)
+	return ''
+end if
+
+SELECT 	instemp.employee
+into		:supervisor
+FROM 		supervisor, instemp
+where  	supervisor.supervisor_id=instemp.employee_number
+and		supervisor.dept= :deptcd 
+and		(supervisor.zone_code = :zonecd or supervisor.zone_code = :zoneGrp or supervisor.zone_code = :allZone);
+
+
+
+if sqlca.sqlcode = 100 then
+	
+  SELECT instemp.employee
+    into :supervisor
+    FROM supervisor, instemp
+   WHERE ( supervisor.dept = 'DEFT' 
+	and	 supervisor.supervisor_id = instemp.employee_number)    ;  // ignore zone code 
+				
+	if sqlca.sqlcode = 100 then
+		return ''
+	else
+		if sqlca.sqlcode < 0 then
+			MessageBox("DB Error",sqlca.sqlerrtext)
+			return ''
+		else
+			return supervisor
+		end if
+	end if
+	
+else
+	if sqlca.sqlcode < 0 then
+		MessageBox("DB Error",sqlca.sqlerrtext)
+		return ''
+	else
+		return supervisor
+	end if
+end if		
+
+return ''
+end function
+

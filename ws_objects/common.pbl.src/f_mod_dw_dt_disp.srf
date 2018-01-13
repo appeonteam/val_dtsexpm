@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_mod_dw_dt_disp.srf
+global type f_mod_dw_dt_disp from function_object
+end type
+
+forward prototypes
+global function string f_mod_dw_dt_disp (ref datawindow dw_in, string coln)
+end prototypes
+
+global function string f_mod_dw_dt_disp (ref datawindow dw_in, string coln);string modStr,modRes
+modStr = colN+".format=~""+cDateTimeFormatStr+"~""
+modRes=dw_in.Modify(modStr)
+if modRes <> "" then
+	MessageBox("dw Modify Error","dw: ("+dw_in.dataobject+ ")   column: ("+coln + ")  format: (" + &
+			cDateTimeFormatStr + ")  error: (" + modRes + ")") 
+end if
+return modRes
+ 
+end function
+

@@ -1,0 +1,6 @@
+﻿$PBExportHeader$st_lookup_ret.srs
+global type st_lookup_ret from structure
+	string		newvalue
+	string		newdescr
+end type
+

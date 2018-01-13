@@ -1,0 +1,61 @@
+﻿$PBExportHeader$f_is_a_quickcall.srf
+global type f_is_a_quickcall from function_object
+end type
+
+forward prototypes
+global function boolean f_is_a_quickcall (string dept, datetime timerstart)
+end prototypes
+
+global function boolean f_is_a_quickcall (string dept, datetime timerstart);string  qc_ind, quick_call_time
+time shift_start_t, shift_end_t
+datetime shift_start_dt, shift_end_dt
+boolean quickCall
+
+select	setting_value
+into		:quick_call_time
+from		screensettings
+where		screen_name = 'QuickCall'
+and		setting_name = 'Shift';
+if sqlca.sqlcode = 0 then
+	if quick_call_time = '00:00 00:00' then
+		SetNull(shift_start_t)
+		setNull(shift_end_t)
+	else
+		shift_start_t = time(mid(quick_call_time,1,5))
+		shift_end_t = time(mid(quick_call_time,7,5))
+	end if
+else
+	SetNull(shift_start_t)
+	setNull(shift_end_t)
+end if
+
+if isNull(shift_start_t) or isnull(shift_end_t) then
+	quickCall=false
+else
+	shift_start_dt = datetime(date(today()),shift_start_t)
+	shift_end_dt = datetime(date(today()),shift_end_t)
+	if shift_end_dt < shift_start_dt then
+		shift_end_dt = datetime(RelativeDate(date(today()),1),shift_end_t)
+	end if
+	if timerStart > shift_start_dt and timerStart <= shift_end_dt then
+		quickCall = true
+	else
+		quickCall = false
+	end if
+end if
+
+if quickCall then
+	select quick_call_ind into :qc_ind
+	from   instdept where dept = :dept;
+	if sqlca.sqlcode <> 0 then
+		quickCall = false
+	else
+		if qc_ind <> 'Y' then
+			quickCall = false
+		end if
+	end if
+end if
+		
+return quickCall
+end function
+

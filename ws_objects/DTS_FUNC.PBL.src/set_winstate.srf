@@ -1,0 +1,22 @@
+﻿$PBExportHeader$set_winstate.srf
+global type set_winstate from function_object
+end type
+
+forward prototypes
+global function boolean set_winstate (ref window w_win2change, string cWinState2Use)
+end prototypes
+
+global function boolean set_winstate (ref window w_win2change, string cWinState2Use);If UPPER( cWinState2Use ) = "MAXIMIZE" Then
+	Send( Handle( w_win2change ), 274, 61488, 0 )
+
+ElseIf UPPER( cWinState2Use ) = "NORMAL" Then
+	Send( Handle( w_win2change ), 274, 61728, 0 )
+
+ElseIf UPPER( cWinState2Use ) = "MINIMIZE" Then
+	Send( Handle( w_win2change ), 274, 61472, 0 )
+
+End If
+
+Return True
+end function
+

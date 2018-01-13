@@ -1,0 +1,38 @@
+﻿$PBExportHeader$rpt_local.srj
+EXE:j:\projects\Report generator\userapp\rpt_gen.exe,j:\projects\report generator\userapp\rpt_gen.pbr,0,1
+CMP:0,0,0,2,0,0
+PBD:J:\Projects\Report generator\userapp\rpt_gen.pbl,j:\projects\report generator\userapp\rpt_gen.pbr,1
+PBD:J:\Projects\common65\IMAGCOM.PBL,,1
+PBD:J:\Projects\common65\ocmcom.pbl,,1
+PBD:J:\Projects\common65\UTIL.PBL,,1
+PBD:J:\Projects\Report generator\userapp\rpt_lookup.pbl,,1
+OBJ:E:\projects\common65\ocmcom.pbl,intro_ctrl,w
+OBJ:E:\projects\common65\ocmcom.pbl,f_dw_to_string,f
+OBJ:E:\projects\common65\ocmcom.pbl,d_about,d
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,d_schedule,d
+OBJ:E:\projects\common65\ocmcom.pbl,d_rules_edit,d
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,w_qcount,w
+OBJ:E:\projects\common65\ocmcom.pbl,f_end_tran,f
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,w_test,w
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,w_tv_base,w
+OBJ:E:\projects\common65\ocmcom.pbl,m_master,m
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,m_rptgen_main,m
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,d_template,d
+OBJ:E:\projects\common65\ocmcom.pbl,n_cst_security,u
+OBJ:E:\projects\common65\ocmcom.pbl,str_rptgen_reportparms,s
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,rptgen,a
+OBJ:E:\projects\common65\ocmcom.pbl,uo_basedatawindow,u
+OBJ:E:\projects\common65\ocmcom.pbl,developmental_basewin_ctrl,w
+OBJ:E:\projects\common65\ocmcom.pbl,f_anymodified,f
+OBJ:E:\projects\common65\ocmcom.pbl,isolate_selection,f
+OBJ:E:\projects\common65\batch.pbl,w_schedule,w
+OBJ:E:\projects\common65\ocmcom.pbl,f_sysdate,f
+OBJ:E:\projects\common65\ocmcom.pbl,f_replace,f
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,w_rptgen_main,w
+OBJ:E:\projects\Report generator\userapp\rpt_gen.pbl,w_rptgen_logon,w
+OBJ:E:\projects\common65\ocmcom.pbl,f_dwdata_for_export,f
+OBJ:E:\projects\common65\ocmcom.pbl,w_about,w
+OBJ:E:\projects\common65\ocmcom.pbl,n_cst_ocmappmanager,u
+OBJ:E:\projects\common65\UTIL.PBL,centerwindow,f
+OBJ:E:\projects\common65\ocmcom.pbl,uo_basescroll,u
+OBJ:E:\projects\common65\ocmcom.pbl,f_is_column_null,f

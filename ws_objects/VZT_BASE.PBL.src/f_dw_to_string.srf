@@ -1,0 +1,37 @@
+﻿$PBExportHeader$f_dw_to_string.srf
+global type f_dw_to_string from function_object
+end type
+
+forward prototypes
+global function integer f_dw_to_string (ref datawindow adw_report, boolean ab_to_string, ref string as_syntax_and_data)
+end prototypes
+
+global function integer f_dw_to_string (ref datawindow adw_report, boolean ab_to_string, ref string as_syntax_and_data);string ls_syntax, ls_data, ls_delim = "..####.." 
+long ll_pos , ll_rc 
+
+adw_report.Setredraw( false) 	
+
+If ab_to_string then 
+	// convert dw to string including data
+	ls_syntax = adw_report.Describe("DataWindow.Syntax") 
+	f_dwdata_for_export ( adw_report, true)
+	ls_data = adw_report.Describe("DataWindow.Data")
+	as_syntax_and_data = ls_syntax + ls_delim + ls_data 
+Else
+	// convert string (syntax and data) to dw 
+	ll_pos = POS( as_syntax_and_data, ls_delim ) 
+		If ll_pos > 0 then 
+		ls_syntax = MID (as_syntax_and_data, 1, ll_pos - 1) 
+		ls_data   = MID (as_syntax_and_data, ll_pos + len(ls_delim), len( as_syntax_and_data) - ll_pos - len(ls_delim) + 1) 		
+		adw_report.Create( ls_syntax) 
+		adw_report.Setredraw( false) 			
+		adw_report.ImportString( ls_data ) 
+		f_dwdata_for_export ( adw_report, false)  // convert back
+	Else
+		ll_rc = -1
+	End If 
+End if
+adw_report.Setredraw( true ) 
+return ll_rc 
+end function
+

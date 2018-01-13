@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_wait.srf
+global type f_wait from function_object
+end type
+
+forward prototypes
+global subroutine f_wait (integer ai_sec)
+end prototypes
+
+global subroutine f_wait (integer ai_sec);time lt_start, lt_end 
+
+lt_start = now()
+
+DO WHILE TRUE
+	yield()
+	lt_end = now()
+	If SecondsAfter( lt_start, lt_end ) >= ai_sec then return 
+LOOP
+end subroutine
+

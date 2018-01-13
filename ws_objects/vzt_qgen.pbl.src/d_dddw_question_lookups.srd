@@ -1,0 +1,51 @@
+﻿$PBExportHeader$d_dddw_question_lookups.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(100) updatewhereclause=yes name=ddlookup dbname="qgen_questions.ddlookup" )
+ column=(type=char(100) updatewhereclause=yes name=ddcodecol dbname="qgen_questions.ddcodecol" )
+ column=(type=char(100) updatewhereclause=yes name=dddispcol dbname="qgen_questions.dddispcol" )
+ column=(type=char(20) updatewhereclause=yes name=ddlookuptype dbname="qgen_questions.ddlookuptype" )
+ column=(type=char(10) updatewhereclause=yes name=ddcoltype dbname="qgen_questions.ddcodecoltype" )
+ retrieve="  SELECT DISTINCT 
+			ddlookup,   
+         ddcodecol,   
+         dddispcol,   
+         ddlookuptype  ,
+			ddcodecoltype
+    FROM qgen_questions   
+	WHERE rtrim(ddlookup) <> '' and ddlookup IS NOT NULL 
+UNION SELECT 
+		'd_dddw_questions',
+		'questionid',
+		'questiontxt',
+		'dddw',
+		'number'
+		FROM DUMMY
+UNION SELECT 
+		'd_dddw_employee',
+		'employee',
+		'employee',
+		'dddw',
+		'char(100)'
+		FROM DUMMY
+UNION SELECT 
+		'd_dddw_department',
+		'dept',
+		'instdept_dept_longdesc',
+		'dddw',
+		'char(15)'
+		FROM DUMMY
+ORDER BY 1
+
+
+
+" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="4" height="60" width="631" format="[general]"  name=ddlookup edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="681" y="8" height="52" width="343" format="[general]"  name=ddcodecol visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1047" y="4" height="56" width="654" format="[general]"  name=dddispcol visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1723" y="8" height="56" width="293" format="[general]"  name=ddlookuptype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2053" y="8" height="56" width="338" format="[general]"  name=ddcoltype visible="1~t0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

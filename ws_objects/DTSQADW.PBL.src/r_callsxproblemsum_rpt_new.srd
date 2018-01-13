@@ -1,0 +1,45 @@
+﻿$PBExportHeader$r_callsxproblemsum_rpt_new.srd
+release 6;
+datawindow(units=2 timer_interval=60000 color=16777215 processing=0 print.documentname="Calls by Room Report" print.orientation = 2 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 1 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=1270 color="536870912" )
+summary(height=3083 color="536870912" )
+footer(height=10 color="536870912" )
+detail(height=312 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=problem dbname="closedcalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=subproblem dbname="closedcalls.subproblem" )
+ column=(type=long updatewhereclause=yes name=numcalls dbname="numCalls" )
+ column=(type=datetime updatewhereclause=yes name=frdt dbname="frDt" )
+ column=(type=datetime updatewhereclause=yes name=todt dbname="toDt" )
+ retrieve="  SELECT ~"closedcalls~".~"problem~",   
+         ~"closedcalls~".~"subproblem~",   
+         numCalls=count(*),   
+         frDt=min(~"closedcalls~".~"call_indate~"),   
+         toDt=max(~"closedcalls~".~"call_outdate~")  
+    FROM ~"closedcalls~"  
+GROUP BY ~"closedcalls~".~"problem~",   
+         ~"closedcalls~".~"subproblem~"  
+ORDER BY 3 DESC   " filter="rowcount() <= 10" )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="52" y="166" height="197" width="2822" format="[longdate]"  name=rpttoday  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Calls by Top 10 Task Summary"border="0" color="0" x="2906" y="72" height="260" width="3416"  font.face="Arial" font.height="-16" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="0" x="52" y="395" height="177" width="1468" format="[general]"  font.face="Times New Roman" font.height="-9" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="From"border="0" color="0" x="3208" y="562" height="197" width="416"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="1090519039" )
+compute(band=header alignment="2" expression="min( frdt for all)"border="0" color="0" x="3875" y="562" height="208" width="906" format="[general]"  name=fromdate  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=header alignment="2" text="To"border="0" color="0" x="5031" y="562" height="197" width="208"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="1090519039" )
+compute(band=header alignment="2" expression="max(   todt  for all ) "border="0" color="0" x="5489" y="562" height="208" width="937" format="[general]"  name=todate  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039" )
+text(band=header alignment="2" text="Task"border="1" color="0" x="312" y="1052" height="166" width="541"  name=closed_bydept_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Sub Task"border="1" color="0" x="2270" y="1031" height="166" width="843"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Number of Calls"border="1" color="0" x="4197" y="1031" height="166" width="1229"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Percentage"border="1" color="0" x="5625" y="1031" height="166" width="895"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="125" y="52" height="208" width="1916" format="[general]"  name=problem edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2125" y="52" height="208" width="2041" format="[general]"  name=subproblem edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="0" x="4375" y="52" height="208" width="802" format="[general]"  name=numcalls edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="2" expression="string(int( numcalls  / sum(  numcalls  for all ) * 100)) + ~"%~""border="0" color="0" x="5739" y="41" height="208" width="666" format="[general]"  name=per  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="0" text="Report Summary"border="0" color="0" x="31" y="63" height="166" width="1885"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="12632256" )
+text(band=summary alignment="2" text="Total # of Calls"border="0" color="0" x="93" y="344" height="145" width="833"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="2" expression="sum(  numcalls  for all )"border="0" color="0" x="989" y="344" height="166" width="781" format="[general]"  name=group1callstotal  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="2" text="Total # of Tasks"border="0" color="0" x="1958" y="344" height="145" width="1114"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=summary alignment="2" expression="count(   problem +  subproblem for all )"border="0" color="0" x="3250" y="344" height="166" width="416" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="2" text="Report Variables"border="2" color="0" x="1656" y="573" height="145" width="1552"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="0" text=""border="0" color="0" x="114" y="771" height="1270" width="2312"  name=summary1  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039"  height.autosize=yes)
+text(band=summary alignment="0" text=""border="0" color="0" x="2458" y="771" height="1270" width="2312"  name=summary2  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1090519039"  height.autosize=yes)
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

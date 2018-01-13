@@ -1,0 +1,56 @@
+﻿$PBExportHeader$d_web_style_list.srd
+release 9;
+datawindow(units=2 timer_interval=0 color=80269528 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no row.resize=1 grid.lines=0 selected.mouse=no )
+header(height=197 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=166 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes identity=yes name=style_id dbname="vzt_web_style.style_id" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=style dbname="vzt_web_style.style" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=class_id dbname="vzt_web_style.class_id" )
+ column=(type=char(250) update=yes updatewhereclause=yes name=comment0 dbname="vzt_web_style.comment0" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=property_id dbname="vzt_web_style.property_id" )
+ column=(type=number update=yes updatewhereclause=yes key=yes name=qsetid dbname="vzt_web_style.qsetid" )
+ column=(type=char(20) update=yes updatewhereclause=yes key=yes name=style_name dbname="vzt_web_style.style_name" )
+ column=(type=char(300) updatewhereclause=yes name=propname dbname="propname" )
+ column=(type=char(200) updatewhereclause=yes name=descr dbname="descr" )
+ retrieve="  SELECT ~"vzt_web_style~".~"style_id~",   
+         ~"vzt_web_style~".~"style~",   
+         ~"vzt_web_style~".~"class_id~",   
+         ~"vzt_web_style~".~"comment0~",   
+         ~"vzt_web_style~".~"property_id~",   
+         ~"vzt_web_style~".~"qsetid~",   
+         ~"vzt_web_style~".~"style_name~",   
+         ISNULL(~"vzt_property~".~"propname~",'Default') as ~"propname~",   
+         ISNULL(~"qgen_qset~".~"descr~",'*unnamed qset*') as ~"descr~"  
+			
+    FROM {oj ~"vzt_web_style~" LEFT OUTER JOIN ~"vzt_property~" 
+ON ~"vzt_web_style~".~"property_id~" = ~"vzt_property~".~"id~" 
+LEFT OUTER JOIN ~"qgen_qset~" 
+ON ~"vzt_web_style~".~"qsetid~" = ~"qgen_qset~".~"qsetid~"}   
+
+ORDER BY ~"vzt_web_style~".~"property_id~",   
+         ~"vzt_web_style~".~"qsetid~",   
+    		~"vzt_web_style~".~"style_id~"" update="vzt_web_style" updatewhere=0 updatekeyinplace=yes  sort="property_id A qsetid A style_id A " )
+group(level=1 header.height=187 trailer.height=0 by=("property_id" , "qsetid" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Style Id" border="0" color="16777215" x="20" y="31" height="145" width="552" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Style" border="0" color="16777215" x="760" y="31" height="145" width="2833" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Comment" border="0" color="16777215" x="3750" y="31" height="145" width="1614" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Prop Id" border="0" color="16777215" x="5385" y="31" height="145" width="375" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Qset" border="0" color="16777215" x="5781" y="31" height="145" width="260" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Style Name" border="0" color="16777215" x="6135" y="31" height="145" width="572" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="593" y="11" height="135" width="145" format="[general]" html.valueishtml="0"  name=obj_1398218582 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="6062" y="32" height="104" width="52" format="[general]" html.valueishtml="0"  name=c1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="16777215" x="3614" y="32" height="104" width="114" format="[general]" html.valueishtml="0"  name=obj_1398214866 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="20" y="0" height="156" width="552" format="[general]" html.valueishtml="0"  name=style_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="760" y="11" height="145" width="2833" format="[general]" html.valueishtml="0"  name=style visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="0" color="0" x="3750" y="0" height="197" width="1614" format="[general]" html.valueishtml="0"  name=comment0 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=40 border="0" color="0" x="5385" y="0" height="197" width="375" format="[General]" html.valueishtml="0"  name=property_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=50 border="0" color="0" x="5781" y="0" height="197" width="260" format="[General]" html.valueishtml="0"  name=qsetid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=60 border="0" color="0" x="6135" y="0" height="197" width="572" format="[general]" html.valueishtml="0"  name=style_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header.1 alignment="0" expression="trim( descr ) + ' for '+ trim(propname) "border="0" color="0" x="760" y="10" height="145" width="2833" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,50 @@
+﻿$PBExportHeader$f_ds_to_syntax_and_data.srf
+global type f_ds_to_syntax_and_data from function_object
+end type
+
+forward prototypes
+global function integer f_ds_to_syntax_and_data (ref datastore adw_report, boolean ab_to_string, ref blob blob_syntax_and_data)
+end prototypes
+
+global function integer f_ds_to_syntax_and_data (ref datastore adw_report, boolean ab_to_string, ref blob blob_syntax_and_data);string 	ls_syntax, ls_data, ls_delim = "..####.." 
+long 		ll_slen , ll_dlen , ll_rc , brc
+blob  	blob_out
+
+//adw_report.Setredraw( false) 	
+
+If ab_to_string then 
+	// convert dw to string including data
+	ls_syntax 	= adw_report.Describe("DataWindow.Syntax") 
+	f_dsdata_for_export ( adw_report, true)
+	ls_data 		= adw_report.Describe("DataWindow.Data")
+	ls_syntax 	= string (len(ls_syntax ), "000000") +string (len(ls_data ), "000000") + ls_syntax + ls_data 
+	If len ( blob_syntax_and_data ) > 0 then
+		//al_next = blobedit( blob_syntax_and_data , al_next , ls_syntax ) 
+		blob_syntax_and_data = blob_syntax_and_data + blob (  ls_syntax )
+	ELSE
+		blob_syntax_and_data = blob (  ls_syntax )
+	END IF
+Else
+	// convert string (syntax and data) to dw 
+//	ll_slen = long (string( BLOBmid( blob_syntax_and_data, 1, 6) ,EncodingANSI!  ))
+//	ll_dlen = long (string( BLOBmid( blob_syntax_and_data, 7, 6) ,EncodingANSI!))
+	ll_slen = long (string( BLOBmid( blob_syntax_and_data, 1, 6)   ))
+	ll_dlen = long (string( BLOBmid( blob_syntax_and_data, 7, 6) 	))
+	If ll_slen  > 0 then 
+//		ls_syntax = string( blobMID 	(blob_syntax_and_data, 13, ll_slen  ) ,EncodingANSI!)
+//		ls_data   = string( blobMID 	(blob_syntax_and_data, 13 +ll_slen, ll_dlen  ) ,EncodingANSI!)
+		ls_syntax = string( blobMID 	(blob_syntax_and_data, 13, ll_slen  )  )
+		ls_data   = string( blobMID 	(blob_syntax_and_data, 13 +ll_slen, ll_dlen  ) )
+		blob_syntax_and_data =blobMID	(blob_syntax_and_data, 13 +ll_slen +ll_dlen  ) //the rest
+		adw_report.Create( ls_syntax) 
+//		adw_report.Setredraw( false) 			
+		adw_report.ImportString( ls_data ) 
+		f_dsdata_for_export ( adw_report, false)  // convert back
+	Else
+		ll_rc = -1
+	End If 
+End if
+//adw_report.Setredraw( true ) 
+return ll_rc 
+end function
+

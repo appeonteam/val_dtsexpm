@@ -1,0 +1,30 @@
+﻿$PBExportHeader$f_validate_required.srf
+global type f_validate_required from function_object
+end type
+
+forward prototypes
+global function integer f_validate_required (ref datawindow adw_target, string as_reqcols[])
+end prototypes
+
+global function integer f_validate_required (ref datawindow adw_target, string as_reqcols[]);int li_column , li_ret
+string ls_colname ,ls_visible
+li_ret = 0
+
+	For li_column = 1 to upperbound( as_reqcols[] )
+		ls_colname = as_reqcols[li_column] 
+		If not IsNull( ls_colname) and trim(ls_colname) <> '' then 
+			ls_visible = trim( adw_target.Describe( ls_colname+".Visible" ))
+			If ls_visible = '1' then 
+				If f_is_column_null( 1, ls_colname, adw_target) then 
+					adw_target.modify( ls_colname+".Background.Color='"+ STRING(RGB(255,255,0))+ "'")
+					li_ret = -1
+				ELSE
+					adw_target.modify( ls_colname+".Background.Color='"+ STRING(RGB(255,255,255)) +"'")
+				End If
+			End If				//visible
+		End If			
+	Next
+
+return li_ret
+end function
+

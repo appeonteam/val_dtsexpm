@@ -1,0 +1,87 @@
+﻿$PBExportHeader$d_mod_call.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=88 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=92 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=complaint_mod_id dbname="complaint_mod.id" )
+ column=(type=char(1) updatewhereclause=yes name=complaint_mod_category dbname="complaint_mod.category" )
+ column=(type=char(30) updatewhereclause=yes name=complaint_mod_guest_mod_name dbname="complaint_mod.guest_mod_name" )
+ column=(type=char(20) updatewhereclause=yes name=complaint_mod_room_no dbname="complaint_mod.room_no" )
+ column=(type=datetime updatewhereclause=yes name=complaint_mod_time_open dbname="complaint_mod.time_open" )
+ column=(type=char(5) updatewhereclause=yes name=complaint_mod_task_no dbname="complaint_mod.task_no" )
+ column=(type=char(5) updatewhereclause=yes name=complaint_mod_subtask_no dbname="complaint_mod.subtask_no" )
+ column=(type=char(32766) updatewhereclause=no name=complaint_mod_task_def dbname="complaint_mod.task_def" )
+ column=(type=char(32766) updatewhereclause=no name=complaint_mod_resolution dbname="complaint_mod.resolution" )
+ column=(type=char(35) updatewhereclause=yes name=complaint_mod_handled_by dbname="complaint_mod.handled_by" )
+ column=(type=char(1) updatewhereclause=yes name=complaint_mod_lnk_doc dbname="complaint_mod.lnk_doc" )
+ column=(type=char(10) updatewhereclause=yes name=complaint_mod_lnk_call_number dbname="complaint_mod.lnk_call_number" )
+ column=(type=char(35) updatewhereclause=yes name=task_desc dbname="subproblem.subproblem_desc" )
+ column=(type=char(25) updatewhereclause=yes name=closedcalls_problem dbname="closedcalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=closedcalls_subproblem dbname="closedcalls.subproblem" )
+ column=(type=char(35) updatewhereclause=yes name=call_back_by dbname="closedcalls.repairman" )
+ column=(type=char(25) updatewhereclause=yes name=rating dbname="closedcalls.subproblem" )
+ column=(type=char(35) updatewhereclause=yes name=closedcalls_repairman dbname="closedcalls.repairman" )
+ column=(type=char(3) updatewhereclause=yes name=complaint_mod_shift dbname="complaint_mod.shift" )
+ column=(type=char(15) updatewhereclause=yes name=closedcalls_closed_bydept dbname="closedcalls.closed_bydept" )
+ retrieve="  SELECT complaint_mod.id,   
+         complaint_mod.category,   
+         complaint_mod.guest_mod_name,   
+         complaint_mod.room_no,   
+         complaint_mod.time_open,   
+         complaint_mod.task_no,   
+         complaint_mod.subtask_no,   
+         complaint_mod.task_def,   
+         complaint_mod.resolution,   
+         complaint_mod.handled_by,   
+         complaint_mod.lnk_doc,   
+         complaint_mod.lnk_call_number,   
+         subproblem.subproblem_desc,   
+         closedcalls_a.problem,   
+         closedcalls_a.subproblem,   
+         closedcalls_b.repairman,   
+         closedcalls_b.subproblem,
+			closedcalls_a.repairman,
+			complaint_mod.shift,
+			closedcalls_a.closed_bydept  
+    FROM {oj closedcalls closedcalls_a LEFT OUTER JOIN closedcalls closedcalls_b ON closedcalls_a.call_number = substring(closedcalls_b.problem_definition,5,6)},   
+         complaint_mod,   
+         subproblem  
+   WHERE ( complaint_mod.task_no = subproblem.problem_number ) and  
+         ( complaint_mod.subtask_no = subproblem.subproblem_number ) and  
+         ( complaint_mod.lnk_call_number = closedcalls_a.call_number )  and
+			( complaint_mod.shift like trim(:inShift))  and
+			( closedcalls_a.closed_bydept like trim(:inDept) OR
+			  closedcalls_a.closed_bydept in (:inDept2)) AND
+			( complaint_mod.time_open > :inDtFr) and
+			( complaint_mod.time_open < :inDtTo)
+
+" arguments=(("inShift", string),("inDept", string),("inDept2", string),("InDtFr", datetime),("inDtTo", datetime)) )
+text(band=header alignment="2" text="Guest/Mod Name" border="0" color="33554432" x="9" y="8" height="64" width="850" html.valueishtml="0"  name=complaint_mod_guest_mod_name_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Room No." border="0" color="33554432" x="869" y="8" height="64" width="334" html.valueishtml="0"  name=complaint_mod_room_no_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Time Open" border="0" color="33554432" x="1211" y="8" height="64" width="626" html.valueishtml="0"  name=complaint_mod_time_open_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Task Desc" border="0" color="33554432" x="1847" y="4" height="64" width="763" html.valueishtml="0"  name=task_desc_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Task Definition" border="0" color="33554432" x="2619" y="8" height="64" width="1216" html.valueishtml="0"  name=complaint_mod_task_def_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Resolution" border="0" color="33554432" x="3845" y="8" height="64" width="1275" html.valueishtml="0"  name=complaint_mod_resolution_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Handled By" border="0" color="33554432" x="5129" y="8" height="64" width="727" html.valueishtml="0"  name=complaint_mod_handled_by_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recovery Task" border="0" color="33554432" x="5865" y="12" height="64" width="1234" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Back By" border="0" color="33554432" x="8096" y="4" height="64" width="663" html.valueishtml="0"  name=closedcalls_repairman_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rating" border="0" color="33554432" x="8768" y="4" height="64" width="338" html.valueishtml="0"  name=closedcalls_subproblem_1_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Assigned To" border="0" color="33554432" x="7109" y="12" height="64" width="978" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="9" y="8" height="76" width="850" format="[general]" html.valueishtml="0"  name=complaint_mod_guest_mod_name visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="869" y="8" height="76" width="334" format="[general]" html.valueishtml="0"  name=complaint_mod_room_no visible="1" edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="1211" y="8" height="76" width="626" format="[shortdate] [time]" html.valueishtml="0"  name=complaint_mod_time_open visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="1847" y="8" height="76" width="763" format="[general]" html.valueishtml="0"  name=task_desc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="2619" y="8" height="76" width="1216" format="[general]" html.valueishtml="0"  name=complaint_mod_task_def visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="3845" y="8" height="76" width="1275" format="[general]" html.valueishtml="0"  name=complaint_mod_resolution visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="5129" y="8" height="76" width="727" format="[general]" html.valueishtml="0"  name=complaint_mod_handled_by visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+compute(band=detail alignment="0" expression="trim( closedcalls_problem )+'/'+trim( closedcalls_subproblem )"border="0" color="0" x="5865" y="12" height="64" width="1234" format="[GENERAL]" html.valueishtml="0"  name=recovery_task visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217731" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="8096" y="8" height="76" width="663" format="[general]" html.valueishtml="0"  name=call_back_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27131903" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="8768" y="8" height="76" width="338" format="[general]" html.valueishtml="0"  name=rating visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27131903" )
+compute(band=detail alignment="0" expression="trim( closedcalls_closed_bydept )+'/'+ closedcalls_repairman "border="0" color="0" x="7109" y="16" height="64" width="978" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217731" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,64 @@
+﻿$PBExportHeader$f_chk_preopen_page.srf
+global type f_chk_preopen_page from function_object
+end type
+
+forward prototypes
+global function string f_chk_preopen_page (string pre_open, integer init_paging_min, datetime timer_start)
+end prototypes
+
+global function string f_chk_preopen_page (string pre_open, integer init_paging_min, datetime timer_start);
+if pre_open = 'N' or pre_open = '' then
+	return 'Y'
+end if
+
+date timerDate
+time timerTime
+timerDate = date(timer_start)
+timerTime = time(timer_start)
+
+// timer date is at least 2 days greater than today logic
+if DaysAfter(today(),timerDate) > 1 then 
+	return 'N' 
+end if
+
+// scheduled timer is at least 2 days older then today
+if DaysAfter(timerDate, today()) > 1 then
+	return 'Y' 
+end if
+
+// scheduled timer is a day older then today then check cross mid-night logic
+
+if DaysAfter(timerDate, today()) = 1 then 
+	return 'Y'
+	/*
+	if (SecondsAfter(now(), 23:59:59)+1) / 60 > init_paging_min then
+		return 'N'
+	else
+		if ((SecondsAfter(now(), 23:59:59)+1) / 60) + (SecondsAfter(00:00:00, timerTime) / 60) <= init_paging_min then
+			return 'Y'
+		else
+			return 'N'
+		end if
+	end if
+	*/
+end if
+
+// timer date is 1 day greater then today logic
+if DaysAfter(today(),timerDate) = 1 then 
+	if ((SecondsAfter(now(), 23:59:59)+1) / 60) + (SecondsAfter(00:00:00, timerTime) / 60) <= init_paging_min then
+		return 'Y'
+	else
+		return 'N'
+	end if
+end if
+
+//MessageBox("same day logic",string((SecondsAfter(now(),timerTime)) / 60))
+// same day logic
+if (SecondsAfter(now(),timerTime)) / 60 <= init_paging_min then
+	return 'Y'
+else
+	return 'N'
+end if
+
+end function
+

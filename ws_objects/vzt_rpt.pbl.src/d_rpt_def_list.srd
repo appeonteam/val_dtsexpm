@@ -1,0 +1,100 @@
+﻿$PBExportHeader$d_rpt_def_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes key=yes name=reportid dbname="vzt_reportdef.reportid" )
+ column=(type=char(16) update=yes updatewhereclause=yes name=userid dbname="vzt_reportdef.userid" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=title dbname="vzt_reportdef.title" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=keeplast dbname="vzt_reportdef.keeplast" initial="N" values="Yes	Y/No	N/" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=recurring dbname="vzt_reportdef.recurring" initial="ONETIME" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=dwdataobjectname dbname="vzt_reportdef.dwdataobjectname" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timetorun dbname="vzt_reportdef.timetorun" initial="today" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunmon dbname="vzt_reportdef.daytorunmon" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytoruntue dbname="vzt_reportdef.daytoruntue" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunwed dbname="vzt_reportdef.daytorunwed" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunthu dbname="vzt_reportdef.daytorunthu" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunfri dbname="vzt_reportdef.daytorunfri" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunsat dbname="vzt_reportdef.daytorunsat" initial="Y" values="	Y/	N" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=daytorunsun dbname="vzt_reportdef.daytorunsun" initial="Y" values="	Y/	N" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=rptdesc dbname="vzt_reportdef.rptdesc" )
+ column=(type=long update=yes updatewhereclause=yes name=vzt_reportdef_daystokeep dbname="vzt_reportdef.daystokeep" )
+ column=(type=char(1) updatewhereclause=yes name=vzt_hierarchy_leafind dbname="vzt_hierarchy.leafind" values="Yes	Y/No	N/Group	G/" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=securitylevel dbname="vzt_reportdef.securitylevel" )
+ column=(type=long update=yes updatewhereclause=yes name=parmcount dbname="vzt_reportdef.parmcount" initial="0" )
+ column=(type=datetime update=yes updatewhereclause=yes name=countstartdate dbname="vzt_reportdef.countstartdate" )
+ column=(type=datetime update=yes updatewhereclause=yes name=averageruntime dbname="vzt_reportdef.averageruntime" )
+ column=(type=char(7) update=yes updatewhereclause=yes name=drilldownreportid dbname="vzt_reportdef.drilldownreportid" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timetorunend dbname="vzt_reportdef.timetorunend" )
+ column=(type=char(7) updatewhereclause=yes name=hier_id dbname="vzt_hierarchy.id" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=subtype dbname="vzt_reportdef.subtype" )
+ retrieve=" SELECT vzt_reportdef.reportid,   
+         vzt_reportdef.userid,   
+         vzt_reportdef.title,   
+         vzt_reportdef.keeplast,   
+         vzt_reportdef.recurring,   
+         vzt_reportdef.dwdataobjectname,   
+         vzt_reportdef.timetorun,   
+         vzt_reportdef.daytorunmon,   
+         vzt_reportdef.daytoruntue,   
+         vzt_reportdef.daytorunwed,   
+         vzt_reportdef.daytorunthu,   
+         vzt_reportdef.daytorunfri,   
+         vzt_reportdef.daytorunsat,   
+         vzt_reportdef.daytorunsun,   
+         vzt_reportdef.rptdesc,   
+         vzt_reportdef.daystokeep,   
+         vzt_hierarchy.leafind,   
+         vzt_reportdef.securitylevel,   
+         vzt_reportdef.parmcount,   
+         vzt_reportdef.countstartdate,   
+         vzt_reportdef.averageruntime,   
+         vzt_reportdef.drilldownreportid  ,
+         vzt_reportdef.timetorunend ,
+			vzt_hierarchy.id,   
+         vzt_reportdef.subtype  
+    FROM vzt_reportdef,   
+         vzt_hierarchy  
+   WHERE ( vzt_reportdef.reportid = vzt_hierarchy.reportid ) and  
+         ((~"vzt_hierarchy~".~"ID~" = :as_hier_id AND  
+         vzt_hierarchy.LEAFIND ='Y' ) OR  
+         (~"vzt_hierarchy~".~"PARENT_ID~" = :as_hier_id AND  
+         vzt_hierarchy.LEAFIND = 'Y' ))    
+" update="vzt_reportdef" updatewhere=0 updatekeyinplace=yes arguments=(("as_hier_id", string))  sort="vzt_hierarchy_leafind A " )
+text(band=header alignment="2" text="Report Title"border="0" color="65535" x="9" y="0" height="60" width="1353"  name=title_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Recurring"border="0" color="65535" x="1609" y="0" height="60" width="302"  name=recurring_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Timetorun"border="0" color="65535" x="2400" y="0" height="60" width="288"  name=timetorun_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Mon:"border="0" color="65535" x="3017" y="0" height="60" width="133"  name=daytorunmon_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Tue:"border="0" color="65535" x="3159" y="0" height="60" width="114"  name=daytoruntue_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Wed:"border="0" color="65535" x="3282" y="0" height="60" width="142"  name=daytorunwed_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Thu:"border="0" color="65535" x="3433" y="0" height="60" width="114"  name=daytorunthu_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Fri:"border="0" color="65535" x="3557" y="0" height="60" width="87"  name=daytorunfri_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Sat:"border="0" color="65535" x="3653" y="0" height="60" width="110"  name=daytorunsat_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Sun:"border="0" color="65535" x="3771" y="0" height="60" width="123"  name=daytorunsun_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Rptdesc"border="0" color="65535" x="3904" y="0" height="60" width="745"  name=rptdesc_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Reportid"border="0" color="65535" x="1920" y="0" height="60" width="219"  name=reportid_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Userid"border="0" color="65535" x="2149" y="0" height="60" width="242"  name=userid_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="2" text="Keeplast"border="0" color="65535" x="1371" y="0" height="60" width="229"  name=keeplast_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="0" text="Security:"border="0" color="65535" x="4658" y="4" height="60" width="983"  name=securitylevel_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+text(band=header alignment="0" text="Run until Time "border="0" color="65535" x="2697" y="4" height="56" width="311"  name=timetorunend_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0~tif (  vzt_hierarchy_leafind = 'G', RGB(0,0,255), 0)" x="9" y="4" height="56" width="1353" format="[general]"  name=title edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="0" x="1371" y="4" height="56" width="229" format="[general]"  name=keeplast ddlb.limit=0 ddlb.allowedit=no ddlb.case=any  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="0" x="1609" y="4" height="56" width="302" format="[general]"  name=recurring edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="0" x="2400" y="4" height="56" width="288" format="hh:mm AM/PM"  name=timetorun edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3017" y="4" height="56" width="133" format="[general]"  name=daytorunmon edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3159" y="4" height="56" width="114" format="[general]"  name=daytoruntue edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3282" y="4" height="56" width="142" format="[general]"  name=daytorunwed edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3433" y="4" height="56" width="114" format="[general]"  name=daytorunthu edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3557" y="4" height="56" width="87" format="[general]"  name=daytorunfri edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="3653" y="4" height="56" width="110" format="[general]"  name=daytorunsat edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="3771" y="4" height="56" width="123" format="[general]"  name=daytorunsun edit.name="yesno_1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="3904" y="4" height="56" width="745" format="[general]"  name=rptdesc edit.limit=2000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="1920" y="4" height="56" width="219" format="[general]"  name=reportid edit.limit=7 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0" x="2149" y="4" height="56" width="242" format="[general]"  name=userid edit.limit=16 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="4658" y="0" height="60" width="983" format="[general]"  name=securitylevel dddw.name=d_seclevel_dddw dddw.displaycolumn=name dddw.datacolumn=securitylevel dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="2697" y="4" height="56" width="311" format="[shortdate] [time]"  name=timetorunend edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="0" tabsequence=0 border="0" color="0" x="5655" y="4" height="56" width="210"  name=subtype  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Subtype:"border="0" color="65535" x="5650" y="4" height="56" width="215"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

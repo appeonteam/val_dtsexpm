@@ -1,0 +1,285 @@
+﻿$PBExportHeader$d_guest_calls_list_by_stay.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=56 color="29933623" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912~tif (tbl = 1, RGB(233,14,14) , 
+if (tbl = 2, RGB(244,244,14) ,  RGB(222,222,222) ))" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=call_number dbname="closedcalls.call_number" )
+ column=(type=long updatewhereclause=yes name=tbl dbname="tbl" )
+ column=(type=long updatewhereclause=yes name=guest_stay_id dbname="guest_stay_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_indate dbname="closedcalls.call_indate" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=stat_code dbname="closedcalls.stat_code" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=room dbname="closedcalls.room" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=guest dbname="closedcalls.guest" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=caller dbname="closedcalls.caller" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=problem dbname="closedcalls.problem" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=subproblem dbname="closedcalls.subproblem" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=problem_definition dbname="closedcalls.problem_definition" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=complaint dbname="closedcalls.complaint" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=receiver dbname="closedcalls.receiver" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=shift dbname="closedcalls.shift" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=resolution dbname="closedcalls.resolution" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=repairman dbname="closedcalls.repairman" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_outdate dbname="closedcalls.call_outdate" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=closed_by dbname="closedcalls.closed_by" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=closed_bydept dbname="closedcalls.closed_bydept" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=timer_number dbname="closedcalls.timer_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timer_start dbname="closedcalls.timer_start" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=caller_category dbname="closedcalls.caller_category" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=problem_number dbname="closedcalls.problem_number" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=subproblem_number dbname="closedcalls.subproblem_number" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer1_start_min dbname="closedcalls.timer1_start_min" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer2_start_min dbname="closedcalls.timer2_start_min" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer1_reps dbname="closedcalls.timer1_reps" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=timer2_reps dbname="closedcalls.timer2_reps" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=auth_take_off_timer dbname="closedcalls.auth_take_off_timer" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=default_status dbname="closedcalls.default_status" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pre_openable dbname="closedcalls.pre_openable" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=pre_opened dbname="closedcalls.pre_opened" )
+ column=(type=long update=yes updatewhereclause=yes name=timer_level dbname="closedcalls.timer_level" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=room_dsc dbname="closedcalls.room_dsc" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=opened_status dbname="closedcalls.opened_status" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=paging_ind dbname="closedcalls.paging_ind" )
+ column=(type=long update=yes updatewhereclause=yes name=init_paging_min dbname="closedcalls.init_paging_min" )
+ column=(type=number update=yes updatewhereclause=yes name=guest_id dbname="closedcalls.guest_id" )
+ column=(type=number update=yes updatewhereclause=yes name=gcc_id dbname="closedcalls.gcc_id" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=amount dbname="closedcalls.amount" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=recur_ind dbname="closedcalls.recur_ind" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=recur_id dbname="closedcalls.recur_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=called_back_ind dbname="closedcalls.called_back_ind" )
+ retrieve="  SELECT ~"closedcalls~".~"call_number~",  3 tbl, 
+vzt_he_guest_Stay_from_date(:an_guest_acct, ~"call_indate~") guest_stay_id, 
+         ~"closedcalls~".~"call_indate~",   
+         ~"closedcalls~".~"stat_code~",   
+         ~"closedcalls~".~"room~",   
+         ~"closedcalls~".~"guest~",   
+         ~"closedcalls~".~"caller~",   
+         ~"closedcalls~".~"problem~",   
+         ~"closedcalls~".~"subproblem~",   
+         ~"closedcalls~".~"problem_definition~",   
+         ~"closedcalls~".~"complaint~",   
+         ~"closedcalls~".~"receiver~",   
+         ~"closedcalls~".~"shift~",   
+         ~"closedcalls~".~"resolution~",   
+         ~"closedcalls~".~"repairman~",   
+         ~"closedcalls~".~"call_outdate~",   
+         ~"closedcalls~".~"closed_by~",   
+         ~"closedcalls~".~"closed_bydept~",   
+         ~"closedcalls~".~"timer_number~",   
+         ~"closedcalls~".~"timer_start~",   
+         ~"closedcalls~".~"caller_category~",   
+         ~"closedcalls~".~"problem_number~",   
+         ~"closedcalls~".~"subproblem_number~",   
+         ~"closedcalls~".~"timer1_start_min~",   
+         ~"closedcalls~".~"timer2_start_min~",   
+         ~"closedcalls~".~"timer1_reps~",   
+         ~"closedcalls~".~"timer2_reps~",   
+         ~"closedcalls~".~"auth_take_off_timer~",   
+         ~"closedcalls~".~"default_status~",   
+         ~"closedcalls~".~"pre_openable~",   
+         ~"closedcalls~".~"pre_opened~",   
+         ~"closedcalls~".~"timer_level~",   
+         ~"closedcalls~".~"room_dsc~",   
+         ~"closedcalls~".~"opened_status~",   
+         ~"closedcalls~".~"paging_ind~",   
+         ~"closedcalls~".~"init_paging_min~",   
+         ~"closedcalls~".~"guest_id~",   
+         ~"closedcalls~".~"gcc_id~",   
+         ~"closedcalls~".~"amount~",   
+         ~"closedcalls~".~"recur_ind~",   
+         ~"closedcalls~".~"recur_id~",   
+         ~"closedcalls~".~"called_back_ind~"  
+    FROM ~"closedcalls~",   
+         ~"guest_calls~"  
+   WHERE ~"closedcalls~".~"call_number~" = ~"guest_calls~".~"call_number~" and  
+          ~"guest_calls~".~"guest_account~" = :an_guest_acct     
+   UNION   
+  SELECT ~"pendingcalls~".~"call_number~",   2 tbl, 
+ vzt_he_guest_Stay_from_date(:an_guest_acct, ~"call_indate~") guest_stay_id, 
+         ~"pendingcalls~".~"call_indate~",   
+         ~"pendingcalls~".~"stat_code~",   
+         ~"pendingcalls~".~"room~",   
+         ~"pendingcalls~".~"guest~",   
+         ~"pendingcalls~".~"caller~",   
+         ~"pendingcalls~".~"problem~",   
+         ~"pendingcalls~".~"subproblem~",   
+         ~"pendingcalls~".~"problem_definition~",   
+         ~"pendingcalls~".~"complaint~",   
+         ~"pendingcalls~".~"receiver~",   
+         ~"pendingcalls~".~"shift~",   
+         ~"pendingcalls~".~"resolution~",   
+         ~"pendingcalls~".~"repairman~",   
+         ~"pendingcalls~".~"call_outdate~",   
+         ~"pendingcalls~".~"closed_by~",   
+         ~"pendingcalls~".~"closed_bydept~",   
+         ~"pendingcalls~".~"timer_number~",   
+         ~"pendingcalls~".~"timer_start~",   
+         ~"pendingcalls~".~"caller_category~",   
+         ~"pendingcalls~".~"problem_number~",   
+         ~"pendingcalls~".~"subproblem_number~",   
+         ~"pendingcalls~".~"timer1_start_min~",   
+         ~"pendingcalls~".~"timer2_start_min~",   
+         ~"pendingcalls~".~"timer1_reps~",   
+         ~"pendingcalls~".~"timer2_reps~",   
+         ~"pendingcalls~".~"auth_take_off_timer~",   
+         ~"pendingcalls~".~"default_status~",   
+         ~"pendingcalls~".~"pre_openable~",   
+         ~"pendingcalls~".~"pre_opened~",   
+         ~"pendingcalls~".~"timer_level~",   
+         ~"pendingcalls~".~"room_dsc~",   
+         ~"pendingcalls~".~"opened_status~",   
+         ~"pendingcalls~".~"paging_ind~",   
+         ~"pendingcalls~".~"init_paging_min~",   
+         ~"pendingcalls~".~"guest_id~",   
+         ~"pendingcalls~".~"gcc_id~",   
+         ~"pendingcalls~".~"amount~",   
+         ~"pendingcalls~".~"recur_ind~",   
+         ~"pendingcalls~".~"recur_id~",   
+         ~"pendingcalls~".~"called_back_ind~"  
+    FROM ~"pendingcalls~",   
+         ~"guest_calls~"  
+   WHERE ~"pendingcalls~".~"call_number~" = ~"guest_calls~".~"call_number~" and  
+          ~"guest_calls~".~"guest_account~" = :an_guest_acct 
+   UNION   
+  SELECT ~"timercalls~".~"call_number~",   1 tbl, 
+ vzt_he_guest_Stay_from_date(:an_guest_acct, ~"call_indate~") guest_stay_id, 
+         ~"timercalls~".~"call_indate~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"room~",   
+         ~"timercalls~".~"guest~",   
+         ~"timercalls~".~"caller~",   
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"complaint~",   
+         ~"timercalls~".~"receiver~",   
+         ~"timercalls~".~"shift~",   
+         ~"timercalls~".~"resolution~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"call_outdate~",   
+         ~"timercalls~".~"closed_by~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"timer_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"caller_category~",   
+         ~"timercalls~".~"problem_number~",   
+         ~"timercalls~".~"subproblem_number~",   
+         ~"timercalls~".~"timer1_start_min~",   
+         ~"timercalls~".~"timer2_start_min~",   
+         ~"timercalls~".~"timer1_reps~",   
+         ~"timercalls~".~"timer2_reps~",   
+         ~"timercalls~".~"auth_take_off_timer~",   
+         ~"timercalls~".~"default_status~",   
+         ~"timercalls~".~"pre_openable~",   
+         ~"timercalls~".~"pre_opened~",   
+         ~"timercalls~".~"timer_level~",   
+         ~"timercalls~".~"room_dsc~",   
+         ~"timercalls~".~"opened_status~",   
+         ~"timercalls~".~"paging_ind~",   
+         ~"timercalls~".~"init_paging_min~",   
+         ~"timercalls~".~"guest_id~",   
+         ~"timercalls~".~"gcc_id~",   
+         ~"timercalls~".~"amount~",   
+         ~"timercalls~".~"recur_ind~",   
+         ~"timercalls~".~"recur_id~",   
+         ~"timercalls~".~"called_back_ind~"  
+    FROM ~"timercalls~",   
+         ~"guest_calls~"  
+   WHERE ~"timercalls~".~"call_number~" = ~"guest_calls~".~"call_number~" and  
+          ~"guest_calls~".~"guest_account~" = :an_guest_acct     
+" arguments=(("an_guest_acct", number))  sort="guest_stay_id A call_indate D " )
+group(level=1 header.height=48 trailer.height=0 by=("guest_stay_id" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Call Num" border="0" color="0" x="9" y="0" height="56" width="334" html.valueishtml="0"  name=call_number_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Indate" border="0" color="0" x="1001" y="0" height="56" width="466" html.valueishtml="0"  name=call_indate_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Stat " border="0" color="0" x="1477" y="0" height="56" width="119" html.valueishtml="0"  name=stat_code_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Room" border="0" color="0" x="690" y="0" height="56" width="219" html.valueishtml="0"  name=room_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Guest" border="0" color="0" x="1605" y="0" height="56" width="430" html.valueishtml="0"  name=guest_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Caller" border="0" color="0" x="2043" y="0" height="56" width="466" html.valueishtml="0"  name=caller_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Problem" border="0" color="0" x="2519" y="0" height="56" width="535" html.valueishtml="0"  name=problem_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Subproblem" border="0" color="0" x="3063" y="0" height="56" width="594" html.valueishtml="0"  name=subproblem_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Problem Definition" border="0" color="0" x="3666" y="0" height="56" width="1125" html.valueishtml="0"  name=problem_definition_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Complaint" border="0" color="0" x="4800" y="0" height="56" width="521" html.valueishtml="0"  name=complaint_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Receiver" border="0" color="0" x="5330" y="0" height="56" width="443" html.valueishtml="0"  name=receiver_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Shift" border="0" color="0" x="5783" y="0" height="56" width="123" html.valueishtml="0"  name=shift_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Resolution" border="0" color="0" x="5915" y="0" height="56" width="736" html.valueishtml="0"  name=resolution_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Repairman" border="0" color="0" x="6661" y="0" height="56" width="507" html.valueishtml="0"  name=repairman_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Outdate" border="0" color="0" x="7177" y="0" height="56" width="480" html.valueishtml="0"  name=call_outdate_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Closed By" border="0" color="0" x="7666" y="0" height="56" width="485" html.valueishtml="0"  name=closed_by_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Closed Bydept" border="0" color="0" x="8160" y="0" height="56" width="439" html.valueishtml="0"  name=closed_bydept_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer Start" border="0" color="0" x="8608" y="0" height="56" width="407" html.valueishtml="0"  name=timer_start_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Caller Category" border="0" color="0" x="9024" y="0" height="56" width="987" html.valueishtml="0"  name=caller_category_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Prob Num" border="0" color="0" x="10021" y="0" height="56" width="261" html.valueishtml="0"  name=problem_number_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subprob Num" border="0" color="0" x="10290" y="0" height="56" width="352" html.valueishtml="0"  name=subproblem_number_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer1 Start Min" border="0" color="0" x="10651" y="0" height="56" width="443" html.valueishtml="0"  name=timer1_start_min_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer2 Start Min" border="0" color="0" x="11104" y="0" height="56" width="443" html.valueishtml="0"  name=timer2_start_min_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer1 Reps" border="0" color="0" x="11557" y="0" height="56" width="329" html.valueishtml="0"  name=timer1_reps_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer2 Reps" border="0" color="0" x="11895" y="0" height="56" width="329" html.valueishtml="0"  name=timer2_reps_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Auth Take Off Timer" border="0" color="0" x="12233" y="0" height="56" width="530" html.valueishtml="0"  name=auth_take_off_timer_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Default Status" border="0" color="0" x="12773" y="0" height="56" width="357" html.valueishtml="0"  name=default_status_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pre Openable" border="0" color="0" x="13138" y="0" height="56" width="338" html.valueishtml="0"  name=pre_openable_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pre Opened" border="0" color="0" x="13486" y="0" height="56" width="293" html.valueishtml="0"  name=pre_opened_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer Level" border="0" color="0" x="13787" y="0" height="56" width="329" html.valueishtml="0"  name=timer_level_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Room Dsc" border="0" color="0" x="14126" y="0" height="56" width="366" html.valueishtml="0"  name=room_dsc_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Opened Status" border="0" color="0" x="14501" y="0" height="56" width="361" html.valueishtml="0"  name=opened_status_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Paging Ind" border="0" color="0" x="14871" y="0" height="56" width="270" html.valueishtml="0"  name=paging_ind_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Init Paging Min" border="0" color="0" x="15150" y="0" height="56" width="393" html.valueishtml="0"  name=init_paging_min_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Guest Id" border="0" color="0" x="352" y="0" height="56" width="329" html.valueishtml="0"  name=guest_id_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Gcc Id" border="0" color="0" x="15552" y="0" height="56" width="229" html.valueishtml="0"  name=gcc_id_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Amount" border="0" color="0" x="15790" y="0" height="56" width="329" html.valueishtml="0"  name=amount_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recur Ind" border="0" color="0" x="16128" y="0" height="56" width="247" html.valueishtml="0"  name=recur_ind_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Recur Id" border="0" color="0" x="16384" y="0" height="56" width="329" html.valueishtml="0"  name=recur_id_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Called Back Ind" border="0" color="0" x="16722" y="0" height="56" width="398" html.valueishtml="0"  name=called_back_ind_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tbl" border="0" color="0" x="919" y="4" height="56" width="73" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="33554432" x="9" y="0" height="56" width="334" format="[general]" html.valueishtml="0"  name=call_number visible="1" edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="1001" y="0" height="56" width="466" format="[shortdate] [time]" html.valueishtml="0"  name=call_indate visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="33554432" x="1477" y="0" height="56" width="119" format="[general]" html.valueishtml="0"  name=stat_code visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="2" tabsequence=32766 border="0" color="33554432" x="690" y="0" height="56" width="219" format="[general]" html.valueishtml="0"  name=room visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="1605" y="0" height="56" width="430" format="[general]" html.valueishtml="0"  name=guest visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="2043" y="0" height="56" width="466" format="[general]" html.valueishtml="0"  name=caller visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="2519" y="0" height="56" width="535" format="[general]" html.valueishtml="0"  name=problem visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="3063" y="0" height="56" width="594" format="[general]" html.valueishtml="0"  name=subproblem visible="1" edit.limit=25 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="33554432" x="3666" y="0" height="56" width="1125" format="[general]" html.valueishtml="0"  name=problem_definition visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="4800" y="0" height="56" width="521" format="[general]" html.valueishtml="0"  name=complaint visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="33554432" x="5330" y="0" height="56" width="443" format="[general]" html.valueishtml="0"  name=receiver visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="2" tabsequence=32766 border="0" color="33554432" x="5783" y="0" height="56" width="123" format="[general]" html.valueishtml="0"  name=shift visible="1" edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="33554432" x="5915" y="0" height="56" width="736" format="[general]" html.valueishtml="0"  name=resolution visible="1" edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="6661" y="0" height="56" width="507" format="[general]" html.valueishtml="0"  name=repairman visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="1" tabsequence=32766 border="0" color="33554432" x="7177" y="0" height="56" width="480" format="[shortdate] [time]" html.valueishtml="0"  name=call_outdate visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="33554432" x="7666" y="0" height="56" width="485" format="[general]" html.valueishtml="0"  name=closed_by visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="33554432" x="8160" y="0" height="56" width="439" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1" edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="33554432" x="8608" y="0" height="56" width="407" format="[shortdate] [time]" html.valueishtml="0"  name=timer_start visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="33554432" x="9024" y="0" height="56" width="987" format="[general]" html.valueishtml="0"  name=caller_category visible="1" edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="2" tabsequence=32766 border="0" color="33554432" x="10021" y="0" height="56" width="261" format="[general]" html.valueishtml="0"  name=problem_number visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="33554432" x="10290" y="0" height="56" width="352" format="[general]" html.valueishtml="0"  name=subproblem_number visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=25 alignment="1" tabsequence=32766 border="0" color="33554432" x="10651" y="0" height="56" width="443" format="[general]" html.valueishtml="0"  name=timer1_start_min visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="1" tabsequence=32766 border="0" color="33554432" x="11104" y="0" height="56" width="443" format="[general]" html.valueishtml="0"  name=timer2_start_min visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="1" tabsequence=32766 border="0" color="33554432" x="11557" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=timer1_reps visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="1" tabsequence=32766 border="0" color="33554432" x="11895" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=timer2_reps visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="33554432" x="12233" y="0" height="56" width="530" format="[general]" html.valueishtml="0"  name=auth_take_off_timer visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="33554432" x="12773" y="0" height="56" width="357" format="[general]" html.valueishtml="0"  name=default_status visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="2" tabsequence=32766 border="0" color="33554432" x="13138" y="0" height="56" width="338" format="[general]" html.valueishtml="0"  name=pre_openable visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="2" tabsequence=32766 border="0" color="33554432" x="13486" y="0" height="56" width="293" format="[general]" html.valueishtml="0"  name=pre_opened visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="2" tabsequence=32766 border="0" color="33554432" x="13787" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=timer_level visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="2" tabsequence=32766 border="0" color="33554432" x="14871" y="0" height="52" width="270" format="[general]" html.valueishtml="0"  name=paging_ind visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="1" tabsequence=32766 border="0" color="33554432" x="15150" y="0" height="56" width="393" format="[general]" html.valueishtml="0"  name=init_paging_min visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="2" tabsequence=32766 border="0" color="33554432" x="352" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=guest_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="2" tabsequence=32766 border="0" color="33554432" x="15552" y="0" height="56" width="229" format="[general]" html.valueishtml="0"  name=gcc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=40 alignment="2" tabsequence=32766 border="0" color="33554432" x="15790" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=amount visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=41 alignment="2" tabsequence=32766 border="0" color="33554432" x="16128" y="0" height="56" width="247" format="[general]" html.valueishtml="0"  name=recur_ind visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=42 alignment="2" tabsequence=32766 border="0" color="33554432" x="16384" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=recur_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=43 alignment="2" tabsequence=32766 border="0" color="33554432" x="16722" y="0" height="56" width="398" format="[general]" html.valueishtml="0"  name=called_back_ind visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="17294" y="4" height="48" width="78" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="17211" y="4" height="56" width="73" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="33554432" x="17129" y="4" height="56" width="73" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="2" expression="if (tbl = 1, 'T', 
+if (tbl = 2, 'P', 'C' ))"border="0" color="33554432" x="919" y="4" height="56" width="73" format="[GENERAL]" html.valueishtml="0"  name=compute_tbl visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="33554432" x="14126" y="0" height="56" width="366" format="[general]" html.valueishtml="0"  name=room_dsc visible="1" edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="2" tabsequence=32766 border="0" color="33554432" x="14501" y="0" height="56" width="361" format="[general]" html.valueishtml="0"  name=opened_status visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=3 alignment="0" tabsequence=0 border="0" color="33554432" x="9" y="0" height="56" width="334" html.valueishtml="0"  name=guest_stay_id visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

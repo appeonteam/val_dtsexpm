@@ -1,0 +1,78 @@
+﻿$PBExportHeader$d_gcc_rpt_letters_written_by_type.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=344 color="536870912" )
+summary(height=72 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=gcc_gccid dbname="gcc.gccid" )
+ column=(type=char(20) updatewhereclause=yes name=gcc_history_actioncode dbname="gcc_history.actioncode" )
+ column=(type=datetime updatewhereclause=yes name=gcc_history_action_dt dbname="gcc_history.action_dt" )
+ column=(type=char(50) updatewhereclause=yes name=guest_guest_id dbname="guest.guest_id" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(100) updatewhereclause=yes name=qgen_lookup_descr dbname="qgen_lookup.descr" )
+ retrieve="  SELECT gcc.gccid,   
+         gcc_history.actioncode,   
+         gcc_history.action_dt,   
+         guest.guest_id,   
+         guest.last_name,   
+         guest.first_name,   
+         qgen_lookup.descr  
+    FROM gcc,   
+         gcc_history,   
+         guest,   
+         qgen_lookup  
+   WHERE ( gcc.gccid = gcc_history.gccid ) and   
+         ( gcc.guest_account = guest.account ) and  
+         ( gcc_history.actioncode = qgen_lookup.code ) and  
+         ( ( gcc_history.actioncode in ('TYL','APL','AML', 'REL', 'WL', 'WSR', 'PGL', 'FRL') ) )   
+		 
+			/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc_history.action_dt  BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			1*/
+			/*1
+			 AND
+				( 	{ts ':ARRDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':DEPDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.checkin_dt BETWEEN 
+					{ts ':ARRDATE 00:00:00.000000'} AND {ts ':DEPDATE 23:59:59.777000'} 
+				) 
+			1*/
+ORDER BY gcc_history.actioncode ASC,   
+         gcc_history.action_dt ASC   
+
+"  sort="gcc_history_actioncode A gcc_history_action_dt A " )
+group(level=1 header.height=0 trailer.height=4 by=("gcc_history_actioncode" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Guest Name" border="0" color="65535" x="873" y="272" height="56" width="795" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Letters Written by Type" border="0" color="0" x="1175" y="4" height="64" width="695" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=header x="23" y="332" height="8" width="2935"  name=r_2 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=header alignment="0" text="From:" border="0" color="0" x="1175" y="92" height="56" width="155" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="min ( gcc_history_action_dt)"border="0" color="0" x="1349" y="92" height="56" width="325" format="[shortdate]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="To:" border="0" color="0" x="1723" y="92" height="56" width="91" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="max ( gcc_history_action_dt)"border="0" color="0" x="1842" y="92" height="56" width="325" format="[shortdate]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="50" y="4" height="56" width="558" format="[general]" html.valueishtml="0"  name=qgen_lookup_descr visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="count( 1 for group 1 )"border="0" color="0" x="631" y="4" height="56" width="165" format="[general]" html.valueishtml="0"  name=cnt visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="873" y="4" height="56" width="270" format="[general]" html.valueishtml="0"  name=guest_first_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1157" y="4" height="56" width="416" format="[general]" html.valueishtml="0"  name=guest_last_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="1605" y="4" height="56" width="247" format="[general]" html.valueishtml="0"  name=gcc_gccid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2473" y="4" height="56" width="343" format="[shortdate]" html.valueishtml="0"  name=gcc_history_action_dt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=trailer.1 x="32" y="0" height="4" width="2935"  name=r_3 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=summary alignment="2" text="Total:" border="0" color="0" x="50" y="12" height="56" width="165" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="count( 1 for all )"border="0" color="0" x="631" y="12" height="52" width="165" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=summary x="32" y="0" height="8" width="2935"  name=r_4 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Type" border="0" color="65535" x="59" y="272" height="56" width="576" html.valueishtml="0"  name=gcc_history_actioncode_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Items" border="0" color="65535" x="631" y="272" height="56" width="594" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="GCC No." border="0" color="65535" x="1600" y="272" height="56" width="896" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Date" border="0" color="65535" x="2478" y="272" height="56" width="480" html.valueishtml="0"  name=gcc_history_action_dt_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+
+sparse(names="qgen_lookup_descr	cnt")htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

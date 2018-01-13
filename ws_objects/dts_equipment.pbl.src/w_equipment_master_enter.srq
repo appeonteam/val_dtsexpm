@@ -1,0 +1,2 @@
+﻿$PBExportHeader$w_equipment_master_enter.srq
+PBSELECT( VERSION(400) TABLE(NAME="equipment_master" ) COLUMN(NAME="equipment_master.area_number") COLUMN(NAME="equipment_master.extended_warranty") COLUMN(NAME="equipment_master.warranty_expires") COLUMN(NAME="equipment_master.purchasecost") COLUMN(NAME="equipment_master.purchasedate") COLUMN(NAME="equipment_master.serialno") COLUMN(NAME="equipment_master.model") COLUMN(NAME="equipment_master.vendor") COLUMN(NAME="equipment_master.manufacturer")) 

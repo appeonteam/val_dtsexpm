@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_dfilter.srf
+global type f_dfilter from function_object
+end type
+
+forward prototypes
+global function str_response f_dfilter (str_response astr_filter_parms, string as_dfilter_label)
+end prototypes
+
+global function str_response f_dfilter (str_response astr_filter_parms, string as_dfilter_label);string lsFilter
+int liRc
+
+If not Is_PasswordOK( Get_Event_Security( "DS" ) ) then
+	astr_filter_parms.rc = -1
+	return astr_filter_parms 
+end if
+
+OpenWithParm (w_screen_settings, as_dfilter_label, gnv_appman.iw_frame.GetActiveSheet())
+astr_filter_parms = Message.PowerObjectParm
+
+return astr_filter_parms 
+end function
+

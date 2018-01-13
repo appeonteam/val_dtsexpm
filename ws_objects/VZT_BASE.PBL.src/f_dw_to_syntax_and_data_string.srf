@@ -1,0 +1,46 @@
+﻿$PBExportHeader$f_dw_to_syntax_and_data_string.srf
+global type f_dw_to_syntax_and_data_string from function_object
+end type
+
+forward prototypes
+global function integer f_dw_to_syntax_and_data_string (ref datawindow adw_report, boolean ab_to_string, ref string as_syntax_and_data)
+end prototypes
+
+global function integer f_dw_to_syntax_and_data_string (ref datawindow adw_report, boolean ab_to_string, ref string as_syntax_and_data);string ls_syntax, ls_data, ls_delim = "..####.." 
+long ll_slen , ll_dlen , ll_rc , brc, ll_rows
+blob  blob_out
+
+adw_report.Setredraw( false) 	
+
+If ab_to_string then 
+	// convert dw to string including data
+	ls_syntax 			 = adw_report.Describe("DataWindow.Syntax") 
+	//f_dwdata_for_export ( adw_report, true)
+	ls_data 				 = adw_report.Describe("DataWindow.Data")
+	as_syntax_and_data += string(len(ls_syntax ),"00000000")+string(len(ls_data),"00000000")+ls_syntax+ls_data 
+Else
+	// convert string (syntax and data) to dw 
+	ll_slen = long (mid( as_syntax_and_data, 1, 8) )
+	ll_dlen = long (mid( as_syntax_and_data, 9, 8) )
+	If ll_slen  > 0 then 
+		ls_syntax =  MID (as_syntax_and_data, 17, ll_slen  ) 
+		adw_report.Setredraw( false) 		
+		adw_report.Create( ls_syntax) 
+		if ll_dlen > 0 then 
+			ls_data   =  MID (as_syntax_and_data, 17 + ll_slen, ll_dlen  )  
+			ll_rows = adw_report.ImportString( ls_data ) 
+			If ll_rows < 0 then MessageBox("Report data import", "Failed on data import. Code:"+string(ll_rows)+"~r~nData:~r~n"+ ls_data)
+			adw_report.Sort()
+			adw_report.Filter()
+			adw_report.GroupCalc()
+		END IF 
+		//f_dwdata_for_export ( adw_report, false)  // convert back
+		as_syntax_and_data = MID (as_syntax_and_data, 17+ll_slen+ll_dlen  ) 
+	Else
+		ll_rc = -1
+	End If 
+End if
+adw_report.Setredraw( true ) 
+return ll_rc 
+end function
+

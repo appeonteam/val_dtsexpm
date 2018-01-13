@@ -1,0 +1,6 @@
+﻿$PBExportHeader$st_graphparm.srs
+global type st_graphparm from structure
+	string		graphobject
+	datawindow		dwreport
+end type
+

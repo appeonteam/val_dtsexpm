@@ -1,0 +1,71 @@
+﻿$PBExportHeader$d_fail_bm_rpt.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=308 color="536870912" )
+summary(height=20 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=datetime updatewhereclause=yes name=timer_start dbname="closedcalls.timer_start" )
+ column=(type=char(25) updatewhereclause=yes name=problem dbname="closedcalls.problem" )
+ column=(type=char(25) updatewhereclause=yes name=subproblem dbname="closedcalls.subproblem" )
+ column=(type=char(35) updatewhereclause=yes name=guest dbname="closedcalls.guest" )
+ column=(type=char(30) updatewhereclause=yes name=room dbname="closedcalls.room" )
+ column=(type=char(15) updatewhereclause=yes name=closed_bydept dbname="closedcalls.closed_bydept" )
+ column=(type=char(35) updatewhereclause=yes name=repairman dbname="closedcalls.repairman" )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=call_number dbname="closedcalls.call_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_indate dbname="closedcalls.call_indate" )
+ column=(type=char(35) updatewhereclause=yes name=caller_category dbname="closedcalls.caller_category" )
+ column=(type=datetime updatewhereclause=yes name=call_outdate dbname="closedcalls.call_outdate" )
+ column=(type=decimal(0) updatewhereclause=yes name=timer1_start_min dbname="closedcalls.timer1_start_min" )
+ column=(type=long updatewhereclause=yes name=exceeded dbname="exceeded" )
+ retrieve="  SELECT ~"closedcalls~".~"timer_start~",   
+         ~"closedcalls~".~"problem~",   
+         ~"closedcalls~".~"subproblem~",   
+         ~"closedcalls~".~"guest~",   
+         ~"closedcalls~".~"room~",   
+         ~"closedcalls~".~"closed_bydept~",   
+         ~"closedcalls~".~"repairman~",   
+         ~"closedcalls~".~"call_number~",   
+         ~"closedcalls~".~"call_indate~",   
+         ~"closedcalls~".~"caller_category~",   
+         ~"closedcalls~".~"call_outdate~",   
+         ~"closedcalls~".~"timer1_start_min~",   
+         datediff(minute,timer_start,call_outdate) ~"exceeded~"  
+    FROM ~"closedcalls~"  
+   WHERE ~"closedcalls~".~"caller_category~" = 'GST'   
+ORDER BY ~"closedcalls~".~"timer1_start_min~" ASC,   
+         ~"closedcalls~".~"problem~" ASC,   
+         ~"closedcalls~".~"subproblem~" ASC,   
+         13 ASC   
+" update="closedcalls" updatewhere=1 updatekeyinplace=no )
+group(level=1 header.height=104 trailer.height=0 by=("timer1_start_min" ) header.color="536870912" trailer.color="536870912" )
+line(band=header x1="14" y1="304" x2="4375" y2="304"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Failed Benchmark Report" border="0" color="33554432" x="1509" y="56" height="76" width="992" html.valueishtml="0"  name=t_11 visible="1"  font.face="Lucida Sans" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Timer" border="0" color="33554432" x="101" y="220" height="56" width="320" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Task" border="0" color="33554432" x="590" y="224" height="56" width="320" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Subtask" border="0" color="33554432" x="1065" y="224" height="56" width="302" html.valueishtml="0"  name=t_3 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Exceed (min)" border="0" color="33554432" x="1486" y="224" height="56" width="375" html.valueishtml="0"  name=t_4 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guest" border="0" color="33554432" x="1906" y="224" height="56" width="352" html.valueishtml="0"  name=t_5 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Room" border="0" color="33554432" x="2322" y="228" height="56" width="270" html.valueishtml="0"  name=t_6 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Department" border="0" color="33554432" x="2656" y="224" height="56" width="375" html.valueishtml="0"  name=t_7 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Handled by" border="0" color="33554432" x="3237" y="220" height="56" width="370" html.valueishtml="0"  name=t_8 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Call #" border="0" color="33554432" x="3703" y="220" height="56" width="229" html.valueishtml="0"  name=t_9 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Call Opened" border="0" color="33554432" x="4000" y="216" height="56" width="375" html.valueishtml="0"  name=t_10 visible="1"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="today()"border="0" color="33554432" x="46" y="84" height="68" width="507" format="[general]" html.valueishtml="0"  name=rpttoday visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="33554432" x="3762" y="72" height="72" width="585" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header.1 alignment="0" expression="string( timer1_start_min ) + ' - Minutes'"border="0" color="33554432" x="37" y="16" height="84" width="791" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Tahoma" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="14" y="8" height="64" width="457" format="[shortdate] [time]" html.valueishtml="0"  name=timer_start visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="517" y="8" height="64" width="498" format="[general]" html.valueishtml="0"  name=problem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1029" y="4" height="64" width="498" format="[general]" html.valueishtml="0"  name=subproblem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="2" tabsequence=32766 border="0" color="33554432" x="1554" y="8" height="64" width="210" format="[general]" html.valueishtml="0"  name=exceeded visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1870" y="4" height="64" width="430" format="[general]" html.valueishtml="0"  name=guest visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="2345" y="4" height="64" width="302" format="[general]" html.valueishtml="0"  name=room visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2670" y="4" height="64" width="462" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="3173" y="0" height="64" width="517" format="[general]" html.valueishtml="0"  name=repairman visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="3703" y="8" height="52" width="270" format="[general]" html.valueishtml="0"  name=call_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="4005" y="8" height="52" width="416" format="[shortdate] [time]" html.valueishtml="0"  name=call_indate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

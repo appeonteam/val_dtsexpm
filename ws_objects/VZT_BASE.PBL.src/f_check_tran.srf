@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_check_tran.srf
+global type f_check_tran from function_object
+end type
+
+forward prototypes
+global function integer f_check_tran (ref transaction a_tran, ref long al_rc, ref string as_code, ref string as_message, long al_newrc)
+end prototypes
+
+global function integer f_check_tran (ref transaction a_tran, ref long al_rc, ref string as_code, ref string as_message, long al_newrc);If al_rc < 0 then return al_rc
+
+al_rc = 1
+If a_tran.sqlcode < 0 then					// vz changed 5/8/03 to < from <>
+	as_code		= string(a_tran.sqlcode) 
+	as_message 	= f_nvl(a_tran.sqlerrtext,'*')
+	al_rc 		= al_newrc
+END IF
+
+return al_rc
+end function
+

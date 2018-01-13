@@ -1,0 +1,12 @@
+﻿$PBExportHeader$f_room_reg_sync.srf
+global type f_room_reg_sync from function_object
+end type
+
+forward prototypes
+global subroutine f_room_reg_sync ()
+end prototypes
+
+global subroutine f_room_reg_sync ();EXECUTE IMMEDIATE ' call vzt_hew_room_registry_area_sync() ' ;
+COMMIT;
+end subroutine
+

@@ -1,0 +1,118 @@
+﻿$PBExportHeader$f_set_dnd_call.srf
+global type f_set_dnd_call from function_object
+end type
+
+forward prototypes
+global function boolean f_set_dnd_call (string in_call_number, integer call_tbl_ind, string username)
+end prototypes
+
+global function boolean f_set_dnd_call (string in_call_number, integer call_tbl_ind, string username);// call_tbl_ind 1 = timercalls
+//              2 = pendingcalls
+integer doNotDisturbMins
+
+doNotDisturbMins=integer(ProfileString(cINIPath + cINIFile,"Phone Interface", &
+					"DNDMins","30"))
+
+if call_tbl_ind = 1 then
+	insert into dndcalls 
+	(				call_number,
+					emp_id,
+					emp_name,
+					emp_dept,
+					time_assigned,
+					time_dnd,
+					orig_scheduled,
+					rescheduled_to,
+					task_no,
+					sub_task_no,
+					room,
+					lst_upd,
+					dnd_caller)
+			
+	select 	a.call_number,
+				b.emp_id,
+				b.emp_name,
+				b.dept_assigned,
+				b.time_assigned,
+				getdate(),
+				a.timer_start,
+				dateadd(mi,:doNotDisturbMins,a.timer_start),
+				a.problem_number,
+				a.subproblem_number,
+				room,
+				lst_upd=getdate(),
+				:userName
+	from		timercalls a, pageassignment b
+	where		a.call_number = :in_call_number
+	and		a.call_number = b.call_number;
+else
+	insert into dndcalls 
+	(				call_number,
+					emp_id,
+					emp_name,
+					emp_dept,
+					time_assigned,
+					time_dnd,
+					orig_scheduled,
+					rescheduled_to,
+					task_no,
+					sub_task_no,
+					room,
+					lst_upd )
+			
+	select 	a.call_number,
+				b.emp_id,
+				b.emp_name,
+				b.dept_assigned,
+				b.time_assigned,
+				getdate(),
+				a.timer_start,
+				dateadd(mi,:doNotDisturbMins,a.timer_start),
+				a.problem_number,
+				a.subproblem_number,
+				room,
+				lst_upd=getdate()	
+	from		pendingcalls a, pageassignment b
+	where		a.call_number = :in_call_number
+	and		a.call_number = b.call_number;
+end if
+if sqlca.sqlcode < 0 then
+//	egm_sqlerror2(sqlca,'dndcalls',in_call_number+'/'+string(today(),'yyyy/mm/dd hh:mm:ss'))
+	MessageBox("insert error", sqlca.sqlerrtext)
+	return false
+end if
+
+f_remove_declined_pageassignment(in_call_number)
+
+if call_tbl_ind = 1 then
+	update	timercalls
+	set		timer_start = dateadd(mi,:doNotDisturbMins,timer_start),
+				stat_code = '00',
+				paging_ind = 'P',
+				pre_opened = 'Y',
+				repairman = ''
+	where		call_number = :in_call_number;
+else
+	update	pendingcalls
+	set		timer_start = dateadd(mi,:doNotDisturbMins,timer_start),
+				stat_code = '00',
+				paging_ind = 'P',
+				pre_opened = 'Y',
+				repairman = ''
+	where		call_number = :in_call_number;
+end if
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	MessageBox("insert error", sqlca.sqlerrtext)
+	return false
+end if
+
+commit;
+if sqlca.sqlcode < 0 then
+//	egm_sqlerror(sqlca)
+	return false
+end if
+
+return true
+end function
+

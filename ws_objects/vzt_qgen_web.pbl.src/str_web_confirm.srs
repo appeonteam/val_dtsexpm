@@ -1,0 +1,17 @@
+﻿$PBExportHeader$str_web_confirm.srs
+global type str_web_confirm from structure
+	string		lname
+	string		emailtext
+	string		survey
+	string		last_action
+	string		action
+	string		email
+	boolean		run
+	boolean		prompt
+	boolean		cancel
+	string		subject
+	long		x
+	long		y
+	datawindow		dw_source
+end type
+

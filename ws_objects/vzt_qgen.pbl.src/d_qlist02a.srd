@@ -1,0 +1,51 @@
+﻿$PBExportHeader$d_qlist02a.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=answerid dbname="qgen_answer_choices.answerid" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=questionid dbname="qgen_answer_choices.questionid" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=answertxt dbname="qgen_answer_choices.answertxt" )
+ column=(type=long update=yes updatewhereclause=yes name=score dbname="qgen_answer_choices.score" )
+ column=(type=long update=yes updatewhereclause=yes name=sortorder dbname="qgen_answer_choices.sortorder" )
+ column=(type=long updatewhereclause=yes name=qgen_qtypes_maxchoices dbname="qgen_qtypes.maxchoices" )
+ column=(type=long updatewhereclause=yes name=width dbname="qgen_answer_choices.width" )
+ column=(type=long updatewhereclause=yes name=webwidth dbname="qgen_answer_choices.webwidth" )
+ column=(type=long updatewhereclause=yes name=height dbname="qgen_answer_choices.height" )
+ column=(type=long updatewhereclause=yes name=webheight dbname="qgen_answer_choices.webheight" )
+ retrieve="  SELECT DBA.qgen_answer_choices.answerid,   
+         DBA.qgen_answer_choices.questionid,   
+         DBA.qgen_answer_choices.answertxt,   
+         DBA.qgen_answer_choices.score,   
+         DBA.qgen_answer_choices.sortorder,   
+         DBA.qgen_qtypes.maxchoices  ,
+         DBA.qgen_answer_choices.width,   
+         DBA.qgen_answer_choices.webwidth ,
+			DBA.qgen_answer_choices.height,
+			DBA.qgen_answer_choices.webheight
+
+    FROM DBA.qgen_answer_choices,   
+         DBA.qgen_questions,   
+         DBA.qgen_qtypes,   
+         DBA.qgen_qset,   
+         DBA.qgen_qset_questions  
+   WHERE ( DBA.qgen_qset.qsetid = :an_qsetid ) AND 
+			( DBA.qgen_answer_choices.questionid = DBA.qgen_questions.questionid ) and  
+         ( DBA.qgen_questions.qtypeid = DBA.qgen_qtypes.qtypeid ) and  
+         ( DBA.qgen_qset.qsetid = DBA.qgen_qset_questions.qsetid ) and  
+         ( DBA.qgen_qset_questions.questionid = DBA.qgen_questions.questionid )   
+ORDER BY DBA.qgen_answer_choices.questionid ASC,   
+         DBA.qgen_answer_choices.sortorder ASC   
+" arguments=(("an_qsetid", number)) )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="23" y="4" height="52" width="1605" format="[general]"  name=answertxt edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="0" x="1801" y="4" height="52" width="274" format="[general]"  name=score edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="0" color="0" x="2080" y="4" height="52" width="274" format="[general]"  name=sortorder edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="2482" y="0" height="52" width="288" format="[general]"  name=questionid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="2834" y="0" height="52" width="247" format="[general]"  name=answerid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="3095" y="0" height="56" width="229" format="[General]"  name=width edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="3342" y="0" height="56" width="256" format="[General]"  name=webwidth edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="3625" y="0" height="56" width="197" format="[General]"  name=height edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3845" y="0" height="52" width="251" format="[general]"  name=webheight edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

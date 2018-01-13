@@ -1,0 +1,114 @@
+﻿$PBExportHeader$f_set_toolbar_icons.srf
+global type f_set_toolbar_icons from function_object
+end type
+
+forward prototypes
+global subroutine f_set_toolbar_icons (integer auth_level)
+end prototypes
+
+global subroutine f_set_toolbar_icons (integer auth_level);if auth_level = 8 then
+	m_main.m_data.m_admin1.ToolbarItemVisible=false
+	m_main.m_data.m_categories1.ToolbarItemVisible=false
+	m_main.m_data.m_tables.ToolbarItemVisible=false
+end if
+
+if auth_level = 7 then
+	m_main.m_data.m_admin1.ToolbarItemVisible=false
+	m_main.m_data.m_categories1.ToolbarItemVisible=false
+	m_main.m_data.m_tables.ToolbarItemVisible=false
+	
+	m_main.m_data.m_xm.ToolbarItemVisible=false
+	m_main.m_data.m_micromainfm.ToolbarItemVisible=false
+	m_main.m_data.m_5.ToolbarItemVisible=false //guest
+	m_main.m_data.m_7.ToolbarItemVisible=false //alec!
+	m_main.m_data.m_reports.ToolbarItemVisible=false
+end if
+
+if auth_level = 6 then
+	m_main.m_data.m_admin1.ToolbarItemVisible=false
+	m_main.m_data.m_categories1.ToolbarItemVisible=false
+	m_main.m_data.m_tables.ToolbarItemVisible=false
+	
+	m_main.m_data.m_xm.ToolbarItemVisible=false
+	m_main.m_data.m_micromainfm.ToolbarItemVisible=false
+	m_main.m_data.m_5.ToolbarItemVisible=false  //guest
+	m_main.m_data.m_7.ToolbarItemVisible=false //alec!
+	m_main.m_data.m_reports.ToolbarItemVisible=false
+	
+	m_main.m_data.m_10.ToolbarItemVisible=false //pm explorer
+	m_main.m_data.m_1.ToolbarItemVisible=false //pm entry
+	m_main.m_data.m_commentator.ToolbarItemVisible=false
+	m_main.m_view.m_failedbenchmarkreport.ToolbarItemVisible=false
+	m_main.m_view.m_deptdailyresponsereport.ToolbarItemVisible=false
+	m_main.m_view.m_deptweeklyresponsereport.ToolbarItemVisible=false
+	m_main.m_file.m_print.ToolbarItemVisible=false
+	m_main.m_file.m_printscreen.ToolbarItemVisible=false
+	m_main.m_file.m_printersetup.ToolbarItemVisible=false
+	m_main.m_data.m_complaintmodentryscreen.ToolbarItemVisible=false
+	
+end if
+
+if auth_level = 5 then
+	m_main.m_data.m_admin1.ToolbarItemVisible=false
+	m_main.m_data.m_categories1.ToolbarItemVisible=false
+	m_main.m_data.m_tables.ToolbarItemVisible=false
+	
+	m_main.m_data.m_xm.ToolbarItemVisible=false
+	m_main.m_data.m_micromainfm.ToolbarItemVisible=false
+	m_main.m_data.m_5.ToolbarItemVisible=false  //guest
+	m_main.m_data.m_7.ToolbarItemVisible=false //alec!
+	m_main.m_data.m_reports.ToolbarItemVisible=false
+	
+	m_main.m_data.m_10.ToolbarItemVisible=false //pm explorer
+	m_main.m_data.m_1.ToolbarItemVisible=false //pm entry
+	m_main.m_data.m_commentator.ToolbarItemVisible=false
+	m_main.m_view.m_failedbenchmarkreport.ToolbarItemVisible=false
+	m_main.m_view.m_deptdailyresponsereport.ToolbarItemVisible=false
+	m_main.m_view.m_deptweeklyresponsereport.ToolbarItemVisible=false
+	m_main.m_file.m_print.ToolbarItemVisible=false
+	m_main.m_file.m_printscreen.ToolbarItemVisible=false
+	m_main.m_file.m_printersetup.ToolbarItemVisible=false
+	m_main.m_data.m_complaintmodentryscreen.ToolbarItemVisible=false
+	
+	m_main.m_data.m_pagerupdate.ToolbarItemVisible=false 
+	m_main.m_data.m_telephonebook.ToolbarItemVisible=false 
+	m_main.m_help.m_index.ToolbarItemVisible=false 
+	
+end if
+
+if auth_level = 4 then
+	m_main.m_data.m_admin1.ToolbarItemVisible=false
+	m_main.m_data.m_categories1.ToolbarItemVisible=false
+	m_main.m_data.m_tables.ToolbarItemVisible=false
+	
+	m_main.m_data.m_xm.ToolbarItemVisible=false
+	m_main.m_data.m_micromainfm.ToolbarItemVisible=false
+	m_main.m_data.m_5.ToolbarItemVisible=false  //guest
+	m_main.m_data.m_7.ToolbarItemVisible=false //alec!
+	m_main.m_data.m_reports.ToolbarItemVisible=false
+	
+	m_main.m_data.m_10.ToolbarItemVisible=false //pm explorer
+	m_main.m_data.m_1.ToolbarItemVisible=false //pm entry
+	m_main.m_data.m_commentator.ToolbarItemVisible=false
+	m_main.m_view.m_failedbenchmarkreport.ToolbarItemVisible=false
+	m_main.m_view.m_deptdailyresponsereport.ToolbarItemVisible=false
+	m_main.m_view.m_deptweeklyresponsereport.ToolbarItemVisible=false
+	m_main.m_file.m_print.ToolbarItemVisible=false
+	m_main.m_file.m_printscreen.ToolbarItemVisible=false
+	m_main.m_file.m_printersetup.ToolbarItemVisible=false
+	m_main.m_data.m_complaintmodentryscreen.ToolbarItemVisible=false
+	
+	m_main.m_data.m_pagerupdate.ToolbarItemVisible=false 
+	m_main.m_data.m_telephonebook.ToolbarItemVisible=false 
+	m_main.m_help.m_index.ToolbarItemVisible=false 	
+	
+	m_main.m_view.m_guestcallback.ToolbarItemVisible=false 
+	m_main.m_view.m_guestcalledreport.ToolbarItemVisible=false 
+	m_main.m_data.m_graphics.ToolbarItemVisible=false //Q&A
+	m_main.m_window.m_layer.ToolbarItemVisible=false 
+	m_main.m_window.m_cascade.ToolbarItemVisible=false 
+end if
+
+
+end subroutine
+

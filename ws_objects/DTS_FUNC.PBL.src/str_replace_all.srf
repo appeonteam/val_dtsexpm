@@ -1,0 +1,19 @@
+﻿$PBExportHeader$str_replace_all.srf
+global type str_replace_all from function_object
+end type
+
+forward prototypes
+global function string str_replace_all (string corigstring, string coldstring, string cnewstring)
+end prototypes
+
+global function string str_replace_all (string corigstring, string coldstring, string cnewstring);long nStartPos = 1
+nStartPos = Pos( cOrigString, cOldString, nStartPos )
+
+DO WHILE nStartPos > 0
+	cOrigString = Replace( cOrigString, nStartPos, Len(cOldString), cNewString )
+	nStartPos = Pos(cOrigString, cOldString, nStartPos + Len(cNewString) )
+LOOP
+
+Return cOrigString
+end function
+

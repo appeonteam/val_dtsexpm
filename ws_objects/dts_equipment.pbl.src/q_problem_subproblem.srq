@@ -1,0 +1,2 @@
+﻿$PBExportHeader$q_problem_subproblem.srq
+PBSELECT( VERSION(400) TABLE(NAME="problem" )  TABLE(NAME="subproblem" ) COLUMN(NAME="subproblem.problem_number") COLUMN(NAME="problem.problem_desc") COLUMN(NAME="subproblem.subproblem_number") COLUMN(NAME="subproblem.subproblem_desc") COLUMN(NAME="problem.default_status")    JOIN (LEFT="problem.problem_number"    OP ="="RIGHT="subproblem.problem_number" )) ORDER(NAME="problem.problem_number" ASC=yes )  ORDER(NAME="subproblem.subproblem_number" ASC=yes ) 

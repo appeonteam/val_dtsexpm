@@ -1,0 +1,149 @@
+﻿$PBExportHeader$d_timer_calls.srd
+$PBExportComments$Timer Calls Browse DataWindow
+release 10.5;
+datawindow(units=0 timer_interval=60000 color=134217728 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=80 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=call_number dbname="timercalls.call_number" )
+ column=(type=datetime updatewhereclause=yes name=call_indate dbname="timercalls.call_indate" )
+ column=(type=datetime updatewhereclause=yes name=timer_start dbname="timercalls.timer_start" )
+ column=(type=char(2) updatewhereclause=yes name=codestat_stat_code dbname="timercalls.stat_code" )
+ column=(type=char(30) updatewhereclause=yes name=room dbname="timercalls.room" )
+ column=(type=char(5) updatewhereclause=yes name=problem_number dbname="timercalls.problem_number" )
+ column=(type=char(35) updatewhereclause=yes name=subproblem_desc dbname="subproblem.subproblem_desc" )
+ column=(type=char(15) updatewhereclause=yes name=closed_bydept dbname="timercalls.closed_bydept" )
+ column=(type=char(35) updatewhereclause=yes name=repairman dbname="timercalls.repairman" )
+ column=(type=decimal(0) updatewhereclause=yes name=timer1_start_min dbname="timercalls.timer1_start_min" )
+ column=(type=decimal(0) updatewhereclause=yes name=timer2_start_min dbname="timercalls.timer2_start_min" )
+ column=(type=decimal(6) updatewhereclause=yes name=compute_0012 dbname="compute_0012" )
+ column=(type=decimal(0) updatewhereclause=yes name=timer1_reps dbname="timercalls.timer1_reps" )
+ column=(type=decimal(0) updatewhereclause=yes name=timer2_reps dbname="timercalls.timer2_reps" )
+ column=(type=long updatewhereclause=yes name=timer_level dbname="timercalls.timer_level" )
+ column=(type=char(40) updatewhereclause=yes name=area_area_name dbname="area.area_name" )
+ column=(type=char(35) updatewhereclause=yes name=problem_problem_desc dbname="problem.problem_desc" )
+ column=(type=char(10) updatewhereclause=yes name=callstat_stat_desc dbname="callstat.stat_desc" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_problem_definition dbname="timercalls.problem_definition" )
+ column=(type=decimal(3) updatewhereclause=yes name=durationminutesopen dbname="durationminutesopen" )
+ column=(type=char(1) updatewhereclause=yes name=paging_ind dbname="timercalls.paging_ind" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_guest dbname="timercalls.guest" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_caller_category dbname="timercalls.caller_category" )
+ column=(type=long updatewhereclause=yes name=compute_0024 dbname="compute_0024" )
+ retrieve="  SELECT timercalls.call_number,   
+         timercalls.call_indate,   
+         timercalls.timer_start,   
+         timercalls.stat_code,   
+         timercalls.room,   
+         timercalls.problem_number,   
+         subproblem.subproblem_desc,   
+         timercalls.closed_bydept,   
+         timercalls.repairman,   
+         timercalls.timer1_start_min,   
+         timercalls.timer2_start_min,   
+         (~"timercalls~".~"problem_number~"* 100000 ) + ~"timercalls~".~"subproblem_number~",   
+         timercalls.timer1_reps,   
+         timercalls.timer2_reps,   
+         timercalls.timer_level,   
+         area.area_name,   
+         problem.problem_desc,   
+         callstat.stat_desc,   
+         timercalls.problem_definition,   
+         durationminutesopen  = ( seconds(getdate() ) - seconds(timer_start))/60,   
+         timercalls.paging_ind,   
+         timercalls.guest,
+			timercalls.caller_category,
+			1  
+    FROM timercalls,   
+         subproblem,   
+         area,   
+         problem,   
+         callstat  
+   WHERE ( subproblem.problem_number = timercalls.problem_number ) and  
+         ( subproblem.problem_number = problem.problem_number ) and  
+         ( timercalls.stat_code = callstat.stat_code ) and  
+         ( ( timercalls.problem_number = ~"subproblem~".~"problem_number~" ) AND  
+         ( timercalls.subproblem_number = ~"subproblem~".~"subproblem_number~" ) AND  
+         ( days(timer_start,today(*) ) *86400  + seconds(timer_start,now(*) )  >= 0 ) AND  
+         ( timercalls.room = ~"area~".~"area_number~" ) AND  
+         ( timercalls.problem_number = ~"problem~".~"problem_number~" ) )    AND
+			( timercalls.caller_category <> 'GST' ) 
+
+  UNION
+  SELECT timercalls.call_number,   
+         timercalls.call_indate,   
+         timercalls.timer_start,   
+         timercalls.stat_code,   
+         timercalls.room,   
+         timercalls.problem_number,   
+         subproblem.subproblem_desc,   
+         timercalls.closed_bydept,   
+         timercalls.repairman,   
+         timercalls.timer1_start_min,   
+         timercalls.timer2_start_min,   
+         (~"timercalls~".~"problem_number~"* 100000 ) + ~"timercalls~".~"subproblem_number~",   
+         timercalls.timer1_reps,   
+         timercalls.timer2_reps,   
+         timercalls.timer_level,   
+         area.area_name,   
+         problem.problem_desc,   
+         callstat.stat_desc,   
+         timercalls.problem_definition,   
+         durationminutesopen  = ( seconds(getdate() ) - seconds(timer_start))/60,   
+         timercalls.paging_ind,   
+         timercalls.guest,
+			timercalls.caller_category,
+			0  
+    FROM timercalls,   
+         subproblem,   
+         area,   
+         problem,   
+         callstat  
+   WHERE ( subproblem.problem_number = timercalls.problem_number ) and  
+         ( subproblem.problem_number = problem.problem_number ) and  
+         ( timercalls.stat_code = callstat.stat_code ) and  
+         ( ( timercalls.problem_number = ~"subproblem~".~"problem_number~" ) AND  
+         ( timercalls.subproblem_number = ~"subproblem~".~"subproblem_number~" ) AND  
+         ( days(timer_start,today(*) ) *86400  + seconds(timer_start,now(*) )  >= 0 ) AND  
+         ( timercalls.room = ~"area~".~"area_number~" ) AND  
+         ( timercalls.problem_number = ~"problem~".~"problem_number~" ) )    AND
+			( timercalls.caller_category = 'GST' ) 
+
+
+"  sort="compute_0024 A durationminutesopen D " )
+text(band=header alignment="2" text="Room" border="6" color="16777215" x="9" y="4" height="64" width="325" html.valueishtml="0"  name=room_t  tag="The Room or Area where this call either pertains to or originated from." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Caller Category" border="6" color="16777215" x="352" y="4" height="64" width="475" html.valueishtml="0"  name=t_4 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Guest/Caller" border="6" color="16777215" x="841" y="4" height="64" width="608" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Task" border="6" color="16777215" x="1463" y="4" height="64" width="530" html.valueishtml="0"  name=problem_number_t  tag="The Problem Category assigned to this call." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Sub-Task" border="6" color="16777215" x="1998" y="4" height="64" width="667" html.valueishtml="0"  name=probsubprob_number_t  tag="The Problem Sub-Category assigned to this call." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Duration" border="6" color="16777215" x="2674" y="4" height="64" width="297" html.valueishtml="0"  name=durationminutesopen_t  tag="The Duration in minutes this call has been opened." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Dept" border="6" color="16777215" x="2976" y="4" height="64" width="407" html.valueishtml="0"  name=closed_bydept_t  tag="The Department of the person assigned to and responsible for this call." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Handled By" border="6" color="16777215" x="3401" y="4" height="64" width="654" html.valueishtml="0"  name=repairman_t  tag="The person assigned to and responsible for this call." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Task Definition" border="6" color="16777215" x="4064" y="4" height="64" width="677" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Call Number" border="6" color="16777215" x="4759" y="4" height="64" width="384" html.valueishtml="0"  name=call_number_t  tag="Double-click here tu jump to this Call Record on the Call Data-Entry Screen." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Status" border="6" color="16777215" x="5152" y="4" height="64" width="357" html.valueishtml="0"  name=stat_code_t  tag="The Current Status Code of this call." visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Page" border="6" color="16777215" x="5522" y="4" height="64" width="146" html.valueishtml="0"  name=t_3 visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+column(band=detail id=16 alignment="0" tabsequence=10 border="6" color="0" x="9" y="4" height="64" width="325" format="[general]" html.valueishtml="0"  name=area_area_name visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="6" color="0" x="343" y="4" height="64" width="489" format="[general]" html.valueishtml="0"  name=timercalls_caller_category visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="6" color="0" x="841" y="4" height="64" width="608" format="[general]" html.valueishtml="0"  name=timercalls_guest visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="0" tabsequence=20 border="6" color="0" x="1463" y="4" height="64" width="521" format="[general]" html.valueishtml="0"  name=problem_problem_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=30 border="6" color="0" x="2002" y="0" height="64" width="649" format="[general]" html.valueishtml="0"  name=subproblem_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="1" tabsequence=32766 border="6" color="0" x="2674" y="4" height="64" width="288" format="######.0" html.valueishtml="0"  name=durationminutesopen visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=40 border="6" color="0" x="2976" y="4" height="64" width="411" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=50 border="6" color="0" x="3401" y="4" height="64" width="658" format="[general]" html.valueishtml="0"  name=repairman visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=60 border="6" color="0" x="4064" y="4" height="64" width="677" format="[general]" html.valueishtml="0"  name=timercalls_problem_definition visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=80 border="6" color="0" x="4759" y="4" height="64" width="384" format="[general]" html.valueishtml="0"  name=call_number visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="2" tabsequence=90 border="6" color="0" x="5152" y="4" height="64" width="357" format="[general]" html.valueishtml="0"  name=callstat_stat_desc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="2" tabsequence=32766 border="6" color="0" x="5522" y="4" height="64" width="155" format="[general]" html.valueishtml="0"  name=paging_ind visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=summary id=3 alignment="1" tabsequence=32766 border="1" color="0" x="1134" y="4" height="64" width="677" format="[shortdate] [time]" html.valueishtml="0"  name=timer_start visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

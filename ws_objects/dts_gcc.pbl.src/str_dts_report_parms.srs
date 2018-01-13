@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_dts_report_parms.srs
+global type str_dts_report_parms from structure
+	string		cReportType
+	window		wcaller
+	datawindow		dwsource
+	integer		rc
+	string		s_report_parms1
+	string		s_report_parms2
+end type
+

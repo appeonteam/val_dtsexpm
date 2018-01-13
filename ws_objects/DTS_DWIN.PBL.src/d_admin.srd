@@ -1,0 +1,44 @@
+﻿$PBExportHeader$d_admin.srd
+$PBExportComments$Admin - Password, User & User Rights - Data-Entry
+release 9;
+datawindow(units=2 timer_interval=0 color=134217728 processing=1 HTMLDW=no print.printername="" print.documentname="User Profile - Screen" print.orientation = 2 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=yes print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=229 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=239 color="536870912" )
+table(column=(type=char(8) update=yes updatewhereclause=yes key=yes name=user_password dbname="user.user_password" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=user_lname dbname="user.user_lname" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=user_fname dbname="user.user_fname" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=user_rights dbname="user.user_rights" )
+ column=(type=number update=yes updatewhereclause=yes name=approval_budget dbname="user.approval_budget" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=user_id dbname="user.user_id" )
+ column=(type=datetime update=yes updatewhereclause=yes name=upd_ts dbname="user.upd_ts" )
+ retrieve="  SELECT user_rights.user_password,   
+         user_rights.user_lname,   
+         user_rights.user_fname,   
+         user_rights.user_rights,   
+         user_rights.approval_budget,  
+			user_rights.user_id,
+			user_rights.upd_ts
+    FROM user_rights   
+" update="user_rights" updatewhere=0 updatekeyinplace=yes )
+text(band=header alignment="2" text="v" border="6" color="16777215" x="20" y="20" height="166" width="406" html.valueishtml="0"  name=record_pointer_t  tag="The currently selected row indicator for this data window." visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Password" border="6" color="16777215" x="447" y="20" height="166" width="635" html.valueishtml="0"  name=user_password_t  tag="The Password of the application user for this record.  This field will display as all stars for security." visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="First Name" border="6" color="16777215" x="1104" y="20" height="166" width="802" html.valueishtml="0"  name=user_fname_t  tag="The First Name of the application user for this record." visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="User Id" border="6" color="16777215" x="3937" y="20" height="166" width="1156" html.valueishtml="0"  name=user_id_t  tag="User ID" visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Approval Budget" border="6" color="16777215" x="3937" y="20" height="166" width="1156" html.valueishtml="0"  name=approval_budget_t  tag="Approval Budget" visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Rights" border="6" color="16777215" x="3458" y="20" height="166" width="458" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="Last Name" border="6" color="16777215" x="1927" y="20" height="166" width="760" html.valueishtml="0"  name=user_lname_t  tag="The Last Name of the application user for this record." visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=header alignment="2" text="User Id" border="6" color="16777215" x="2708" y="20" height="166" width="729" html.valueishtml="0"  name=user_id_t_1 visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+compute(band=detail alignment="0" expression="''"border="0" color="12632256" x="20" y="31" height="177" width="406" format="[GENERAL]" html.valueishtml="0"  name=record_pointer  tag="The currently selected row indicator for this data window." visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+column(band=detail id=5 alignment="1" tabsequence=60 border="5" color="0" x="3937" y="31" height="177" width="1156" format="##0" html.valueishtml="0"  name=approval_budget  tag="Approval budget limit" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="5" color="0" x="3458" y="31" height="177" width="458" format="[general]" html.valueishtml="0"  name=user_rights  tag="user rights" visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+column(band=detail id=2 alignment="0" tabsequence=30 border="5" color="0" x="1927" y="31" height="177" width="760" format="[general]" html.valueishtml="0"  name=user_lname  tag="The Last Name of the application user for this record." visible="1" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+column(band=detail id=3 alignment="0" tabsequence=20 border="5" color="0" x="1104" y="31" height="177" width="802" format="[general]" html.valueishtml="0"  name=user_fname  tag="The First Name of the application user for this record." visible="1" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="0" x="447" y="31" height="177" width="635" format="'*****';'*****'" html.valueishtml="0"  name=user_password  tag="The Password of the application user for this record.  This field will display as all stars for security." visible="1" edit.limit=8 edit.case=any edit.autoselect=yes edit.password=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+column(band=detail id=6 alignment="0" tabsequence=40 border="5" color="0" x="2708" y="31" height="166" width="729" format="[general]" html.valueishtml="0"  name=user_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.imemode=0  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="33086168" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,12 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_emailer.pbl" "";
+@end;
+@begin Objects 
+ "vzt_emailer.sra" "vzt_emailer.pbl";
+ "d_directory.srd" "vzt_emailer.pbl";
+ "vzt_emailer.srj" "vzt_emailer.pbl";
+ "m_emailer_main.srm" "vzt_emailer.pbl";
+ "w_vzt_email_schedule.srw" "vzt_emailer.pbl";
+ "w_vzt_error.srw" "vzt_emailer.pbl";
+@end;

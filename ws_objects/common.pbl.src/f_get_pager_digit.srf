@@ -1,0 +1,32 @@
+﻿$PBExportHeader$f_get_pager_digit.srf
+global type f_get_pager_digit from function_object
+end type
+
+forward prototypes
+global function integer f_get_pager_digit (string reqtype, string pagertype)
+end prototypes
+
+global function integer f_get_pager_digit (string reqtype, string pagertype);integer reqDigit
+if reqType = 'MAX' then
+	select pager_id_size_max
+	into	:reqDigit
+	from	Pager_type
+	where	pager_type = :pagerType;
+	if sqlca.sqlcode <> 0 then
+		reqDigit = 10
+	end if
+end if
+
+if reqType = 'MIN' then
+	select pager_id_size_min
+	into	:reqDigit
+	from	Pager_type
+	where	pager_type = :pagerType;
+	if sqlca.sqlcode <> 0 then
+		reqDigit = 3
+	end if
+end if
+
+return reqDigit
+end function
+

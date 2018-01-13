@@ -1,0 +1,21 @@
+﻿$PBExportHeader$f_vzt_he_stripes.srf
+global type f_vzt_he_stripes from function_object
+end type
+
+forward prototypes
+global function long f_vzt_he_stripes (long al_row)
+end prototypes
+
+global function long f_vzt_he_stripes (long al_row);long ll_color
+
+//ll_color = rgb(234,230,220) // grey default
+ll_color = rgb(236,233, 216) // grey default
+
+// 0 1 2 3 4 5 - 3 by 3 
+if  mod( al_row, 5) < 3 then 
+	ll_color = rgb( 120, 220, 120)  
+	
+end if
+return ll_color
+end function
+

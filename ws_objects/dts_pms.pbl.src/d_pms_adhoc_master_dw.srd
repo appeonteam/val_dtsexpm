@@ -1,0 +1,212 @@
+﻿$PBExportHeader$d_pms_adhoc_master_dw.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=56 color="536870912" )
+summary(height=0 color="-1" )
+footer(height=0 color="-1" )
+detail(height=56 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=opencall_call_number dbname="closedcalls.call_number" initial="spaces" )
+ column=(type=datetime updatewhereclause=yes name=opencall_call_indate dbname="closedcalls.call_indate" initial="today" )
+ column=(type=char(2) updatewhereclause=yes name=opencall_stat_code dbname="closedcalls.stat_code" initial="spaces" )
+ column=(type=char(30) updatewhereclause=yes name=opencall_room dbname="closedcalls.room" initial="spaces" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_guest dbname="closedcalls.guest" initial="spaces" )
+ column=(type=char(32766) updatewhereclause=yes name=opencall_problem_definition dbname="closedcalls.problem_definition" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_receiver dbname="closedcalls.receiver" )
+ column=(type=char(3) updatewhereclause=yes name=opencall_shift dbname="closedcalls.shift" )
+ column=(type=char(32766) updatewhereclause=yes name=opencall_resolution dbname="closedcalls.resolution" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_repairman dbname="closedcalls.repairman" )
+ column=(type=datetime updatewhereclause=yes name=opencall_call_outdate dbname="closedcalls.call_outdate" initial="today" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_closed_by dbname="closedcalls.closed_by" )
+ column=(type=char(15) updatewhereclause=yes name=opencall_closed_bydept dbname="closedcalls.closed_bydept" )
+ column=(type=datetime updatewhereclause=yes name=opencall_timer_start dbname="closedcalls.timer_start" )
+ column=(type=char(35) updatewhereclause=yes name=opencall_caller_category dbname="closedcalls.caller_category" )
+ column=(type=char(5) updatewhereclause=yes name=opencall_problem_number dbname="closedcalls.problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=opencall_subproblem_number dbname="closedcalls.subproblem_number" )
+ column=(type=decimal(3) updatewhereclause=yes name=compute_0018 dbname="compute_0018" )
+ column=(type=char(35) updatewhereclause=yes name=problem_problem_desc dbname="problem.problem_desc" )
+ column=(type=char(35) updatewhereclause=yes name=subproblem_subproblem_desc dbname="subproblem.subproblem_desc" )
+ column=(type=decimal(6) updatewhereclause=yes name=compute_0021 dbname="compute_0021" )
+ column=(type=decimal(0) updatewhereclause=yes name=subproblem_timer1_start_min dbname="subproblem.timer1_start_min" )
+ column=(type=decimal(0) updatewhereclause=yes name=subproblem_timer2_start_min dbname="subproblem.timer2_start_min" )
+ column=(type=decimal(3) updatewhereclause=yes name=compute_0024 dbname="compute_0024" )
+ column=(type=char(10) updatewhereclause=yes name=subproblem_retcode dbname="subproblem.retcode" )
+ column=(type=number updatewhereclause=yes name=closedcalls_guest_id dbname="closedcalls.guest_id" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(2) updatewhereclause=yes name=guest_middle_init dbname="guest.middle_init" )
+ column=(type=char(20) updatewhereclause=yes name=guest_title dbname="guest.title" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr1 dbname="guest.addr1" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr2 dbname="guest.addr2" )
+ column=(type=char(20) updatewhereclause=yes name=guest_city dbname="guest.city" )
+ column=(type=char(2) updatewhereclause=yes name=guest_state dbname="guest.state" )
+ column=(type=char(10) updatewhereclause=yes name=guest_zip dbname="guest.zip" )
+ column=(type=char(20) updatewhereclause=yes name=guest_country dbname="guest.country" )
+ column=(type=char(100) updatewhereclause=yes name=guest_comp_name dbname="guest.comp_name" )
+ column=(type=char(18) updatewhereclause=yes name=guest_phone dbname="guest.phone" )
+ column=(type=char(4) updatewhereclause=yes name=guest_accom_code dbname="guest.accom_code" )
+ column=(type=char(20) updatewhereclause=yes name=guest_block_code dbname="guest.block_code" )
+ column=(type=char(30) updatewhereclause=yes name=guest_grp_mstr_name dbname="guest.grp_mstr_name" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_1 dbname="guest.sr_code_1" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_2 dbname="guest.sr_code_2" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_3 dbname="guest.sr_code_3" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_4 dbname="guest.sr_code_4" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_5 dbname="guest.sr_code_5" )
+ column=(type=char(20) updatewhereclause=yes name=guest_pg_id dbname="guest.pg_id" )
+ column=(type=char(150) updatewhereclause=yes name=guest_email dbname="guest.email" )
+ column=(type=char(50) updatewhereclause=yes name=retcodes_descr dbname="retcodes.descr" )
+ retrieve="  SELECT ~"closedcalls~".~"call_number~",   
+         ~"closedcalls~".~"call_indate~",   
+         ~"closedcalls~".~"stat_code~",   
+         ~"closedcalls~".~"room~",   
+         ~"closedcalls~".~"guest~",   
+         ~"closedcalls~".~"problem_definition~",   
+         ~"closedcalls~".~"receiver~",   
+         ~"closedcalls~".~"shift~",   
+         ~"closedcalls~".~"resolution~",   
+         ~"closedcalls~".~"repairman~",   
+         ~"closedcalls~".~"call_outdate~",   
+         ~"closedcalls~".~"closed_by~",   
+         ~"closedcalls~".~"closed_bydept~",   
+         ~"closedcalls~".~"timer_start~",   
+         ~"closedcalls~".~"caller_category~",   
+         ~"closedcalls~".~"problem_number~",   
+         ~"closedcalls~".~"subproblem_number~",   
+         (((days(call_indate,call_outdate) * 86400) + seconds(call_indate,call_outdate))/60),   
+         ~"problem~".~"problem_desc~",   
+         ~"subproblem~".~"subproblem_desc~",   
+         (~"closedcalls~".~"problem_number~" * 10000) + ~"closedcalls~".~"subproblem_number~",   
+         ~"subproblem~".~"timer1_start_min~",   
+         ~"subproblem~".~"timer2_start_min~",   
+         seconds(seconds(timer_start, -~"subproblem~".~"timer1_start_min~" * 60), call_outdate) / 60 ,   
+         ~"subproblem~".~"retcode~",   
+         ~"closedcalls~".~"guest_id~",   
+         ~"guest~".~"last_name~",   
+         ~"guest~".~"first_name~",   
+         ~"guest~".~"middle_init~",   
+         ~"guest~".~"title~",   
+         ~"guest~".~"addr1~",   
+         ~"guest~".~"addr2~",   
+         ~"guest~".~"city~",   
+         ~"guest~".~"state~",   
+         ~"guest~".~"zip~",   
+         ~"guest~".~"country~",   
+         ~"guest~".~"comp_name~",   
+         ~"guest~".~"phone~",   
+         ~"guest~".~"accom_code~",   
+         ~"guest~".~"block_code~",   
+         ~"guest~".~"grp_mstr_name~",   
+         ~"guest~".~"sr_code_1~",   
+         ~"guest~".~"sr_code_2~",   
+         ~"guest~".~"sr_code_3~",   
+         ~"guest~".~"sr_code_4~",   
+         ~"guest~".~"sr_code_5~",   
+         ~"guest~".~"pg_id~",   
+         ~"guest~".~"email~",   
+         ~"retcodes~".~"descr~"  
+    FROM ~"closedcalls~",   
+			~"guest~",      
+         ~"problem~",   
+         ~"subproblem~",   
+         ~"retcodes~"  
+   WHERE ( ~"closedcalls~".~"problem_number~" = ~"problem~".~"problem_number~" ) and  
+         ( ~"closedcalls~".~"subproblem_number~" = ~"subproblem~".~"subproblem_number~" ) and  
+         ( ~"problem~".~"problem_number~" = ~"subproblem~".~"problem_number~" ) and  
+         ( ~"subproblem~".~"retcode~" = ~"retcodes~".~"code~" )   and
+			(~"closedcalls~".~"guest_id~" *= ~"guest~".~"account~")
+ORDER BY ~"closedcalls~".~"call_indate~" DESC   
+"  sort="opencall_call_indate A " )
+text(band=header alignment="2" text="Call Number"border="0" color="0" x="9" y="8" height="48" width="325"  name=opencall_call_number_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Indate"border="0" color="0" x="343" y="8" height="48" width="384"  name=opencall_call_indate_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Stat Code"border="0" color="0" x="736" y="8" height="48" width="265"  name=opencall_stat_code_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Room"border="0" color="0" x="1010" y="8" height="48" width="183"  name=opencall_room_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Guest"border="0" color="0" x="1202" y="8" height="48" width="457"  name=opencall_guest_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Problem Definition"border="0" color="0" x="1669" y="8" height="48" width="174"  name=opencall_problem_definition_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Receiver"border="0" color="0" x="1851" y="8" height="48" width="434"  name=opencall_receiver_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Shift"border="0" color="0" x="2295" y="8" height="48" width="119"  name=opencall_shift_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Resolution"border="0" color="0" x="2423" y="8" height="48" width="279"  name=opencall_resolution_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Repairman"border="0" color="0" x="2711" y="8" height="48" width="416"  name=opencall_repairman_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Call Outdate"border="0" color="0" x="3136" y="8" height="48" width="283"  name=opencall_call_outdate_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Closed By"border="0" color="0" x="3429" y="8" height="48" width="471"  name=opencall_closed_by_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Closed Bydept"border="0" color="0" x="3909" y="8" height="48" width="343"  name=opencall_closed_bydept_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Timer Start"border="0" color="0" x="4261" y="8" height="48" width="389"  name=opencall_timer_start_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Caller Category"border="0" color="0" x="4658" y="8" height="48" width="448"  name=opencall_caller_category_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Problem Number"border="0" color="0" x="5115" y="8" height="48" width="375"  name=opencall_problem_number_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Subproblem Number"border="0" color="0" x="5499" y="8" height="48" width="320"  name=opencall_subproblem_number_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="((days(call Indate,call Outda"border="0" color="0" x="5829" y="8" height="48" width="302"  name=compute_0018_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Problem Desc"border="0" color="0" x="6139" y="8" height="48" width="439"  name=problem_problem_desc_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Subproblem Desc"border="0" color="0" x="6587" y="8" height="48" width="466"  name=subproblem_subproblem_desc_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="(closedcalls.problem Number*1000"border="0" color="0" x="7063" y="8" height="48" width="841"  name=compute_0021_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Compute 0024"border="0" color="0" x="7913" y="0" height="52" width="357"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Subproblem Retcode"border="0" color="0" x="8279" y="0" height="52" width="466"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Closedcalls Guest Id"border="0" color="0" x="8754" y="0" height="52" width="457"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Last Name"border="0" color="0" x="9221" y="0" height="52" width="411"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest First Name"border="0" color="0" x="9641" y="0" height="52" width="430"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Middle Init"border="0" color="0" x="10080" y="0" height="52" width="50"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Title"border="0" color="0" x="10139" y="0" height="52" width="489"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Addr1"border="0" color="0" x="10638" y="0" height="52" width="613"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Addr2"border="0" color="0" x="11259" y="0" height="52" width="517"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest City"border="0" color="0" x="11785" y="0" height="52" width="393"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest State"border="0" color="0" x="12187" y="0" height="52" width="78"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Zip"border="0" color="0" x="12274" y="0" height="52" width="215"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Country"border="0" color="0" x="12498" y="0" height="52" width="325"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Comp Name"border="0" color="0" x="12832" y="0" height="52" width="946"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Phone"border="0" color="0" x="13787" y="0" height="52" width="302"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Accom Code"border="0" color="0" x="14098" y="0" height="52" width="110"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Block Code"border="0" color="0" x="14217" y="0" height="52" width="398"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Grp Mstr Name"border="0" color="0" x="14624" y="0" height="52" width="503"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Sr Code 1"border="0" color="0" x="15136" y="0" height="52" width="110"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Sr Code 2"border="0" color="0" x="15255" y="0" height="52" width="110"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Sr Code 3"border="0" color="0" x="15374" y="0" height="52" width="110"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Sr Code 4"border="0" color="0" x="15493" y="0" height="52" width="110"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Sr Code 5"border="0" color="0" x="15611" y="0" height="52" width="110"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Pg Id"border="0" color="0" x="15730" y="0" height="52" width="274"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Guest Email"border="0" color="0" x="16014" y="0" height="52" width="613"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Retcodes Descr"border="0" color="0" x="16635" y="0" height="52" width="434"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="9" y="0" height="52" width="325" format="[general]"  name=opencall_call_number edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="343" y="0" height="52" width="384" format="[shortdate] [time]"  name=opencall_call_indate edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="736" y="0" height="52" width="265" format="[general]"  name=opencall_stat_code edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1010" y="0" height="52" width="183" format="[general]"  name=opencall_room edit.limit=30 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1202" y="0" height="52" width="457" format="[general]"  name=opencall_guest edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1669" y="0" height="52" width="174" format="[general]"  name=opencall_problem_definition edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1851" y="0" height="52" width="434" format="[general]"  name=opencall_receiver edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2295" y="0" height="52" width="119" format="[general]"  name=opencall_shift edit.limit=3 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2423" y="0" height="52" width="279" format="[general]"  name=opencall_resolution edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="2711" y="0" height="52" width="416" format="[general]"  name=opencall_repairman edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3136" y="0" height="52" width="283" format="[shortdate] [time]"  name=opencall_call_outdate edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3429" y="0" height="52" width="471" format="[general]"  name=opencall_closed_by edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="3909" y="0" height="52" width="343" format="[general]"  name=opencall_closed_bydept edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="4261" y="0" height="52" width="389" format="[shortdate] [time]"  name=opencall_timer_start edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="4658" y="0" height="52" width="448" format="[general]"  name=opencall_caller_category edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="5115" y="0" height="52" width="375" format="[general]"  name=opencall_problem_number edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="5499" y="0" height="52" width="315" format="[general]"  name=opencall_subproblem_number edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="0" color="0" x="5829" y="0" height="64" width="302" format="[general]"  name=compute_0018 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="6139" y="0" height="44" width="439" format="[general]"  name=problem_problem_desc edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="6587" y="0" height="52" width="466" format="[general]"  name=subproblem_subproblem_desc edit.limit=35 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="1" tabsequence=32766 border="0" color="0" x="7063" y="0" height="64" width="841" format="[general]"  name=compute_0021 edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="7913" y="0" height="44" width="357" format="[general]"  name=compute_0024 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=25 alignment="0" tabsequence=32766 border="0" color="0" x="8279" y="0" height="52" width="466" format="[general]"  name=subproblem_retcode edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="0" tabsequence=32766 border="0" color="0" x="8754" y="0" height="52" width="457" format="[general]"  name=closedcalls_guest_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=27 alignment="0" tabsequence=32766 border="0" color="0" x="9221" y="0" height="52" width="411" format="[general]"  name=guest_last_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=32766 border="0" color="0" x="9641" y="0" height="52" width="430" format="[general]"  name=guest_first_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=29 alignment="0" tabsequence=32766 border="0" color="0" x="10080" y="0" height="52" width="50" format="[general]"  name=guest_middle_init edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=30 alignment="0" tabsequence=32766 border="0" color="0" x="10139" y="0" height="52" width="489" format="[general]"  name=guest_title edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=31 alignment="0" tabsequence=32766 border="0" color="0" x="10638" y="0" height="52" width="613" format="[general]"  name=guest_addr1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=32 alignment="0" tabsequence=32766 border="0" color="0" x="11259" y="0" height="52" width="517" format="[general]"  name=guest_addr2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=33 alignment="0" tabsequence=32766 border="0" color="0" x="11785" y="0" height="52" width="393" format="[general]"  name=guest_city edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=34 alignment="0" tabsequence=32766 border="0" color="0" x="12187" y="0" height="52" width="78" format="[general]"  name=guest_state edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=35 alignment="0" tabsequence=32766 border="0" color="0" x="12274" y="0" height="52" width="215" format="[general]"  name=guest_zip edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=36 alignment="0" tabsequence=32766 border="0" color="0" x="12498" y="0" height="52" width="325" format="[general]"  name=guest_country edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=37 alignment="0" tabsequence=32766 border="0" color="0" x="12832" y="0" height="52" width="946" format="[general]"  name=guest_comp_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=38 alignment="0" tabsequence=32766 border="0" color="0" x="13787" y="0" height="52" width="302" format="[general]"  name=guest_phone edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=39 alignment="0" tabsequence=32766 border="0" color="0" x="14098" y="0" height="52" width="110" format="[general]"  name=guest_accom_code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=40 alignment="0" tabsequence=32766 border="0" color="0" x="14217" y="0" height="52" width="398" format="[general]"  name=guest_block_code edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=41 alignment="0" tabsequence=32766 border="0" color="0" x="14624" y="0" height="52" width="503" format="[general]"  name=guest_grp_mstr_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=42 alignment="0" tabsequence=32766 border="0" color="0" x="15136" y="0" height="52" width="110" format="[general]"  name=guest_sr_code_1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=43 alignment="0" tabsequence=32766 border="0" color="0" x="15255" y="0" height="52" width="110" format="[general]"  name=guest_sr_code_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=44 alignment="0" tabsequence=32766 border="0" color="0" x="15374" y="0" height="52" width="110" format="[general]"  name=guest_sr_code_3 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=45 alignment="0" tabsequence=32766 border="0" color="0" x="15493" y="0" height="52" width="110" format="[general]"  name=guest_sr_code_4 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=46 alignment="0" tabsequence=32766 border="0" color="0" x="15611" y="0" height="52" width="110" format="[general]"  name=guest_sr_code_5 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=47 alignment="0" tabsequence=32766 border="0" color="0" x="15730" y="0" height="52" width="274" format="[general]"  name=guest_pg_id edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=48 alignment="0" tabsequence=32766 border="0" color="0" x="16014" y="0" height="52" width="613" format="[general]"  name=guest_email edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=49 alignment="0" tabsequence=32766 border="0" color="0" x="16635" y="0" height="52" width="430" format="[general]"  name=retcodes_descr edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

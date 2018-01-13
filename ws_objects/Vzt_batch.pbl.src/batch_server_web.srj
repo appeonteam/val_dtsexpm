@@ -1,0 +1,57 @@
+﻿$PBExportHeader$batch_server_web.srj
+EXE:c:\data\vztech\metromedia\he9\commentator\vztbserv.exe,,0,1,0
+CMP:0,0,0,2,0,0
+COM:Metromedia Software Inc.
+DES:Batch Report Server Web enabled
+CPY:VZTECH Systems Inc.2001-2005
+PRD:Batch Report Server 
+PVS:3.2
+PVN:1,0,0,1
+FVS:1,0,0,1
+FVN:1,0,0,1
+PBD:C:\data\vztech\Metromedia\HE9\commentator\Vzt_batch.pbl,,1
+PBD:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,,1
+PBD:C:\data\vztech\Metromedia\HE9\commentator\vzt_qgen_web.pbl,,1
+PBD:C:\data\vztech\Metromedia\HE9\commentator\vzt_qgen.pbl,,1
+PBD:C:\data\vztech\Metromedia\HE9\commentator\vzt_rpt.pbl,,1
+PBD:C:\data\vztech\Metromedia\HE9\VZT_DISTRIBUTION.PBL,,1
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_end_tran,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_clipboard,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_tran,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_base,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_parse,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_error,u
+OBJ:C:\data\vztech\Metromedia\HE9\commentator\Vzt_batch.pbl,vzt_batch_server_web,a
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_wait,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,uo_vzt_mail,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_random_string,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,st_lookup_ret,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_base_error,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,d_vzt_error,d
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_replace,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,str_reporter_reportparms,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,m_vzt_master,m
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_is_column_null,f
+OBJ:C:\data\vztech\Metromedia\HE9\commentator\Vzt_batch.pbl,w_vzt_noparms,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,uo_vzt_dwbase,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_language,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_isdebug,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_nvl,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,nvo_vzt_appman,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_dw_field_sort,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,u_vzt_ddcal_inline,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_selectrow,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,str_response,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_sysdatet,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_get_string_value_ds,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,n_cst_vzt_security,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_end_tran0,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,nvo_trace,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,w_vzt_base_response,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,u_vzt_ddcal,u
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_dfilter,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,st_lookup_parm,s
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_anymodified,f
+OBJ:C:\data\vztech\Metromedia\HE9\commentator\Vzt_batch.pbl,w_vzt_error,w
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_mail_error_to_string,f
+OBJ:C:\data\vztech\Metromedia\HE9\VZT_BASE.PBL,f_vzt_writefile_from_blob,f

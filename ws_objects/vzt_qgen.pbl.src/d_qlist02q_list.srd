@@ -1,0 +1,88 @@
+﻿$PBExportHeader$d_qlist02q_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=60 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=52 color="536870912" )
+table(column=(type=char(200) updatewhereclause=yes name=qgen_questions_questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=char(3) updatewhereclause=yes name=qgen_questions_qtypeid dbname="qgen_questions.qtypeid" )
+ column=(type=decimal(0) updatewhereclause=yes key=yes identity=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=long updatewhereclause=yes name=width dbname="qgen_questions.width" )
+ column=(type=long updatewhereclause=yes name=ansperline dbname="qgen_questions.ansperline" )
+ column=(type=char(20) updatewhereclause=yes name=ddlookuptype dbname="qgen_questions.ddlookuptype" )
+ column=(type=char(100) updatewhereclause=yes name=ddcodecol dbname="qgen_questions.ddcodecol" )
+ column=(type=char(100) updatewhereclause=yes name=dddispcol dbname="qgen_questions.dddispcol" )
+ column=(type=char(100) updatewhereclause=yes name=ddlookup dbname="qgen_questions.ddlookup" )
+ column=(type=char(10) updatewhereclause=yes name=ddcoltype dbname="qgen_questions.ddcodecoltype" )
+ column=(type=long updatewhereclause=yes name=repeat dbname="qgen_questions.repeat" )
+ column=(type=long updatewhereclause=yes name=height dbname="qgen_questions.height" )
+ column=(type=long updatewhereclause=yes name=weight dbname="qgen_questions.weight" )
+ column=(type=char(50) updatewhereclause=yes name=fontface dbname="qgen_questions.fontface" )
+ column=(type=long updatewhereclause=yes name=fontsize dbname="qgen_questions.fontsize" )
+ column=(type=char(1) updatewhereclause=yes name=bold dbname="qgen_questions.bold" )
+ column=(type=char(1) updatewhereclause=yes name=italic dbname="qgen_questions.italic" )
+ column=(type=char(1) updatewhereclause=yes name=under dbname="qgen_questions.under" )
+ column=(type=number updatewhereclause=yes name=fgcolor dbname="qgen_questions.fgcolor" )
+ column=(type=number updatewhereclause=yes name=bgcolor dbname="qgen_questions.bgcolor" )
+ column=(type=char(2) updatewhereclause=yes name=defgraphtype dbname="qgen_questions.defgraphtype" )
+ column=(type=char(100) updatewhereclause=yes name=descr dbname="qgen_questions.descr" )
+ column=(type=char(1) updatewhereclause=yes name=scorable dbname="qgen_questions.scorable" )
+ column=(type=long updatewhereclause=yes name=sortorder dbname="qgen_questions.sortorder" )
+ column=(type=char(100) updatewhereclause=yes name=weblookup dbname="qgen_questions.weblookup" )
+ column=(type=char(1) updatewhereclause=yes name=same_row dbname="qgen_questions.same_row" )
+ column=(type=char(5000) updatewhereclause=yes name=lookupsql dbname="qgen_questions.lookupsql" )
+ column=(type=char(20) updatewhereclause=yes name=corp_id dbname="qgen_questions.corp_id" )
+ retrieve="  SELECT DBA.qgen_questions.questiontxt,   
+         DBA.qgen_questions.qtypeid,   
+         DBA.qgen_questions.questionid,   
+         DBA.qgen_questions.width,   
+         DBA.qgen_questions.ansperline,   
+         DBA.qgen_questions.ddlookuptype,   
+         DBA.qgen_questions.ddcodecol,   
+         DBA.qgen_questions.dddispcol,   
+         DBA.qgen_questions.ddlookup,   
+         DBA.qgen_questions.ddcodecoltype,   
+         DBA.qgen_questions.repeat,   
+         DBA.qgen_questions.height,   
+         DBA.qgen_questions.weight,   
+         DBA.qgen_questions.fontface,   
+         DBA.qgen_questions.fontsize,   
+         DBA.qgen_questions.bold,   
+         DBA.qgen_questions.italic,   
+         DBA.qgen_questions.under,   
+         DBA.qgen_questions.fgcolor,   
+         DBA.qgen_questions.bgcolor  ,
+         DBA.qgen_questions.defgraphtype,
+         DBA.qgen_questions.descr,
+         DBA.qgen_questions.scorable  ,
+         DBA.qgen_questions.sortorder,
+         DBA.qgen_questions.weblookup,
+			DBA.qgen_questions.same_row,
+			DBA.qgen_questions.lookupsql,
+			DBA.qgen_questions.corp_id
+
+    FROM DBA.qgen_questions  
+ORDER BY DBA.qgen_questions.questionid ASC   
+" update="DBA.qgen_questions" updatewhere=0 updatekeyinplace=no )
+text(band=header alignment="2" text="ID" border="0" color="16777215" x="128" y="0" height="60" width="64" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Question" border="0" color="16777215" x="215" y="0" height="60" width="265" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Type" border="0" color="16777215" x="1687" y="0" height="60" width="146" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Width" border="0" color="16777215" x="1856" y="0" height="60" width="174" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Columns" border="0" color="16777215" x="2048" y="0" height="60" width="261" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Scorable" border="0" color="16777215" x="2894" y="4" height="52" width="261" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="18" y="0" height="48" width="160" format="[general]" html.valueishtml="0"  name=questionid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="215" y="0" height="52" width="1463" format="[general]" html.valueishtml="0"  name=qgen_questions_questiontxt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="1691" y="0" height="52" width="142" format="[general]" html.valueishtml="0"  name=qgen_questions_qtypeid visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1861" y="0" height="52" width="160" format="[general]" html.valueishtml="0"  name=width visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2043" y="0" height="52" width="270" format="[general]" html.valueishtml="0"  name=ansperline visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="2944" y="0" height="52" width="50" format="[general]" html.valueishtml="0"  name=scorable visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="3067" y="0" height="52" width="224" format="[General]" html.valueishtml="0"  name=sortorder visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="8388608" x="503" y="0" height="60" width="1120" format="[general]" html.valueishtml="0"  name=descr visible="1~tif ( IsNUll( qgen_questions_questiontxt ) or  trim(qgen_questions_questiontxt) ='', 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=28 alignment="0" tabsequence=0 border="0" color="0" x="3351" y="0" height="56" width="375" html.valueishtml="0"  name=corp_id visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Corp ID" border="0" color="16777215" x="3360" y="4" height="56" width="261" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

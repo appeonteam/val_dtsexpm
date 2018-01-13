@@ -1,0 +1,124 @@
+﻿$PBExportHeader$f_find_pager_id_wo_declined.srf
+global type f_find_pager_id_wo_declined from function_object
+end type
+
+forward prototypes
+global function boolean f_find_pager_id_wo_declined (string dept, ref string employee, ref string employeeid, ref string pagerid, string roomnum, string dclempid[], datetime timerstart)
+end prototypes
+
+global function boolean f_find_pager_id_wo_declined (string dept, ref string employee, ref string employeeid, ref string pagerid, string roomnum, string dclempid[], datetime timerstart);string last_stack
+string pagers[], stack[], emp[], empNum[]
+string pager_to_assign, allzone, zonegrp, zonecode
+boolean no_stack
+int i, j, l, m
+no_stack = false	
+allzone='Z0'
+
+if f_is_a_quickcall(dept,timerstart) then //force dept to QUICKCALL
+	dept='QUICKCALL'
+end if
+	
+
+select unit_type, zone_group_code
+into	:zonecode, :zonegrp
+from	area
+where	area_number = :roomnum;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return false
+end if
+/*
+select pagers.stack_seq
+into	:last_stack
+from pager_emp, pagers, instemp
+where (pager_emp.emp_id = instemp.employee_number) and  
+		(pager_emp.pager_id = pagers.pager_id) and
+		instemp.dept = :dept and
+		(pagers.zone_code = :zonecode or pagers.zone_code = :zonegrp or pagers.zone_code = :allzone) and // pager with zone 99 qualify for all area 
+		pager_emp.pager_id = (select pager_id from pageassignment where
+		datetime(pageassignment.time_assigned) = 
+		(select max(datetime(time_assigned)) from pageassignment, pager_emp
+			where pageassignment.pager_id = pager_emp.pager_id and dept_assigned = :dept));
+*/
+/* the following use dept from instemp table instead of dept from pageassignment for quickcall changes */
+select  min(c.stack_seq) // to prevent multiple call with exact time_assigned
+into	  :last_stack
+from    pageassignment a, pager_emp b, pagers c, instemp d
+where   time_assigned=(select max(time_assigned) 
+            from pageassignment, instemp where dept=:dept and emp_id=employee_number ) 
+and     a.emp_id=b.emp_id 
+and     b.pager_id=c.pager_id
+and     (c.zone_code = :zonecode or c.zone_code = :zonegrp  or c.zone_code = :allzone)
+and     b.emp_id=d.employee_number
+and     d.dept=:dept;
+if sqlca.sqlcode = 100 then
+	no_stack = true
+//	 employee = ''
+//	 pagerid = ''
+//	 return false
+end if		
+		
+if sqlca.sqlcode < 0 then
+//	MessageBox("error",sqlca.sqlerrtext)
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+
+ DECLARE pager CURSOR FOR  
+ select pager_emp.pager_id, stack_seq, employee,  employee_number
+	from pager_emp, pagers, instemp 
+	where pager_emp.emp_id = employee_number and
+			pager_emp.pager_id = pagers.pager_id and
+			active_ind = 'Y' and
+			instemp.dept = :dept and
+			(pagers.zone_code = :zonecode or pagers.zone_code = :zonegrp or pagers.zone_code = :allzone)  // pager with zone 99 qualify for all area 
+	order by stack_seq;
+
+ OPEN pager;
+ i = 1
+ FETCH pager INTO :pagers[i], :stack[i], :emp[i], :empNum[i];
+ if SQLCA.sqlcode = 0 then
+ 		if not f_check_declined_emp(dclempid[],empNum[i]) then
+			i = 0 //skip pager if emp found in declined array 
+		end if
+	end if
+ DO WHILE SQLCA.sqlcode = 0
+	i++
+	FETCH pager INTO :pagers[i], :stack[i], :emp[i], :empNum[i];
+	if SQLCA.sqlcode = 0 then
+		if not f_check_declined_emp(dclempid[],empNum[i]) then
+			i = i - 1 //skip pager if emp found in declined array 
+		end if
+	end if			
+ LOOP
+// i= i -1;
+ close pager;
+
+// MessageBox("max",string(i -1))	
+ if (i - 1 = 0) then  // no pager found
+	 employee = ''
+	 pagerid = ''
+	 return false
+ end if
+
+ if (stack[i -1] = last_stack or ((i - 1) = 1) or no_stack) then
+	 pagerid = pagers[1]
+	 employee = emp[1]
+	 employeeid = empNum[1]
+ else
+ 	j = 1
+	do while j <= i
+		if stack[j] = last_stack then
+			pagerid = pagers[j+1]
+			employee = emp[j+1]
+			employeeid = empNum[j+1]
+			j = i
+		end if
+		j++
+ 	loop
+ end if
+ 
+ return true
+end function
+

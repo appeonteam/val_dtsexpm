@@ -1,0 +1,14 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_websetup.pbl" "";
+@end;
+@begin Objects 
+ "d_vzt_properties_list.srd" "vzt_websetup.pbl";
+ "d_vzt_sysoptions_edit.srd" "vzt_websetup.pbl";
+ "d_web_style_list.srd" "vzt_websetup.pbl";
+ "d_web_style_list_old.srd" "vzt_websetup.pbl";
+ "vzt_web_setup.srj" "vzt_websetup.pbl";
+ "vzt_web_setup_http.srj" "vzt_websetup.pbl";
+ "m_gcc_main.srm" "vzt_websetup.pbl";
+ "w_vzt_web_style_edit.srw" "vzt_websetup.pbl";
+@end;

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_date_string.srf
+global type f_date_string from function_object
+end type
+
+forward prototypes
+global function string f_date_string (datetime adt_date)
+end prototypes
+
+global function string f_date_string (datetime adt_date);string ls_date, ls_mask
+
+ls_mask = 'mm/dd/yyyy'		// default US
+ // f_sysdate() 
+If IsValid( gnv_appman) then 
+	if f_nvl(gnv_appman.is_datemask ,'') <> '' then ls_mask = gnv_appman.is_datemask
+END IF
+ls_date = string( adt_date,ls_mask)
+return ls_date
+end function
+

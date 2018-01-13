@@ -1,0 +1,268 @@
+﻿$PBExportHeader$d_vz_rpt_approved_calls.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=392 color="536870912" )
+summary(height=48 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=timercalls_call_number dbname="timercalls.call_number" dbalias=".call_number" )
+ column=(type=datetime updatewhereclause=yes name=timercalls_call_indate dbname="timercalls.call_indate" dbalias=".call_indate" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_stat_code dbname="timercalls.stat_code" dbalias=".stat_code" )
+ column=(type=char(30) updatewhereclause=yes name=timercalls_room dbname="timercalls.room" dbalias=".room" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_guest dbname="timercalls.guest" dbalias=".guest" )
+ column=(type=char(30) updatewhereclause=yes name=timercalls_caller dbname="timercalls.caller" dbalias=".caller" )
+ column=(type=char(25) updatewhereclause=yes name=timercalls_problem dbname="timercalls.problem" dbalias=".problem" )
+ column=(type=char(25) updatewhereclause=yes name=timercalls_subproblem dbname="timercalls.subproblem" dbalias=".subproblem" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_problem_definition dbname="timercalls.problem_definition" dbalias=".problem_definition" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_complaint dbname="timercalls.complaint" dbalias=".complaint" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_receiver dbname="timercalls.receiver" dbalias=".receiver" )
+ column=(type=char(3) updatewhereclause=yes name=timercalls_shift dbname="timercalls.shift" dbalias=".shift" )
+ column=(type=char(32766) updatewhereclause=no name=timercalls_resolution dbname="timercalls.resolution" dbalias=".resolution" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_repairman dbname="timercalls.repairman" dbalias=".repairman" )
+ column=(type=datetime updatewhereclause=yes name=timercalls_call_outdate dbname="timercalls.call_outdate" dbalias=".call_outdate" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_closed_by dbname="timercalls.closed_by" dbalias=".closed_by" )
+ column=(type=char(15) updatewhereclause=yes name=timercalls_closed_bydept dbname="timercalls.closed_bydept" dbalias=".closed_bydept" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_timer_number dbname="timercalls.timer_number" dbalias=".timer_number" )
+ column=(type=datetime updatewhereclause=yes name=timercalls_timer_start dbname="timercalls.timer_start" dbalias=".timer_start" )
+ column=(type=char(35) updatewhereclause=yes name=timercalls_caller_category dbname="timercalls.caller_category" dbalias=".caller_category" )
+ column=(type=char(5) updatewhereclause=yes name=timercalls_problem_number dbname="timercalls.problem_number" dbalias=".problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=timercalls_subproblem_number dbname="timercalls.subproblem_number" dbalias=".subproblem_number" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer1_start_min dbname="timercalls.timer1_start_min" dbalias=".timer1_start_min" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer2_start_min dbname="timercalls.timer2_start_min" dbalias=".timer2_start_min" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer1_reps dbname="timercalls.timer1_reps" dbalias=".timer1_reps" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_timer2_reps dbname="timercalls.timer2_reps" dbalias=".timer2_reps" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_auth_take_off_timer dbname="timercalls.auth_take_off_timer" dbalias=".auth_take_off_timer" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_default_status dbname="timercalls.default_status" dbalias=".default_status" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_pre_openable dbname="timercalls.pre_openable" dbalias=".pre_openable" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_pre_opened dbname="timercalls.pre_opened" dbalias=".pre_opened" )
+ column=(type=long updatewhereclause=yes name=timercalls_timer_level dbname="timercalls.timer_level" dbalias=".timer_level" )
+ column=(type=char(30) updatewhereclause=yes name=timercalls_room_dsc dbname="timercalls.room_dsc" dbalias=".room_dsc" )
+ column=(type=char(2) updatewhereclause=yes name=timercalls_opened_status dbname="timercalls.opened_status" dbalias=".opened_status" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_paging_ind dbname="timercalls.paging_ind" dbalias=".paging_ind" )
+ column=(type=long updatewhereclause=yes name=timercalls_init_paging_min dbname="timercalls.init_paging_min" dbalias=".init_paging_min" )
+ column=(type=number updatewhereclause=yes name=timercalls_guest_id dbname="timercalls.guest_id" dbalias=".guest_id" )
+ column=(type=number updatewhereclause=yes name=timercalls_gcc_id dbname="timercalls.gcc_id" dbalias=".gcc_id" )
+ column=(type=decimal(2) updatewhereclause=yes name=timercalls_amount dbname="timercalls.amount" dbalias=".amount" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_recur_ind dbname="timercalls.recur_ind" dbalias=".recur_ind" )
+ column=(type=decimal(0) updatewhereclause=yes name=timercalls_recur_id dbname="timercalls.recur_id" dbalias=".recur_id" )
+ column=(type=char(1) updatewhereclause=yes name=timercalls_called_back_ind dbname="timercalls.called_back_ind" dbalias=".called_back_ind" )
+ column=(type=long updatewhereclause=yes name=cur_level dbname="cur_level" )
+ column=(type=long updatewhereclause=yes name=days dbname="days" )
+ column=(type=long updatewhereclause=yes name=req_level dbname="req_level" )
+ column=(type=long updatewhereclause=yes identity=yes name=vzt_part_id dbname="vzt_part.id" dbalias=".id" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_part_category dbname="vzt_part.category" dbalias=".category" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_part_subcategory dbname="vzt_part.subcategory" dbalias=".subcategory" )
+ column=(type=char(100) updatewhereclause=yes name=vzt_part_partname dbname="vzt_part.partname" dbalias=".partname" )
+ column=(type=char(200) updatewhereclause=yes name=vzt_part_description dbname="vzt_part.description" dbalias=".description" )
+ column=(type=long updatewhereclause=yes name=vzt_part_qty_onhand dbname="vzt_part.qty_onhand" dbalias=".qty_onhand" )
+ column=(type=long updatewhereclause=yes name=vzt_part_qty_reorder_point dbname="vzt_part.qty_reorder_point" dbalias=".qty_reorder_point" )
+ column=(type=long updatewhereclause=yes name=vzt_part_qty_to_reorder dbname="vzt_part.qty_to_reorder" dbalias=".qty_to_reorder" )
+ column=(type=decimal(4) updatewhereclause=yes name=vzt_part_price dbname="vzt_part.price" dbalias=".price" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_part_expcategory dbname="vzt_part.expcategory" dbalias=".expcategory" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_problem_number dbname="vzt_part.problem_number" dbalias=".problem_number" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_subproblem_number dbname="vzt_part.subproblem_number" dbalias=".subproblem_number" )
+ column=(type=char(10) updatewhereclause=yes name=vzt_part_ptype dbname="vzt_part.ptype" dbalias=".ptype" )
+ column=(type=datetime updatewhereclause=yes name=vzt_part_date_alert_last_sent dbname="vzt_part.date_alert_last_sent" dbalias=".date_alert_last_sent" )
+ column=(type=char(10) updatewhereclause=yes name=vzt_part_alert_distlist_id dbname="vzt_part.alert_distlist_id" dbalias=".alert_distlist_id" )
+ column=(type=char(5) updatewhereclause=yes name=vzt_part_autotask dbname="vzt_part.autotask" dbalias=".autotask" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_part_dept dbname="vzt_part.dept" dbalias=".dept" )
+ column=(type=char(100) updatewhereclause=yes name=pref_vendor dbname="pref_vendor" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_vendor_id dbname="vzt_vendor_part.vendor_id" dbalias=".vendor_id" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_part_id dbname="vzt_vendor_part.part_id" dbalias=".part_id" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_pref_order dbname="vzt_vendor_part.pref_order" dbalias=".pref_order" )
+ column=(type=char(50) updatewhereclause=yes name=vzt_vendor_part_vendor_sku dbname="vzt_vendor_part.vendor_sku" dbalias=".vendor_sku" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_vendor_part_unit dbname="vzt_vendor_part.unit" dbalias=".unit" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_unit_qty dbname="vzt_vendor_part.unit_qty" dbalias=".unit_qty" )
+ column=(type=long updatewhereclause=yes name=vzt_vendor_part_qty_to_reorder dbname="vzt_vendor_part.qty_to_reorder" dbalias=".qty_to_reorder" )
+ column=(type=decimal(4) updatewhereclause=yes name=vzt_vendor_part_price dbname="vzt_vendor_part.price" dbalias=".price" )
+ column=(type=char(1) updatewhereclause=yes name=sel dbname="sel" )
+ column=(type=char(50) updatewhereclause=yes name=appr_by dbname="appr_by" )
+ column=(type=long updatewhereclause=yes name=appr_by_id dbname="appr_by_id" )
+ retrieve="  SELECT ~"timercalls~".~"call_number~",   
+         ~"timercalls~".~"call_indate~",   
+         ~"timercalls~".~"stat_code~",   
+         ~"timercalls~".~"room~",   
+         ~"timercalls~".~"guest~",   
+         ~"timercalls~".~"caller~",   
+         ~"timercalls~".~"problem~",   
+         ~"timercalls~".~"subproblem~",   
+         ~"timercalls~".~"problem_definition~",   
+         ~"timercalls~".~"complaint~",   
+         ~"timercalls~".~"receiver~",   
+         ~"timercalls~".~"shift~",   
+         ~"timercalls~".~"resolution~",   
+         ~"timercalls~".~"repairman~",   
+         ~"timercalls~".~"call_outdate~",   
+         ~"timercalls~".~"closed_by~",   
+         ~"timercalls~".~"closed_bydept~",   
+         ~"timercalls~".~"timer_number~",   
+         ~"timercalls~".~"timer_start~",   
+         ~"timercalls~".~"caller_category~",   
+         ~"timercalls~".~"problem_number~",   
+         ~"timercalls~".~"subproblem_number~",   
+         ~"timercalls~".~"timer1_start_min~",   
+         ~"timercalls~".~"timer2_start_min~",   
+         ~"timercalls~".~"timer1_reps~",   
+         ~"timercalls~".~"timer2_reps~",   
+         ~"timercalls~".~"auth_take_off_timer~",   
+         ~"timercalls~".~"default_status~",   
+         ~"timercalls~".~"pre_openable~",   
+         ~"timercalls~".~"pre_opened~",   
+         ~"timercalls~".~"timer_level~",   
+         ~"timercalls~".~"room_dsc~",   
+         ~"timercalls~".~"opened_status~",   
+         ~"timercalls~".~"paging_ind~",   
+         ~"timercalls~".~"init_paging_min~",   
+         ~"timercalls~".~"guest_id~",   
+         ~"timercalls~".~"gcc_id~",   
+         ~"timercalls~".~"amount~",   
+         ~"timercalls~".~"recur_ind~",   
+         ~"timercalls~".~"recur_id~",   
+         ~"timercalls~".~"called_back_ind~",
+			vzt_hew_preq_approved_level ( ~"timercalls~".call_number ) as cur_level  ,
+         getdate() - ~"timercalls~".~"call_indate~" as days ,
+			vzt_hew_preq_approval_levels_req (0, ~"timercalls~".~"amount~" ) as req_level  ,
+
+  			~"vzt_part~".~"id~",   
+         ~"vzt_part~".~"category~",   
+         ~"vzt_part~".~"subcategory~",   
+         ~"vzt_part~".~"partname~",   
+         ~"vzt_part~".~"description~",   
+         ~"vzt_part~".~"qty_onhand~",   
+         ~"vzt_part~".~"qty_reorder_point~",   
+         ~"vzt_part~".~"qty_to_reorder~",   
+         ~"vzt_part~".~"price~",   
+         ~"vzt_part~".~"expcategory~",   
+         ~"vzt_part~".~"problem_number~",   
+         ~"vzt_part~".~"subproblem_number~",   
+         ~"vzt_part~".~"ptype~",   
+         ~"vzt_part~".~"date_alert_last_sent~",   
+         ~"vzt_part~".~"alert_distlist_id~",   
+         ~"vzt_part~".~"autotask~",   
+         ~"vzt_part~".~"dept~"  ,
+
+ 		vzt_get_pref_vendor_name( ~"vzt_part~".~"id~" )   pref_vendor,
+
+			~"vzt_vendor_part~".~"vendor_id~",   
+         ~"vzt_vendor_part~".~"part_id~",   
+         ~"vzt_vendor_part~".~"pref_order~",   
+         ~"vzt_vendor_part~".~"vendor_sku~",   
+         ~"vzt_vendor_part~".~"unit~",   
+         ~"vzt_vendor_part~".~"unit_qty~",   
+         ~"vzt_vendor_part~".~"qty_to_reorder~",   
+         ~"vzt_vendor_part~".~"price~"  ,
+			
+			'N' sel,
+
+   		ISNULL(~"approved_calls~".~"appr_by~", '',~"approved_calls~".~"appr_by~") ~"appr_by~"   ,
+         ISNULL(~"approved_calls~".~"appr_by_id~",0,~"approved_calls~".~"appr_by_id~")  ~"appr_by_id~"  
+   
+     
+     
+   FROM ~"timercalls~" , ~"PROBLEM~" , ~"vzt_part~"  , ~"vzt_vendor_part~" , ~"approved_calls~"
+   WHERE  
+				UPPER(~"PROBLEM~".~"problem_desc~")  = 'USAGE ALERT' 
+			and ~"timercalls~".~"problem_number~"   = ~"PROBLEM~".~"problem_number~"
+			and ~"vzt_part~".id 						= floor (~"timercalls~".~"room_dsc~")
+			and ~"vzt_vendor_part~".~"vendor_id~" 	= vzt_get_pref_vendor_id ( ~"vzt_part~".~"id~" ) 
+			and ~"vzt_vendor_part~".~"part_id~" 		= ~"vzt_part~".~"id~" 
+			and ~"approved_calls~".call_number 	=* ~"timercalls~".~"call_number~" 
+			AND ~"approved_calls~".~"appr_level~" IN (SELECT MAX(~"approved_calls~".~"appr_level~") 
+											FROM  ~"approved_calls~" 
+											WHERE ~"approved_calls~".call_number = ~"timercalls~".~"call_number~")
+" )
+text(band=header alignment="0" text="Approved Calls" border="0" color="0" x="1605" y="84" height="64" width="1737" html.valueishtml="0"  name=t_title visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Purchase Cost" border="2" color="0" x="3397" y="252" height="116" width="320" html.valueishtml="0"  name=equipment_master_purchasecost_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Purchase Date" border="2" color="0" x="3735" y="252" height="116" width="283" html.valueishtml="0"  name=equipment_master_purchasedate_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Warranty Expires" border="2" color="0" x="4032" y="252" height="116" width="242" html.valueishtml="0"  name=equipment_master_warranty_expires_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Extended Warranty" border="2" color="0" x="4288" y="252" height="116" width="270" html.valueishtml="0"  name=equipment_master_extended_warranty_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Equipment Name" border="2" color="0" x="261" y="252" height="116" width="526" html.valueishtml="0"  name=equipment_master_area_name_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="No." border="2" color="0" x="800" y="252" height="116" width="238" html.valueishtml="0"  name=equipment_master_area_number_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Vendor" border="2" color="0" x="1051" y="252" height="116" width="626" html.valueishtml="0"  name=vzt_contact_firstname_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Manufacturer" border="2" color="0" x="1691" y="252" height="116" width="686" html.valueishtml="0"  name=equipment_master_manufacturer_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Model" border="2" color="0" x="2391" y="252" height="116" width="503" html.valueishtml="0"  name=equipment_master_model_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+text(band=header alignment="2" text="Serial No" border="2" color="0" x="2907" y="252" height="116" width="475" html.valueishtml="0"  name=equipment_master_serialno_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="15780518" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="4567" y="0" height="64" width="270" html.valueishtml="0"  name=timercalls_call_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=0 border="0" color="0" x="4837" y="0" height="64" width="1595" html.valueishtml="0"  name=timercalls_call_indate visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="6432" y="0" height="64" width="55" html.valueishtml="0"  name=timercalls_stat_code visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="6487" y="0" height="64" width="809" html.valueishtml="0"  name=timercalls_room visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="0" x="7296" y="0" height="64" width="946" html.valueishtml="0"  name=timercalls_guest visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=0 border="0" color="0" x="8242" y="0" height="64" width="809" html.valueishtml="0"  name=timercalls_caller visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=0 border="0" color="0" x="9051" y="0" height="64" width="677" html.valueishtml="0"  name=timercalls_problem visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=0 border="0" color="0" x="9728" y="0" height="64" width="677" html.valueishtml="0"  name=timercalls_subproblem visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=0 border="0" color="0" x="10405" y="0" height="64" width="4389" html.valueishtml="0"  name=timercalls_problem_definition visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="14793" y="0" height="64" width="4389" html.valueishtml="0"  name=timercalls_complaint visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=0 border="0" color="0" x="19182" y="0" height="64" width="946" html.valueishtml="0"  name=timercalls_receiver visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=0 border="0" color="0" x="20128" y="0" height="64" width="82" html.valueishtml="0"  name=timercalls_shift visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=0 border="0" color="0" x="20210" y="0" height="64" width="4389" html.valueishtml="0"  name=timercalls_resolution visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=0 border="0" color="0" x="24599" y="0" height="64" width="946" html.valueishtml="0"  name=timercalls_repairman visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=15 alignment="0" tabsequence=0 border="0" color="0" x="25545" y="0" height="64" width="1595" html.valueishtml="0"  name=timercalls_call_outdate visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=16 alignment="0" tabsequence=0 border="0" color="0" x="27141" y="0" height="64" width="946" html.valueishtml="0"  name=timercalls_closed_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=17 alignment="0" tabsequence=0 border="0" color="0" x="28087" y="0" height="64" width="407" html.valueishtml="0"  name=timercalls_closed_bydept visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=18 alignment="0" tabsequence=0 border="0" color="0" x="28494" y="0" height="64" width="55" html.valueishtml="0"  name=timercalls_timer_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=19 alignment="0" tabsequence=0 border="0" color="0" x="28549" y="0" height="64" width="1595" html.valueishtml="0"  name=timercalls_timer_start visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=20 alignment="0" tabsequence=0 border="0" color="0" x="30144" y="0" height="64" width="946" html.valueishtml="0"  name=timercalls_caller_category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=21 alignment="0" tabsequence=0 border="0" color="0" x="31090" y="0" height="64" width="137" html.valueishtml="0"  name=timercalls_problem_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=22 alignment="0" tabsequence=0 border="0" color="0" x="31227" y="0" height="64" width="137" html.valueishtml="0"  name=timercalls_subproblem_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=23 alignment="0" tabsequence=0 border="0" color="0" x="31365" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_timer1_start_min visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=24 alignment="0" tabsequence=0 border="0" color="0" x="33499" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_timer2_start_min visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=25 alignment="0" tabsequence=0 border="0" color="0" x="35634" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_timer1_reps visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=26 alignment="0" tabsequence=0 border="0" color="0" x="37769" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_timer2_reps visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=27 alignment="0" tabsequence=0 border="0" color="0" x="39904" y="0" height="64" width="55" html.valueishtml="0"  name=timercalls_auth_take_off_timer visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=28 alignment="0" tabsequence=0 border="0" color="0" x="39959" y="0" height="64" width="55" html.valueishtml="0"  name=timercalls_default_status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=29 alignment="0" tabsequence=0 border="0" color="0" x="40014" y="0" height="64" width="27" html.valueishtml="0"  name=timercalls_pre_openable visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=30 alignment="0" tabsequence=0 border="0" color="0" x="40041" y="0" height="64" width="27" html.valueishtml="0"  name=timercalls_pre_opened visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=31 alignment="0" tabsequence=0 border="0" color="0" x="40069" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_timer_level visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=32 alignment="0" tabsequence=0 border="0" color="0" x="42203" y="0" height="64" width="814" html.valueishtml="0"  name=timercalls_room_dsc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=33 alignment="0" tabsequence=0 border="0" color="0" x="43017" y="0" height="64" width="114" html.valueishtml="0"  name=timercalls_opened_status visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=34 alignment="0" tabsequence=0 border="0" color="0" x="43131" y="0" height="64" width="91" html.valueishtml="0"  name=timercalls_paging_ind visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=35 alignment="0" tabsequence=0 border="0" color="0" x="43223" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_init_paging_min visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=36 alignment="0" tabsequence=0 border="0" color="0" x="45358" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_guest_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=37 alignment="0" tabsequence=0 border="0" color="0" x="47493" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_gcc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=38 alignment="0" tabsequence=0 border="0" color="0" x="49627" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_amount visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=39 alignment="0" tabsequence=0 border="0" color="0" x="51762" y="0" height="64" width="27" html.valueishtml="0"  name=timercalls_recur_ind visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=40 alignment="0" tabsequence=0 border="0" color="0" x="51790" y="0" height="64" width="2135" html.valueishtml="0"  name=timercalls_recur_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=41 alignment="0" tabsequence=0 border="0" color="0" x="53925" y="0" height="64" width="27" html.valueishtml="0"  name=timercalls_called_back_ind visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=42 alignment="0" tabsequence=0 border="0" color="0" x="53952" y="0" height="64" width="2135" html.valueishtml="0"  name=cur_level visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=43 alignment="0" tabsequence=0 border="0" color="0" x="56087" y="0" height="64" width="2135" html.valueishtml="0"  name=days visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=44 alignment="0" tabsequence=0 border="0" color="0" x="58222" y="0" height="64" width="2135" html.valueishtml="0"  name=req_level visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=45 alignment="0" tabsequence=0 border="0" color="0" x="60357" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_part_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=46 alignment="0" tabsequence=0 border="0" color="0" x="62491" y="0" height="64" width="539" html.valueishtml="0"  name=vzt_part_category visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=47 alignment="0" tabsequence=0 border="0" color="0" x="63031" y="0" height="64" width="539" html.valueishtml="0"  name=vzt_part_subcategory visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=48 alignment="0" tabsequence=0 border="0" color="0" x="63570" y="0" height="64" width="2702" html.valueishtml="0"  name=vzt_part_partname visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=49 alignment="0" tabsequence=0 border="0" color="0" x="66272" y="0" height="64" width="4389" html.valueishtml="0"  name=vzt_part_description visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=50 alignment="0" tabsequence=0 border="0" color="0" x="70661" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_part_qty_onhand visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=51 alignment="0" tabsequence=0 border="0" color="0" x="72795" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_part_qty_reorder_point visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=52 alignment="0" tabsequence=0 border="0" color="0" x="74930" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_part_qty_to_reorder visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=53 alignment="0" tabsequence=0 border="0" color="0" x="77065" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_part_price visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=54 alignment="0" tabsequence=0 border="0" color="0" x="79200" y="0" height="64" width="539" html.valueishtml="0"  name=vzt_part_expcategory visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=55 alignment="0" tabsequence=0 border="0" color="0" x="79739" y="0" height="64" width="137" html.valueishtml="0"  name=vzt_part_problem_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=56 alignment="0" tabsequence=0 border="0" color="0" x="79877" y="0" height="64" width="137" html.valueishtml="0"  name=vzt_part_subproblem_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=57 alignment="0" tabsequence=0 border="0" color="0" x="80014" y="0" height="64" width="270" html.valueishtml="0"  name=vzt_part_ptype visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=58 alignment="0" tabsequence=0 border="0" color="0" x="80283" y="0" height="64" width="1595" html.valueishtml="0"  name=vzt_part_date_alert_last_sent visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=59 alignment="0" tabsequence=0 border="0" color="0" x="81879" y="0" height="64" width="270" html.valueishtml="0"  name=vzt_part_alert_distlist_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=60 alignment="0" tabsequence=0 border="0" color="0" x="82149" y="0" height="64" width="137" html.valueishtml="0"  name=vzt_part_autotask visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=61 alignment="0" tabsequence=0 border="0" color="0" x="82286" y="0" height="64" width="539" html.valueishtml="0"  name=vzt_part_dept visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=62 alignment="0" tabsequence=0 border="0" color="0" x="82825" y="0" height="64" width="2702" html.valueishtml="0"  name=pref_vendor visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=63 alignment="0" tabsequence=0 border="0" color="0" x="85527" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_vendor_part_vendor_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=64 alignment="0" tabsequence=0 border="0" color="0" x="87662" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_vendor_part_part_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=65 alignment="0" tabsequence=0 border="0" color="0" x="89797" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_vendor_part_pref_order visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=66 alignment="0" tabsequence=0 border="0" color="0" x="91931" y="0" height="64" width="1353" html.valueishtml="0"  name=vzt_vendor_part_vendor_sku visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=67 alignment="0" tabsequence=0 border="0" color="0" x="93285" y="0" height="64" width="539" html.valueishtml="0"  name=vzt_vendor_part_unit visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=68 alignment="0" tabsequence=0 border="0" color="0" x="93824" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_vendor_part_unit_qty visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=69 alignment="0" tabsequence=0 border="0" color="0" x="95959" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_vendor_part_qty_to_reorder visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=70 alignment="0" tabsequence=0 border="0" color="0" x="98094" y="0" height="64" width="2135" html.valueishtml="0"  name=vzt_vendor_part_price visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=71 alignment="0" tabsequence=0 border="0" color="0" x="100229" y="0" height="64" width="27" html.valueishtml="0"  name=sel visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=72 alignment="0" tabsequence=0 border="0" color="0" x="100256" y="0" height="64" width="1353" html.valueishtml="0"  name=appr_by visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=73 alignment="0" tabsequence=0 border="0" color="0" x="101609" y="0" height="64" width="2135" html.valueishtml="0"  name=appr_by_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

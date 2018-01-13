@@ -1,0 +1,38 @@
+﻿$PBExportHeader$f_vzt_writefile_from_blob.srf
+global type f_vzt_writefile_from_blob from function_object
+end type
+
+forward prototypes
+global function integer f_vzt_writefile_from_blob (string as_filename, ref blob ab_target)
+end prototypes
+
+global function integer f_vzt_writefile_from_blob (string as_filename, ref blob ab_target);integer li_FileNum, loops, i
+long flen, bytes_read   
+blob b 
+boolean	done
+
+b = ab_target 
+// Get the file length, and open the file
+flen = len ( b )
+If flen <= 12 then return -1 
+
+li_FileNum = FileOpen(as_filename, 	StreamMode!, Write!, LockWrite!, Replace!)
+If li_FileNum <= 0 then return -1 
+
+// Determine how many times to call FileWrite
+DO WHILE not done 
+	bytes_read = FileWrite(li_FileNum, b)
+	If len ( b ) > 32765 then 
+		b = blobMid( b , 32766)
+	else
+		done = true 
+	END IF 
+LOOP
+
+FileClose(li_FileNum)
+flen = FileLength(as_filename) 
+return flen 
+
+
+end function
+

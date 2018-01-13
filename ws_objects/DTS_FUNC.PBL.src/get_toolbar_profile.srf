@@ -1,0 +1,82 @@
+﻿$PBExportHeader$get_toolbar_profile.srf
+$PBExportComments$Obtain Current Toolbar Settings
+global type get_toolbar_profile from function_object
+end type
+
+forward prototypes
+global subroutine get_toolbar_profile (string window_name, window window_parm)
+end prototypes
+
+global subroutine get_toolbar_profile (string window_name, window window_parm);string bar_visible, bar_align, bar_showtext
+int bar_x, bar_y, bar_width, bar_height
+
+bar_showtext= Lower( ProfileString (cINIPath + "he_dts.ini", window_name, &
+										"toolbartext",	"no") )
+If Left( Upper( bar_showtext ), 1 ) = "Y" Or Left( Upper( bar_showtext ), 1 ) = "T" then
+	bar_showtext = "yes"
+Else
+	bar_showtext = "no"
+End If
+
+bar_visible = Lower( ProfileString(cINIPath + "he_dts.ini", window_name,&
+										"toolbarvisible", "yes") )
+If Left( Upper( bar_visible ), 1 ) = "Y" Or Left( Upper( bar_visible ), 1 ) = "T" then
+	bar_visible = "yes"
+Else
+	bar_visible = "no"
+End If
+
+//bar_align 	= Lower( ProfileString (cINIPath + "he_dts.ini", window_name, &
+//										"toolbaralignment", "top") )
+//
+//bar_x 		= ProfileInt (cINIPath + "he_dts.ini", window_name, &
+//										"toolbarx", 100)
+//bar_y 		= ProfileInt (cINIPath + "he_dts.ini", window_name, &
+//										"toolbary", 100)
+//bar_width 	= ProfileInt (cINIPath + "he_dts.ini", window_name, &
+//										"toolbarwidth", 100)
+//bar_height 	= ProfileInt (cINIPath + "he_dts.ini", window_name, &
+//										"toolbarheight", 100)
+//If bar_visible = "yes" then
+//	window_parm.toolbarvisible = true
+//else
+//	window_parm.toolbarvisible = false
+//end if
+//
+//if bar_align = "bottom" then
+//	window_parm.toolbaralignment = alignatbottom!
+//elseif bar_align = "left" then
+//	window_parm.toolbaralignment = alignatleft!
+//elseif bar_align = "right" then
+//	window_parm.toolbaralignment = alignatright!
+//elseif bar_align = "top" then
+//	window_parm.toolbaralignment = alignattop!
+//elseif bar_align = "floating" then
+//	window_parm.toolbaralignment = floating!
+//	window_parm.toolbarx = bar_x
+//	window_parm.toolbary = bar_y
+//	window_parm.toolbarwidth = bar_width
+//	window_parm.toolbarheight = bar_height
+//end if
+
+if bar_showtext = "yes" then
+	dispatch_tracking_system.toolbartext = True
+else
+	dispatch_tracking_system.toolbartext = False
+end if
+
+if gnv_appman.is_apptitle	<> 'Commentator' and POS(gnv_appman.is_apptitle,'Alec') <=0 then 
+	
+	m_main.m_data.m_xm.ToolBarItemName = &
+		ProfileString( cINIPath + cINIFile, "MicroMain","XMIcon","xm.bmp")
+	
+	m_main.m_data.m_micromainfm.ToolBarItemName = & 
+		ProfileString( cINIPath + cINIFile, "MicroMain","FMIcon","fm.ico")
+end if
+
+return
+
+
+
+end subroutine
+

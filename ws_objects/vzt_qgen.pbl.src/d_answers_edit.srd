@@ -1,0 +1,58 @@
+﻿$PBExportHeader$d_answers_edit.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269528 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=1 selected.mouse=no )
+header(height=72 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=answerid dbname="qgen_answer_choices.answerid" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=questionid dbname="qgen_answer_choices.questionid" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=answertxt dbname="qgen_answer_choices.answertxt" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=score dbname="qgen_answer_choices.score" initial="10" )
+ column=(type=long update=yes updatewhereclause=yes name=sortorder dbname="qgen_answer_choices.sortorder" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=descr dbname="qgen_answer_choices.descr" )
+ column=(type=long update=yes updatewhereclause=yes name=width dbname="qgen_answer_choices.width" )
+ column=(type=long update=yes updatewhereclause=yes name=webwidth dbname="qgen_answer_choices.webwidth" )
+ column=(type=long update=yes updatewhereclause=yes name=height dbname="qgen_answer_choices.height" )
+ column=(type=long update=yes updatewhereclause=yes name=webheight dbname="qgen_answer_choices.webheight" )
+ retrieve="  SELECT AC.answerid,   
+         AC.questionid,   
+         AC.answertxt,   
+         AC.score,   
+         AC.sortorder  ,
+			AC.descr ,
+			AC.width,
+			AC.webwidth,
+			AC.height,
+			AC.webheight
+    FROM qgen_answer_choices   AC
+	 WHERE AC.questionid = :ad_questionid
+" update="qgen_answer_choices" updatewhere=0 updatekeyinplace=yes arguments=(("ad_questionid", number))  sort="sortorder A " )
+text(band=header alignment="2" text="ID"border="0" color="16777215" x="9" y="8" height="56" width="155"  name=answerid_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Answer"border="0" color="16777215" x="197" y="8" height="56" width="663"  name=answertxt_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Score"border="0" color="16777215" x="891" y="8" height="56" width="155"  name=score_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sort"border="0" color="16777215" x="1079" y="8" height="56" width="123"  name=sortorder_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Description"border="0" color="16777215" x="2290" y="8" height="56" width="558"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Width"border="0" color="16777215" x="1234" y="8" height="56" width="151"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Web Width"border="0" color="16777215" x="1664" y="4" height="56" width="283"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Height"border="0" color="16777215" x="1413" y="4" height="56" width="224"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Webheight"border="0" color="16777215" x="1975" y="4" height="56" width="283"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="9" y="12" height="56" width="155" format="[general]" protect="0~t1"  name=answerid edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.displayonly=yes  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="197" y="12" height="52" width="663" format="[general]"  name=answertxt edit.limit=200 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="1" tabsequence=20 border="5" color="0" x="891" y="12" height="52" width="155" format="[general]"  name=score edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="1" tabsequence=30 border="5" color="0" x="1079" y="12" height="52" width="123" format="[general]"  name=sortorder edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="''"border="0" color="0" x="869" y="12" height="56" width="14" format="[general]"  name=c1  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269528" )
+compute(band=detail alignment="0" expression="''"border="0" color="0" x="1056" y="12" height="56" width="14" format="[general]"  name=obj_5893707  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269528" )
+compute(band=detail alignment="0" expression="''"border="0" color="0" x="174" y="12" height="56" width="14" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="80269528" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="1211" y="12" height="56" width="14" format="[general]"  name=obj_88692357  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=40 border="5" color="0" x="1234" y="12" height="56" width="151" format="[General]"  name=width edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="1394" y="12" height="56" width="9" format="[general]"  name=obj_8462540  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="0" tabsequence=50 border="5" color="0" x="1413" y="12" height="56" width="224" format="[General]"  name=height edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="1646" y="12" height="56" width="9" format="[general]"  name=obj_18171406  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="0" tabsequence=60 border="5" color="0" x="1664" y="12" height="56" width="283" format="[General]"  name=webwidth edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="1957" y="12" height="56" width="9" format="[general]"  name=obj_8639320  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=70 border="5" color="0" x="1975" y="12" height="56" width="283" format="[general]"  name=webheight edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="2267" y="12" height="56" width="14" format="[general]"  name=obj_18176511  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=6 alignment="0" tabsequence=80 border="5" color="0" x="2290" y="12" height="56" width="558" format="[general]"  name=descr edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="2857" y="12" height="56" width="87" format="[general]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

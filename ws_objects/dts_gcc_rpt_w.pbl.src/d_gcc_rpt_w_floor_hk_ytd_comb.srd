@@ -1,0 +1,335 @@
+﻿$PBExportHeader$d_gcc_rpt_w_floor_hk_ytd_comb.srd
+$PBExportComments$question score summary by floor
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 2 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=420 color="536870912" )
+summary(height=84 color="536870912" )
+footer(height=0 color="553648127" )
+detail(height=60 color="536870912" )
+table(column=(type=char(20) updatewhereclause=yes name=pstat dbname="pstat" )
+ column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="questiontxt" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="questionid" )
+ column=(type=decimal(0) updatewhereclause=yes name=answerid dbname="answerid" )
+ column=(type=char(500) updatewhereclause=yes name=rtitle dbname="rtitle" )
+ column=(type=datetime updatewhereclause=yes name=ansdate dbname="ansdate" )
+ column=(type=datetime updatewhereclause=yes name=minansdate dbname="minansdate" )
+ column=(type=date updatewhereclause=yes name=fdate dbname="fdate" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_01 dbname="r_01" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_02 dbname="r_02" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_03 dbname="r_03" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_04 dbname="r_04" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_05 dbname="r_05" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_06 dbname="r_06" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_07 dbname="r_07" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_08 dbname="r_08" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_09 dbname="r_09" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_10 dbname="r_10" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_11 dbname="r_11" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_12 dbname="r_12" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_13 dbname="r_13" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_14 dbname="r_14" )
+ column=(type=decimal(2) updatewhereclause=yes name=r_15 dbname="r_15" )
+ column=(type=decimal(2) updatewhereclause=yes name=ty_qgoal dbname="ty_qgoal" )
+ column=(type=long updatewhereclause=yes name=tc01 dbname="tc01" )
+ column=(type=long updatewhereclause=yes name=tc02 dbname="tc02" )
+ column=(type=long updatewhereclause=yes name=tc03 dbname="tc03" )
+ column=(type=long updatewhereclause=yes name=tc04 dbname="tc04" )
+ column=(type=long updatewhereclause=yes name=tc05 dbname="tc05" )
+ column=(type=long updatewhereclause=yes name=tc06 dbname="tc06" )
+ column=(type=long updatewhereclause=yes name=tc07 dbname="tc07" )
+ column=(type=long updatewhereclause=yes name=tc08 dbname="tc08" )
+ column=(type=long updatewhereclause=yes name=tc09 dbname="tc09" )
+ column=(type=long updatewhereclause=yes name=tc10 dbname="tc10" )
+ column=(type=long updatewhereclause=yes name=tc11 dbname="tc11" )
+ column=(type=long updatewhereclause=yes name=tc12 dbname="tc12" )
+ column=(type=long updatewhereclause=yes name=tc14 dbname="tc14" )
+ column=(type=long updatewhereclause=yes name=tc15 dbname="tc15" )
+ column=(type=char(6) updatewhereclause=yes name=year dbname="year" )
+ column=(type=long updatewhereclause=yes name=qs_order dbname="qs_order" )
+ column=(type=long updatewhereclause=yes name=q_order dbname="q_order" )
+ column=(type=long updatewhereclause=yes name=qsetid dbname="qsetid" )
+ column=(type=char(200) updatewhereclause=yes name=hier_parent dbname="hier_parent" )
+ column=(type=long updatewhereclause=yes name=hier_q_order dbname="hier_q_order" )
+ column=(type=long updatewhereclause=yes name=hier_p_order dbname="hier_p_order" )
+ column=(type=char(20) updatewhereclause=yes name=parent_id dbname="parent_id" )
+ column=(type=long updatewhereclause=yes name=hier_f_order dbname="hier_f_order" )
+ column=(type=long updatewhereclause=yes name=tc16 dbname="tc16" )
+ column=(type=long updatewhereclause=yes name=tc17 dbname="tc17" )
+ column=(type=long updatewhereclause=yes name=tc13 dbname="tc13" )
+ column=(type=decimal(6) updatewhereclause=yes name=color1 dbname="color1" )
+ column=(type=char(5) updatewhereclause=yes name=qtypeid dbname="qtypeid" )
+ column=(type=char(1) updatewhereclause=yes name=scorable dbname="scorable" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_01 dbname="s_01" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_02 dbname="s_02" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_03 dbname="s_03" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_04 dbname="s_04" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_05 dbname="s_05" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_06 dbname="s_06" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_07 dbname="s_07" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_08 dbname="s_08" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_09 dbname="s_09" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_10 dbname="s_10" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_11 dbname="s_11" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_12 dbname="s_12" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_13 dbname="s_13" )
+ column=(type=number updatewhereclause=yes name=color01 dbname="color01" )
+ column=(type=number updatewhereclause=yes name=color02 dbname="color02" )
+ column=(type=number updatewhereclause=yes name=color03 dbname="color03" )
+ column=(type=number updatewhereclause=yes name=color04 dbname="color04" )
+ column=(type=number updatewhereclause=yes name=color05 dbname="color05" )
+ column=(type=number updatewhereclause=yes name=color06 dbname="color06" )
+ column=(type=long updatewhereclause=yes name=rank01 dbname="rank01" )
+ column=(type=long updatewhereclause=yes name=rank02 dbname="rank02" )
+ column=(type=long updatewhereclause=yes name=rank03 dbname="rank03" )
+ column=(type=long updatewhereclause=yes name=rank04 dbname="rank04" )
+ column=(type=long updatewhereclause=yes name=rank05 dbname="rank05" )
+ column=(type=char(10) updatewhereclause=yes name=floor01 dbname="floor01" )
+ column=(type=char(10) updatewhereclause=yes name=floor02 dbname="floor02" )
+ column=(type=char(10) updatewhereclause=yes name=floor03 dbname="floor03" )
+ column=(type=char(10) updatewhereclause=yes name=floor04 dbname="floor04" )
+ column=(type=char(10) updatewhereclause=yes name=floor05 dbname="floor05" )
+ column=(type=char(200) updatewhereclause=yes name=s1 dbname="s1" )
+ column=(type=char(200) updatewhereclause=yes name=s2 dbname="s2" )
+ column=(type=decimal(2) updatewhereclause=yes name=n1 dbname="n1" )
+ column=(type=decimal(2) updatewhereclause=yes name=n2 dbname="n2" )
+ retrieve="SELECT vzt_wa_hk_by_floor_01('2002-12-12','N','','','',100,'22','33','44','COMBINED','YTD') pstat,
+/*SELECT vzt_wa_hk_by_floor_01(':fdate',':NA',';comp',';qset',';rqset',100,'22','33','44','NOTCOMB','YTD') pstat,
+*/
+' ' questiontxt,
+0 questionid,
+0 answerid,
+/* modify DW source for title length !!!! on every update!!!! */ 
+vzt_string(';rtitle') rtitle,
+vzt_sysdate() ansdate,
+vzt_sysdate() minansdate,
+vzt_date(':fdate') fdate,
+0 r_01,
+0 r_02,
+0 r_03,
+0 r_04,
+0 r_05,
+0 r_06,
+0 r_07,
+0 r_08,
+0 r_09,
+0 r_10,
+0 r_11,
+0 r_12,
+0 r_13,
+0 r_14,
+0 r_15,
+0 ty_qgoal, 
+0 tc01, 
+0 tc02, 
+0 tc03, 
+0 tc04, 
+0 tc05, 
+0 tc06, 
+0 tc07, 
+0 tc08, 
+0 tc09, 
+0 tc10, 
+0 tc11, 
+0 tc12, 
+0 tc14, 
+0 tc15, 
+'year' yeAR,
+
+0 qs_order,
+0 q_order,
+0 qsetid,
+' ' hier_parent,
+0 hier_q_order,
+0 hier_p_order,
+' ' parent_id,
+0 hier_f_order,
+0 tc16,
+0 tc17,
+0 tc13,
+' ' color1,
+/*––non scorable YN counts ––––––––*/
+'TYPE' qtypeid,
+''     scorable,
+0 s_01,  
+0 s_02,  
+0 s_03,  
+0 s_04,  
+0 s_05,  
+0 s_06,  
+0 s_07,  
+0 s_08,  
+0 s_09,  
+0 s_10,  
+0 s_11,  
+0 s_12 ,
+0 s_13 ,
+0 color01,  
+0 color02,  
+0 color03,  
+0 color04,  
+0 color05,  
+0 color06,  
+0 rank01,  
+0 rank02,  
+0 rank03,  
+0 rank04,  
+0 rank05,  
+'    ' floor01,  
+'    ' floor02,  
+'    ' floor03,  
+'    ' floor04,  
+'    ' floor05,  
+' '    s1, 
+' '    s2,
+0	n1,
+0	n2
+
+FROM 		dummy
+UNION
+  SELECT 
+'report'  pstat,
+questiontxt,
+questionid,
+answerid,
+/* modify DW source for title length !!!! on every update!!!! */ 
+vzt_string(';rtitle') rtitle,
+ansdate,
+minansdate,
+vzt_date(':fdate') fdate,
+r_01,
+r_02,
+r_03,
+r_04,
+r_05,
+r_06,
+r_07,
+r_08,
+r_09,
+r_10,
+r_11,
+r_12,
+r_13,
+r_14,
+r_15,
+ty_goal ty_qgoal, 
+tc01, 
+tc02, 
+tc03, 
+tc04, 
+tc05, 
+tc06, 
+tc07, 
+tc08, 
+tc09, 
+tc10, 
+tc11, 
+tc12, 
+tc14, 
+tc15, 
+':year'+ ' ' yeAR,
+
+qs_order,
+q_order,
+qsetid,
+hier_parent,
+hier_q_order,
+hier_p_order,
+parent_id,
+hier_f_order,
+tc16,
+tc17,
+tc13,
+color1,
+/*––non scorable YN counts ––––––––*/
+qtypeid,
+scorable,
+s_01,  
+s_02,  
+s_03,  
+s_04,  
+s_05,  
+s_06,  
+s_07,  
+s_08,  
+s_09,  
+s_10, 
+s_11,  
+s_12,  
+s_13,  
+color01,  
+color02,  
+color03,  
+color04,  
+color05,  
+color06,  
+rank01,  
+rank02,  
+rank03,  
+rank04,  
+rank05,  
+floor01,  
+floor02,  
+floor03,  
+floor04,  
+floor05,  
+s1, 
+s2,
+n1,
+n2
+
+FROM 		vzt_trend_rpt 
+
+
+ 
+;
+
+
+ " filter=" lower(pstat) ='report'" sort="n1 A " )
+text(band=header alignment="0" text="HOUSEKEEPING YTD + MTD COMBINED" border="0" color="255" x="32" y="16" height="132" width="937" html.valueishtml="0"  name=t_1 visible="1~t0"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="0" x="1083" y="20" height="76" width="1705" format="[general]" html.valueishtml="0"  name=rtitle visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Comic Sans MS" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+text(band=header alignment="2" text="Responses" border="2" color="0" x="1650" y="336" height="56" width="261" html.valueishtml="0"  name=t_5 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=summary id=54 alignment="0" tabsequence=0 border="0" color="0" x="247" y="12" height="64" width="201" html.valueishtml="0"  name=s_01_1 visible="1"  font.face="Comic Sans MS" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="2" expression="'Goal:'"border="0" color="0" x="32" y="12" height="60" width="197" format="[general]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Comic Sans MS" font.height="-9" font.weight="700"  font.family="4" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Score" border="2" color="0" x="46" y="364" height="56" width="224" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="2" tabsequence=32766 border="2" color="0" x="46" y="0" height="56" width="224" format="[general]" html.valueishtml="0"  name=r_01 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+text(band=header alignment="2" text="Rank" border="2" color="0" x="274" y="364" height="56" width="224" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=73 alignment="2" tabsequence=32766 border="2" color="0" x="274" y="0" height="56" width="224" format="[general]" html.valueishtml="0"  name=rank01 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+text(band=header alignment="2" text="Floor" border="2" color="0" x="503" y="364" height="56" width="224" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=78 alignment="2" tabsequence=32766 border="2" color="0" x="503" y="0" height="56" width="224" format="[general]" html.valueishtml="0"  name=floor01 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+text(band=header alignment="2" text="Hk" border="2" color="0" x="731" y="364" height="56" width="224" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="2" tabsequence=32766 border="2" color="0" x="731" y="0" height="56" width="224" format="[general]" html.valueishtml="0"  name=r_11 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+text(band=header alignment="2" text="Room" border="2" color="0" x="960" y="364" height="56" width="224" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="2" tabsequence=32766 border="2" color="0" x="960" y="0" height="56" width="224" format="[general]" html.valueishtml="0"  name=r_12 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+text(band=header alignment="2" text="Bath" border="2" color="0" x="1189" y="364" height="56" width="224" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="2" tabsequence=32766 border="2" color="0" x="1189" y="0" height="56" width="224" format="[general]" html.valueishtml="0"  name=r_13 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+column(band=detail id=25 alignment="2" tabsequence=32766 border="2" color="0" x="1719" y="0" height="56" width="165" format="[general]" html.valueishtml="0"  name=tc01 visible="0" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="0" background.color="553648127~tif ( rank01 = 999,  RGB(187,187,187),  
+if ( color01 > 0, color01, RGB(255,255,255) ) 
+)" )
+column(band=detail id=54 alignment="2" tabsequence=0 border="2" color="0" x="1943" y="0" height="56" width="224" html.valueishtml="0"  name=s_01 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+column(band=detail id=67 alignment="2" tabsequence=0 border="2" color="0" x="1431" y="4" height="52" width="224" html.valueishtml="0"  name=color01 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="2" expression="if ('YTD'<>'YTD' , 'Year Month  to Date  ', '')
+ + 'As Of ' + string ( fdate ,' mmmm dd, yyyy ')  "border="2" color="0" x="46" y="280" height="76" width="1367" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Comic Sans MS" font.height="-9" font.weight="700"  font.family="4" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="2" expression="if ( trim(rtitle) = '' or POS(rtitle, 'rtitle') > 0 ,  ' Housekeeping Combined Score Year to Date ', rtitle )"border="2" color="0" x="46" y="192" height="84" width="1367" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Comic Sans MS" font.height="-10" font.weight="700"  font.family="4" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Avg goal" border="2" color="0" x="1938" y="336" height="56" width="233" html.valueishtml="0"  name=t_9 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+compute(band=detail alignment="0" expression="if ( s_01 = 0, 0,   r_01 /  s_01 )"border="0" color="0" x="2203" y="0" height="56" width="183" format="0.00%" html.valueishtml="0"  name=compute_4 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+compute(band=header alignment="0" expression="'spec: From goal and higher = Green'"border="0" color="0" x="1573" y="112" height="60" width="855" format="[GENERAL]" html.valueishtml="0"  name=compute_5 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+compute(band=header alignment="0" expression="' From 97%of goal to goal =yellow, '"border="0" color="0" x="1568" y="168" height="60" width="864" format="[GENERAL]" html.valueishtml="0"  name=compute_6 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+compute(band=header alignment="0" expression="'Below 97% of goal = red '"border="0" color="0" x="1568" y="228" height="52" width="864" format="[GENERAL]" html.valueishtml="0"  name=compute_7 visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=header alignment="2" text="score pct to goal" border="2" color="0" x="2185" y="296" height="116" width="256" html.valueishtml="0"  name=t_10 visible="0"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="255" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

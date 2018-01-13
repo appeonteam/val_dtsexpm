@@ -1,0 +1,75 @@
+﻿$PBExportHeader$f_vzt_get_present.srf
+global type f_vzt_get_present from function_object
+end type
+
+forward prototypes
+global function str_vzt_present f_vzt_get_present (double ad_id)
+end prototypes
+
+global function str_vzt_present f_vzt_get_present (double ad_id);str_vzt_present lstr_present
+	
+  SELECT "vzt_presentation"."fontface",   
+         "vzt_presentation"."fontsize",   
+         "vzt_presentation"."bold",   
+         "vzt_presentation"."italic",   
+         "vzt_presentation"."under",   
+         "vzt_presentation"."fgcolor",   
+         "vzt_presentation"."bgcolor"   ,
+         "vzt_presentation"."height"   ,
+         "vzt_presentation"."width"   ,
+         "vzt_presentation"."x"   ,
+         "vzt_presentation"."y_before"   ,
+         "vzt_presentation"."y_after"   
+			
+	 INTO
+	 		:lstr_present.fontface,
+	 		:lstr_present.fontsize, 
+			:lstr_present.fontweight,
+			:lstr_present.fontitalic,
+			:lstr_present.fontunderline,
+			:lstr_present.fontfgcolor,
+			:lstr_present.fontbgcolor,
+			:lstr_present.height,
+			:lstr_present.width,
+			:lstr_present.x,
+			:lstr_present.y_before,
+			:lstr_present.y_after
+	 
+    FROM "vzt_presentation"  
+   WHERE "vzt_presentation"."id" = :ad_id   ;
+
+	if lstr_present.fontface = '' or IsNUll(lstr_present.fontface ) then lstr_present.fontface = 'Arial' 
+	lstr_present.fontsize		= abs(f_nvl(lstr_present.fontsize		,8))* (-1)
+	lstr_present.fontbgcolor	= f_nvl(lstr_present.fontbgcolor	,0)
+	lstr_present.mode 			= '0'
+	IF lstr_present.fontbgcolor = 999999999 then lstr_present.mode = '1'
+	If lstr_present.fontbgcolor = 0 or IsNull(lstr_present.fontbgcolor ) then lstr_present.fontbgcolor = 553648127 //silver
+	If IsNull(lstr_present.fontfgcolor) then lstr_present.fontfgcolor = 0 
+
+	If lstr_present.fontitalic = 'Y' then 
+		lstr_present.fontitalic = '1'
+	ELSE
+		lstr_present.fontitalic = '0'
+	END IF 
+	
+	IF lstr_present.fontunderline = 'Y' then 
+		lstr_present.fontunderline = '1'
+	ELSE
+		lstr_present.fontunderline = '0'
+	END IF
+	
+	if lstr_present.fontweight = 'Y' then 
+		lstr_present.fontweight = '700'
+	Else
+		lstr_present.fontweight	= '400'
+	END IF
+	
+	If	IsNull( lstr_present.height) OR lstr_present.height = 0 then lstr_present.height = 16
+	lstr_present.width		= f_nvl( lstr_present.width, 400)
+	lstr_present.x				= f_nvl( lstr_present.x, 0)
+	lstr_present.y_before	= f_nvl( lstr_present.y_before, 0)
+	lstr_present.y_after 	= f_nvl( lstr_present.y_after, 0)
+		
+return lstr_present
+end function
+

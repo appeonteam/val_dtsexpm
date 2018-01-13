@@ -1,0 +1,42 @@
+﻿$PBExportHeader$d_rpt_4s_rr_grid.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=cardid dbname="qgen_answer_choices.cardid" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_answer_choices.questionid" )
+ column=(type=long updatewhereclause=yes name=questionrating dbname="questionrating" )
+ retrieve="  SELECT qa.headerid CardId,   
+         qa.questionid questionid, 
+         (SELECT IFNULL(score , 0, score)
+				FROM qgen_answer_choices ac 
+				WHERE ac.questionid = qa.questionid 
+						and ac.answerid 	= qa.answerid 
+			) questionRating 
+
+    FROM qgen_qset_answers  qa, qgen_questions q
+	WHERE 	qa.checked 	= 1 
+				AND qa.questionid = q.questionid 
+				AND q.qtypeid NOT IN ('FF1', 'FF2', 'FF3', 'FF4', 'SCT' )
+				AND q.scorable = 'Y' 
+				AND qa.answerid < 999999000 -- ignore N/A 
+        -- 	qa.questionid questionid IN ( 1,2,3,4)
+		/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"qa~".~"ansdate~" BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				) 
+		1*/
+
+ORDER BY cardid, questionid" )
+text(band=header alignment="0" text="Cardid"border="0" color="0" x="9" y="8" height="56" width="201"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Questionid"border="0" color="0" x="219" y="8" height="56" width="265"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Questionrating"border="0" color="0" x="494" y="8" height="56" width="389"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="494" y="8" height="56" width="389" format="[general]"  name=questionrating edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="56" width="201" format="[general]"  name=cardid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="219" y="4" height="56" width="265" format="[general]"  name=questionid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

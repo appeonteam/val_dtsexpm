@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_dddw_active_syrveys_ml.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes identity=yes name=qsetid dbname="qgen_qset.qsetid" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=descr dbname="qgen_qset.descr" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=active dbname="qgen_qset.active" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=showqnum dbname="qgen_qset.showqnum" )
+ column=(type=long updatewhereclause=yes name=sortorder dbname="qgen_qset.sortorder" )
+ column=(type=char(1) updatewhereclause=yes name=use_hierarchy dbname="qgen_qset.use_hierarchy" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"qgen_qset~" ) COLUMN(NAME=~"qgen_qset.qsetid~") COLUMN(NAME=~"qgen_qset.descr~") COLUMN(NAME=~"qgen_qset.active~") COLUMN(NAME=~"qgen_qset.showqnum~") COLUMN(NAME=~"qgen_qset.sortorder~") COLUMN(NAME=~"qgen_qset.use_hierarchy~")WHERE(    EXP1 =~"qgen_qset.active~"   OP =~"=~"    EXP2 =~"'Y'~"    LOGIC =~"and~" ) WHERE(    EXP1 =~"~~~"qgen_qset~~~".~~~"use_hierarchy~~~"~"   OP =~"=~"    EXP2 =~"'Y'~" ) ) ORDER(NAME=~"qgen_qset.sortorder~" ASC=yes ) " update="qgen_qset" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Available Multilevel Surveys"border="0" color="16777215" x="14" y="8" height="60" width="910"  name=descr_t  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="0" x="32" y="4" height="60" width="869" format="[general]"  name=descr edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

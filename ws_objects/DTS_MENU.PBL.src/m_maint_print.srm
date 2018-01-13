@@ -1,0 +1,74 @@
+﻿$PBExportHeader$m_maint_print.srm
+forward
+global type m_maint_print from menu
+end type
+type m_print_maint from menu within m_maint_print
+end type
+type m_currentdatawindow from menu within m_print_maint
+end type
+type m_formattedreport from menu within m_print_maint
+end type
+type m_print_maint from menu within m_maint_print
+m_currentdatawindow m_currentdatawindow
+m_formattedreport m_formattedreport
+end type
+end forward
+
+global type m_maint_print from menu
+m_print_maint m_print_maint
+end type
+global m_maint_print m_maint_print
+
+on m_maint_print.create
+m_maint_print=this
+this.m_print_maint=create m_print_maint
+this.Item[]={this.m_print_maint}
+end on
+
+on m_maint_print.destroy
+destroy(this.m_print_maint)
+end on
+
+type m_print_maint from menu within m_maint_print
+m_currentdatawindow m_currentdatawindow
+m_formattedreport m_formattedreport
+end type
+
+on m_print_maint.create
+this.Text="Print"
+this.m_currentdatawindow=create m_currentdatawindow
+this.m_formattedreport=create m_formattedreport
+this.Item[]={this.m_currentdatawindow, &
+this.m_formattedreport}
+end on
+
+on m_print_maint.destroy
+destroy(this.m_currentdatawindow)
+destroy(this.m_formattedreport)
+end on
+
+type m_currentdatawindow from menu within m_print_maint
+end type
+
+on clicked;ParentWindow.TriggerEvent( "ue_printscreen" )
+
+end on
+
+on m_currentdatawindow.create
+this.Text="Screen Dump..."
+this.Microhelp="This will dump all records in the currently selected data window to the printer in screen format."
+end on
+
+type m_formattedreport from menu within m_print_maint
+end type
+
+on clicked;ParentWindow.TriggerEvent( "ue_printreport" )
+
+end on
+
+on m_formattedreport.create
+this.Text="Formatted Report ..."
+this.Microhelp="This will dump all records in the currently selected data window to the printer in printer format."
+this.Enabled=false
+end on
+

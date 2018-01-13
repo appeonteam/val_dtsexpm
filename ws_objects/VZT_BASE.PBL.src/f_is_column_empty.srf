@@ -1,0 +1,39 @@
+﻿$PBExportHeader$f_is_column_empty.srf
+global type f_is_column_empty from function_object
+end type
+
+forward prototypes
+global function boolean f_is_column_empty (long al_row, string as_colname, ref datawindow adw_source)
+end prototypes
+
+global function boolean f_is_column_empty (long al_row, string as_colname, ref datawindow adw_source);string ls_datatype 
+boolean lb_ret = false 
+
+lb_ret = false 
+
+if al_row > 0 AND al_row <= adw_source.RowCount() then 
+	ls_datatype = TRIM( Upper( adw_source.describe( as_colname + ".ColType")) )
+	If IsNUll( ls_datatype ) then ls_datatype =''
+	ls_datatype = MID( ls_datatype + "XXXXXXXX", 1 , 7)
+		
+	CHOOSE CASE ls_datatype
+//		CASE "DATEXXX"
+//			if NOT isNull( adw_source.getItemDate(al_row, as_colname) ) then lb_ret = false
+//		CASE "DATETIM"
+//			if NOT isNull( adw_source.getItemDateTime(al_row, as_colname) ) then lb_ret = false
+		CASE "NUMBERX"
+			if  adw_source.getItemNumber(al_row, as_colname) = 0   then lb_ret = true
+//		CASE "TIMEXXX" // "TIMESTAM"
+//			if NOT isNull( adw_source.getItemTime(al_row, as_colname) ) then lb_ret = false
+		CASE "DECIMAL"
+			if adw_source.getItemDecimal(al_row, as_colname) = 0 then lb_ret = true
+		CASE ELSE
+			if Pos(ls_datatype, "CHAR") > 0 then
+				if trim( adw_source.getItemString(al_row, as_colname)) = ''  then lb_ret = true 
+			end if
+	END CHOOSE
+END IF
+
+return lb_ret
+end function
+

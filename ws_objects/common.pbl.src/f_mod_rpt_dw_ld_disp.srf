@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_mod_rpt_dw_ld_disp.srf
+global type f_mod_rpt_dw_ld_disp from function_object
+end type
+
+forward prototypes
+global function string f_mod_rpt_dw_ld_disp (ref datawindow dw_in, string coln)
+end prototypes
+
+global function string f_mod_rpt_dw_ld_disp (ref datawindow dw_in, string coln);string modStr,modRes
+modStr = colN+".format=~""+cReportLongDateFormatStr+"~""
+modRes=dw_in.Modify(modStr)
+if modRes <> "" then
+	MessageBox("dw Modify Error","dw: ("+dw_in.dataobject+ ")   column: ("+coln + ")  format: (" + &
+			cReportLongDateFormatStr + ")  error: (" + modRes + ")") 
+end if
+return modRes
+end function
+

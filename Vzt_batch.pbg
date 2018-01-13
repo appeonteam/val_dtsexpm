@@ -1,0 +1,18 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "Vzt_batch.pbl" "";
+@end;
+@begin Objects
+ "w_vzt_error.srw" "Vzt_batch.pbl";
+ "d_vzt_reportoutput_list.srd" "Vzt_batch.pbl";
+ "w_vzt_batch_schedule.srw" "Vzt_batch.pbl";
+ "batch_server_web.srj" "Vzt_batch.pbl";
+ "f_get_batch_rowaccess.srf" "Vzt_batch.pbl";
+ "d_vzt_mail_queue.srd" "Vzt_batch.pbl";
+ "batch_scheduler.srj" "Vzt_batch.pbl";
+ "batch_server_vzhome.srj" "Vzt_batch.pbl";
+ "w_vzt_mail_queue.srw" "Vzt_batch.pbl";
+ "uo_vzt_report_output.sru" "Vzt_batch.pbl";
+ "w_vzt_noparms.srw" "Vzt_batch.pbl";
+ "d_schedule.srd" "Vzt_batch.pbl";
+@end;

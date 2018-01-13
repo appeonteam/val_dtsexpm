@@ -1,0 +1,25 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "dts_pms.pbl" "";
+@end;
+@begin Objects
+ "w_foi_test.srw" "dts_pms.pbl";
+ "d_retcodes_dddw.srd" "dts_pms.pbl";
+ "d_retcodes_edit.srd" "dts_pms.pbl";
+ "d_foi_guest_edit.srd" "dts_pms.pbl";
+ "d_pms_adhoc_master_dw.srd" "dts_pms.pbl";
+ "uo_vzt_tcp_metro_old.sru" "dts_pms.pbl";
+ "w_report_slug_vic.srw" "dts_pms.pbl";
+ "d_pms_rpt_retcalls.srd" "dts_pms.pbl";
+ "w_pms_r_retcalls01.srw" "dts_pms.pbl";
+ "d_timercalls_updvic.srd" "dts_pms.pbl";
+ "w_retcodes_edit.srw" "dts_pms.pbl";
+ "d_subproblem2_20051208.srd" "dts_pms.pbl";
+ "w_pms_adhoc.srw" "dts_pms.pbl";
+ "d_foi_syslist.srd" "dts_pms.pbl";
+ "w_foi_guest_selection_old.srw" "dts_pms.pbl";
+ "d_subproblem2_2006_0710.srd" "dts_pms.pbl";
+ "d_subproblem2vic.srd" "dts_pms.pbl";
+ "d_pms_rpt_retcalls_print.srd" "dts_pms.pbl";
+ "d_subproblem2.srd" "dts_pms.pbl";
+@end;

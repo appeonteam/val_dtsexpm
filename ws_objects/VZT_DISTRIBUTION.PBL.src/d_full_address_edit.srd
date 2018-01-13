@@ -1,0 +1,102 @@
+﻿$PBExportHeader$d_full_address_edit.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=72 color="27354725" )
+summary(height=20 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=284 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="vzt_address.id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=type dbname="vzt_address.type" initial="EMAIL" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=email dbname="vzt_address.address" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=descr dbname="vzt_address.descr" initial="empty" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=primary dbname="vzt_address.prim" values="	Y/	N" )
+ column=(type=long updatewhereclause=yes name=contact_id dbname="vzt_contact_address.contact_id" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=addr1 dbname="vzt_address.addr1" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=addr2 dbname="vzt_address.addr2" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=city dbname="vzt_address.city" )
+ column=(type=char(40) update=yes updatewhereclause=yes name=state dbname="vzt_address.state" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=zip dbname="vzt_address.zip" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=country dbname="vzt_address.country" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=phone dbname="vzt_address.phone" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=rand dbname="vzt_address.rand" )
+ column=(type=char(150) update=yes updatewhereclause=yes name=vzt_address_name dbname="vzt_address.name" )
+ retrieve="  SELECT a.~"id~", 
+        	a.~"type~",
+			a.~"address~",
+			a.~"descr~",
+			a.~"prim~", 
+			ca.~"contact_id~" ,
+			a.~"addr1~",
+			a.~"addr2~",
+			a.~"city~",
+			a.~"state~",
+			a.~"zip~",
+			a.~"country~",
+			a.~"phone~",
+			a.~"rand~",
+			a.~"name~" 
+	
+    FROM vzt_address a, vzt_contact_address ca 
+		WHERE ca.address_id = a.id AND
+				ca.contact_id = :ai_contact_id
+
+ORDER BY 2,3 ASC   
+" update="vzt_address" updatewhere=0 updatekeyinplace=yes arguments=(("ai_contact_id", number)) )
+text(band=header alignment="0" text="Type" border="0" color="16777215" x="27" y="0" height="64" width="192" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Primary " border="0" color="16777215" x="384" y="0" height="64" width="247" html.valueishtml="0"  name=t_2 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Address/Phone/Email" border="0" color="16777215" x="731" y="0" height="64" width="841" html.valueishtml="0"  name=t_3 visible="1"  font.face="Lucida Sans Unicode" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+button(band=detail text="" filename="gcc_web.bmp" enabled=yes action="0" border="0" color="0" x="1486" y="0" height="88" width="110" vtextalign="0" htextalign="0"  name=b_website  tag="  " visible="1~tif ( POS('WEBSITE', upper(type) ) > 0, 1, 0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+rectangle(band=detail x="23" y="272" height="8" width="3205"  name=r_1 visible="1" brush.hatch="6" brush.color="8421504" pen.style="0" pen.width="5" pen.color="8421504"  background.mode="2" background.color="10789024" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1614" y="16" height="56" width="114" format="[general]" html.valueishtml="0"  name=email visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+button(band=detail text="" filename="mail.bmp" enabled=yes action="0" border="0" color="0" x="1486" y="0" height="88" width="110" vtextalign="0" htextalign="0"  name=b_email  tag="  " visible="1~tif ( POS('EMAIL', upper(type) ) > 0, 1, 0)"  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+text(band=detail alignment="1" text="Addr 2" border="0" color="27354725" x="553" y="96" height="64" width="206" html.valueishtml="0"  name=t_6 visible="1~tif ( POS('WEBSITE,EMAIL', upper(type) ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1)
+)"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="City" border="0" color="27354725" x="544" y="188" height="64" width="206" html.valueishtml="0"  name=t_7 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0 , 0, 1))"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Addr 1" border="0" color="27354725" x="2944~tif ( POS('WEBSITE,EMAIL', upper(type) ) > 0, 2290, 544)" y="4" height="56" width="206" html.valueishtml="0"  name=t_5 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Phone" border="0" color="27354725" x="1536" y="104" height="56" width="192" html.valueishtml="0"  name=t_10 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="State" border="0" color="27354725" x="1353" y="188" height="64" width="133" html.valueishtml="0"  name=t_8 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Zip:" border="0" color="27354725" x="1883" y="184" height="64" width="96" html.valueishtml="0"  name=t_11 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Country" border="0" color="27354725" x="2414" y="188" height="64" width="242" html.valueishtml="0"  name=t_9 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0 , 0, 1))"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="0" color="0" x="462" y="16" height="56" width="64" format="[general]" html.valueishtml="0"  name=primary visible="1" checkbox.text="" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Lucida Sans" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Name" border="0" color="27354725" x="1609" y="12" height="56" width="430" html.valueishtml="0"  name=t_4 visible="1~tif ( POS('MAILING,EMAIL', upper(type) ) > 0, 1, 0)"  font.face="Lucida Sans" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=10 border="5" color="16777215" x="23" y="12" height="64" width="411" format="[general]" html.valueishtml="0"  name=type visible="1" dddw.name=d_vzt_address_type_lookup dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=3 alignment="0" tabsequence=40 border="5" color="16777215" x="549" y="12" height="64" width="914" format="[general]" html.valueishtml="0"  name=address visible="1~tif ( POS('WEBSITE,EMAIL', upper(type) ) > 0, 1, 0)" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=8 alignment="0" tabsequence=60 border="5" color="16777215" x="786" y="100" height="64" width="718" format="[general]" html.valueishtml="0"  name=addr2 visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=9 alignment="0" tabsequence=80 border="5" color="16777215" x="786" y="188" height="64" width="535" format="[general]" html.valueishtml="0"  name=city visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=15 alignment="0" tabsequence=120 border="5" color="16777215" x="2053" y="12" height="64" width="1157" format="[general]" html.valueishtml="0"  name=vzt_address_name visible="1~tif ( POS('MAILING,EMAIL', upper(type) ) > 0, 1, 0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=13 alignment="0" tabsequence=70 border="5" color="16777215" x="1751~tif ( POS(upper(type), 'PHONE' ) > 0 or POS(type, 'FAX') >0, 549, 1751)" y="100~tif ( POS(upper(type), 'PHONE' ) > 0 or POS(type, 'FAX') >0, 12, 100)" height="64" width="553~tif ( POS(upper(type), 'PHONE' ) > 0 or POS(type, 'FAX') >0, 914, 553)" format="[general]" html.valueishtml="0"  name=phone visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE') > 0 or POS(type, 'FAX') >0 , 1, 
+if ( POS(lower(type), 'mailing') > 0 or POS(lower(type), 'purchasing') >0 or 
+POS(lower(type), 'billing') >0 ,1,0)))
+
+" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=10 alignment="0" tabsequence=90 border="5" color="16777215" x="1518" y="188" height="64" width="347" format="[general]" html.valueishtml="0"  name=state visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))" dddw.name=d_dddw_states dddw.displaycolumn=code dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=11 alignment="0" tabsequence=100 border="5" color="16777215" x="2025" y="188" height="64" width="357" format="[general]" html.valueishtml="0"  name=zip visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0 , 0, 1))" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=12 alignment="0" tabsequence=110 border="5" color="16777215" x="2679" y="192" height="64" width="539" format="[general]" html.valueishtml="0"  name=country visible="1~tif ( POS('WEBSITE,EMAIL', type ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0 , 0, 1))" dddw.name=d_dddw_countries dddw.displaycolumn=code dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=7 alignment="0" tabsequence=30 border="5" color="16777215" x="3191~tif ( POS('WEBSITE,EMAIL', upper(type) ) > 0, 2491, 786)" y="8" height="64" width="718" format="[general]" html.valueishtml="0"  name=addr1 visible="1~tif ( POS('WEBSITE,EMAIL', upper(type) ) > 0, 0, 
+if ( POS(type, 'PHONE' ) > 0 or POS(type, 'FAX') >0, 0, 1))" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="5" color="16777215" x="3163" y="100" height="60" width="279" format="[general]" html.valueishtml="0"  name=descr visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans Unicode" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=14 alignment="0" tabsequence=130 border="0" color="0" x="2327" y="104" height="56" width="617" format="[general]" html.valueishtml="0"  name=rand visible="0" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Lucida Sans" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_emp_own_pager.srf
+global type f_emp_own_pager from function_object
+end type
+
+forward prototypes
+global function boolean f_emp_own_pager (string in_pager_id)
+end prototypes
+
+global function boolean f_emp_own_pager (string in_pager_id);string empId
+select 	emp_id into :empId
+from 		pager_emp
+where		pager_id = :in_pager_id;
+
+if sqlca.sqlcode = 0 then
+	return true
+else
+	return false
+end if
+
+
+end function
+

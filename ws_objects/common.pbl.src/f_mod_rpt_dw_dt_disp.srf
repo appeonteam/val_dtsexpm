@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_mod_rpt_dw_dt_disp.srf
+global type f_mod_rpt_dw_dt_disp from function_object
+end type
+
+forward prototypes
+global function string f_mod_rpt_dw_dt_disp (ref datawindow dw_in, string coln)
+end prototypes
+
+global function string f_mod_rpt_dw_dt_disp (ref datawindow dw_in, string coln);string modStr,modRes, oldStr
+modStr = colN+".format=~""+cReportDateTimeFormatStr+"~""
+oldStr=dw_in.Describe("opencall_timer_start.format")
+modRes=dw_in.Modify(modStr)
+if modRes <> "" then
+	MessageBox("dw Modify Error","dw: ("+dw_in.dataobject+ ")   column: ("+coln + ")  format: (" + &
+			cReportDateTimeFormatStr + ")  error: (" + modRes + ")") 
+end if
+return modRes
+
+end function
+

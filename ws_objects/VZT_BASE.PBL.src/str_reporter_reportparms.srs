@@ -1,0 +1,10 @@
+﻿$PBExportHeader$str_reporter_reportparms.srs
+global type str_reporter_reportparms from structure
+	string		mode
+	string		schedule_id
+	string		report_id
+	string		userid
+	string		hierarchy_id
+	string		live_trace
+end type
+

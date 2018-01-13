@@ -1,0 +1,43 @@
+﻿$PBExportHeader$f_insert_assignment.srf
+global type f_insert_assignment from function_object
+end type
+
+forward prototypes
+global function boolean f_insert_assignment (s_pageassignment ass)
+end prototypes
+
+global function boolean f_insert_assignment (s_pageassignment ass);  INSERT INTO pageassignment  
+         ( assignment_id,   
+           assignment_cd,   
+           dept_assigned,   
+           emp_id,   
+           emp_name,   
+           pager_id,   
+           time_assigned,
+			  time_completed,
+			  call_number,
+			  page_sent,
+			  special_msg)  
+  VALUES ( :ass.assignment_id,   
+           :ass.assignment_cd,   
+           :ass.dept_assigned,   
+           :ass.emp_id,   
+           :ass.emp_name,   
+           :ass.pager_id,   
+           :ass.time_assigned,
+			  :ass.time_completed,
+			  :ass.call_number,
+			  :ass.page_sent,
+			  :ass.special_msg)  ;
+
+
+if sqlca.sqlcode < 0 then
+//	MessageBox("insert error", sqlca.sqlerrtext)
+	rollback;
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+return true
+end function
+

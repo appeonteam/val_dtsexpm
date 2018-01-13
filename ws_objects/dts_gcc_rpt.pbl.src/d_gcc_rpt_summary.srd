@@ -1,0 +1,90 @@
+﻿$PBExportHeader$d_gcc_rpt_summary.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=300 color="536870912" )
+summary(height=0 color="553648127" )
+footer(height=0 color="536870912" )
+detail(height=0 color="553648127" )
+table(column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=char(200) updatewhereclause=yes name=answertxt dbname="qgen_answer_choices.answertxt" )
+ column=(type=decimal(0) updatewhereclause=yes identity=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=decimal(0) updatewhereclause=yes name=answerid dbname="qgen_qset_answers.answerid" )
+ column=(type=long updatewhereclause=yes name=checked dbname="qgen_qset_answers.checked" )
+ column=(type=decimal(0) updatewhereclause=yes name=qgen_qset_answers_responderid dbname="qgen_qset_answers.responderid" )
+ column=(type=date updatewhereclause=yes name=fdate dbname="compute_0007" )
+ column=(type=date updatewhereclause=yes name=tdate dbname="compute_0008" )
+ column=(type=long updatewhereclause=yes name=qgen_qset_qsorder dbname="qgen_qset.qsorder" )
+ column=(type=long updatewhereclause=yes name=qgen_questions_qorder dbname="qgen_questions.qorder" )
+ retrieve="  SELECT qgen_questions.questiontxt  questiontxt,
+			qgen_answer_choices.answertxt answertxt ,
+			qgen_questions.questionid questionid,
+			A1.answerid answerid,
+			A1.checked,
+			A1.responderid,
+			vzt_date(':fdate') , vzt_date(':tdate'),
+			qq.sortorder qsorder, 
+			qgen_questions.sortorder qorder
+		
+
+    FROM qgen_qset_answers A1,   
+         qgen_questions  ,
+			qgen_answer_choices ,
+			gcc,
+			qgen_qset qq,
+			guest			g
+   WHERE  
+         A1.questionid 	= qgen_questions.questionid 	and  
+         A1.answerid 	= qgen_answer_choices.answerid  and 
+			gcc.gccid  	= A1.headerid AND A1.headerid > 0 and
+			A1.qsetid	= qq.qsetid AND
+			g.account	= gcc.guest_account 
+			/*1  AND ((':NA' = 'Y') OR ( ':NA'='N' AND answerid <> 999999000 )) 1*/ 
+			/*2 AND ( string(0)=';qset' OR A1.qsetid IN (;qset)  ) 		2*/	
+			/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					A1.ansdate BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			1*/
+			/*1
+			 AND
+				( 	{ts ':ARRDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':DEPDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.checkin_dt BETWEEN 
+					{ts ':ARRDATE 00:00:00.000000'} AND {ts ':DEPDATE 23:59:59.777000'} 
+				) 
+			1*/
+			/*2
+		 	 AND ( '*ALL*' IN (';COMP') OR '' IN  (';COMP') OR g.comp_name IN (';COMP') )
+			 2*/	
+ 
+			AND qgen_questions.qtypeid NOT IN ('FF1','FF2', 'FF3','FF4')
+ORDER BY qsorder, qorder"  sort="qgen_qset_qsorder A qgen_questions_qorder A answerid A " )
+group(level=1 header.height=124 trailer.height=76 by=("questionid" ) header.color="553648127" trailer.color="536870912" )
+group(level=2 header.height=64 trailer.height=0 by=("answertxt" ) header.color="553648127" trailer.color="553648127" )
+text(band=header alignment="0" text="Guest Comment Card Summary" border="0" color="0" x="1115" y="4" height="64" width="928" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="From:" border="0" color="0" x="1175" y="84" height="56" width="155" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=7 alignment="0" tabsequence=32766 border="0" color="128" x="1335" y="84" height="56" width="270" format="[shortdate]" html.valueishtml="0"  name=fdate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="To:" border="0" color="0" x="1614" y="84" height="56" width="91" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=8 alignment="0" tabsequence=32766 border="0" color="128" x="1733" y="84" height="56" width="311" format="[shortdate]" html.valueishtml="0"  name=tdate visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=1 alignment="0" tabsequence=32766 border="0" color="128" x="165" y="40" height="56" width="2811" format="[general]" html.valueishtml="0"  name=questiontxt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=header.1 x="155" y="104" height="8" width="2871"  name=r_2 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+column(band=header.2 id=2 alignment="2" tabsequence=32766 border="0" color="0" x="155" y="4" height="52" width="896" format="[general]" html.valueishtml="0"  name=answertxt visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header.2 alignment="1" expression="sum ( checked  for group 2 )"border="0" color="0" x="1659" y="4" height="60" width="133" format="[general]" html.valueishtml="0"  name=c1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header.2 alignment="1" expression="sum ( if( answerid =999999999, 0, checked )  for group 2 ) / 
+sum ( if( answerid =999999999, 0, checked )  for group 1 ) "border="0" color="0" x="2208" y="0" height="60" width="206" format="0.0%" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=trailer.1 x="155" y="60" height="8" width="2871"  name=r_3 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=trailer.1 alignment="0" text="Total:" border="0" color="16711680" x="178" y="4" height="60" width="165" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=trailer.1 x="155" y="0" height="12" width="2871"  name=r_4 visible="1" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+compute(band=trailer.1 alignment="1" expression="sum ( checked  for group 1 )"border="0" color="0" x="1659" y="4" height="60" width="133" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=trailer.1 alignment="1" text="100%" border="0" color="16711680" x="2254" y="8" height="56" width="160" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Question" border="0" color="65535" x="192" y="236" height="52" width="1358" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Responses" border="0" color="65535" x="1541" y="236" height="52" width="754" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="%" border="0" color="65535" x="2258" y="236" height="52" width="229" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

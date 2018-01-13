@@ -1,0 +1,36 @@
+﻿$PBExportHeader$d_approved_calls_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=12632256 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=80 color="27354725" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=84 color="30388123" )
+table(column=(type=char(10) updatewhereclause=yes key=yes name=call_number dbname="approved_calls.call_number" )
+ column=(type=long updatewhereclause=yes key=yes name=appr_level dbname="approved_calls.appr_level" initial="1" )
+ column=(type=datetime updatewhereclause=yes name=appr_date dbname="approved_calls.appr_date" initial="today" )
+ column=(type=char(50) updatewhereclause=yes name=appr_by dbname="approved_calls.appr_by" )
+ column=(type=char(300) update=yes updatewhereclause=yes name=comments dbname="approved_calls.comments" )
+ column=(type=long updatewhereclause=yes name=appr_by_id dbname="approved_calls.appr_by_id" )
+ retrieve="  SELECT ~"approved_calls~".~"call_number~",   
+         ~"approved_calls~".~"appr_level~",   
+         ~"approved_calls~".~"appr_date~",   
+         ~"approved_calls~".~"appr_by~",   
+         ~"approved_calls~".~"comments~",   
+         ~"approved_calls~".~"appr_by_id~"  
+    FROM ~"approved_calls~"   
+	WHERE call_number = :as_callnum" update="approved_calls" updatewhere=0 updatekeyinplace=yes arguments=(("as_callnum", string)) )
+text(band=header alignment="2" text="Level" border="0" color="16777215" x="9" y="8" height="64" width="197" html.valueishtml="0"  name=appr_level_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Approval Date" border="0" color="16777215" x="215" y="8" height="64" width="873" html.valueishtml="0"  name=appr_date_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Approved By" border="0" color="16777215" x="1097" y="8" height="64" width="1079" html.valueishtml="0"  name=appr_by_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Comments" border="0" color="16777215" x="2185" y="8" height="64" width="2039" html.valueishtml="0"  name=comments_t visible="1"  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Appr By Id" border="0" color="0" x="4233" y="4" height="76" width="1367" html.valueishtml="0"  name=appr_by_id_t visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="0" color="33554432" x="9" y="4" height="68" width="197" format="[general]" html.valueishtml="0"  name=appr_level visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="33554432" x="215" y="4" height="68" width="873" format="[shortdate] [time]" html.valueishtml="0"  name=appr_date visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="33554432" x="1097" y="4" height="68" width="1079" format="[general]" html.valueishtml="0"  name=appr_by visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=10 border="0" color="33554432" x="2185" y="4" height="68" width="2039" format="[general]" html.valueishtml="0"  name=comments visible="1" edit.limit=300 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=20 border="0" color="33554432" x="4233" y="0" height="64" width="1367" format="[general]" html.valueishtml="0"  name=appr_by_id visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans Unicode" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

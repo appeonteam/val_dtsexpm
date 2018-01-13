@@ -1,0 +1,35 @@
+﻿$PBExportHeader$d_qset_edit_qlist_all.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=4 color="8388608" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=decimal(0) updatewhereclause=yes name=qgen_qset_qsetid dbname="qgen_qset.qsetid" )
+ column=(type=long updatewhereclause=yes name=qgen_qset_sortorder dbname="qgen_qset.sortorder" )
+ column=(type=long updatewhereclause=yes name=qgen_qset_questions_sortorder dbname="qgen_qset_questions.sortorder" )
+ column=(type=char(200) updatewhereclause=yes name=qgen_qset_descr dbname="qgen_qset.descr" )
+ retrieve="  SELECT qq.questionid,   
+         qq.questiontxt,   
+         qgen_qset.qsetid,   
+         qgen_qset.sortorder,   
+         qgen_qset_questions.sortorder,   
+         qgen_qset.descr  
+    FROM qgen_questions qq,   
+         qgen_qset,   
+         qgen_qset_questions  
+   WHERE ( qgen_qset.qsetid = qgen_qset_questions.qsetid ) and  
+         ( qq.questionid = qgen_qset_questions.questionid ) 
+
+"  sort="qgen_qset_sortorder A qgen_qset_questions_sortorder A " )
+group(level=1 header.height=72 trailer.height=0 by=("qgen_qset_sortorder" , "qgen_qset_qsetid" ) header.color="536870912" trailer.color="536870912" )
+column(band=header.1 id=6 alignment="0" tabsequence=32766 border="0" color="128" x="23" y="4" height="56" width="1221" format="[general]"  name=qgen_qset_descr edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=32766 border="0" color="0" x="73" y="4" height="56" width="201" format="[general]"  name=questionid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="288" y="4" height="56" width="1051" format="[general]"  name=questiontxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="1417" y="4" height="60" width="233"  name=qgen_qset_sortorder  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="255" x="1691" y="8" height="56" width="265"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="255" x="2007" y="8" height="56" width="288"  name=qgen_qset_questions_sortorder  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+
+sparse(names="qgen_qset_descr")htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

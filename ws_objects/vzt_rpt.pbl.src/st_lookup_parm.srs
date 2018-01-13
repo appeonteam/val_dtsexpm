@@ -1,0 +1,12 @@
+﻿$PBExportHeader$st_lookup_parm.srs
+global type st_lookup_parm from structure
+	string		parmvalue
+	string		codecol
+	string		desccol
+	string		dataobject
+	integer		x
+	integer		y
+	string		numlist
+	string		selection
+end type
+

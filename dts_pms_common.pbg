@@ -1,0 +1,15 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "dts_pms_common.pbl" "";
+@end;
+@begin Objects
+ "d_foi_guest_edit.srd" "dts_pms_common.pbl";
+ "w_foi_guest_selection.srw" "dts_pms_common.pbl";
+ "d_foi_namelist_fid.srd" "dts_pms_common.pbl";
+ "uo_gcc_dupcheck.sru" "dts_pms_common.pbl";
+ "w_foi_options_edit.srw" "dts_pms_common.pbl";
+ "d_foi_sysedit.srd" "dts_pms_common.pbl";
+ "uo_vzt_tcp_metro.sru" "dts_pms_common.pbl";
+ "d_foi_namelist.srd" "dts_pms_common.pbl";
+ "d_foi_list.srd" "dts_pms_common.pbl";
+@end;

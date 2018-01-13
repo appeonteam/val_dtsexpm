@@ -1,0 +1,33 @@
+﻿$PBExportHeader$d_qgen_rpt_querylist.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="128" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes name=reportid dbname="vzt_reportdefparms.reportid" )
+ column=(type=char(20) updatewhereclause=yes name=userid dbname="vzt_reportdefparms.userid" )
+ column=(type=char(20) updatewhereclause=yes name=queryname dbname="vzt_reportdefparms.queryname" )
+ column=(type=char(40) updatewhereclause=yes name=querydescr dbname="vzt_reportdefparms.querydescr" )
+ retrieve="  SELECT DISTINCT 
+			rp1.reportid,   
+         rp1.userid  ,
+			rp1.queryname ,
+		 	rp1.querydescr
+			 
+   FROM 	vzt_reportdefparms  rp1
+   WHERE ( rp1.REPORTID = :as_id ) 		AND  
+         ( userid 		= :as_userid ) AND EXISTS 
+		( 	SELECT * FROM vzt_reportdefparms rp2 
+			WHERE rp2.REPORTID 			= :as_id				AND
+					rp2.queryname			= rp1.queryname	AND
+					UPPER(rp2.parmname) 	LIKE 'QUESTION%' 	AND 
+					rp2.parmvalue 	= :questionid 
+					)
+
+ORDER BY rp1.queryname ASC   
+" arguments=(("as_id", string),("as_userid", string),("questionid", string)) )
+compute(band=header alignment="0" expression="/* if ( upper( as_queryname )= 'DEFAULT', 'Default parameters',  as_queryname ) */"border="0" color="16777215" x="965" y="0" height="56" width="1358" format="[general]"  name=qtitle  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Query Description:"border="0" color="16777215" x="78" y="0" height="56" width="553"  name=reportid_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="0" color="0" x="78" y="4" height="60" width="923" format="[general]"  name=querydescr edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

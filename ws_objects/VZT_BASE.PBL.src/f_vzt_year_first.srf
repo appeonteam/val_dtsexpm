@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_vzt_year_first.srf
+global type f_vzt_year_first from function_object
+end type
+
+forward prototypes
+global function boolean f_vzt_year_first ()
+end prototypes
+
+global function boolean f_vzt_year_first ();if (string(year(today())) = MID(string(today()),1,4) AND &
+	string(year(RelativeDate(today(),1)) ) = MID(string(RelativeDate(today(),1)),1,4) )	or & 
+	MID(gnv_appman.is_datemask, 1,2) = 'YY' then 
+	return true 
+end if
+return false 
+
+end function
+

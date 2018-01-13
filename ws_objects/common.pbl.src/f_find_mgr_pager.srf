@@ -1,0 +1,73 @@
+﻿$PBExportHeader$f_find_mgr_pager.srf
+global type f_find_mgr_pager from function_object
+end type
+
+forward prototypes
+global function string f_find_mgr_pager (string deptcd, string roomno, datetime timerstart)
+end prototypes
+
+global function string f_find_mgr_pager (string deptcd, string roomno, datetime timerstart);string pagerId, allZone, zoneCd, zoneGrp
+allZone='Z0'
+
+if f_is_a_quickcall(deptcd,timerstart) then //force dept to QUICKCALL
+	deptcd='QUICKCALL'
+end if
+	
+
+SELECT  	unit_type, zone_group_code
+INTO		:zoneCd, :zoneGrp
+FROM		area
+WHERE		area_number = :roomno;
+if sqlca.sqlcode < 0 then
+	MessageBox("DB Error",sqlca.sqlerrtext)
+	return ''
+end if
+
+//  SELECT deptmgr.mgr_pager_id  
+//    INTO :pagerId 
+//    FROM deptmgr,   
+//         pagers  
+//   WHERE ( deptmgr.mgr_pager_id = pagers.pager_id ) and  
+//         ( ( deptmgr.dept = :deptcd ) AND  
+//			( deptmgr.zone_code = :zonecd or deptmgr.zone_code = '99') and //pager with zone 99 qualify for all zone
+//         ( pagers.active_ind = 'Y' and pagers.zone_code = :zonecd) )   ;
+
+SELECT 	distinct deptmgr.mgr_pager_id, pagers.pager_type 
+  INTO 	:pagerId, :cPageSysCd
+  FROM 	pagers, deptmgr
+where  	pagers.active_ind = 'Y' 
+and		pagers.pager_id = deptmgr.mgr_pager_id
+and		deptmgr.dept= :deptcd 
+and		(deptmgr.zone_code = :zoneCd or deptmgr.zone_code = :zoneGrp or deptmgr.zone_code = :allzone);
+			
+
+
+if sqlca.sqlcode = 100 then
+  SELECT deptmgr.mgr_pager_id, pagers.pager_type 
+    INTO :pagerId, :cPageSysCd
+    FROM deptmgr, pagers
+   WHERE ( deptmgr.dept = 'DEFT' 
+	and	 mgr_pager_id = pager_id)    ;  // ignore zone code for 'DEFT' pager
+			
+	if sqlca.sqlcode = 100 then
+		return ''
+	else
+		if sqlca.sqlcode < 0 then
+			MessageBox("DB Error",sqlca.sqlerrtext)
+			return ''
+		else
+			return pagerId
+		end if
+	end if
+else
+	if sqlca.sqlcode < 0 then
+		MessageBox("DB Error",sqlca.sqlerrtext)
+		return ''
+	else
+		return pagerId
+	end if
+end if		
+
+return ''
+end function
+

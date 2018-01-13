@@ -1,0 +1,17 @@
+﻿$PBExportHeader$d_gcc_reports.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes key=yes name=reportid dbname="vzt_reportdef.reportid" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=title dbname="vzt_reportdef.title" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=windowname dbname="vzt_reportdef.windowname" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=dwdataobjectname dbname="vzt_reportdef.dwdataobjectname" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=subtype dbname="vzt_reportdef.subtype" )
+ retrieve="PBSELECT(TABLE(NAME=~"vzt_reportdef~") COLUMN(NAME=~"vzt_reportdef.reportid~")COLUMN(NAME=~"vzt_reportdef.title~")COLUMN(NAME=~"vzt_reportdef.windowname~")COLUMN(NAME=~"vzt_reportdef.dwdataobjectname~")COLUMN(NAME=~"vzt_reportdef.subtype~"))" update="vzt_reportdef" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="14" y="4" height="56" width="818" format="[general]"  name=title edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="901" y="4" height="56" width="174" format="[general]"  name=subtype edit.limit=3 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1115" y="4" height="56" width="1006" format="[general]"  name=dwdataobjectname edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="2217" y="4" height="56" width="507" format="[general]"  name=windowname edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

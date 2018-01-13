@@ -1,0 +1,24 @@
+﻿$PBExportHeader$d_dl_subproblem.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(5) update=yes updatewhereclause=yes key=yes name=problem_number dbname="subproblem.problem_number" )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=subproblem_number dbname="subproblem.subproblem_number" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=subproblem_desc dbname="subproblem.subproblem_desc" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=auto_assign_ind dbname="subproblem.auto_assign_ind" )
+ retrieve="  SELECT ~"subproblem~".~"problem_number~",   
+         ~"subproblem~".~"subproblem_number~",   
+         ~"subproblem~".~"subproblem_desc~",   
+         ~"subproblem~".~"auto_assign_ind~"  
+    FROM ~"subproblem~"  
+ORDER BY ~"subproblem~".~"subproblem_desc~" ASC  
+" update="subproblem" updatewhere=1 updatekeyinplace=no )
+text(band=header alignment="2" text="Subproblem Desc"border="0" color="0" x="201" y="8" height="64" width="686"  name=subproblem_desc_t  font.face="Times New Roman   " font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Subproblem Number"border="0" color="0" x="9" y="4" height="56" width="183"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Problem Number"border="0" color="0" x="896" y="4" height="56" width="197"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="56" width="183" format="[general]"  name=subproblem_number edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="0" x="206" y="4" height="56" width="681" format="[general]"  name=subproblem_desc edit.limit=0 edit.case=any edit.format="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial             " font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="896" y="4" height="56" width="197" format="[general]"  name=problem_number edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

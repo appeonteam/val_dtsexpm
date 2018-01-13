@@ -1,0 +1,8 @@
+﻿$PBExportHeader$st_date_range.srs
+$PBExportComments$structure used in selecting start and end dates
+global type st_date_range from structure
+	string		startdate
+	string		enddate
+	string		request_type
+end type
+

@@ -1,0 +1,81 @@
+﻿$PBExportHeader$d_parms_edit.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=72 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=116 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes key=yes name=reportid dbname="vzt_reportdefparms.reportid" )
+ column=(type=char(100) update=yes updatewhereclause=yes key=yes name=parmname dbname="vzt_reportdefparms.parmname" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=parmvalue dbname="vzt_reportdefparms.parmvalue" )
+ column=(type=datetime update=yes updatewhereclause=yes name=parmdate dbname="vzt_reportdefparms.parmdate" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=parmtype dbname="vzt_reportdefparms.parmtype" initial="STRING" values="STRING	STRING/DATE	DATE/NUMBER	NUMBER/COLUMN	COLUMN/DDCOLUMN	DDCOLUMN/" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=replacetype dbname="vzt_reportdefparms.replacetype" )
+ column=(type=char(10) update=yes updatewhereclause=yes key=yes name=wheretag dbname="vzt_reportdefparms.wheretag" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=grouptag dbname="vzt_reportdefparms.grouptag" )
+ column=(type=decimal(2) update=yes updatewhereclause=yes name=parmnum dbname="vzt_reportdefparms.parmnum" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=editmask dbname="vzt_reportdefparms.editmask" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=lookuptype dbname="vzt_reportdefparms.lookuptype" initial="empty" values="DDDW	DDDW/WINDOW	WINDOW/" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=lookupprocessor dbname="vzt_reportdefparms.lookupprocessor" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=autoreplace dbname="vzt_reportdefparms.autoreplace" initial="N" values="Variable (Auto replaced)	Y/Specific (User entered)	N/" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=optionalcolumnvisible dbname="vzt_reportdefparms.optionalcolumnvisible" initial="Y" values="Visible on report?	Y/Visible on report?	N" )
+ column=(type=long update=yes updatewhereclause=yes name=parmorder dbname="vzt_reportdefparms.parmorder" initial="10" )
+ column=(type=char(3) updatewhereclause=yes name=accessflags dbname="accessflags" initial="                          " )
+ column=(type=char(100) updatewhereclause=yes name=vzt_reportdef_title dbname="vzt_reportdef.title" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=userid dbname="vzt_reportdefparms.userid" initial="SYS" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=queryname dbname="vzt_reportdefparms.queryname" initial="DEFAULT" )
+ retrieve="  SELECT rp.reportid,   
+         rp.parmname,   
+         rp.parmvalue,   
+         rp.parmdate,   
+         rp.parmtype,   
+         rp.replacetype,   
+         rp.wheretag,   
+         rp.grouptag,   
+         rp.parmnum,   
+         rp.editmask,   
+         rp.lookuptype,   
+         rp.lookupprocessor,   
+         rp.autoreplace,   
+         rp.optionalcolumnvisible,   
+         rp.parmorder,   
+         '   ' accessflags  ,
+			r.title,
+			rp.userid ,
+			rp.queryname 	
+    FROM vzt_reportdefparms  rp, vzt_reportdef r
+   WHERE r.reportid = rp.reportid
+ORDER BY r.title, r.reportid ASC, rp.parmorder ASC   
+" update="vzt_reportdefparms" updatewhere=0 updatekeyinplace=yes )
+group(level=1 header.height=60 trailer.height=0 by=("reportid" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Label:"border="0" color="0" x="37" y="8" height="60" width="155"  name=reportid_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Type:"border="0" color="0" x="2455" y="8" height="60" width="133"  name=parmtype_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="WHERE tag:"border="0" color="0" x="2830" y="8" height="60" width="311"  name=wheretag_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Group tag:"border="0" color="0" x="3186" y="8" height="60" width="261"  name=grouptag_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rpt ID:"border="0" color="0" x="3493" y="0" height="60" width="169"  name=id_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Edit Mask:"border="0" color="0" x="3813" y="0" height="60" width="256"  name=editmask_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Lookup Type:"border="0" color="0" x="4393" y="12" height="60" width="347"  name=lookuptype_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Lookup Processor:"border="0" color="0" x="4763" y="12" height="60" width="553"  name=lookupprocessor_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Display Order:"border="0" color="0" x="5998" y="4" height="60" width="375"  name=parmorder_t visible="1~tif ( POS(  as_accessflags , 'W') > 0 , 1, 0)"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=17 alignment="0" tabsequence=32766 border="0" color="128" x="73" y="4" height="60" width="1568" format="[general]"  name=vzt_reportdef_title edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="16711680~tif ( parmtype = 'DDCOLUMN' , RGB(128,0,0) , RGB( 0,0,255))" x="224" y="28" height="64" width="736" format="[general]"  name=parmname edit.limit=100 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=50 border="5" color="128" x="992" y="28" height="64" width="782" format="mm/dd/yyyy"  name=parmdate visible="1~tif ( parmtype = 'DATE' and  upper(autoreplace) <> 'Y', 1, 0)" editmask.mask="mm/dd/yyyy hh:mm:ss" editmask.focusrectangle=no  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="5" color="16711680" x="992" y="28" height="64" width="782" format="[general]"  name=parmvalue visible="1~tif ( parmtype = 'STRING' or 
+((parmtype = 'COLUMN' or parmtype = 'DDCOLUMN') and POS( accessflags ,'W') > 0 ), 1, 0)" edit.limit=0 edit.case=upper edit.focusrectangle=no edit.autoselect=no edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="16711680" x="992" y="28" height="64" width="777" format="[general]"  name=replacetype visible="1~tif ( parmtype = 'DATE' and upper(autoreplace) = 'Y', 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.displayonly=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=40 border="5" color="32768" x="992" y="28" height="64" width="782" format="[General]"  name=parmnum visible="1~tif ( parmtype = 'NUMBER'  , 1, 0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+button(band=detail text="?"filename="J:\Projects\BITMAPS\vztech\Arr01dn.bmp"action="0" border="0" color="16711680" x="1797" y="20" height="80" width="96" vtextalign="0" htextalign="0"  name=cb_search visible="1~tif (  trim(parmtype) <> 'COLUMN' and  trim(parmtype) <> 'DDCOLUMN' and Not IsNull( lookuptype), 1, 0)"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+column(band=detail id=13 alignment="0" tabsequence=80 border="0" color="16711680" x="1920" y="0" height="116" width="690" format="[general]"  name=autoreplace visible="1~tif ( parmtype = 'DATE',  1, 0)" radiobuttons.columns=1 radiobuttons.scale=no radiobuttons.threed=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=70 border="0" color="0" x="1938" y="28" height="60" width="535" format="[general]"  name=optionalcolumnvisible visible="1~tif ( parmtype = 'COLUMN',  1, 0)" checkbox.text="Visible on report?" checkbox.on="Y" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=90 border="0" color="16711680" x="2629" y="28" height="64" width="384" format="[general]"  name=parmtype ddlb.limit=10 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=100 border="5" color="16711680" x="3035" y="28" height="64" width="279" format="[general]"  name=wheretag edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=110 border="5" color="16711680" x="3346" y="28" height="64" width="279" format="[general]"  name=grouptag edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=120 border="5" color="16711680" x="3653" y="28" height="64" width="270" format="[general]"  name=reportid edit.limit=7 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=130 border="5" color="16711680" x="3950" y="28" height="64" width="581" format="[general]"  name=editmask edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=140 border="5" color="16711680" x="4562" y="28" height="64" width="329" format="[general]"  name=lookuptype ddlb.limit=0 ddlb.allowedit=no ddlb.case=any ddlb.useasborder=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=150 border="5" color="16711680" x="4919" y="28" height="64" width="768" format="[general]"  name=lookupprocessor edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=160 border="5" color="16711680" x="6007" y="28" height="64" width="183" format="[General]"  name=parmorder visible="1~tif ( POS( accessflags , 'W') > 0 , 1, 0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="16711680" x="14" y="32" height="60" width="183" format="[general]" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=170 border="5" color="128" x="6217" y="32" height="60" width="315" format="[general]"  name=userid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=180 border="5" color="128" x="6560" y="32" height="60" width="498" format="[general]"  name=queryname edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

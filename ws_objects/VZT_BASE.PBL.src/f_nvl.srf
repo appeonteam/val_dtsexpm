@@ -1,0 +1,12 @@
+﻿$PBExportHeader$f_nvl.srf
+global type f_nvl from function_object
+end type
+
+forward prototypes
+global function any f_nvl (any as_parm, any as_null)
+end prototypes
+
+global function any f_nvl (any as_parm, any as_null);If IsNULL( as_parm ) then return as_null
+return as_parm 
+end function
+

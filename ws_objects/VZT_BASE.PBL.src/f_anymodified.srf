@@ -1,0 +1,28 @@
+﻿$PBExportHeader$f_anymodified.srf
+global type f_anymodified from function_object
+end type
+
+forward prototypes
+global function boolean f_anymodified (long al_row, string as_colarray[], ref datawindow adw_source)
+end prototypes
+
+global function boolean f_anymodified (long al_row, string as_colarray[], ref datawindow adw_source);integer li_col , li_max_col
+boolean lb_ret
+
+lb_ret = false 
+If al_row > 0 and al_row <= adw_source.RowCount() then
+	li_max_col = UpperBound( as_colarray[] ) 
+	If li_max_col > 0 then 
+		For li_col = 1 to li_max_col 
+			If Not IsNull( as_colarray[ li_col]) and trim(as_colarray[ li_col]) <> '' then 
+				If adw_source.GetItemStatus( al_row, as_colarray[ li_col], primary! ) = DataModified! then 
+					lb_ret = TRUE 
+					EXIT 
+				End If
+			End If
+		Next
+	End If
+End If
+RETURN  lb_ret 
+end function
+

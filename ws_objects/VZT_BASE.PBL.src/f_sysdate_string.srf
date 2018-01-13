@@ -1,0 +1,11 @@
+﻿$PBExportHeader$f_sysdate_string.srf
+global type f_sysdate_string from function_object
+end type
+
+forward prototypes
+global function string f_sysdate_string ()
+end prototypes
+
+global function string f_sysdate_string ();return f_date_string ( f_sysdate() ) 
+end function
+

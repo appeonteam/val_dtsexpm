@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_replace_german.srf
+global type f_replace_german from function_object
+end type
+
+forward prototypes
+global function string f_replace_german (string as_input)
+end prototypes
+
+global function string f_replace_german (string as_input);string ls_output
+
+ls_output = as_input
+ls_output = f_replace( ls_output , 'ü', 'ue')
+ls_output = f_replace( ls_output , 'Ü', 'UE')
+ls_output = f_replace( ls_output , 'ö', 'oe')
+ls_output = f_replace( ls_output , 'Ö', 'OE')
+ls_output = f_replace( ls_output , 'ä', 'ae')
+ls_output = f_replace( ls_output , 'Ä', 'AE')
+ls_output = f_replace( ls_output , 'ß', 'SS')
+	
+return ls_output
+end function
+

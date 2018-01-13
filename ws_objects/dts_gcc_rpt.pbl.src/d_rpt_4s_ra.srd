@@ -1,0 +1,38 @@
+﻿$PBExportHeader$d_rpt_4s_ra.srd
+$PBExportComments$Berlin Four seasons Export 1
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=184 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=200 color="536870912" )
+table(column=(type=char(10) updatewhereclause=yes name=cardid dbname="cardid" )
+ column=(type=char(300) updatewhereclause=yes name=additions dbname="additions" )
+ retrieve="  SELECT convert( varchar(10), qa.headerid) CardId ,   
+         rtrim(qa.freeform) 	additions
+    FROM qgen_qset_answers  qa
+	WHERE /* questionid = 7 and */
+			rtrim( freeform) <> '' and freeform IS NOT NULL 
+		/*		AND qa.ansdate >= vzt_date_bom(date('2000/10/01'))
+				AND qa.ansdate <= vzt_date_eom(date('2001/05/01')) */
+	/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					~"qa~".~"ansdate~" BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				) 
+		1*/
+	
+	/*3 AND ( string(0)=';question' 	OR qa.questionid 	IN (;question) ) 	3*/	
+
+ORDER BY 1
+
+/*  SELECT '~"CardID~"' CardId,   
+          '~"Additions~"' additions
+    FROM dummy
+UNION 
+*/" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="68" width="274" format="[general]"  name=cardid edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="343" y="4" height="188" width="1801" format="[general]"  name=additions edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no edit.autovscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,14 @@
+﻿$PBExportHeader$d_template02_pix.srd
+release 6;
+datawindow(units=1 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 24 print.margin.right = 24 print.margin.top = 24 print.margin.bottom = 24 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=5 color="536870912" )
+detail(height=307 color="536870912" )
+table(column=(type=char(1) updatewhereclause=no name=fftext dbname="zzz" )
+ )
+rectangle(band=header x="8" y="0" height="7" width="491" brush.hatch="6" brush.color="128" pen.style="0" pen.width="1" pen.color="65535"  background.mode="2" background.color="128" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="128" x="327" y="283" height="13" width="41" format="[general]"  name=fftext edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+rectangle(band=detail x="3" y="299" height="7" width="491" brush.hatch="6" brush.color="255" pen.style="0" pen.width="1" pen.color="65535"  background.mode="2" background.color="128" )
+rectangle(band=footer x="3" y="0" height="4" width="491" brush.hatch="6" brush.color="255" pen.style="0" pen.width="1" pen.color="65535"  background.mode="2" background.color="128" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

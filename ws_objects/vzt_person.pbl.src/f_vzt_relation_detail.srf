@@ -1,0 +1,46 @@
+﻿$PBExportHeader$f_vzt_relation_detail.srf
+global type f_vzt_relation_detail from function_object
+end type
+
+forward prototypes
+global function string f_vzt_relation_detail (string as_relation_type, string as_person_sex)
+end prototypes
+
+global function string f_vzt_relation_detail (string as_relation_type, string as_person_sex);string ls_relation
+
+
+CHOOSE CASE as_relation_type
+	CASE 'CHILD'
+		if as_person_sex = 'M' then
+			ls_relation = 'SON'
+		else
+			ls_relation = 'DAUGTHER'
+		End if
+	CASE 'SPOUSE'
+		if as_person_sex = 'M' then
+			ls_relation = 'HUSBAND'
+		else
+			ls_relation = 'WIFE'
+		End if
+	CASE 'PARENT'
+		if as_person_sex = 'M' then
+			ls_relation = 'FATHER'
+		else
+			ls_relation = 'MOTHER'
+		End if
+	CASE 'SIBLING'
+		if as_person_sex = 'M' then
+			ls_relation = 'BROTHER'
+		else
+			ls_relation = 'SISTER'
+		End if
+
+CASE ELSE
+			ls_relation = '????'
+END CHOOSE
+
+return ls_relation
+
+
+end function
+

@@ -1,0 +1,51 @@
+﻿$PBExportHeader$f_vzt_html_select_from_ds.srf
+global type f_vzt_html_select_from_ds from function_object
+end type
+
+forward prototypes
+global function string f_vzt_html_select_from_ds (ref datastore ads_source, string as_codecol, string as_desccol, transaction atr_tran, string as_do)
+end prototypes
+
+global function string f_vzt_html_select_from_ds (ref datastore ads_source, string as_codecol, string as_desccol, transaction atr_tran, string as_do);string 	ls_html, ls_code, ls_descr, ls_coltype, ls_do
+long 		ll_row, ll_maxrow
+datastore lds_temp, lds_pointer
+
+
+If as_do <> '' then // create local datastore
+	lds_temp = CREATE datastore 
+	lds_temp.dataobject = as_do
+	lds_temp.SetTransObject( atr_tran)
+	lds_pointer = lds_temp 
+	ls_do = as_do
+ELSE
+	lds_pointer = ads_source
+	lds_pointer.SetTransObject( atr_tran)
+	ls_do			= ads_source.dataobject
+END IF
+
+ll_maxrow = lds_pointer.Retrieve()
+If ll_maxrow <= 0 then 
+	MessageBox('VZT HTML SELECT CREATION ERROR', 'Missing datawindow object = ' + ls_do +', returned no rows.', Stopsign!)
+	return ''
+END IF
+ls_coltype 		= Upper(lds_pointer.describe(as_codecol  + ".coltype"))
+ls_html	+= '<OPTION VALUE="NONE">Please make a selection'+'~r~n'	//default null selection
+FOR ll_row = 1 to ll_maxrow 
+	IF ls_coltype = 'NUMBER' or Pos(ls_coltype, "DECIMAL(0)") > 0 then
+		ls_code 	= f_nvl(string( lds_pointer.getItemNumber(ll_row, as_codecol)),'')
+	elseif Pos(ls_coltype, "CHAR") > 0 then
+		ls_code 	= f_nvl(lds_pointer.GetItemString( ll_row , as_codecol),'')
+	elseif Pos(ls_coltype, "DECIMAL") > 0 then
+		ls_code 	= f_nvl(string( lds_pointer.getItemDecimal(ll_row, as_codecol)),'')
+	END IF
+	ls_descr	=  f_nvl(lds_pointer.GetItemString( ll_row , as_desccol),'')
+   ls_html	+= '<OPTION VALUE="'+string(ls_code)+'">'+ls_descr +'~r~n'
+NEXT
+
+If as_do <> '' and IsValid( lds_temp) then DESTROY lds_temp
+
+return ls_html
+
+
+end function
+

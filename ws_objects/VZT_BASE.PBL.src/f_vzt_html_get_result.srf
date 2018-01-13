@@ -1,0 +1,78 @@
+﻿$PBExportHeader$f_vzt_html_get_result.srf
+global type f_vzt_html_get_result from function_object
+end type
+
+forward prototypes
+global function blob f_vzt_html_get_result (string as_url, string as_args)
+end prototypes
+
+global function blob f_vzt_html_get_result (string as_url, string as_args);Blob 					lblb_args
+String 				ls_headers, ls_url, ls_args, ls_data
+Long 					ll_length
+inet 					inetbase				
+n_cst_inet_result	iir_msgbox 	
+int					li_rc
+inetbase		= CREATE inet
+iir_msgbox 	= CREATE n_cst_inet_result 
+
+// Prepare Arguments string (Clean up)
+//lblb_args 	= blob("")
+ls_args		= as_args
+ls_args		= f_replace (ls_args, "'", '`') 
+
+lblb_args 	= blob(ls_args)
+ll_length 	= Len(lblb_args)
+ls_headers = "Content-Type: " + &
+       "application/x-www-form-urlencoded~n" + &
+       "Content-Length: " + String( ll_length ) + "~n~n"
+
+// Prepare URL string (Clean up)
+ls_url		= as_url + "?" 
+ls_url		= f_replace (ls_url, "'", '`') 
+
+// apparently POST does not work all the time 
+//li_rc	= inetbase.PostURL (as_url, lblb_args, ls_headers, iir_msgbox)
+
+ls_url = ls_url + ls_args
+if gnv_appman.is_debugmode = 'Y' then
+	Clipboard (ls_url) 
+	messagebox("html get result 1 ", ls_url )
+END IF
+
+li_rc	= inetbase.GetURL (ls_url, iir_msgbox)
+
+If gnv_appman.is_unicode = 'Y' then  
+		If Not IsNull( gnv_appman.i_encoding_web ) then 
+			ls_data = string(iir_msgbox.ib_html,  gnv_appman.i_encoding_web)
+		ELSE
+			ls_data = string(iir_msgbox.ib_html   ) 										//==================================================
+		END IF	
+ELSE
+	ls_data = string(iir_msgbox.ib_html   ) 										//==================================================
+END IF	
+
+If li_rc > 0 then
+	string ls_file 
+	lblb_args = iir_msgbox.ib_html 
+	If POS(ls_data, "The page cannot be displayed") > 0 or &
+		POS(ls_data, 'res://shdocvw.dll/http_404.htm') > 0 or &
+		POS(ls_data, 'res://shdocvw.dll/http_404.htm#http://www.DocURL.com/bar.htm') > 0 &
+		then
+		ls_file =  'C:\COMM_HTML_ERROR.HTML'
+		f_vzt_writefile_from_blob (ls_file, iir_msgbox.ib_html)
+		RUN ( 'iexplore.exe ' +ls_file )
+		Messagebox('Commentator Web access error', 'A web page error occured. Please review the browser window.')
+	END IF	
+	
+ELSE
+	lblb_args = blob('error')
+END IF 
+
+
+
+If IsValid(inetbase	)	THEN DESTROY  inetbase		
+If IsValid(iir_msgbox ) THEN DESTROY  iir_msgbox 	
+
+return lblb_args 
+end function
+

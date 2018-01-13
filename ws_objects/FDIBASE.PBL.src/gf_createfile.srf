@@ -1,0 +1,25 @@
+﻿$PBExportHeader$gf_createfile.srf
+$PBExportComments$Create a new blank file.
+global type gf_createfile from function_object
+end type
+
+forward prototypes
+global function int gf_createfile (string as_file)
+end prototypes
+
+global function int gf_createfile (string as_file);Integer li_handle = 1
+
+// Since there is no file create, copy a known file and blank it out.
+IF NOT FileExists( as_file ) THEN
+	Run( "copy c:\windows\win.ini " + as_file )
+	li_handle = FileOpen( as_file,linemode!,&
+								 write!, lockreadwrite!, replace! )
+	IF li_handle > 0 THEN
+		FileWrite( li_handle, "" )
+		FileClose( li_handle )
+	END IF
+END IF
+
+RETURN li_handle
+end function
+

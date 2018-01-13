@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_replace.srf
+global type f_replace from function_object
+end type
+
+forward prototypes
+global function string f_replace (ref string as_container, string as_oldstring, string as_newstring)
+end prototypes
+
+global function string f_replace (ref string as_container, string as_oldstring, string as_newstring);long ll_qpos
+//	ls_repstr = "~~'"
+ll_qpos = POS( as_container, as_oldstring, 1) 
+DO WHILE ll_qpos > 0
+	as_container = REPLACE( as_container, ll_qpos , len(as_oldstring), as_newstring)
+	ll_qpos = POS( as_container , as_oldstring, ll_qpos + len(as_newstring) ) 
+LOOP
+		
+return as_container		
+end function
+

@@ -1,0 +1,193 @@
+﻿$PBExportHeader$m_gcc_main.srm
+forward
+global type m_gcc_main from menu
+end type
+type m_file from menu within m_gcc_main
+end type
+type m_print from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_gcc_main
+m_print m_print
+m_printscreen m_printscreen
+m_printersetup m_printersetup
+m_-2 m_-2
+m_close m_close
+m_exit m_exit
+end type
+end forward
+
+global type m_gcc_main from menu
+m_file m_file
+end type
+global m_gcc_main m_gcc_main
+
+forward prototypes
+public subroutine of_localize ()
+end prototypes
+
+public subroutine of_localize ();
+end subroutine
+
+on m_gcc_main.create
+m_gcc_main=this
+this.m_file=create m_file
+this.Item[]={this.m_file}
+end on
+
+on m_gcc_main.destroy
+destroy(this.m_file)
+end on
+
+type m_file from menu within m_gcc_main
+m_print m_print
+m_printscreen m_printscreen
+m_printersetup m_printersetup
+m_-2 m_-2
+m_close m_close
+m_exit m_exit
+end type
+
+event clicked;this.m_printscreen.enabled =  IsValid(parentwindow.getactivesheet()) 
+this.m_print.enabled =  IsValid(parentwindow.getactivesheet()) 
+	
+	
+
+//TriggerEvent (GetActiveSheet(ParentWindow), "copy_to_clipboard")
+
+end event
+
+on m_file.create
+this.Text="&File"
+this.Microhelp="File Options."
+this.m_print=create m_print
+this.m_printscreen=create m_printscreen
+this.m_printersetup=create m_printersetup
+this.m_-2=create m_-2
+this.m_close=create m_close
+this.m_exit=create m_exit
+this.Item[]={this.m_print, &
+this.m_printscreen, &
+this.m_printersetup, &
+this.m_-2, &
+this.m_close, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_print)
+destroy(this.m_printscreen)
+destroy(this.m_printersetup)
+destroy(this.m_-2)
+destroy(this.m_close)
+destroy(this.m_exit)
+end on
+
+type m_print from menu within m_file
+end type
+
+event clicked;window activesheet
+activesheet = w_gcc_main.getactivesheet()
+if isvalid(activesheet) THEN
+//   TriggerEvent (GetActiveSheet(ParentWindow), "ue_print")
+   TriggerEvent (GetActiveSheet(ParentWindow), "ue_printreport")
+end if
+
+end event
+
+on m_print.create
+this.Text="&Print~tCtrl+P"
+this.Microhelp="Print"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=49
+this.Enabled=false
+this.Shortcut=336
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+event clicked;window activesheet
+activesheet = w_gcc_main.getactivesheet()
+if isvalid(activesheet) THEN
+   TriggerEvent (GetActiveSheet(ParentWindow), "ue_printscreen")
+end if
+end event
+
+on m_printscreen.create
+this.Text="Print &Screen"
+this.Microhelp="Print Screen"
+this.ToolBarItemName="Window!"
+this.ToolBarItemText="Print Screen"
+this.ToolBarItemOrder=50
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on clicked;SetPointer( HourGlass! )
+PrintSetup()
+end on
+
+on m_printersetup.create
+this.Text="Printer Se&tup..."
+this.Microhelp="Setup printer using the currently selected Windows Printer Driver (modifiable from the Windows Control Panel in the Main group)"
+this.ToolBarItemName="Custom074!"
+this.ToolBarItemText="Setup"
+this.ToolBarItemOrder=51
+end on
+
+on m_printersetup.destroy
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+this.Text="-"
+end on
+
+type m_close from menu within m_file
+end type
+
+event clicked;window activesheet
+activesheet = w_gcc_main.getactivesheet()
+IF isvalid(activesheet) Then
+   TriggerEvent (GetActiveSheet(ParentWindow), "close")
+End if
+end event
+
+on m_close.create
+this.Text="C&lose~tCtrl+L"
+this.Microhelp="Close Window"
+this.Enabled=false
+this.Shortcut=332
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;SetPointer( HourGlass! )
+Close( w_gcc_main )
+
+end event
+
+on m_exit.create
+this.Text="E&xit~tCtrl+Shift+X"
+this.Microhelp="Leave (shut down) the application."
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit App"
+this.ToolBarItemOrder=999
+this.Shortcut=1368
+end on
+

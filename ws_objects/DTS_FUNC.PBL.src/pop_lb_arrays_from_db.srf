@@ -1,0 +1,53 @@
+﻿$PBExportHeader$pop_lb_arrays_from_db.srf
+global type pop_lb_arrays_from_db from function_object
+end type
+
+forward prototypes
+global function integer pop_lb_arrays_from_db (string col1_parm, string col2_parm, string tab_parm, listbox lb_parm, ref string lb_code[], ref string lb_desc[], ref integer max_lb_code)
+end prototypes
+
+global function integer pop_lb_arrays_from_db (string col1_parm, string col2_parm, string tab_parm, listbox lb_parm, ref string lb_code[], ref string lb_desc[], ref integer max_lb_code);string add_string, select_string, lb_col1_str, lb_col2_str
+max_lb_code = 0
+// Set up select statement using passed parameters
+select_string = "SELECT DISTINCT " + tab_parm + "."+col1_parm + ", " 
+select_string = select_string + tab_parm + "." + col2_parm 
+select_string = select_string + " FROM " + tab_parm
+
+
+setpointer(Hourglass!)
+
+PREPARE sqlsa FROM :select_string;
+
+DECLARE dyn_cursor DYNAMIC CURSOR FOR sqlsa;
+
+OPEN DYNAMIC dyn_cursor;  
+if sqlca.sqlcode < 0 then
+	MessageBox("DataBase Error!", sqlca.sqlerrtext)
+	return sqlca.sqlcode
+end if 
+
+lb_parm.SetRedraw(false)
+lb_parm.Reset( )
+lb_parm.hscrollbar = FALSE
+Do While sqlca.sqlcode = 0
+	Fetch dyn_cursor into :lb_col1_str,  :lb_col2_str;
+	CHOOSE CASE sqlca.sqlcode 
+		CASE 0
+   		max_lb_code ++
+	   	lb_desc[max_lb_code] = lb_col2_str
+		   lb_code[max_lb_code] = lb_col1_str
+		   add_string = lb_col2_str // + " - " + lb_col1_str
+		   lb_parm.AddItem(add_string)
+		CASE 100
+			exit
+		CASE ELSE
+			MessageBox("DataBase Error", sqlca.sqlerrtext)
+		  return sqlca.sqlcode
+   END CHOOSE
+Loop
+lb_parm.hscrollbar = TRUE
+lb_parm.SetRedraw(true)
+Close dyn_cursor;
+return 0
+end function
+

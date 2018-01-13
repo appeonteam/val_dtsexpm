@@ -1,0 +1,42 @@
+﻿$PBExportHeader$f_get_pager.srf
+global type f_get_pager from function_object
+end type
+
+forward prototypes
+global function integer f_get_pager (string empdept, string empnm, ref string pagerempid, ref string pagerid)
+end prototypes
+
+global function integer f_get_pager (string empdept, string empnm, ref string pagerempid, ref string pagerid);// return values -1 = db error
+//						0 = pager is found 
+//						1 = pager is deactivated
+//						2 = no pager for the employee
+
+  SELECT pager_emp.emp_id,
+  			pager_emp.pager_id   
+    INTO :pagerEmpId,
+	 		:pagerId  
+    FROM pager_emp,
+         instemp  
+   WHERE (  pager_emp.emp_id  = instemp.employee_number ) and
+         ( ( instemp.employee = :empNm ) AND  
+         ( instemp.dept = :empDept) )   ;
+			
+if sqlca.sqlcode = 100 then
+	return 2
+else
+	if sqlca.sqlcode < 0 then
+		egm_sqlerror(sqlca)
+		return -1
+	end if
+end if
+
+//if pageActInd = 'N' then
+//	pagerEmpId = ''
+//	pagerId = ''   
+//	return 1
+//else
+	return 0
+//end if
+
+end function
+

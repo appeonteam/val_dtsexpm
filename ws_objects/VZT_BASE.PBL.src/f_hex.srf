@@ -1,0 +1,23 @@
+﻿$PBExportHeader$f_hex.srf
+global type f_hex from function_object
+end type
+
+forward prototypes
+global function string f_hex (long al_number)
+end prototypes
+
+global function string f_hex (long al_number);string	ls_hex, ls_hextable[]={'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}
+string	ls_
+long		ll_hex_power, ll_hex_digit
+
+ls_hex = ''
+ll_hex_power = 1
+DO WHILE al_number >= ll_hex_power
+	ll_hex_digit = MOD( (al_number / ll_hex_power ), 16 ) + 1
+	ls_hex = ls_hextable[ll_hex_digit] + ls_hex 
+	ll_hex_power = ll_hex_power * 16
+LOOP
+
+return 	ls_hex
+end function
+

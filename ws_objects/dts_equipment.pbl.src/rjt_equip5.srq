@@ -1,0 +1,2 @@
+﻿$PBExportHeader$rjt_equip5.srq
+PBSELECT( VERSION(400) TABLE(NAME="vzt_equipment_task_map" ) COLUMN(NAME="vzt_equipment_task_map.problem_number") COLUMN(NAME="vzt_equipment_task_map.subproblemnumber") COLUMN(NAME="vzt_equipment_task_map.period")) 

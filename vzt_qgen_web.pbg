@@ -1,0 +1,19 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_qgen_web.pbl" "";
+@end;
+@begin Objects
+ "d_qgen_hierarchy_edit.srd" "vzt_qgen_web.pbl";
+ "d_qgen_hierarchy_web.srd" "vzt_qgen_web.pbl";
+ "d_presentation_web.srd" "vzt_qgen_web.pbl";
+ "d_gcc_guest_for_letter.srd" "vzt_qgen_web.pbl";
+ "w_vzt_web_auto_send.srw" "vzt_qgen_web.pbl";
+ "str_web_confirm.srs" "vzt_qgen_web.pbl";
+ "d_web_batch_prompt.srd" "vzt_qgen_web.pbl";
+ "d_qset_edit_tv.srd" "vzt_qgen_web.pbl";
+ "w_vzt_web_sync.srw" "vzt_qgen_web.pbl";
+ "d_answers_list_web_import.srd" "vzt_qgen_web.pbl";
+ "d_gcc_list_web_auto_rpt.srd" "vzt_qgen_web.pbl";
+ "nvo_websurvey.sru" "vzt_qgen_web.pbl";
+ "nvo_qgen.sru" "vzt_qgen_web.pbl";
+@end;

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$str_response.srs
+global type str_response from structure
+	string		string1
+	string		string2
+	string		string3
+	string		string4
+	double		num2
+	double		num3
+	datawindow		dw1
+	datawindow		dw2
+	long		rc
+	double		num1
+	decimal { 2 }		value1
+	string		string5
+	string		string6
+	string		string7
+	string		string8
+end type
+

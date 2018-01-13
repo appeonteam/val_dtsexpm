@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_clear_auto_assignment.srf
+global type f_clear_auto_assignment from function_object
+end type
+
+forward prototypes
+global function boolean f_clear_auto_assignment (integer call_tbl_ind, string in_call_number, integer in_timer_min)
+end prototypes
+
+global function boolean f_clear_auto_assignment (integer call_tbl_ind, string in_call_number, integer in_timer_min);	if call_tbl_ind = 1 then
+		update 	timercalls
+		set	 	repairman = '',
+					closed_bydept = '',
+					paging_ind = 0,
+					timer_start = dateadd(minute, :in_timer_min, getdate())
+		where		call_number = :in_call_number;				
+	else
+		update 	pendingcalls
+		set	 	repairman = '',
+					closed_bydept = '',
+					paging_ind = 0,
+					timer_start = dateadd(minute,:in_timer_min, getdate())
+		where		call_number = :in_call_number;				
+	end if
+	if sqlca.sqlcode < 0 then
+		egm_sqlerror(sqlca)
+		return false
+	end if
+	
+	return true
+end function
+

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$d_sort_by.srd
+$PBExportComments$Specify sort columns for the current application datawindow.
+release 9;
+datawindow(units=0 timer_interval=0 color=134217750 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 0 print.margin.right = 0 print.margin.top = 0 print.margin.bottom = 0 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=152 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=100 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=s_column_name dbname="s_column_name" )
+ column=(type=char(1) updatewhereclause=yes name=s_asc_desc dbname="s_asc_desc" values="Asc	A/Desc	D/" )
+ )
+text(band=header alignment="2" text="Sort by" border="1" color="16777215" x="37" y="36" height="72" width="1490" html.valueishtml="0"  name=t_1 visible="1"  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725"  height.autosize=yes)
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="16711680" x="87" y="0" height="76" width="850" format="[general]" html.valueishtml="0"  name=s_column_name pointer="Arrow!" visible="1" dddw.name=d_sort_columns dddw.displaycolumn=s_column_desc dddw.datacolumn=s_column_name dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.vscrollbar=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="8388608" x="987" y="8" height="68" width="489" format="[general]" html.valueishtml="0"  name=s_asc_desc pointer="HAND.CUR" visible="1" radiobuttons.columns=2 radiobuttons.scale=yes radiobuttons.threed=yes  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="134217750" )
+htmltable(border="0" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

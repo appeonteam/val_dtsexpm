@@ -1,0 +1,20 @@
+﻿$PBExportHeader$f_close_a_call.srf
+global type f_close_a_call from function_object
+end type
+
+forward prototypes
+global function boolean f_close_a_call (string callnumber, string targettable)
+end prototypes
+
+global function boolean f_close_a_call (string callnumber, string targettable);string ls_retmsg
+ls_retmsg = trim(f_close_a_call_common( callnumber, targettable, f_sysdate(), true,'','' )) // issue messages 
+
+IF ls_retmsg = '' then
+	return true
+ELSE
+	MessageBox("DB Error Closing "+ callnumber, ls_retmsg )
+	return false
+END IF
+
+end function
+

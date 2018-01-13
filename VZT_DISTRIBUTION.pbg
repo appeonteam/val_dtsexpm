@@ -1,0 +1,29 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "VZT_DISTRIBUTION.PBL" "";
+@end;
+@begin Objects
+ "d_dddw_lookup_cont_types1.srd" "VZT_DISTRIBUTION.PBL";
+ "d_dddw_lookup_cont_types2.srd" "VZT_DISTRIBUTION.PBL";
+ "d_vzt_dddw_distribution.srd" "VZT_DISTRIBUTION.PBL";
+ "d_emailids_available.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list_01_emer.srd" "VZT_DISTRIBUTION.PBL";
+ "d_address_selected.srd" "VZT_DISTRIBUTION.PBL";
+ "w_vzt_contact_edit.srw" "VZT_DISTRIBUTION.PBL";
+ "d_contact_address_edit.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list_01_rel.srd" "VZT_DISTRIBUTION.PBL";
+ "w_vzt_distlist_tv_edit.srw" "VZT_DISTRIBUTION.PBL";
+ "d_full_address_edit.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list_01.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list_dddw.srd" "VZT_DISTRIBUTION.PBL";
+ "d_address_edit.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_edit.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_doc_list.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list_ids.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list_full.srd" "VZT_DISTRIBUTION.PBL";
+ "d_contact_list.srd" "VZT_DISTRIBUTION.PBL";
+ "w_vzt_contact_lookup.srw" "VZT_DISTRIBUTION.PBL";
+ "d_contact_lookup.srd" "VZT_DISTRIBUTION.PBL";
+ "w_vzt_contact_edit_full.srw" "VZT_DISTRIBUTION.PBL";
+ "d_contact_lookup_filter.srd" "VZT_DISTRIBUTION.PBL";
+@end;

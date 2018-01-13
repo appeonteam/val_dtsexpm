@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_check_menu_access.srf
+global type f_check_menu_access from function_object
+end type
+
+forward prototypes
+global function string f_check_menu_access (string as_window, menu am_item)
+end prototypes
+
+global function string f_check_menu_access (string as_window, menu am_item);string ls_access
+
+ls_access= gnv_appman.inv_security.of_check_access( as_window, '*')
+If POS(ls_access, 'R') <= 0 then
+	am_item.enabled 					= false 
+	am_item.visible 					= false 
+	am_item.ToolbarItemVisible		= false 
+	
+ELSE
+	am_item.enabled 					= true 
+	am_item.visible 					= true 
+	am_item.ToolbarItemVisible		= true  
+END IF
+
+return ls_access 
+end function
+

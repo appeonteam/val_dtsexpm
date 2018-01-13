@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_isvalidcolumn.srf
+global type f_isvalidcolumn from function_object
+end type
+
+forward prototypes
+global function long f_isvalidcolumn (ref datawindow adw_target, string as_colname)
+end prototypes
+
+global function long f_isvalidcolumn (ref datawindow adw_target, string as_colname);long ll_row
+string ls_objects 
+
+ll_row = -10		// default to not valid 
+ls_objects = adw_target.Object.DataWindow.Objects
+if POS( ls_objects, as_colname) > 0 then ll_row = adw_target.GetRow() 
+
+Return ll_row
+end function
+

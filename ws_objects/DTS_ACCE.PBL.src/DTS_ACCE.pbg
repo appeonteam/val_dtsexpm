@@ -1,0 +1,13 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "DTS_ACCE.PBL" "";
+@end;
+@begin Objects 
+ "w_calendar.srw" "DTS_ACCE.PBL";
+ "w_graph_color_dw.srw" "DTS_ACCE.PBL";
+ "w_graph_sheet_using_dw.srw" "DTS_ACCE.PBL";
+ "w_graph_spacing_dw.srw" "DTS_ACCE.PBL";
+ "w_graph_title_dw.srw" "DTS_ACCE.PBL";
+ "w_graph_type_dw.srw" "DTS_ACCE.PBL";
+ "w_report_slug.srw" "DTS_ACCE.PBL";
+@end;

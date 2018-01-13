@@ -1,0 +1,75 @@
+﻿$PBExportHeader$d_he_rpt_calls_by_duration_alert.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="Calls by Room Report" print.orientation = 2 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 1 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=588 color="536870912" )
+summary(height=420 color="536870912" )
+footer(height=4 color="536870912" )
+detail(height=124 color="536870912" )
+table(column=(type=date updatewhereclause=yes name=call_indate dbname="call_indate" )
+ column=(type=long updatewhereclause=yes name=total_calls dbname="total_calls" )
+ column=(type=long updatewhereclause=yes name=calls_within_interval dbname="calls_within_interval" )
+ column=(type=number updatewhereclause=yes name=percent dbname="percent" )
+ column=(type=char(8) updatewhereclause=yes name=minimum_pct dbname="minimum_pct" )
+ column=(type=char(9) updatewhereclause=yes name=duration_minutes dbname="duration_minutes" )
+ column=(type=char(6) updatewhereclause=yes name=ndays dbname="ndays" )
+ column=(type=date updatewhereclause=yes name=todate dbname="todate" )
+ column=(type=long updatewhereclause=yes name=vzt_trigger dbname="vzt_trigger" )
+ retrieve="SELECT 	max(date(~"cc~".~"call_indate~")) call_indate
+	, vzt_he_calls_within_interval_task( string(max(date(~"cc~".~"call_indate~"))) , string(max(date(~"cc~".~"call_indate~" + 1))) , '999999999', ';dept',';CALCAT', ';TASK', ';SUBTASK' ) total_calls 
+	, vzt_he_calls_within_interval_task( string(max(date(~"cc~".~"call_indate~"))) , string(max(date(~"cc~".~"call_indate~" + 1))) , ';duration', ';dept',';CALCAT', ';TASK', ';SUBTASK' ) calls_within_interval 
+	, floor((calls_within_interval  * 100 )/ vzt_max_of_two( total_calls, 1) ) percent 
+	, ';percent' 	minimum_pct
+	, ';duration' 	duration_minutes
+	, ';ndays'		ndays
+	, vzt_date(';OTDATE')	todate
+	, vzt_he_callsxdur_ndays_task( ';ndays', ';OTDATE' ,';duration', ';percent', ';DEPT', ';CALCAT', ';zero_bad', ';task', ';subtask') vzt_trigger 
+
+	FROM 	~"closedcalls~" 	~"cc~" 
+	WHERE 1=1 
+		/*1
+		 AND
+			( 	{ts ';OTDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"cc~".~"call_INdate~" BETWEEN date(';OTDATE') - ;ndays AND date(';OTDATE')  
+			)
+		1*/
+		/* ignore DEPT and CALLCAT in outer query
+	 	 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') )
+		*/	
+		/*  AND ( '*ALL*' IN (';CALCAT') OR '' IN  (';CALCAT') OR cc.caller_category IN (';CALCAT') )
+		*/	
+         
+		/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR cc.problem_number IN (';TASK') ) 3*/	
+		/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(CC.PROBLEM_NUMBER)+'.'+RTRIM(CC.SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+
+	GROUP BY date(~"cc~".~"call_indate~") 
+
+	ORDER BY 2 
+
+
+"  sort="call_indate A " )
+text(band=header alignment="2" text="Calls by Duration Alert"border="0" color="0" x="1088" y="16" height="64" width="837"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="0" x="2011" y="16" height="76" width="370" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Duration:"border="0" color="0" x="384" y="208" height="64" width="270"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="0" text="Minimum Percent:"border="0" color="0" x="384" y="292" height="64" width="535"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+compute(band=header alignment="1" expression="number ( duration_minutes )"border="0" color="0" x="955" y="204" height="64" width="242" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="1" expression="number (minimum_pct )"border="0" color="0" x="955" y="292" height="64" width="242" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Date:"border="0" color="0" x="1669" y="204" height="64" width="155"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Prior Days:"border="0" color="0" x="1669" y="292" height="64" width="334"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+compute(band=header alignment="1" expression="number ( ndays )"border="0" color="0" x="2144" y="292" height="64" width="215" format="[general]"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=header x="384" y="572" height="8" width="2121" brush.hatch="6" brush.color="0" pen.style="5" pen.width="5" pen.color="553648127"  background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Date"border="1" color="0" x="389" y="476" height="64" width="302"  name=closed_bydept_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text="Calls within Benchmark"border="1" color="0" x="777" y="476" height="64" width="713"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text=" Total Calls "border="1" color="0" x="1536" y="476" height="64" width="334"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text=" Benchmark % "border="1" color="0" x="1970" y="476" height="64" width="425"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="16777215" )
+column(band=header id=8 alignment="1" tabsequence=32766 border="0" color="0" x="2034" y="212" height="64" width="325" format="[shortdate]"  name=todate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="2" text="!!!"border="0" color="255" x="2482" y="4" height="104" width="110" visible="1~tif ( vzt_trigger  < 0, 1,0)"  font.face="Arial" font.height="-18" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+text(band=detail alignment="2" text="O"border="0" color="255" x="2583" y="4" height="104" width="119" visible="1~tif ( vzt_trigger  < 0, 1,0)"  font.face="Wingdings" font.height="-18" font.weight="700"  font.family="1" font.pitch="2" font.charset="2" background.mode="2" background.color="65535" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2821" y="24" height="76" width="283" format="[general]"  name=vzt_trigger visible="1~tif (f_isdebug (), 1, 0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="398" y="20" height="64" width="293" format="[shortdate]"  name=call_indate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="0" x="1106" y="20" height="64" width="334" format="[general]"  name=calls_within_interval edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="1545" y="20" height="64" width="270" format="[general]"  name=total_calls edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="0" color="0" x="2034" y="20" height="64" width="229" format="##0.0"  name=percent edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="%"border="0" color="0" x="2272" y="20" height="64" width="69"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=summary alignment="0" expression="'e-mail alert generated if percentage is less than '+ string(number(minimum_pct)) + ' for ' +  string(number( ndays)) +' consecutive days.'"border="0" color="0" x="398" y="12" height="120" width="2341" format="[general]"  name=m1  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+bitmap(band=header filename="alec_02.BMP" x="128" y="20" height="172" width="224" border="0" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

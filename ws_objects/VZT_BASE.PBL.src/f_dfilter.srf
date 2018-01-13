@@ -1,0 +1,15 @@
+﻿$PBExportHeader$f_dfilter.srf
+global type f_dfilter from function_object
+end type
+
+forward prototypes
+global function str_response f_dfilter (str_response astr_filter_parms, string as_dfilter_label)
+end prototypes
+
+global function str_response f_dfilter (str_response astr_filter_parms, string as_dfilter_label);string lsFilter
+int liRc
+
+
+return astr_filter_parms 
+end function
+

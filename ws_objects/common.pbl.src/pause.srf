@@ -1,0 +1,16 @@
+﻿$PBExportHeader$pause.srf
+global type pause from function_object
+end type
+
+forward prototypes
+global subroutine pause (long nseconds2pause)
+end prototypes
+
+global subroutine pause (long nseconds2pause);datetime dtNow
+dtNow = DateTime( Today(), Now() )
+Do While ( DaysAfter( Date( dtNow ), Today() ) * 86400 ) +&
+				SecondsAfter( Time( dtNow ), Now() ) &
+			< nSeconds2Pause
+Loop
+end subroutine
+

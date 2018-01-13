@@ -1,0 +1,31 @@
+﻿Save Format v3.0(19990112)
+@begin Libraries
+ "dts_gcc_rpt_w.pbl" "";
+@end;
+@begin Objects 
+ "d_gcc_rpt_w_floor_hk_ytd.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_floor_hk_ytd_comb.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_floor_summary.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores_1204.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores_lg_fnt.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores_noproc.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores_pct.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores_sm_font.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_hotel_daily_scores_toronto.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores_1204.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores_lg_fnt.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores_no_cat.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores_no_proc.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores_pct.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_rest_daily_scores_sm_font.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_mc_card_scores.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_rest_card_scores.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_weekly_mtd_scores.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_weekly_mtd_scores_nopr.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_weekly_mtd_scores_pct.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_ytd_card_scores.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_ytd_card_scores_noproc.srd" "dts_gcc_rpt_w.pbl";
+ "d_gcc_rpt_w_trend_ytd_card_scores_pct.srd" "dts_gcc_rpt_w.pbl";
+@end;

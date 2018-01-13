@@ -1,0 +1,517 @@
+﻿$PBExportHeader$d_he_rpt_prod_calls_by_dept_detail.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 1 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=312 color="536870912" )
+summary(height=28 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=char(10) update=yes updatewhereclause=yes name=call_number dbname="closedcalls.call_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_indate dbname="closedcalls.call_indate" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=stat_code dbname="closedcalls.stat_code" )
+ column=(type=char(40) updatewhereclause=yes name=area_room dbname="area.room" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=guest dbname="closedcalls.guest" )
+ column=(type=char(30) update=yes updatewhereclause=yes name=caller dbname="closedcalls.caller" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=problem dbname="closedcalls.problem" )
+ column=(type=char(25) update=yes updatewhereclause=yes name=subproblem dbname="closedcalls.subproblem" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=problem_definition dbname="closedcalls.problem_definition" )
+ column=(type=char(32766) update=yes updatewhereclause=no name=complaint dbname="closedcalls.complaint" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=receiver dbname="closedcalls.receiver" )
+ column=(type=char(3) update=yes updatewhereclause=yes name=shift dbname="closedcalls.shift" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=repairman dbname="closedcalls.repairman" )
+ column=(type=datetime update=yes updatewhereclause=yes name=call_outdate dbname="closedcalls.call_outdate" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=closed_by dbname="closedcalls.closed_by" )
+ column=(type=char(22) update=yes updatewhereclause=yes name=closed_bydept dbname="closedcalls.closed_bydept" )
+ column=(type=char(2) update=yes updatewhereclause=yes name=timer_number dbname="closedcalls.timer_number" )
+ column=(type=datetime update=yes updatewhereclause=yes name=timer_start dbname="closedcalls.timer_start" )
+ column=(type=char(35) update=yes updatewhereclause=yes name=caller_category dbname="closedcalls.caller_category" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=problem_number dbname="closedcalls.problem_number" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=subproblem_number dbname="closedcalls.subproblem_number" )
+ column=(type=long updatewhereclause=yes name=closed_count dbname="closed_count" )
+ column=(type=long updatewhereclause=yes name=opened_count dbname="opened_count" )
+ column=(type=long updatewhereclause=yes name=dept_count dbname="dept_count" )
+ retrieve="/* closed */ 
+  SELECT
+		 ~"call_number~",   
+         ~"call_indate~",   
+         ~"stat_code~",   
+          ~"area~".~"area_name~" room,   
+         ~"guest~",   
+         ~"caller~",   
+         ~"problem~",   
+         ~"subproblem~",   
+         ~"problem_definition~",   
+         ~"complaint~",   
+         ~"receiver~",   
+         ~"shift~",   
+         ~"repairman~",   
+         ~"call_outdate~",   
+         ~"closed_by~",   
+         ~"closed_bydept~",   
+         ~"timer_number~",   
+         ~"timer_start~",   
+         ~"caller_category~",   
+         ~"problem_number~",   
+         ~"subproblem_number~", 
+  
+ 
+	(SELECT count(*) FROM closedcalls cc WHERE cc.closed_bydept =   ~"closedcalls~".~"closed_bydept~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+ ) closed_count 
+,
+/*==opened count ===============================================================*/
+	(SELECT count(*) FROM closedcalls cc WHERE cc.closed_bydept =   ~"closedcalls~".~"closed_bydept~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+) + (SELECT count(*) FROM pendingcalls cc WHERE cc.closed_bydept =   ~"closedcalls~".~"closed_bydept~" 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+) + ( SELECT count(*) FROM timercalls cc WHERE cc.closed_bydept =   ~"closedcalls~".~"closed_bydept~" 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+ ) opened_count ,
+0 dept_count 
+/*====================================================================*/
+
+   FROM ~"closedcalls~"  , ~"area~" 
+	WHERE  ~"closed_bydept~" is NOT NULL and ~"closed_bydept~" <> '' and ~"area~".~"area_number~" =  ~"closedcalls~".~"room~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+
+
+/*====================================================================*/
+/*====================================================================*/
+/*====================================================================*/
+/*====================================================================*/
+/*====================================================================*/
+
+
+UNION /* pending */
+
+  SELECT
+		 ~"call_number~",   
+         ~"call_indate~",   
+         ~"stat_code~",   
+          ~"area~".~"area_name~" room,   
+         ~"guest~",   
+         ~"caller~",   
+         ~"problem~",   
+         ~"subproblem~",   
+         ~"problem_definition~",   
+         ~"complaint~",   
+         ~"receiver~",   
+         ~"shift~",   
+         ~"repairman~",   
+         ~"call_outdate~",   
+         ~"closed_by~",   
+         ~"closed_bydept~",   
+         ~"timer_number~",   
+         ~"timer_start~",   
+         ~"caller_category~",   
+         ~"problem_number~",   
+         ~"subproblem_number~", 
+  
+ 
+	(SELECT count(*) FROM closedcalls cc WHERE cc.closed_bydept =   ~"pendingcalls~".~"closed_bydept~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+ ) closed_count 
+,
+/*==opened count ===============================================================*/
+	(SELECT count(*) FROM closedcalls cc WHERE cc.closed_bydept =   ~"pendingcalls~".~"closed_bydept~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+) + (SELECT count(*) FROM pendingcalls cc WHERE cc.closed_bydept =   ~"pendingcalls~".~"closed_bydept~" 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+) + ( SELECT count(*) FROM timercalls cc WHERE cc.closed_bydept =   ~"pendingcalls~".~"closed_bydept~" 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+ ) opened_count ,
+0 dept_count 
+/*====================================================================*/
+
+   FROM ~"pendingcalls~"  , ~"area~" 
+	WHERE  ~"closed_bydept~" is NOT NULL and ~"closed_bydept~" <> '' and ~"area~".~"area_number~" =  ~"pendingcalls~".~"room~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+
+
+/*====================================================================*/
+/*====================================================================*/
+/*====================================================================*/
+/*====================================================================*/
+/*====================================================================*/
+
+UNION /* timer */
+
+  SELECT
+		 ~"call_number~",   
+         ~"call_indate~",   
+         ~"stat_code~",   
+          ~"area~".~"area_name~" room,   
+         ~"guest~",   
+         ~"caller~",   
+         ~"problem~",   
+         ~"subproblem~",   
+         ~"problem_definition~",   
+         ~"complaint~",   
+         ~"receiver~",   
+         ~"shift~",   
+         ~"repairman~",   
+         ~"call_outdate~",   
+         ~"closed_by~",   
+         ~"closed_bydept~",   
+         ~"timer_number~",   
+         ~"timer_start~",   
+         ~"caller_category~",   
+         ~"problem_number~",   
+         ~"subproblem_number~", 
+  
+ 
+	(SELECT count(*) FROM closedcalls cc WHERE cc.closed_bydept =   ~"timercalls~".~"closed_bydept~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+ ) closed_count 
+,
+/*==opened count ===============================================================*/
+	(SELECT count(*) FROM closedcalls cc WHERE cc.closed_bydept =   ~"timercalls~".~"closed_bydept~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+) + (SELECT count(*) FROM pendingcalls cc WHERE cc.closed_bydept =   ~"timercalls~".~"closed_bydept~" 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+) + ( SELECT count(*) FROM timercalls cc WHERE cc.closed_bydept =   ~"timercalls~".~"closed_bydept~" 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+ ) opened_count ,
+0 dept_count 
+/*====================================================================*/
+
+   FROM ~"timercalls~"  , ~"area~" 
+	WHERE  ~"closed_bydept~" is NOT NULL and ~"closed_bydept~" <> '' and ~"area~".~"area_number~" =  ~"timercalls~".~"room~"
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+
+
+/*====================================================================*/
+
+
+/*====================================================================*/
+UNION /* summary last row for all depts  */
+/*====================================================================*/
+select 
+		'' ~"call_number~",   
+         NUll  ~"call_indate~",   
+         null ~"stat_code~",   
+         null  ~"room~",   
+        null  ~"guest~",   
+        null  ~"caller~",   
+      null   ~"problem~",   
+       null  ~"subproblem~",   
+        null   ~"problem_definition~",   
+        null   ~"complaint~",   
+      null   ~"receiver~",   
+      null    ~"shift~",   
+     null    ~"repairman~",   
+      null,   
+      null    ~"closed_by~",   
+      'ZZZZZZZZZZZZZZZZZZZZZZ'    ~"closed_bydept~",   
+       null    ~"timer_number~",   
+       null    ~"timer_start~",   
+      null    ~"caller_category~",   
+     null    ~"problem_number~",   
+     null     ~"subproblem_number~",
+
+	(SELECT count(*) FROM closedcalls cc WHERE ~"closed_bydept~" is NOT NULL and ~"closed_bydept~" <> ''  
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR cc.closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+ ) closed_count ,
+/*==opened count ===============================================================*/
+	(SELECT count(*) FROM closedcalls cc WHERE 1=1 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR  closed_bydept  IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+) + (SELECT count(*) FROM pendingcalls cc WHERE 1=1 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR  closed_bydept  IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+) + ( SELECT count(*) FROM timercalls cc WHERE 1=1  
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR  closed_bydept  IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	  
+
+ ) opened_count ,
+ (SELECT count(distinct closed_bydept) FROM pendingcalls  WHERE  ~"closed_bydept~" is NOT NULL and ~"closed_bydept~" <> '' 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+) +
+ (SELECT count(distinct closed_bydept) FROM timercalls  WHERE  ~"closed_bydept~" is NOT NULL and ~"closed_bydept~" <> '' 
+/*1
+		 AND
+			( 	{ts ';FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				{ts ';TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+				~"call_indate~" BETWEEN 
+				{ts ';FDATE 00:00:00.000000'} AND {ts ';TDATE 23:59:59.777000'} 
+			)
+1*/
+	/*2 AND ( '*ALL*' IN (';DEPT') OR '' IN  (';DEPT') OR closed_bydept IN (';DEPT') ) 2*/	
+	/*3 AND ( '*ALL*' IN (';CALLSTAT') OR '' IN  (';CALLSTAT') OR stat_code IN (';CALLSTAT') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';TASK') OR '' IN  (';TASK') OR problem_number IN (';TASK') ) 3*/	
+	/*3 AND ( '*ALL*' IN (';SUBTASK') OR '' IN  (';SUBTASK') OR RTRIM(PROBLEM_NUMBER)+'.'+RTRIM(SUBPROBLEM_NUMBER) IN (';SUBTASK') ) 3*/	
+)
+
+dept_count 
+
+/*====================================================================*/"  sort="closed_bydept A problem A subproblem A call_indate A " )
+group(level=1 header.height=108 trailer.height=0 by=("closed_bydept" ) newpage=yes header.suppress=yes header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=168 trailer.height=0 by=("problem" , "subproblem" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="2" text="Productivity Detail By Department" border="0" color="128" x="1161" y="52" height="80" width="2254" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="From" border="2" color="65535" x="1550" y="168" height="64" width="279" html.valueishtml="0"  name=t_10 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+compute(band=header alignment="0" expression="MIN (  call_indate ) "border="0" color="128" x="1856" y="168" height="64" width="434" format="[SHORTDATE]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="To" border="2" color="65535" x="2363" y="168" height="64" width="242" html.valueishtml="0"  name=t_11 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+compute(band=header alignment="0" expression="MAX (  call_indate ) "border="0" color="128" x="2651" y="168" height="64" width="370" format="[SHORTDATE]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="553648127" )
+rectangle(band=header.1 x="5" y="0" height="72" width="4562"  name=r_1 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 1,0 )" brush.hatch="6" brush.color="12639424" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="12639424" )
+text(band=header.1 alignment="0" text="Departments:" border="2" color="128" x="1010" y="4" height="64" width="448" html.valueishtml="0"  name=t_9 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 1,0 )"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="0" text="Totals:" border="0" color="128" x="69" y="4" height="64" width="923" html.valueishtml="0"  name=t_8 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 1,0 )"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12639424" )
+text(band=header.1 alignment="2" text="Department" border="2" color="128" x="27" y="4" height="64" width="512" html.valueishtml="0"  name=t_4 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=16 alignment="0" tabsequence=32766 border="2" color="65535" x="553" y="4" height="64" width="837" format="[general]" html.valueishtml="0"  name=closed_bydept visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=15 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+column(band=header.1 id=24 alignment="0" tabsequence=32766 border="0" color="0" x="1477" y="4" height="64" width="251" format="[general]" html.valueishtml="0"  name=dept_count visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 1,0 )" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header.1 alignment="2" text="Closed:" border="2" color="128" x="2057" y="4" height="64" width="283" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.1 alignment="2" text="Opened:" border="2" color="128" x="1472" y="4" height="64" width="283" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.1 id=23 alignment="0" tabsequence=32766 border="0" color="128" x="1778" y="4" height="64" width="261" format="#,##0" html.valueishtml="0"  name=opened_count visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.1 id=22 alignment="0" tabsequence=32766 border="0" color="128" x="2368" y="4" height="64" width="251" format="#,##0" html.valueishtml="0"  name=closed_count visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header.2 alignment="2" text="Task/Subtask" border="2" color="0" x="27" y="16" height="64" width="512" html.valueishtml="0"  name=problem_t visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="2" text="Duration (days)" border="2" color="33554432" x="69" y="112" height="56" width="402" html.valueishtml="0"  name=t_7 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text=" Call Number" border="2" color="33554432" x="974" y="112" height="56" width="329" html.valueishtml="0"  name=call_number_t visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="2" text=" Date Opened" border="2" color="33554432" x="1307" y="112" height="56" width="338" html.valueishtml="0"  name=call_indate_t visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text=" Room:" border="2" color="0" x="475" y="112" height="56" width="494" html.valueishtml="0"  name=room_t visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text=" Handled By " border="2" color="33554432" x="1650" y="112" height="56" width="613" html.valueishtml="0"  name=t_3 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header.2 alignment="0" text=" Problem Definition" border="2" color="33554432" x="2267" y="112" height="56" width="2290" html.valueishtml="0"  name=problem_definition_t visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header.2 id=7 alignment="0" tabsequence=32766 border="0" color="16711680" x="549" y="16" height="64" width="667" format="[general]" html.valueishtml="0"  name=problem visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header.2 alignment="2" text="/" border="0" color="16711680" x="1221" y="16" height="64" width="50" html.valueishtml="0"  name=t_5 visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header.2 id=8 alignment="0" tabsequence=32766 border="0" color="16711680" x="1275" y="16" height="64" width="1303" format="[general]" html.valueishtml="0"  name=subproblem visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=25 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="2" expression="if ( year( call_outdate  ) > 1800, 
+daysafter(  call_indate ,  call_outdate  ),
+daysafter(  call_indate ,  datetime(today(),now() ) )
+)"border="2" color="33554432" x="69" y="0" height="56" width="402" format="#,##0;[RED](#,##0)" html.valueishtml="0"  name=compute_duration visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="2" color="33554432" x="974" y="0" height="56" width="329" format="[general]" html.valueishtml="0"  name=call_number visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="2" tabsequence=32766 border="2" color="33554432" x="1307" y="0" height="56" width="338" format="[shortdate]" html.valueishtml="0"  name=call_indate visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="2" color="0" x="475" y="0" height="56" width="494" format="[general]" html.valueishtml="0"  name=area_room visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="2" color="33554432" x="1650" y="0" height="56" width="613" format="[general]" html.valueishtml="0"  name=repairman visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=35 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="2" color="33554432" x="2267" y="0" height="56" width="2290" format="[general]" html.valueishtml="0"  name=problem_definition visible="1~tif ( closed_bydept = 'ZZZZZZZZZZZZZZZZZZZZZZ' , 0,1 )" edit.limit=32000 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

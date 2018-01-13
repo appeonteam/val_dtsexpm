@@ -1,0 +1,25 @@
+﻿$PBExportHeader$f_sysdatet.srf
+global type f_sysdatet from function_object
+end type
+
+forward prototypes
+global function datetime f_sysdatet (ref transaction a_tran)
+end prototypes
+
+global function datetime f_sysdatet (ref transaction a_tran);datetime ldt_result
+
+If POS( a_tran.dbms, 'ORA') > 0 then 
+	//SELECT sysdate INTO :ldt_result FROM vzt_sysoptions  WHERE id = 1 USING a_tran ;
+	IF a_tran.sqlcode <> 0 then ldt_result = datetime( today(), now()) 
+End IF 
+
+IF a_tran.dbms = 'ODBC' then 
+ SELECT  {fn curtime()} INTO :ldt_result FROM vzt_sysoptions  WHERE id = 1 USING a_tran ;
+ IF a_tran.sqlcode <> 0 then ldt_result = datetime( today(), now()) 
+END IF    
+
+if year(date( ldt_result )) < 2000 then ldt_result = datetime( today(), now()) 
+
+return ldt_result
+end function
+

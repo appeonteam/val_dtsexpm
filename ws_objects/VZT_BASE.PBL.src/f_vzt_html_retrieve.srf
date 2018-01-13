@@ -1,0 +1,34 @@
+﻿$PBExportHeader$f_vzt_html_retrieve.srf
+global type f_vzt_html_retrieve from function_object
+end type
+
+forward prototypes
+global function long f_vzt_html_retrieve (string as_url, string as_args, ref datastore ads_target)
+end prototypes
+
+global function long f_vzt_html_retrieve (string as_url, string as_args, ref datastore ads_target);string		ls_data , ls_message
+long 			ll_ret 
+
+if len(as_url) < 1 or len(as_args) < 1 then return -1 
+ls_data 	= f_vzt_html_get_data( as_url, as_args )  
+
+ls_message = 'Imported WEB data'
+
+if len(ls_data) > 3 and ls_data <> 'error' and ls_data <> 'norows' and not IsNull(ls_data) then 
+	ll_ret 	= ads_target.ImportString( ls_data ) 
+else
+	ls_message = 'Did not import WEB data'
+ENd if
+
+if ll_ret < 0 then // write trace 
+	ls_message = ls_message + ',import failed RC=' + string(ll_ret )
+ELSE
+end if 
+
+if gnv_appman.is_debugmode = 'Y' then
+	MessageBox(ls_message, ls_data)
+end if
+
+return ll_ret
+end function
+

@@ -1,0 +1,19 @@
+﻿$PBExportHeader$f_check_declined_emp.srf
+global type f_check_declined_emp from function_object
+end type
+
+forward prototypes
+global function boolean f_check_declined_emp (string dclEmpId[], string empId)
+end prototypes
+
+global function boolean f_check_declined_emp (string dclEmpId[], string empId);int i
+i=1
+do while i<=upperbound(dclEmpId[]) - 1
+	if empId = dclEmpId[i] then
+		return false
+	end if
+	i++
+loop
+return true
+end function
+

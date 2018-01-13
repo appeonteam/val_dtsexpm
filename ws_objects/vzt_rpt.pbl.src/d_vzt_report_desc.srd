@@ -1,0 +1,34 @@
+﻿$PBExportHeader$d_vzt_report_desc.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=1124 color="536870912" )
+table(column=(type=char(7) update=yes updatewhereclause=yes name=reportid dbname="vzt_reportdef.reportid" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=title dbname="vzt_reportdef.title" )
+ column=(type=char(2000) update=yes updatewhereclause=yes name=rptdesc dbname="vzt_reportdef.rptdesc" )
+ column=(type=char(1) updatewhereclause=yes name=compute_0004 dbname="compute_0004" )
+ retrieve="  SELECT r.reportid,   
+         r.title,   
+         r.rptdesc, 
+			'R'
+    FROM vzt_reportdef r,   
+         vzt_hierarchy h1 
+   WHERE r.reportid = h1.reportid AND 
+			h1.id = :as_vzt_hierarchy_id AND 
+			h1.leafind = 'Y' 
+UNION  
+
+SELECT h.id,   
+       h.name,   
+       h.descr  ,
+		'H'
+    FROM vzt_hierarchy  h
+   WHERE h.leafind <> 'Y' AND 
+			h.id = :as_vzt_hierarchy_id     
+" arguments=(("as_vzt_hierarchy_id", string)) )
+text(band=detail alignment="2" text="Title:"border="0" color="0" x="23" y="32" height="64" width="146"  name=title_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=detail alignment="0" text="Description:"border="0" color="0" x="23" y="344" height="64" width="357"  name=rptdesc_t  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="434" y="32" height="276" width="1842" format="[general]"  name=title edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="434" y="340" height="768" width="1842" format="[general]"  name=rptdesc edit.limit=2000 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

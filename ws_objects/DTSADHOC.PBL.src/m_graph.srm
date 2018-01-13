@@ -1,0 +1,782 @@
+﻿$PBExportHeader$m_graph.srm
+$PBExportComments$Generalized menu to be used to set graph attributes.
+forward
+global type m_graph from menu
+end type
+type m_file from menu within m_graph
+end type
+type m_print from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_clipboard from menu within m_file
+end type
+type m_- from menu within m_file
+end type
+type m_exitqa from menu within m_file
+end type
+type m_file from menu within m_graph
+m_print m_print
+m_printscreen m_printscreen
+m_clipboard m_clipboard
+m_- m_-
+m_exitqa m_exitqa
+end type
+type m_edit from menu within m_graph
+end type
+type m_clear from menu within m_edit
+end type
+type m_-1 from menu within m_edit
+end type
+type m_copy1 from menu within m_edit
+end type
+type m_edit from menu within m_graph
+m_clear m_clear
+m_-1 m_-1
+m_copy1 m_copy1
+end type
+type m_options from menu within m_graph
+end type
+type m_graphtype from menu within m_options
+end type
+type m_changetitle from menu within m_options
+end type
+type m_graphcolumncolors from menu within m_options
+end type
+type m_spacing from menu within m_options
+end type
+type m_options from menu within m_graph
+m_graphtype m_graphtype
+m_changetitle m_changetitle
+m_graphcolumncolors m_graphcolumncolors
+m_spacing m_spacing
+end type
+type m_windowsgraph from menu within m_graph
+end type
+type m_tile4 from menu within m_windowsgraph
+end type
+type m_layer from menu within m_windowsgraph
+end type
+type m_cascade from menu within m_windowsgraph
+end type
+type m_arrangemenuicons from menu within m_windowsgraph
+end type
+type m_-3 from menu within m_windowsgraph
+end type
+type m_toolbar from menu within m_windowsgraph
+end type
+type m_timecalculator from menu within m_windowsgraph
+end type
+type m_windowsgraph from menu within m_graph
+m_tile4 m_tile4
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_toolbar m_toolbar
+m_timecalculator m_timecalculator
+end type
+type m_help from menu within m_graph
+end type
+type m_context from menu within m_help
+end type
+type m_index from menu within m_help
+end type
+type m_search from menu within m_help
+end type
+type m_-4 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_graph
+m_context m_context
+m_index m_index
+m_search m_search
+m_-4 m_-4
+m_about m_about
+end type
+global type m_graph from menu
+m_file m_file
+m_edit m_edit
+m_options m_options
+m_windowsgraph m_windowsgraph
+m_help m_help
+end type
+end forward
+
+global type m_graph from menu
+m_file m_file
+m_edit m_edit
+m_options m_options
+m_windowsgraph m_windowsgraph
+m_help m_help
+end type
+global m_graph m_graph
+
+on m_graph.create
+m_graph=this
+call super::create
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_options=create m_options
+this.m_windowsgraph=create m_windowsgraph
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_options
+this.Item[UpperBound(this.Item)+1]=this.m_windowsgraph
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_graph.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_options)
+destroy(this.m_windowsgraph)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_graph
+m_print m_print
+m_printscreen m_printscreen
+m_clipboard m_clipboard
+m_- m_-
+m_exitqa m_exitqa
+end type
+
+event selected;// Declare active sheet (a window data type).
+
+window	activesheet
+string	ctext, sheet_name
+
+activesheet = w_main.GetActiveSheet( )
+If IsValid(activesheet) then
+// There is an active sheet, so get its title.
+// Change the text of the MenuItem to read Close and
+// then the title of the active sheet.
+
+	ctext = "E&xit " + activesheet.title
+	m_exitqa.text=ctext
+
+else 
+
+// No sheet is active, change the text to Close Window.
+
+	m_exitqa.text = "E&xit Window"
+
+end if
+
+end event
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.microhelp = "File Options."
+this.m_print=create m_print
+this.m_printscreen=create m_printscreen
+this.m_clipboard=create m_clipboard
+this.m_-=create m_-
+this.m_exitqa=create m_exitqa
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printscreen
+this.Item[UpperBound(this.Item)+1]=this.m_clipboard
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_exitqa
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_print)
+destroy(this.m_printscreen)
+destroy(this.m_clipboard)
+destroy(this.m_-)
+destroy(this.m_exitqa)
+end on
+
+type m_print from menu within m_file
+end type
+
+on clicked;// Tell the sheet to print the graph. This is
+// done in the "ue_print" event of the sheet
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_printreport")
+end on
+
+on m_print.create
+call super::create
+this.text = "&Print~tCtrl+P"
+this.shortcut = 336
+this.microhelp = "Print the current graph(s) and/or report(s)."
+this.toolbaritemtext = "&Print"
+this.toolbaritemorder = 18
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_printscreen")
+end on
+
+on m_printscreen.create
+call super::create
+this.text = "Print &Screen"
+end on
+
+on m_printscreen.destroy
+call super::destroy
+end on
+
+type m_clipboard from menu within m_file
+end type
+
+on clicked;Run ("clipbrd.exe")
+end on
+
+on m_clipboard.create
+call super::create
+this.text = "&View ClipBoard"
+this.microhelp = "Display clipboard viewer."
+this.toolbaritemname = "Custom014!"
+this.toolbaritemtext = "View Clpbrd"
+this.toolbaritemorder = 80
+end on
+
+on m_clipboard.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_file
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_exitqa from menu within m_file
+end type
+
+event clicked;window w_activesheet
+if isValid(w_main) then
+	w_activesheet = w_main.GetActiveSheet()
+else
+	w_activesheet = gnv_appman.iw_frame.GetActiveSheet()
+End If
+If IsValid( w_activesheet ) Then		Close( w_activesheet )  
+
+end event
+
+on m_exitqa.create
+call super::create
+this.text = "E&xit Q&&A~tAlt+X"
+this.shortcut = 600
+this.microhelp = "Exit (close) the currently selected Graph(s) and/or Report(s)."
+this.toolbaritemname = "Exit!"
+this.toolbaritemtext = "E&xit Q&&A"
+this.toolbaritemorder = 90
+this.toolbaritemspace = 2
+end on
+
+on m_exitqa.destroy
+call super::destroy
+end on
+
+type m_edit from menu within m_graph
+m_clear m_clear
+m_-1 m_-1
+m_copy1 m_copy1
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit"
+this.microhelp = "Edit Options."
+this.m_clear=create m_clear
+this.m_-1=create m_-1
+this.m_copy1=create m_copy1
+this.Item[UpperBound(this.Item)+1]=this.m_clear
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_copy1
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_clear)
+destroy(this.m_-1)
+destroy(this.m_copy1)
+end on
+
+type m_clear from menu within m_edit
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_clear")
+
+end on
+
+on m_clear.create
+call super::create
+this.visible = false
+this.text = "C&lear Criteria~tCtrl+L"
+this.enabled = false
+this.shortcut = 332
+this.microhelp = "Clear all currently specified criteria and selected graphs and reports."
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_edit
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_copy1 from menu within m_edit
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "copy_to_clipboard")
+
+end on
+
+on m_copy1.create
+call super::create
+this.text = "Copy to Clipboard~tCtrl+C"
+this.shortcut = 323
+this.microhelp = "Copy the current graph(s) and/or report(s) to the clipboard."
+this.toolbaritemname = "Copy!"
+this.toolbaritemtext = "&Copy Clpbrd"
+this.toolbaritemorder = 70
+this.toolbaritemspace = 1
+end on
+
+on m_copy1.destroy
+call super::destroy
+end on
+
+type m_options from menu within m_graph
+m_graphtype m_graphtype
+m_changetitle m_changetitle
+m_graphcolumncolors m_graphcolumncolors
+m_spacing m_spacing
+end type
+
+on m_options.create
+call super::create
+this.text = "&Style"
+this.microhelp = "Graph and Report style options."
+this.m_graphtype=create m_graphtype
+this.m_changetitle=create m_changetitle
+this.m_graphcolumncolors=create m_graphcolumncolors
+this.m_spacing=create m_spacing
+this.Item[UpperBound(this.Item)+1]=this.m_graphtype
+this.Item[UpperBound(this.Item)+1]=this.m_changetitle
+this.Item[UpperBound(this.Item)+1]=this.m_graphcolumncolors
+this.Item[UpperBound(this.Item)+1]=this.m_spacing
+end on
+
+on m_options.destroy
+call super::destroy
+destroy(this.m_graphtype)
+destroy(this.m_changetitle)
+destroy(this.m_graphcolumncolors)
+destroy(this.m_spacing)
+end on
+
+type m_graphtype from menu within m_options
+end type
+
+on clicked;// Tell the sheet to take care of setting the graph type. This is
+// done in the "graph_type" event of the sheet
+TriggerEvent (GetActiveSheet(ParentWindow), "graph_type")
+end on
+
+on m_graphtype.create
+call super::create
+this.text = "Graph T&ype..."
+this.microhelp = "Change the current Graph Type to various styles (e.g., stacked-bar, jagged-line, pie-chart...etc)."
+this.toolbaritemname = "Graph!"
+this.toolbaritemtext = "Type"
+this.toolbaritemorder = 20
+this.toolbaritemspace = 1
+end on
+
+on m_graphtype.destroy
+call super::destroy
+end on
+
+type m_changetitle from menu within m_options
+end type
+
+on clicked;// Tell the sheet to take care of setting the title. This is done in
+// the "graph_title" event of the active sheet
+TriggerEvent (GetActiveSheet(ParentWindow), "graph_title")
+end on
+
+on m_changetitle.create
+call super::create
+this.text = "Graph &Titles..."
+this.microhelp = "Edit the text of various graph or report Titles."
+this.toolbaritemname = "EditStops!"
+this.toolbaritemtext = "Titles"
+this.toolbaritemorder = 30
+end on
+
+on m_changetitle.destroy
+call super::destroy
+end on
+
+type m_graphcolumncolors from menu within m_options
+end type
+
+on clicked;// Tell the sheet to take care of setting the graph color. This is
+// done in the "graph_color" event of the sheet 
+TriggerEvent (GetActiveSheet(ParentWindow), "graph_color")
+
+end on
+
+on m_graphcolumncolors.create
+call super::create
+this.visible = false
+this.text = "Graph Column &Colors..."
+this.enabled = false
+this.microhelp = "Change various graph or report colors."
+this.toolbaritemvisible = false
+this.toolbaritemname = "Preferences!"
+this.toolbaritemtext = "Colors"
+this.toolbaritemorder = 30
+end on
+
+on m_graphcolumncolors.destroy
+call super::destroy
+end on
+
+type m_spacing from menu within m_options
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "spacing", 0, 0)
+
+end on
+
+on m_spacing.create
+call super::create
+this.text = "Graph Column &Spacing..."
+this.microhelp = "Change the spacing between data columns (e.g., the bars in a bar-style graph)."
+this.toolbaritemname = "LibraryList!"
+this.toolbaritemtext = "Spacing"
+this.toolbaritemorder = 30
+end on
+
+on m_spacing.destroy
+call super::destroy
+end on
+
+type m_windowsgraph from menu within m_graph
+m_tile4 m_tile4
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_toolbar m_toolbar
+m_timecalculator m_timecalculator
+end type
+
+on m_windowsgraph.create
+call super::create
+this.text = "&Windows"
+this.microhelp = "Window Options."
+this.m_tile4=create m_tile4
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_arrangemenuicons=create m_arrangemenuicons
+this.m_-3=create m_-3
+this.m_toolbar=create m_toolbar
+this.m_timecalculator=create m_timecalculator
+this.Item[UpperBound(this.Item)+1]=this.m_tile4
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_arrangemenuicons
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_toolbar
+this.Item[UpperBound(this.Item)+1]=this.m_timecalculator
+end on
+
+on m_windowsgraph.destroy
+call super::destroy
+destroy(this.m_tile4)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_arrangemenuicons)
+destroy(this.m_-3)
+destroy(this.m_toolbar)
+destroy(this.m_timecalculator)
+end on
+
+type m_tile4 from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Tile! )
+end on
+
+on m_tile4.create
+call super::create
+this.text = "Tile"
+this.microhelp = "Arrange all open windows at roughly equal size, all showing with no overlap."
+end on
+
+on m_tile4.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Layer! )
+end on
+
+on m_layer.create
+call super::create
+this.text = "&Layer"
+this.microhelp = "Zoom all windows (almost maximize but keep title bars) and overlap w/layer order; reverse order as last accessed."
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_cascade from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Cascade! )
+end on
+
+on m_cascade.create
+call super::create
+this.text = "&Cascade"
+this.microhelp = "Regularize (approx 25% screen size) all windows, overlap and layer as last accessed."
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_arrangemenuicons from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Icons! )
+end on
+
+on m_arrangemenuicons.create
+call super::create
+this.text = "Arrange Menu &Icons"
+this.microhelp = "Arrange Minimized Windows (Icons) along bottom of screen, left-to-right as last accessed."
+end on
+
+on m_arrangemenuicons.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_windowsgraph
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_toolbar from menu within m_windowsgraph
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, GetActiveSheet(ParentWindow))
+
+
+end on
+
+on m_toolbar.create
+call super::create
+this.text = "Tool&bar Options..."
+this.microhelp = "Show, hide and place Q&A Toolbar and/or its~' text."
+this.toolbaritemname = "Custom041!"
+this.toolbaritemtext = "Toolbar"
+this.toolbaritemorder = 85
+end on
+
+on m_toolbar.destroy
+call super::destroy
+end on
+
+type m_timecalculator from menu within m_windowsgraph
+end type
+
+on clicked;// open calculator
+SetPointer( HourGlass! )
+Open( w_calc_time, w_main )
+end on
+
+on m_timecalculator.create
+call super::create
+this.text = "Time Calc&ulator~tCtrl+U"
+this.shortcut = 341
+this.microhelp = "A pop-up time duration Calculator used to convert seconds, minutes, hours, days, weeks, months and years amongst each other."
+end on
+
+on m_timecalculator.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_graph
+m_context m_context
+m_index m_index
+m_search m_search
+m_-4 m_-4
+m_about m_about
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Help Options."
+this.m_context=create m_context
+this.m_index=create m_index
+this.m_search=create m_search
+this.m_-4=create m_-4
+this.m_about=create m_about
+this.Item[UpperBound(this.Item)+1]=this.m_context
+this.Item[UpperBound(this.Item)+1]=this.m_index
+this.Item[UpperBound(this.Item)+1]=this.m_search
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_about
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_context)
+destroy(this.m_index)
+destroy(this.m_search)
+destroy(this.m_-4)
+destroy(this.m_about)
+end on
+
+type m_context from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_context.create
+call super::create
+this.text = "Co&ntext"
+this.microhelp = "Context-Sensitive Help, based on the last selected screen object, within the Help Index."
+end on
+
+on m_context.destroy
+call super::destroy
+end on
+
+type m_index from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_index.create
+call super::create
+this.text = "&Index"
+this.microhelp = "Show the Help Index (i.e., Help Table-of-Contents)."
+end on
+
+on m_index.destroy
+call super::destroy
+end on
+
+type m_search from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_search.create
+call super::create
+this.text = "&Search"
+this.microhelp = "Search the Help Index for application related key words and phrases."
+end on
+
+on m_search.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_help
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;SetPointer( HourGlass! )
+//OpenSheet( w_about, "w_about", w_main, 3, Original! )
+Open( w_about, w_main )
+end on
+
+on m_about.create
+call super::create
+this.visible = false
+this.text = "&About"
+this.microhelp = "Application version, copyright and available memory information."
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+

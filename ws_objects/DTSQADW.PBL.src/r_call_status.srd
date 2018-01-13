@@ -1,0 +1,23 @@
+﻿$PBExportHeader$r_call_status.srd
+$PBExportComments$Report dw for admin window
+release 4;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 97 print.margin.bottom = 97 print.paper.source = 0 print.paper.size = 0 print.prompt=no )
+header(height=233 color="536870912" )
+summary(height=1 color="536870912" )
+footer(height=9 color="536870912" )
+detail(height=97 color="536870912" )
+table(column=(type=char(2) update=yes key=yes name=stat_code dbname="callstat.stat_code" )
+ column=(type=char(10) update=yes name=stat_desc dbname="callstat.stat_desc" )
+ column=(type=char(32766) update=yes name=stat_longdesc dbname="callstat.stat_longdesc" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"callstat~" ) COLUMN(NAME=~"callstat.stat_code~") COLUMN(NAME=~"callstat.stat_desc~") COLUMN(NAME=~"callstat.stat_longdesc~")) " update="callstat" updatewhere=1 updatekeyinplace=no )
+compute(band=header alignment="0" expression="today()"border="0" color="0" x="23" y="4" height="53" width="526" format="[shortdate]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Call Status Report"border="0" color="0" x="23" y="64" height="57" width="449"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=header x="1" y="132" height="9" width="2327" brush.hatch="6" brush.color="0" pen.style="5" pen.width="10" pen.color="553648127"  background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="now()"border="0" color="0" x="572" y="4" height="53" width="503" format="hh:mm:ss"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="1" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="0" x="1820" y="4" height="53" width="476" format="[general]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Code Number"border="0" color="0" x="5" y="164" height="65" width="339"  name=stat_code_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Short Description"border="0" color="0" x="467" y="164" height="65" width="449"  name=stat_desc_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Long Description"border="0" color="0" x="1038" y="164" height="65" width="435"  name=stat_longdesc_t  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.underline="1" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="2" tabsequence=10 border="0" color="0" x="1" y="4" height="77" width="339" format="[general]"  name=stat_code edit.limit=2 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="0" color="0" x="453" y="4" height="77" width="449" format="[general]"  name=stat_desc edit.limit=10 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="1020" y="4" height="77" width="2195" format="[general]"  name=stat_longdesc edit.limit=32000 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )

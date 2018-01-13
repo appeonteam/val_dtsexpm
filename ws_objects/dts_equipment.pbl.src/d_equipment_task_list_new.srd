@@ -1,0 +1,53 @@
+﻿$PBExportHeader$d_equipment_task_list_new.srd
+release 10.5;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no grid.lines=1 grid.columnmove=no selected.mouse=no )
+header(height=84 color="67108864" )
+summary(height=0 color="67108864" )
+footer(height=20 color="67108864" )
+detail(height=68 color="67108864" )
+table(column=(type=char(5) update=yes updatewhereclause=yes name=vzt_equipment_task_map_problem_number dbname="vzt_equipment_task_map.problem_number" dbalias=".problem_number" )
+ column=(type=char(35) updatewhereclause=yes name=problem_problem_desc dbname="problem.problem_desc" dbalias=".problem_desc" )
+ column=(type=char(5) update=yes updatewhereclause=yes name=vzt_equipment_task_map_subproblem_number dbname="vzt_equipment_task_map.subproblem_number" dbalias=".subproblem_number" )
+ column=(type=char(35) updatewhereclause=yes name=subproblem_subproblem_desc dbname="subproblem.subproblem_desc" dbalias=".subproblem_desc" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=vzt_equipment_task_map_period dbname="vzt_equipment_task_map.period" dbalias=".period" )
+ column=(type=long update=yes updatewhereclause=yes name=vzt_equipment_task_map_equipment_id dbname="vzt_equipment_task_map.equipment_id" dbalias=".equipment_id" )
+ column=(type=long updatewhereclause=yes key=yes identity=yes name=vzt_equipment_task_map_id dbname="vzt_equipment_task_map.id" dbalias=".id" )
+ retrieve="  SELECT ~"vzt_equipment_task_map~".~"problem_number~",   
+         ~"problem~".~"problem_desc~",   
+         ~"vzt_equipment_task_map~".~"subproblem_number~",   
+         ~"subproblem~".~"subproblem_desc~",   
+         ~"vzt_equipment_task_map~".~"period~",   
+         ~"vzt_equipment_task_map~".~"equipment_id~",   
+         ~"vzt_equipment_task_map~".~"id~"  
+    FROM ~"problem~",   
+         ~"subproblem~",   
+         ~"vzt_equipment_task_map~"  
+   WHERE ( ~"vzt_equipment_task_map~".~"problem_number~" = ~"subproblem~".~"problem_number~" ) and  
+         ( ~"vzt_equipment_task_map~".~"subproblem_number~" = ~"subproblem~".~"subproblem_number~" ) and  
+         ( ~"problem~".~"problem_number~" = ~"subproblem~".~"problem_number~" )    
+AND ~"vzt_equipment_task_map~".~"equipment_id~" = :as_area_number" update="vzt_equipment_task_map" updatewhere=0 updatekeyinplace=yes arguments=(("as_area_number", string))  sort="problem_problem_desc A subproblem_subproblem_desc A vzt_equipment_task_map_problem_number A vzt_equipment_task_map_subproblem_number A " )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="14" y="0" height="64" width="247" format="[general]" html.valueishtml="0"  name=vzt_equipment_task_map_problem_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="274" y="0" height="64" width="805" format="[general]" html.valueishtml="0"  name=problem_problem_desc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="33554432" x="1093" y="0" height="64" width="283" format="[general]" html.valueishtml="0"  name=vzt_equipment_task_map_subproblem_number visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="33554432" x="1390" y="0" height="64" width="974" format="[general]" html.valueishtml="0"  name=subproblem_subproblem_desc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="2377" y="0" height="64" width="270" format="[General]" html.valueishtml="0"  name=vzt_equipment_task_map_period visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="2661" y="0" height="64" width="283" format="[General]" html.valueishtml="0"  name=vzt_equipment_task_map_equipment_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="2958" y="0" height="64" width="553" format="[General]" html.valueishtml="0"  name=vzt_equipment_task_map_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Task" border="0" color="16777215" x="9" y="8" height="60" width="251" html.valueishtml="0"  name=vzt_equipment_task_map_problem_numbe_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text="Map Id" border="0" color="33554432" x="2953" y="4" height="56" width="558" html.valueishtml="0"  name=vzt_equipment_task_map_id_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Task Description" border="0" color="16777215" x="270" y="8" height="60" width="809" html.valueishtml="0"  name=problem_problem_desc_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text="Subtask" border="0" color="16777215" x="1088" y="8" height="60" width="288" html.valueishtml="0"  name=vzt_equipment_task_map_subproblem_nu_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text="Subtask Description" border="0" color="16777215" x="1385" y="8" height="60" width="978" html.valueishtml="0"  name=subproblem_subproblem_desc_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text="Period" border="0" color="16777215" x="2373" y="8" height="60" width="274" html.valueishtml="0"  name=vzt_equipment_task_map_period_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="21130554" )
+text(band=header alignment="0" text="Eq Id" border="0" color="16777215" x="2656" y="8" height="56" width="288" html.valueishtml="0"  name=vzt_equipment_task_map_equipment_id_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="204" background.mode="2" background.color="21130554" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

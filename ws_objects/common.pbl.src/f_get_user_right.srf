@@ -1,0 +1,31 @@
+﻿$PBExportHeader$f_get_user_right.srf
+global type f_get_user_right from function_object
+end type
+
+forward prototypes
+global function integer f_get_user_right (string req_code, string user_name)
+end prototypes
+
+global function integer f_get_user_right (string req_code, string user_name);int reqRight, right
+
+select 	rights 
+into 		:reqRight 
+from 		security
+where		event = :req_code;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return -1
+end if
+
+select	user_rights
+into		:right
+from		user_rights
+where		rtrim(user_lname)+', '+rtrim(user_fname) = :user_name;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return -1
+end if
+
+return right - reqRight
+end function
+

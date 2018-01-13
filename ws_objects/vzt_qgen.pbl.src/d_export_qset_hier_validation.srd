@@ -1,0 +1,64 @@
+﻿$PBExportHeader$d_export_qset_hier_validation.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=58 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=51 color="536870912" )
+table(column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_qset_questions.questionid" )
+ retrieve="SELECT qq.questionid 
+FROM qgen_qset_questions qq, qgen_qset qqs
+WHERE qq.qsetid = :ad_qsetid and 
+		qqs.qsetid = qq.qsetid and 
+		qqs.use_hierarchy = 'Y' and 
+		qq.questionid NOT IN 
+(
+  SELECT floor( ~"vzt_hierarchy~".~"reportid~")
+    FROM ~"vzt_hierarchy~"   
+	WHERE  ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+			 ~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid) 
+			and ~"vzt_hierarchy~".~"nodetype~" = 'QUESTION' 
+UNION 
+
+  SELECT floor(~"vzt_hierarchy~".~"reportid~")
+    FROM ~"vzt_hierarchy~"   
+	WHERE  ~"vzt_hierarchy~".~"parent_id~" IN
+				 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+							~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+				)
+			and ~"vzt_hierarchy~".~"nodetype~" = 'QUESTION' 
+UNION 
+
+  SELECT floor(~"vzt_hierarchy~".~"reportid~")
+    FROM ~"vzt_hierarchy~"   
+	WHERE  ~"vzt_hierarchy~".~"parent_id~" IN
+				 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" IN 
+					 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+						WHERE ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+							~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+						)
+				)
+			and ~"vzt_hierarchy~".~"nodetype~" = 'QUESTION' 
+UNION 
+
+  SELECT floor(~"vzt_hierarchy~".~"reportid~")
+  FROM ~"vzt_hierarchy~"   
+	WHERE  ~"vzt_hierarchy~".~"parent_id~" IN
+			 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" IN 
+				 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" IN 
+					 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+						WHERE ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+							~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+						)
+				)
+			)
+			and ~"vzt_hierarchy~".~"nodetype~" = 'QUESTION' 
+)" arguments=(("ad_qsetid", number))  sort="questionid A " )
+text(band=header alignment="1" text="Questionid"border="0" color="0" x="7" y="3" height="51" width="611"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Validation"border="0" color="128" x="7" y="0" height="54" width="611"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="7" y="0" height="51" width="611" format="[general]"  name=questionid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

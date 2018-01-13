@@ -1,0 +1,55 @@
+﻿$PBExportHeader$d_contact_pref_list.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=72 color="21325446" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes key=yes name=contact_id dbname="vzt_contact_preferences.contact_id" )
+ column=(type=char(1000) update=yes updatewhereclause=yes name=comment dbname="vzt_contact_preferences.comment" )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=problem_number dbname="vzt_contact_preferences.problem_number" )
+ column=(type=char(5) update=yes updatewhereclause=yes key=yes name=subproblem_number dbname="vzt_contact_preferences.subproblem_number" )
+ column=(type=char(35) updatewhereclause=yes name=subproblem_desc dbname="subproblem.subproblem_desc" )
+ column=(type=char(35) updatewhereclause=yes name=problem_desc dbname="problem.problem_desc" )
+ column=(type=char(10) updatewhereclause=yes name=subkey dbname="subkey" )
+ column=(type=char(10) updatewhereclause=yes name=retcodes_code dbname="retcodes.code" )
+ column=(type=char(10) updatewhereclause=yes name=retcodes_prearrival dbname="retcodes.prearrival" )
+ retrieve="  SELECT ~"vzt_contact_preferences~".~"contact_id~",   
+         ~"vzt_contact_preferences~".~"comment~",   
+         ~"vzt_contact_preferences~".~"problem_number~",   
+         ~"vzt_contact_preferences~".~"subproblem_number~",   
+         ~"subproblem~".~"subproblem_desc~",   
+         ~"problem~".~"problem_desc~"  ,
+         ~"vzt_contact_preferences~".~"problem_number~"+~"vzt_contact_preferences~".~"subproblem_number~" subkey ,
+			retcodes.code, 
+			retcodes.prearrival  
+  
+
+    FROM ~"subproblem~",   
+         ~"vzt_contact_preferences~",   
+         ~"problem~"  , retcodes 
+   WHERE ( ~"subproblem~".~"subproblem_number~" = ~"vzt_contact_preferences~".~"subproblem_number~" ) and  
+         ( ~"subproblem~".~"problem_number~" = ~"vzt_contact_preferences~".~"problem_number~" ) and  
+         ( ~"vzt_contact_preferences~".~"problem_number~" = ~"problem~".~"problem_number~" )    
+			AND ~"vzt_contact_preferences~".~"contact_id~" = :ad_contact_id
+			AND retcodes.code =* ~"subproblem~".~"retcode~" 
+		" update="vzt_contact_preferences" updatewhere=0 updatekeyinplace=yes arguments=(("ad_contact_id", number)) )
+text(band=header alignment="2" text="Category / Task" border="0" color="16777215" x="9" y="8" height="56" width="869" html.valueishtml="0"  name=vzt_contact_preferences_problem_number_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sub Category / Subtask" border="0" color="16777215" x="887" y="4" height="56" width="814" html.valueishtml="0"  name=subkey_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Comment" border="0" color="16777215" x="2121" y="8" height="56" width="1019" html.valueishtml="0"  name=vzt_contact_preferences_comment_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Contact Id" border="0" color="16777215" x="3205" y="8" height="56" width="293" html.valueishtml="0"  name=vzt_contact_preferences_contact_id_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="RetCode" border="0" color="16777215" x="1710" y="4" height="56" width="219" html.valueishtml="0"  name=retcodes_code_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Timing" border="0" color="16777215" x="1938" y="4" height="56" width="174" html.valueishtml="0"  name=retcodes_prearrival_t visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="3205" y="0" height="60" width="293" format="[general]" html.valueishtml="0"  name=contact_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=50 border="0" color="33554432" x="2121" y="0" height="60" width="1019" format="[general]" html.valueishtml="0"  name=comment visible="1" edit.limit=1000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="33554432" x="9" y="0" height="60" width="869" format="[general]" html.valueishtml="0"  name=problem_number visible="1" dddw.name=d_dddw_problem_PREF dddw.displaycolumn=problem_desc dddw.datacolumn=problem_number dddw.percentwidth=130 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=3 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="3506" y="4" height="48" width="69" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="' '"border="0" color="0" x="3150" y="4" height="56" width="46" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="0" tabsequence=20 border="0" color="33554432" x="887" y="0" height="60" width="814" format="[general]" html.valueishtml="0"  name=subkey visible="1" dddw.name=d_dddw_subproblem_pref01 dddw.displaycolumn=subproblem_subproblem_desc dddw.datacolumn=subkey dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0 dddw.hscrollbar=yes dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="2" tabsequence=30 border="0" color="33554432" x="1710" y="0" height="56" width="219" format="[general]" html.valueishtml="0"  name=retcodes_code visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="2" tabsequence=40 border="0" color="33554432" x="1938" y="0" height="56" width="174" format="[general]" html.valueishtml="0"  name=retcodes_prearrival visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

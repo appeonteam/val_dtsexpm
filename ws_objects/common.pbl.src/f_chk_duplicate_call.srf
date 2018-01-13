@@ -1,0 +1,70 @@
+﻿$PBExportHeader$f_chk_duplicate_call.srf
+global type f_chk_duplicate_call from function_object
+end type
+
+forward prototypes
+global function boolean f_chk_duplicate_call (integer calltype, string updtype, string room, string task, string subtask)
+end prototypes
+
+global function boolean f_chk_duplicate_call (integer calltype, string updtype, string room, string task, string subtask);int timerCount, pendingCount
+int exceptionCall, roomException
+/* callType 1 = timercalls
+	callType 2 = pendingcalls
+*/
+/* if room = "TBA" or OFFICE" ignore duplicate check m.n. 4/29/00 */
+
+exceptionCall = pos(gnv_appman.cDupCallException,RightTrim(task)+", "+RightTrim(subtask))
+roomException = pos(upper(gnv_appman.cRoomAllowDup),upper(room))
+//if upper(room) = "TBA" or upper(room) = "OFFICE"  or upper(room) = "CASINO FLOOR" or exceptionCall > 0 then
+if roomException > 0 or exceptionCall > 0 then
+	return true
+end if
+select count(*)
+into	:timerCount
+from  timercalls
+where	timercalls.room_dsc = :room
+and	timercalls.problem = :task
+and	timercalls.subproblem = :subtask;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+select count(*)
+into : pendingCount
+from  pendingcalls
+where	pendingcalls.room_dsc = :room
+and	pendingcalls.problem = :task
+and	pendingcalls.subproblem = :subtask;
+if sqlca.sqlcode < 0 then
+	egm_sqlerror(sqlca)
+	return false
+end if
+
+if updtype = 'insert' then
+	if timerCount > 0 or pendingCount > 0 then
+		return false
+	else
+		return true
+	end if
+else /* update call */
+	if calltype = 1 then /* update timer call*/
+		if timerCount > 1 and pendingCount > 0 then
+			return false
+		else
+			return true
+		end if
+	else 
+		if calltype = 2 then /* update pending call */
+			if pendingCount > 1 and timerCount > 0 then
+				return false
+			else
+				return true
+			end if
+		else /* update closed call */
+			return true /* do not matter duplicate */
+		end if
+	end if
+end if
+end function
+

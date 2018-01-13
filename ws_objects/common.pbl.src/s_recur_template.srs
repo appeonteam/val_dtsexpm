@@ -1,0 +1,18 @@
+﻿$PBExportHeader$s_recur_template.srs
+global type s_recur_template from structure
+	string		timer_dt_str
+	string		recur_ind
+	date		recur_start_date
+	date		recur_end_date
+	time		recur_start_time
+	string		recur_freq_code
+	string		recur_freq_num
+	string		recur_by
+	long		recur_id
+	string		open_mode
+	time		daily_start_time
+	time		daily_end_time
+	string		week_day_selected
+	boolean		view
+end type
+

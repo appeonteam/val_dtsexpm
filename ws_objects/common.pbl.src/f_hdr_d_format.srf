@@ -1,0 +1,34 @@
+﻿$PBExportHeader$f_hdr_d_format.srf
+global type f_hdr_d_format from function_object
+end type
+
+forward prototypes
+global function string f_hdr_d_format ()
+end prototypes
+
+global function string f_hdr_d_format ();string ret_d
+Choose Case mid(cDateFormatStr,1,2)
+	Case "mm"
+		ret_d = 'm/d'
+	Case "dd" 
+		ret_d = 'd/m'
+	Case Else
+		Choose Case mid(cDateFormatStr,3,2)
+			Case "mm"
+				ret_d = 'm/d'
+			Case "dd"
+				ret_d = 'd/m'
+			Case Else
+				Choose Case mid(cDateFormatStr,6,2)
+					Case "mm"
+						ret_d = 'm/d'
+					Case Else
+						ret_d = 'd/m'
+				End Choose
+		End Choose
+End Choose
+
+return ret_d
+
+end function
+

@@ -1,0 +1,90 @@
+﻿$PBExportHeader$d_gcc_guest_list.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=79349703 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=60 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=56 color="536870912" )
+table(column=(type=number updatewhereclause=yes key=yes name=guest_account dbname="guest.account" )
+ column=(type=char(50) updatewhereclause=yes name=guest_guest_id dbname="guest.guest_id" )
+ column=(type=number updatewhereclause=yes name=guest_guest_no dbname="guest.guest_no" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(2) updatewhereclause=yes name=guest_middle_init dbname="guest.middle_init" )
+ column=(type=char(20) updatewhereclause=yes name=guest_title dbname="guest.title" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr1 dbname="guest.addr1" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr2 dbname="guest.addr2" )
+ column=(type=char(20) updatewhereclause=yes name=guest_city dbname="guest.city" )
+ column=(type=char(20) updatewhereclause=yes name=guest_state dbname="guest.state" )
+ column=(type=char(10) updatewhereclause=yes name=guest_zip dbname="guest.zip" )
+ column=(type=char(20) updatewhereclause=yes name=guest_country dbname="guest.country" )
+ column=(type=char(100) updatewhereclause=yes name=guest_comp_name dbname="guest.comp_name" )
+ column=(type=char(18) updatewhereclause=yes name=guest_phone dbname="guest.phone" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_checkin_dt dbname="guest.last_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_depart_dt dbname="guest.last_depart_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_checkin_dt dbname="guest.prev_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_depart_dt dbname="guest.prev_depart_dt" )
+ column=(type=char(15) updatewhereclause=yes name=guest_room_last_checkin dbname="guest.room_last_checkin" )
+ column=(type=char(4) updatewhereclause=yes name=guest_accom_code dbname="guest.accom_code" )
+ column=(type=char(20) updatewhereclause=yes name=guest_block_code dbname="guest.block_code" )
+ column=(type=char(30) updatewhereclause=yes name=guest_grp_mstr_name dbname="guest.grp_mstr_name" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_1 dbname="guest.sr_code_1" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_4 dbname="guest.sr_code_4" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_5 dbname="guest.sr_code_5" )
+ column=(type=long updatewhereclause=yes name=guest_no_adult dbname="guest.no_adult" )
+ column=(type=char(20) updatewhereclause=yes name=guest_pg_id dbname="guest.pg_id" )
+ column=(type=datetime updatewhereclause=yes name=guest_date_created dbname="guest.date_created" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_upd dbname="guest.last_upd" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_2 dbname="guest.sr_code_2" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_3 dbname="guest.sr_code_3" )
+ column=(type=char(20) updatewhereclause=yes name=guest_prefix dbname="guest.prefix" )
+ column=(type=char(150) updatewhereclause=yes name=guest_email dbname="guest.email" )
+ retrieve="  SELECT guest.account,   
+         guest.guest_id,   
+         guest.guest_no,   
+         guest.last_name,   
+         guest.first_name,   
+         guest.middle_init,   
+         guest.title,   
+         guest.addr1,   
+         guest.addr2,   
+         guest.city,   
+         guest.state,   
+         guest.zip,   
+         guest.country,   
+         guest.comp_name,   
+         guest.phone,   
+         guest.last_checkin_dt,   
+         guest.last_depart_dt,   
+         guest.prev_checkin_dt,   
+         guest.prev_depart_dt,   
+         guest.room_last_checkin,   
+         guest.accom_code,   
+         guest.block_code,   
+         guest.grp_mstr_name,   
+         guest.sr_code_1,    
+         guest.sr_code_4,   
+         guest.sr_code_5,   
+         guest.no_adult,   
+         guest.pg_id,   
+         guest.date_created,   
+         guest.last_upd,   
+         guest.sr_code_2,   
+         guest.sr_code_3,   
+         guest.prefix,   
+         guest.email 
+    FROM guest   
+" update="guest" updatewhere=0 updatekeyinplace=no  sort="guest_last_name A guest_first_name A " )
+text(band=header alignment="0" text=" Room"border="6" color="0" x="32" y="4" height="52" width="192"  name=guest_room_last_checkin_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" Last Name"border="6" color="0" x="242" y="4" height="52" width="430"  name=guest_last_name_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" First Name"border="6" color="0" x="690" y="4" height="52" width="247"  name=guest_first_name_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" City"border="6" color="0" x="955" y="4" height="52" width="439"  name=guest_city_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="0" text=" State"border="6" color="0" x="1413" y="4" height="52" width="155"  name=guest_state_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+text(band=header alignment="2" text="Zip"border="6" color="0" x="1586" y="4" height="52" width="215"  name=guest_zip_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="79349703" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="32" y="0" height="60" width="192" format="[general]"  name=guest_room_last_checkin edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="247" y="0" height="60" width="421" format="[general]"  name=guest_last_name edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="686" y="0" height="60" width="256" format="[general]"  name=guest_first_name edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="960" y="0" height="56" width="466" format="[general]"  name=guest_city edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="1440" y="0" height="60" width="128" format="[general]"  name=guest_state edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="1582" y="0" height="60" width="224" format="[general]"  name=guest_zip edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

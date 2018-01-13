@@ -1,0 +1,23 @@
+﻿$PBExportHeader$d_export_qset_questions.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=48 color="536870912" )
+summary(height=48 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=45 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=qsetid dbname="qgen_qset_questions.qsetid" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes key=yes name=questionid dbname="qgen_qset_questions.questionid" )
+ column=(type=long update=yes updatewhereclause=yes name=sortorder dbname="qgen_qset_questions.sortorder" )
+ retrieve="  SELECT ~"qgen_qset_questions~".~"qsetid~",   
+         ~"qgen_qset_questions~".~"questionid~",   
+         ~"qgen_qset_questions~".~"sortorder~"  
+    FROM ~"qgen_qset_questions~"   
+WHERE ~"qgen_qset_questions~".~"qsetid~" = :ad_qsetid" update="qgen_qset_questions" updatewhere=1 updatekeyinplace=no arguments=(("ad_qsetid", number)) )
+text(band=summary alignment="0" text="qset questions"border="0" color="128" x="4" y="0" height="48" width="355"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=10 border="0" color="0" x="7" y="0" height="48" width="351" format="[general]"  name=qsetid edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="366" y="0" height="48" width="351" format="[general]"  name=questionid edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=30 border="0" color="0" x="724" y="0" height="48" width="351" format="[general]"  name=sortorder edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Qsetid"border="0" color="0" x="7" y="0" height="45" width="351"  name=qsetid_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Questionid"border="0" color="0" x="366" y="0" height="45" width="351"  name=questionid_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sortorder"border="0" color="0" x="724" y="0" height="45" width="351"  name=sortorder_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

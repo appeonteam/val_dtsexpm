@@ -1,0 +1,14 @@
+﻿$PBExportHeader$gf_emptystring.srf
+$PBExportComments$Set a string to empty.
+global type gf_emptystring from function_object
+end type
+
+forward prototypes
+global function boolean gf_emptystring (string as_string)
+end prototypes
+
+global function boolean gf_emptystring (string as_string);RETURN ( Len( Trim( as_string) )  = 0 )
+
+
+end function
+

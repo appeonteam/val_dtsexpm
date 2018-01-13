@@ -1,0 +1,301 @@
+﻿$PBExportHeader$m_vzt_rpt_viewer.srm
+forward
+global type m_vzt_rpt_viewer from menu
+end type
+type m_file from menu within m_vzt_rpt_viewer
+end type
+type m_close from menu within m_file
+end type
+type m_saveas from menu within m_file
+end type
+type m_print from menu within m_file
+end type
+type m_pagesetup from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_vzt_rpt_viewer
+m_close m_close
+m_saveas m_saveas
+m_print m_print
+m_pagesetup m_pagesetup
+m_printscreen m_printscreen
+m_exit m_exit
+end type
+type m_style from menu within m_vzt_rpt_viewer
+end type
+type m_graphtype from menu within m_style
+end type
+type m_graphtitle from menu within m_style
+end type
+type m_graphcolumncolors from menu within m_style
+end type
+type m_graphspacing from menu within m_style
+end type
+type m_style from menu within m_vzt_rpt_viewer
+m_graphtype m_graphtype
+m_graphtitle m_graphtitle
+m_graphcolumncolors m_graphcolumncolors
+m_graphspacing m_graphspacing
+end type
+end forward
+
+global type m_vzt_rpt_viewer from menu
+m_file m_file
+m_style m_style
+end type
+global m_vzt_rpt_viewer m_vzt_rpt_viewer
+
+forward prototypes
+public function integer of_sendmessage (string as_message)
+public subroutine of_enable_graph (boolean ab_enable)
+end prototypes
+
+public function integer of_sendmessage (string as_message);//////////////////////////////////////////////////////////////////////////////
+	if IsValid (parentwindow) then
+		 parentwindow.dynamic event pfc_messagerouter (as_message)
+	end if
+
+return 1
+
+end function
+
+public subroutine of_enable_graph (boolean ab_enable);
+this.m_style.visible 							= ab_enable
+this.m_style.m_graphtype.visible 			= ab_enable
+this.m_style.m_graphtitle.visible 			= ab_enable
+this.m_style.m_graphcolumncolors.visible 	= ab_enable
+this.m_style.m_graphspacing.visible 		= ab_enable
+
+this.m_style.ToolbarItemVisible								= ab_enable
+this.m_style.m_graphtype.ToolbarItemVisible				= ab_enable
+this.m_style.m_graphtitle.ToolbarItemVisible				= ab_enable
+this.m_style.m_graphcolumncolors.ToolbarItemVisible	= ab_enable
+this.m_style.m_graphspacing.ToolbarItemVisible			= ab_enable
+
+
+end subroutine
+
+on m_vzt_rpt_viewer.create
+m_vzt_rpt_viewer=this
+this.m_file=create m_file
+this.m_style=create m_style
+this.Item[]={this.m_file, &
+this.m_style}
+end on
+
+on m_vzt_rpt_viewer.destroy
+destroy(this.m_file)
+destroy(this.m_style)
+end on
+
+type m_file from menu within m_vzt_rpt_viewer
+m_close m_close
+m_saveas m_saveas
+m_print m_print
+m_pagesetup m_pagesetup
+m_printscreen m_printscreen
+m_exit m_exit
+end type
+
+on m_file.create
+this.Text="&File"
+this.MergeOption=FileMenu!
+this.m_close=create m_close
+this.m_saveas=create m_saveas
+this.m_print=create m_print
+this.m_pagesetup=create m_pagesetup
+this.m_printscreen=create m_printscreen
+this.m_exit=create m_exit
+this.Item[]={this.m_close, &
+this.m_saveas, &
+this.m_print, &
+this.m_pagesetup, &
+this.m_printscreen, &
+this.m_exit}
+end on
+
+on m_file.destroy
+destroy(this.m_close)
+destroy(this.m_saveas)
+destroy(this.m_print)
+destroy(this.m_pagesetup)
+destroy(this.m_printscreen)
+destroy(this.m_exit)
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;of_SendMessage ("pfc_close")
+end on
+
+on m_close.create
+this.Text="&Close"
+this.Microhelp="Close"
+this.ToolBarItemName="Custom039!"
+this.ToolBarItemText="Close"
+this.Visible=false
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=20
+end on
+
+type m_saveas from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_saveas")
+end event
+
+on m_saveas.create
+this.Text="Save &As..."
+this.Microhelp="Save As"
+this.ToolBarItemName="SaveAs!"
+this.ToolBarItemText="Save As"
+this.ToolBarItemOrder=30
+end on
+
+type m_print from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_print")
+end event
+
+on m_print.create
+this.Text="&Print ~tCtrl+P"
+this.Microhelp="Prints the item"
+this.ToolBarItemName="Print!"
+this.ToolBarItemText="Print"
+this.ToolBarItemOrder=1
+this.Shortcut=336
+end on
+
+type m_pagesetup from menu within m_file
+end type
+
+event clicked;SetPointer (hourglass!)
+of_SendMessage ("pfc_pagesetup")
+end event
+
+on m_pagesetup.create
+this.Text="Page Set&up..."
+this.Microhelp="Changes page layout settings"
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+event clicked;//of_SendMessage ("pfc_printimmediate")
+long Job
+
+Job = PrintOpen( )
+PrintScreen(Job, 100,100)
+PrintClose(Job)
+end event
+
+on m_printscreen.create
+this.Text="Print Screen"
+this.Microhelp="Prints the item"
+this.ToolBarItemName="RunReport5!"
+this.ToolBarItemText="Print"
+this.Visible=false
+this.ToolBarItemOrder=17
+this.Enabled=false
+end on
+
+type m_exit from menu within m_file
+end type
+
+event clicked;If IsValid( parentwindow)  then close( parentwindow)
+end event
+
+on m_exit.create
+this.Text="E&xit"
+this.Microhelp="Quits the application"
+this.ToolBarItemName="Exit!"
+this.ToolBarItemText="Exit"
+this.ShiftToRight=true
+this.MenuItemType=MenuItemTypeExit!
+this.ToolBarItemVisible=false
+this.ToolBarItemOrder=9999
+this.ToolBarItemSpace=2
+end on
+
+type m_style from menu within m_vzt_rpt_viewer
+m_graphtype m_graphtype
+m_graphtitle m_graphtitle
+m_graphcolumncolors m_graphcolumncolors
+m_graphspacing m_graphspacing
+end type
+
+on m_style.create
+this.Text="&Style"
+this.Visible=false
+this.m_graphtype=create m_graphtype
+this.m_graphtitle=create m_graphtitle
+this.m_graphcolumncolors=create m_graphcolumncolors
+this.m_graphspacing=create m_graphspacing
+this.Item[]={this.m_graphtype, &
+this.m_graphtitle, &
+this.m_graphcolumncolors, &
+this.m_graphspacing}
+end on
+
+on m_style.destroy
+destroy(this.m_graphtype)
+destroy(this.m_graphtitle)
+destroy(this.m_graphcolumncolors)
+destroy(this.m_graphspacing)
+end on
+
+type m_graphtype from menu within m_style
+end type
+
+on m_graphtype.create
+this.Text="Graph T&ype..."
+end on
+
+event clicked;SetPointer (hourglass!)
+//GetActiveSheet(ParentWindow).event dynamic graph_type()
+ParentWindow.event dynamic graph_type()
+end event
+
+type m_graphtitle from menu within m_style
+end type
+
+on m_graphtitle.create
+this.Text="Graph &Titles..."
+end on
+
+event clicked;SetPointer (hourglass!)
+//GetActiveSheet(ParentWindow).event dynamic graph_title()
+ParentWindow.event dynamic graph_title()
+end event
+
+type m_graphcolumncolors from menu within m_style
+end type
+
+on m_graphcolumncolors.create
+this.Text="Graph Column &Colors..."
+end on
+
+event clicked;SetPointer (hourglass!)
+//GetActiveSheet(ParentWindow).event dynamic graph_color()
+ParentWindow.event dynamic graph_color()
+end event
+
+type m_graphspacing from menu within m_style
+end type
+
+on m_graphspacing.create
+this.Text="Graph Column &Spacing..."
+end on
+
+event clicked;SetPointer (hourglass!)
+//GetActiveSheet(ParentWindow).event dynamic graph_spacing()
+ParentWindow.event dynamic graph_spacing()
+end event
+

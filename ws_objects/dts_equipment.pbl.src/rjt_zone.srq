@@ -1,0 +1,2 @@
+﻿$PBExportHeader$rjt_zone.srq
+PBSELECT( VERSION(400) TABLE(NAME="area" )  TABLE(NAME="zone_group" ) COLUMN(NAME="area.area_number")    JOIN (LEFT="area.zone_group_code"    OP ="="RIGHT="zone_group.zone_group_code" )) ORDER(NAME="zone_group.zone_group_code" ASC=yes )  ORDER(NAME="area.area_number" ASC=yes ) 

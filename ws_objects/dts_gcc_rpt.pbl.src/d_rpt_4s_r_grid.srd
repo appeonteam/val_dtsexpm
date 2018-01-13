@@ -1,0 +1,111 @@
+﻿$PBExportHeader$d_rpt_4s_r_grid.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=272 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=68 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=cardid dbname="gcc.cardid" )
+ column=(type=char(3) updatewhereclause=yes name=location dbname="location" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=room dbname="gcc.room" )
+ column=(type=datetime updatewhereclause=yes name=date dbname="gcc.date" )
+ column=(type=long updatewhereclause=yes name=lengthofstay dbname="lengthofstay" )
+ column=(type=long updatewhereclause=yes name=business dbname="gcc.business" )
+ column=(type=char(15) updatewhereclause=yes name=guestfirstname dbname="guest.guestfirstname" )
+ column=(type=char(2) updatewhereclause=yes name=guestmiddlename dbname="guest.guestmiddlename" )
+ column=(type=char(20) updatewhereclause=yes name=guestlastname dbname="guest.guestlastname" )
+ column=(type=char(20) updatewhereclause=yes name=guesttitle dbname="guest.guesttitle" )
+ column=(type=char(1) updatewhereclause=yes name=guestaddress dbname="guestaddress" )
+ column=(type=char(20) updatewhereclause=yes name=guestcity dbname="guest.guestcity" )
+ column=(type=char(20) updatewhereclause=yes name=gueststate dbname="guest.gueststate" )
+ column=(type=char(10) updatewhereclause=yes name=guestzip dbname="guest.guestzip" )
+ column=(type=char(20) updatewhereclause=yes name=guestcountry dbname="guest.guestcountry" )
+ column=(type=char(18) updatewhereclause=yes name=guestphone dbname="guest.guestphone" )
+ column=(type=char(150) updatewhereclause=yes name=guestemail dbname="guest.guestemail" )
+ column=(type=char(100) updatewhereclause=yes name=guestorganization dbname="guest.guestorganization" )
+ column=(type=char(20) updatewhereclause=yes name=guestdivisiontitle dbname="guest.guestdivisiontitle" )
+ column=(type=char(0) updatewhereclause=yes name=guestmeetingname dbname="guestmeetingname" )
+ column=(type=char(0) updatewhereclause=yes name=guestmeetingdate1 dbname="guestmeetingdate1" )
+ column=(type=char(0) updatewhereclause=yes name=guestmeetingdate2 dbname="guestmeetingdate2" )
+ column=(type=char(0) updatewhereclause=yes name=guestbusinessphone dbname="guestbusinessphone" )
+ column=(type=char(0) updatewhereclause=yes name=guestfax dbname="guestfax" )
+ retrieve="  SELECT gcc.gccid				cardid,   
+			'BER' 					Location,
+   		gcc.room 				Room,   
+  			gcc.ansdate				~"Date~",   
+         Convert( int, VZT_MAX_OF_TWO(1,IFNULL((gcc.depart_dt - gcc.checkin_dt ), 1, gcc.depart_dt - gcc.checkin_dt ))) LengthOfStay,
+			1 							Business,
+    		guest.first_name		guestfirstname,   
+         guest.middle_init		guestmiddlename,   
+         guest.last_name		guestlastname, 
+         guest.prefix			guesttitle,   
+  	      RTRIM(IfNULL(guest.addr1,'')) + ' ' +
+			RTRIM(IfNULL(guest.addr2,'')) 	GuestAddress,   
+         guest.city				guestcity,   
+         guest.state				GuestState,   
+         guest.zip				GuestZip,   
+         guest.country			GuestCountry,   
+         guest.phone				GuestPhone,   
+         guest.email  			GuestEmail,
+         guest.comp_name		GuestOrganization,   
+	      guest.title				GuestDivisionTitle,
+      	''							GuestMeetingName,
+      	''							GuestMeetingDate1,
+      	''							GuestMeetingDate2,
+      	''							GuestBusinessPhone,
+      	''							GuestFax
+    FROM gcc, guest
+		WHERE guest.account = gcc.guest_account     
+				AND ~"Date~" >= vzt_date_bom(date('2000/10/01'))
+				AND ~"Date~" <= vzt_date_eom(date('2001/05/01'))
+     ORDER BY Cardid
+		" )
+text(band=header alignment="0" text="Cardid"border="0" color="0" x="9" y="208" height="56" width="302"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Location"border="0" color="0" x="320" y="208" height="56" width="256"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Room"border="0" color="0" x="585" y="208" height="56" width="366"  name=room_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Date"border="0" color="0" x="960" y="208" height="56" width="512"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Lengthofstay"border="0" color="0" x="1481" y="208" height="56" width="361"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Business"border="0" color="0" x="1851" y="208" height="56" width="229"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestfirstname"border="0" color="0" x="2089" y="208" height="56" width="375"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestmiddlename"border="0" color="0" x="2473" y="208" height="56" width="137"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guest last name"border="0" color="0" x="2619" y="208" height="56" width="448"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guesttitle"border="0" color="0" x="3077" y="208" height="56" width="265"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestaddress"border="0" color="0" x="3351" y="208" height="56" width="517"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="GuestCity"border="0" color="0" x="3877" y="208" height="56" width="448"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guest State"border="0" color="0" x="4334" y="208" height="56" width="297"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guest Zip"border="0" color="0" x="4640" y="208" height="56" width="242"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guest country"border="0" color="0" x="4891" y="208" height="56" width="448"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestphone"border="0" color="0" x="5349" y="208" height="56" width="498"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="GuestEmail"border="0" color="0" x="5856" y="208" height="56" width="517"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="GuestOrganization"border="0" color="0" x="6382" y="208" height="56" width="581"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestdivisiontitle"border="0" color="0" x="6971" y="208" height="56" width="448"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestmeetingname"border="0" color="0" x="7429" y="208" height="56" width="448"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestmeetingdate1"border="0" color="0" x="7886" y="208" height="56" width="457"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestmeetingdate2"border="0" color="0" x="8352" y="208" height="56" width="457"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestbusinessphone"border="0" color="0" x="8818" y="208" height="56" width="507"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guestfax"border="0" color="0" x="9335" y="208" height="56" width="288"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="9" y="4" height="56" width="302" format="[general]"  name=cardid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="320" y="4" height="56" width="256" format="[general]"  name=location edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="0" color="0" x="585" y="4" height="56" width="366" format="[general]"  name=room edit.limit=15 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=32766 border="0" color="0" x="1481" y="4" height="56" width="361" format="[general]"  name=lengthofstay edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1851" y="4" height="56" width="229" format="[general]"  name=business edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2089" y="4" height="56" width="375" format="[general]"  name=guestfirstname edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2473" y="4" height="56" width="137" format="[general]"  name=guestmiddlename edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2619" y="4" height="56" width="448" format="[general]"  name=guestlastname edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="3077" y="4" height="56" width="265" format="[general]"  name=guesttitle edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="3351" y="0" height="56" width="517" format="[general]"  name=guestaddress edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="3877" y="4" height="56" width="448" format="[general]"  name=guestcity edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="4334" y="4" height="56" width="297" format="[general]"  name=gueststate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="4640" y="4" height="56" width="242" format="[general]"  name=guestzip edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="0" color="0" x="4891" y="4" height="56" width="448" format="[general]"  name=guestcountry edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="5349" y="4" height="56" width="498" format="[general]"  name=guestphone edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="0" x="5856" y="4" height="56" width="517" format="[general]"  name=guestemail edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=18 alignment="0" tabsequence=32766 border="0" color="0" x="6382" y="4" height="56" width="581" format="[general]"  name=guestorganization edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="6971" y="4" height="56" width="448" format="[general]"  name=guestdivisiontitle edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=20 alignment="0" tabsequence=32766 border="0" color="0" x="7429" y="4" height="56" width="448" format="[general]"  name=guestmeetingname edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=21 alignment="0" tabsequence=32766 border="0" color="0" x="7886" y="4" height="56" width="457" format="[general]"  name=guestmeetingdate1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=22 alignment="0" tabsequence=32766 border="0" color="0" x="8352" y="4" height="56" width="457" format="[general]"  name=guestmeetingdate2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="0" x="8818" y="4" height="56" width="507" format="[general]"  name=guestbusinessphone edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=24 alignment="0" tabsequence=32766 border="0" color="0" x="9335" y="4" height="56" width="288" format="[general]"  name=guestfax edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="960" y="4" height="56" width="512" format="[shortdate] [time]"  name=date edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

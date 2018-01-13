@@ -1,0 +1,27 @@
+﻿$PBExportHeader$f_appollo_cyrillic.srf
+global type f_appollo_cyrillic from function_object
+end type
+
+forward prototypes
+global function string f_appollo_cyrillic (string as_text)
+end prototypes
+
+global function string f_appollo_cyrillic (string as_text);string ls_ret, ls_lower, ls_upper
+string ls_lc = 'AaBbdEefghiKjMHOkPCTlmXnopqrstuvw'
+string ls_uc = 'AÁBÃÄE¨ÆÇÈÉÊËÌHOÏÐCTÓÔÕÖ×ØÙÚÛÜÝÞß' 
+
+
+ls_ret = as_text
+long llx , llmax
+llmax =  LEN(ls_uc)
+FOR llx=1 to llmax
+	ls_lower = MID(ls_lc,llx,1)
+	ls_upper = MID(ls_uc,llx,1)
+	ls_ret	= f_replace( ls_ret, ls_upper,  ls_lower )
+NEXT
+
+return ls_ret
+
+
+end function
+

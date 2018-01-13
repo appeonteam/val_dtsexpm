@@ -1,0 +1,119 @@
+﻿$PBExportHeader$d_export_presentation.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=1 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no grid.lines=0 )
+header(height=48 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=54 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes name=fontface dbname="vzt_presentation.fontface" )
+ column=(type=long update=yes updatewhereclause=yes name=fontsize dbname="vzt_presentation.fontsize" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=bold dbname="vzt_presentation.bold" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=italic dbname="vzt_presentation.italic" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=under dbname="vzt_presentation.under" )
+ column=(type=number update=yes updatewhereclause=yes name=fgcolor dbname="vzt_presentation.fgcolor" )
+ column=(type=number update=yes updatewhereclause=yes name=bgcolor dbname="vzt_presentation.bgcolor" )
+ column=(type=number update=yes updatewhereclause=yes key=yes identity=yes name=id dbname="vzt_presentation.id" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=parentkey dbname="vzt_presentation.parentkey" )
+ column=(type=long update=yes updatewhereclause=yes name=height dbname="vzt_presentation.height" )
+ column=(type=long update=yes updatewhereclause=yes name=width dbname="vzt_presentation.width" )
+ column=(type=long update=yes updatewhereclause=yes name=x dbname="vzt_presentation.x" )
+ column=(type=long update=yes updatewhereclause=yes name=y_before dbname="vzt_presentation.y_before" )
+ column=(type=long update=yes updatewhereclause=yes name=y_after dbname="vzt_presentation.y_after" )
+ column=(type=char(10) update=yes updatewhereclause=yes name=border dbname="vzt_presentation.border" )
+ column=(type=long update=yes updatewhereclause=yes name=borderthickness dbname="vzt_presentation.borderthickness" )
+ column=(type=char(80) update=yes updatewhereclause=yes name=parenttable dbname="vzt_presentation.parenttable" )
+ retrieve="  SELECT ~"vzt_presentation~".~"fontface~",   
+         ~"vzt_presentation~".~"fontsize~",   
+         ~"vzt_presentation~".~"bold~",   
+         ~"vzt_presentation~".~"italic~",   
+         ~"vzt_presentation~".~"under~",   
+         ~"vzt_presentation~".~"fgcolor~",   
+         ~"vzt_presentation~".~"bgcolor~",   
+         ~"vzt_presentation~".~"id~",   
+         ~"vzt_presentation~".~"parentkey~",   
+         ~"vzt_presentation~".~"height~",   
+         ~"vzt_presentation~".~"width~",   
+         ~"vzt_presentation~".~"x~",   
+         ~"vzt_presentation~".~"y_before~",   
+         ~"vzt_presentation~".~"y_after~",   
+         ~"vzt_presentation~".~"border~",   
+         ~"vzt_presentation~".~"borderthickness~",   
+         ~"vzt_presentation~".~"parenttable~"  
+    FROM ~"vzt_presentation~"   
+WHERE ~"vzt_presentation~".~"id~" IN (
+
+  SELECT ~"vzt_hierarchy~".~"present_id~"    
+    FROM ~"vzt_hierarchy~"   
+	WHERE  (~"vzt_hierarchy~".~"parent_id~" = '300000' and
+			 ~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+			 )
+		OR 
+		(
+			~"vzt_hierarchy~".~"parent_id~" IN
+				 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+							~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+				)
+		)
+		OR 
+		(
+			~"vzt_hierarchy~".~"parent_id~" IN
+				 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" IN 
+					 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+						WHERE ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+							~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+						)
+				)
+		)
+		OR
+		(
+			~"vzt_hierarchy~".~"parent_id~" IN
+			 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" IN 
+				 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+					WHERE ~"vzt_hierarchy~".~"parent_id~" IN 
+					 ( SELECT ~"vzt_hierarchy~".~"id~" FROM ~"vzt_hierarchy~" 
+						WHERE ~"vzt_hierarchy~".~"parent_id~" = '300000' and
+							~"vzt_hierarchy~".~"reportid~"  = string(:ad_qsetid)
+						)
+				)
+			)
+		)
+)" update="vzt_presentation" updatewhere=1 updatekeyinplace=no arguments=(("ad_qsetid", number)) )
+text(band=header alignment="0" text="Fontface"border="0" color="0" x="7" y="0" height="51" width="530"  name=fontface_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fontsize"border="0" color="0" x="545" y="0" height="51" width="194"  name=fontsize_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bold"border="0" color="0" x="746" y="0" height="51" width="132"  name=bold_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Italic"border="0" color="0" x="885" y="0" height="51" width="146"  name=italic_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Under"border="0" color="0" x="1039" y="0" height="51" width="168"  name=under_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Fgcolor"border="0" color="0" x="1214" y="0" height="51" width="263"  name=fgcolor_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Bgcolor"border="0" color="0" x="1485" y="0" height="51" width="263"  name=bgcolor_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Id"border="0" color="0" x="1755" y="0" height="51" width="205"  name=id_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Parentkey"border="0" color="0" x="1968" y="0" height="51" width="391"  name=parentkey_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Height"border="0" color="0" x="2366" y="0" height="51" width="212"  name=height_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Width"border="0" color="0" x="2586" y="0" height="51" width="176"  name=width_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="X"border="0" color="0" x="2768" y="0" height="51" width="99"  name=x_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Y Before"border="0" color="0" x="2875" y="0" height="51" width="274"  name=y_before_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Y After"border="0" color="0" x="3156" y="0" height="51" width="205"  name=y_after_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Border"border="0" color="0" x="3368" y="0" height="51" width="249"  name=border_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Borderthickness"border="0" color="0" x="3624" y="0" height="51" width="406"  name=borderthickness_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Parenttable"border="0" color="0" x="4037" y="0" height="51" width="669"  name=parenttable_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="0" color="0" x="7" y="0" height="51" width="530" format="[general]"  name=fontface edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=20 border="0" color="0" x="545" y="0" height="51" width="194" format="[general]"  name=fontsize edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="746" y="0" height="51" width="132" format="[general]"  name=bold edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="0" color="0" x="885" y="0" height="51" width="146" format="[general]"  name=italic edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="0" color="0" x="1039" y="0" height="51" width="168" format="[general]"  name=under edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=60 border="0" color="0" x="1214" y="0" height="51" width="263" format="[general]"  name=fgcolor edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=70 border="0" color="0" x="1485" y="0" height="51" width="263" format="[general]"  name=bgcolor edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="1755" y="0" height="51" width="205" format="[general]"  name=id edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=80 border="0" color="0" x="1968" y="0" height="51" width="391" format="[general]"  name=parentkey edit.limit=20 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=90 border="0" color="0" x="2366" y="0" height="51" width="212" format="[general]"  name=height edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="1" tabsequence=100 border="0" color="0" x="2586" y="0" height="51" width="176" format="[general]"  name=width edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="1" tabsequence=110 border="0" color="0" x="2768" y="0" height="51" width="99" format="[general]"  name=x edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="1" tabsequence=120 border="0" color="0" x="2875" y="0" height="51" width="274" format="[general]"  name=y_before edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="1" tabsequence=130 border="0" color="0" x="3156" y="0" height="51" width="205" format="[general]"  name=y_after edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=15 alignment="0" tabsequence=140 border="0" color="0" x="3368" y="0" height="51" width="249" format="[general]"  name=border edit.limit=10 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="1" tabsequence=150 border="0" color="0" x="3624" y="0" height="51" width="406" format="[general]"  name=borderthickness edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=160 border="0" color="0" x="4037" y="0" height="51" width="669" format="[general]"  name=parenttable edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=background alignment="1" text="presentation"border="0" color="128" x="7" y="0" height="51" width="530"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

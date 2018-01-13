@@ -1,0 +1,91 @@
+﻿$PBExportHeader$f_str_dt_to_d.srf
+global type f_str_dt_to_d from function_object
+end type
+
+forward prototypes
+global function date f_str_dt_to_d (string dtstr)
+end prototypes
+
+global function date f_str_dt_to_d (string dtstr);date ret_d
+int yyyy
+Choose Case lower(cDateTimeFormatStr)
+			Case "mm/dd/yy hh:mm"
+				ret_d = date(mid(dtStr,1,8))
+			Case "mm-dd-yy hh:mm"
+				ret_d = date(mid(dtStr,1,8))
+			Case "mm.dd.yy hh:mm"
+				ret_d =  date(mid(dtStr,1,8))
+			Case "mm/dd/yyyy hh:mm"
+				ret_d =  date(mid(dtStr,1,10))
+			Case "mm-dd-yyyy hh:mm"
+				ret_d =  date(mid(dtStr,1,10))
+			Case "mm.dd.yyyy hh:mm"
+				ret_d =  date(mid(dtStr,1,10))
+				
+				
+			Case "dd/mm/yy hh:mm" 
+				if integer(mid(dtStr,7,2)) < 80 then
+					yyyy=integer(mid(dtStr,7,2))+2000
+				else
+					yyyy=integer(mid(dtStr,7,2))+1900
+				end if		
+				ret_d =  date(yyyy,integer(mid(dtStr,4,2)),integer(mid(dtStr,1,2)))
+			Case "dd.mm.yy hh:mm" 
+				if integer(mid(dtStr,7,2)) < 80 then
+					yyyy=integer(mid(dtStr,7,2))+2000
+				else
+					yyyy=integer(mid(dtStr,7,2))+1900
+				end if		
+				ret_d =  date(yyyy,integer(mid(dtStr,4,2)),integer(mid(dtStr,1,2)))
+			Case "dd-mm-yy hh:mm" 
+				if integer(mid(dtStr,7,2)) < 80 then
+					yyyy=integer(mid(dtStr,7,2))+2000
+				else
+					yyyy=integer(mid(dtStr,7,2))+1900
+				end if		
+				ret_d =  date(yyyy,integer(mid(dtStr,4,2)),integer(mid(dtStr,1,2)))
+			Case "dd/mm/yyyy hh:mm" 
+				ret_d =  date(integer(mid(dtStr,7,4)),integer(mid(dtStr,4,2)),&
+							integer(mid(dtStr,1,2)))
+			Case "dd.mm.yyyy hh:mm" 
+				ret_d =  date(integer(mid(dtStr,7,4)),integer(mid(dtStr,4,2)),&
+							integer(mid(dtStr,1,2)))	
+			Case "dd-mm-yyyy hh:mm" 
+				ret_d =  date(integer(mid(dtStr,7,4)),integer(mid(dtStr,4,2)),&
+							integer(mid(dtStr,1,2)))
+
+
+			Case "yy/mm/dd hh:mm" 
+				if integer(mid(dtStr,1,2)) < 80 then
+					yyyy=integer(mid(dtStr,1,2))+2000
+				else
+					yyyy=integer(mid(dtStr,1,2))+1900
+				end if
+				ret_d =  date(yyyy,integer(mid(dtStr,4,2)),integer(mid(dtStr,7,2)))
+			Case "yy-mm-dd hh:mm" 
+				if integer(mid(dtStr,1,2)) < 80 then
+					yyyy=integer(mid(dtStr,1,2))+2000
+				else
+					yyyy=integer(mid(dtStr,1,2))+1900
+				end if
+				ret_d =  date(yyyy,integer(mid(dtStr,4,2)),integer(mid(dtStr,7,2)))
+			Case "yy.mm.dd hh:mm"
+				if integer(mid(dtStr,1,2)) < 80 then
+					yyyy=integer(mid(dtStr,1,2))+2000
+				else
+					yyyy=integer(mid(dtStr,1,2))+1900
+				end if
+				ret_d =  date(yyyy,integer(mid(dtStr,4,2)),integer(mid(dtStr,7,2)))
+			Case "yyyy/mm/dd hh:mm"
+				ret_d =  date(dtStr)
+			Case "yyyy-mm-dd hh:mm"
+				ret_d =  date(dtStr)
+			Case "yyyy.mm.dd hh:mm"
+				ret_d =  date(integer(mid(dtStr,1,4)),integer(mid(dtStr,6,2)),integer(mid(dtStr,9,2)))
+			Case Else
+				messagebox("Date Format Error",dtStr)
+End Choose
+
+return ret_d
+end function
+

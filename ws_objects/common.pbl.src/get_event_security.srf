@@ -1,0 +1,38 @@
+﻿$PBExportHeader$get_event_security.srf
+global type get_event_security from function_object
+end type
+
+forward prototypes
+global function long get_event_security (string cevent)
+end prototypes
+
+global function long get_event_security (string cevent);string cEventDesc = ""
+integer nRights =-1
+
+SetNull( nRights )
+
+  SELECT "security"."event_desc",
+         "security"."rights"
+    INTO :cEventDesc, 
+			:nRights
+    FROM "security"  
+   WHERE  "security"."event" = :cEvent ;
+
+IF sqlca.SQLCode = 100 Or IsNull(nRights) Or nRights = -1 Or &
+	Len(Trim(cEventDesc)) = 0 Then	// no record result set from SELECT statement
+	MessageBox("Error", "An attempt to determine the minimum rights " + &
+					" for an application event was unsuccessful because the system maybe busy or the " + &
+					"event ->[" + cEvent + "] was not found.  Please try later or check " + &
+					"the Security Administration screen for an entry matching this event code.", &
+					StopSign!)
+	nRights = -1
+
+Elseif sqlca.SQLCode < 0 Then	// (-1) error
+	egm_sqlerror( SQLCA )
+	nRights = -1
+
+End If
+
+Return nRights
+end function
+

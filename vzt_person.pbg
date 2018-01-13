@@ -1,0 +1,42 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "vzt_person.pbl" "";
+@end;
+@begin Objects
+ "f_vzt_relation_detail.srf" "vzt_person.pbl";
+ "d_guest_room_reg_list.srd" "vzt_person.pbl";
+ "d_guest_calls_list_old.srd" "vzt_person.pbl";
+ "d_person_address_edit.srd" "vzt_person.pbl";
+ "d_vzt_form_about.srd" "vzt_person.pbl";
+ "d_guest_stay_list.srd" "vzt_person.pbl";
+ "w_vzt_person_edit.srw" "vzt_person.pbl";
+ "d_client_edit.srd" "vzt_person.pbl";
+ "d_guest_gcc_list.srd" "vzt_person.pbl";
+ "d_vzt_form_logon.srd" "vzt_person.pbl";
+ "w_vzt_form_person_edit.srw" "vzt_person.pbl";
+ "d_contact_pref_list.srd" "vzt_person.pbl";
+ "d_contact_cars_list.srd" "vzt_person.pbl";
+ "w_vzt_guest_edit.srw" "vzt_person.pbl";
+ "w_vzt_form_about.srw" "vzt_person.pbl";
+ "w_vzt_template_edit_web.srw" "vzt_person.pbl";
+ "d_contact_dates_list.srd" "vzt_person.pbl";
+ "d_contact_pets_list.srd" "vzt_person.pbl";
+ "d_dddw_relation_type.srd" "vzt_person.pbl";
+ "w_vzt_form_logon.srw" "vzt_person.pbl";
+ "d_client_list.srd" "vzt_person.pbl";
+ "d_contact_cars_lookup.srd" "vzt_person.pbl";
+ "d_dddw_address_type.srd" "vzt_person.pbl";
+ "d_guest_calls_list.srd" "vzt_person.pbl";
+ "d_guest_edit.srd" "vzt_person.pbl";
+ "d_contact_pets_breed_lookup.srd" "vzt_person.pbl";
+ "d_prearrival_guest_calls_list.srd" "vzt_person.pbl";
+ "d_ins_g325a_02a.srd" "vzt_person.pbl";
+ "d_contact_pets_species_lookup.srd" "vzt_person.pbl";
+ "d_forms_list.srd" "vzt_person.pbl";
+ "d_guest_list.srd" "vzt_person.pbl";
+ "d_client_relations_edit_spouse.srd" "vzt_person.pbl";
+ "d_guest_calls_list_by_stay.srd" "vzt_person.pbl";
+ "d_client_relations_edit.srd" "vzt_person.pbl";
+ "d_ins_g325a_01.srd" "vzt_person.pbl";
+ "d_ins_g325a_02.srd" "vzt_person.pbl";
+@end;

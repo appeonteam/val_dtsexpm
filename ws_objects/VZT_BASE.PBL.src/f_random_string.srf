@@ -1,0 +1,24 @@
+﻿$PBExportHeader$f_random_string.srf
+global type f_random_string from function_object
+end type
+
+forward prototypes
+global function string f_random_string (integer ai_len)
+end prototypes
+
+global function string f_random_string (integer ai_len);string as_ret, as_template 
+integer li_max, li_loop, li_offset
+
+as_template  = 'QUICKBROWNFOX3JUMPSOVERTHELAZYDOG123'
+as_template += 'quickbrownfoxjumpsoverthelazydog12309786asdasdhjOUYFESXMasdmnbvvldmyudaKLUS123459877987'
+li_max	 	 = len( as_template )
+
+Randomize(0)
+
+For li_loop = 1 to ai_len
+	as_ret += MID( as_template, Rand( li_max ), 1)
+Next
+if IsNull( as_ret ) then as_ret  = '****error*****' 
+return as_ret 
+end function
+

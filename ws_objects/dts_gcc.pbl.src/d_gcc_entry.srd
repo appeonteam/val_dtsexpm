@@ -1,0 +1,77 @@
+﻿$PBExportHeader$d_gcc_entry.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=268 color="536870912" )
+table(column=(type=number update=yes updatewhereclause=yes name=gcc_gccid dbname="gcc.gccid" )
+ column=(type=number updatewhereclause=yes name=gcc_guest_account dbname="gcc.guest_account" )
+ column=(type=char(15) update=yes updatewhereclause=yes name=gcc_room dbname="gcc.room" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gcc_checkin_dt dbname="gcc.checkin_dt" )
+ column=(type=datetime update=yes updatewhereclause=yes name=gcc_depart_dt dbname="gcc.depart_dt" )
+ column=(type=char(50) updatewhereclause=yes name=guest_guest_id dbname="guest.guest_id" )
+ column=(type=number updatewhereclause=yes name=guest_guest_no dbname="guest.guest_no" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(2) updatewhereclause=yes name=guest_middle_init dbname="guest.middle_init" )
+ column=(type=char(20) updatewhereclause=yes name=guest_title dbname="guest.title" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr1 dbname="guest.addr1" )
+ column=(type=char(60) updatewhereclause=yes name=guest_addr2 dbname="guest.addr2" )
+ column=(type=char(20) updatewhereclause=yes name=guest_city dbname="guest.city" )
+ column=(type=char(20) updatewhereclause=yes name=guest_state dbname="guest.state" )
+ column=(type=char(10) updatewhereclause=yes name=guest_zip dbname="guest.zip" )
+ column=(type=char(20) updatewhereclause=yes name=guest_country dbname="guest.country" )
+ column=(type=char(100) updatewhereclause=yes name=guest_comp_name dbname="guest.comp_name" )
+ column=(type=char(18) updatewhereclause=yes name=guest_phone dbname="guest.phone" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_checkin_dt dbname="guest.last_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_depart_dt dbname="guest.last_depart_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_checkin_dt dbname="guest.prev_checkin_dt" )
+ column=(type=datetime updatewhereclause=yes name=guest_prev_depart_dt dbname="guest.prev_depart_dt" )
+ column=(type=char(15) updatewhereclause=yes name=guest_room_last_checkin dbname="guest.room_last_checkin" )
+ column=(type=char(4) updatewhereclause=yes name=guest_accom_code dbname="guest.accom_code" )
+ column=(type=char(20) updatewhereclause=yes name=guest_block_code dbname="guest.block_code" )
+ column=(type=char(30) updatewhereclause=yes name=guest_grp_mstr_name dbname="guest.grp_mstr_name" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_1 dbname="guest.sr_code_1" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_4 dbname="guest.sr_code_4" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_5 dbname="guest.sr_code_5" )
+ column=(type=long updatewhereclause=yes name=guest_no_adult dbname="guest.no_adult" )
+ column=(type=char(20) updatewhereclause=yes name=guest_pg_id dbname="guest.pg_id" )
+ column=(type=datetime updatewhereclause=yes name=guest_date_created dbname="guest.date_created" )
+ column=(type=datetime updatewhereclause=yes name=guest_last_upd dbname="guest.last_upd" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_2 dbname="guest.sr_code_2" )
+ column=(type=char(4) updatewhereclause=yes name=guest_sr_code_3 dbname="guest.sr_code_3" )
+ column=(type=number update=yes updatewhereclause=yes name=gcc_surveyid dbname="gcc.surveyid" )
+ column=(type=char(20) updatewhereclause=yes name=guest_prefix dbname="guest.prefix" )
+ column=(type=number updatewhereclause=yes name=guest_account dbname="guest.account" )
+ column=(type=char(150) updatewhereclause=yes name=guest_email dbname="guest.email" )
+ column=(type=datetime updatewhereclause=yes name=gcc_ansdate dbname="gcc.ansdate" )
+ retrieve="  SELECT  gcc.gccid ,           gcc.guest_account ,    
+       gcc.room ,           gcc.checkin_dt ,      
+     gcc.depart_dt ,           guest.guest_id ,    
+       guest.guest_no ,           guest.last_name ,  
+         guest.first_name ,           guest.middle_init , 
+          guest.title ,           guest.addr1 ,          
+ guest.addr2 ,           guest.city ,           guest.state ,   
+        guest.zip ,           guest.country ,           guest.comp_name ,     
+      guest.phone ,           guest.last_checkin_dt ,           guest.last_depart_dt ,
+           guest.prev_checkin_dt ,           guest.prev_depart_dt ,        
+   guest.room_last_checkin ,           guest.accom_code ,         
+  guest.block_code ,           guest.grp_mstr_name ,        
+   guest.sr_code_1 ,           guest.sr_code_4 ,           guest.sr_code_5 ,    
+       guest.no_adult ,           guest.pg_id ,           guest.date_created ,  
+         guest.last_upd ,           guest.sr_code_2 ,           guest.sr_code_3 ,  
+         gcc.surveyid ,             guest.prefix ,         guest.account ,         
+  guest.email ,           gcc.ansdate  
+
+        FROM {oj guest  LEFT OUTER JOIN gcc  ON guest.account = gcc.guest_account}   " )
+text(band=detail alignment="0" text="GCC Arr Date"border="1" color="8421376" x="14" y="8" height="60" width="343"  name=guest_addr1_t  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=10 border="1" color="0" x="389" y="8" height="60" width="334" format="[shortdate] [time]"  name=gcc_checkin_dt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="GCC Dep Date"border="1" color="8421376" x="754" y="8" height="60" width="379"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=20 border="1" color="0" x="1166" y="8" height="60" width="288" format="[shortdate] [time]"  name=gcc_depart_dt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="GCC Room"border="1" color="8421376" x="18" y="96" height="60" width="320"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="1" color="0" x="398" y="96" height="60" width="293" format="[general]"  name=gcc_room edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="GCC No."border="1" color="8421376" x="754" y="96" height="60" width="247"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=40 border="1" color="0" x="1170" y="96" height="60" width="256" format="[general]"  name=gcc_gccid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=41 alignment="0" tabsequence=50 border="1" color="0" x="402" y="180" height="60" width="325" format="[shortdate] [time]"  name=gcc_ansdate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="0" text="GCC Date"border="1" color="8421376" x="14" y="180" height="60" width="347"  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

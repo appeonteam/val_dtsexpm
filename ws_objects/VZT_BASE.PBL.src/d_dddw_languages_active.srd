@@ -1,0 +1,12 @@
+﻿$PBExportHeader$d_dddw_languages_active.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=char(50) update=yes updatewhereclause=yes key=yes name=name dbname="vzt_languages.name" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=descr dbname="vzt_languages.descr" )
+ column=(type=char(1) updatewhereclause=yes name=active dbname="vzt_languages.active" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"vzt_languages~" ) COLUMN(NAME=~"vzt_languages.name~") COLUMN(NAME=~"vzt_languages.descr~") COLUMN(NAME=~"vzt_languages.active~")WHERE(    EXP1 =~"~~~"vzt_languages~~~".~~~"active~~~"~"   OP =~"=~"    EXP2 =~"'Y'~" ) ) ORDER(NAME=~"vzt_languages.name~" ASC=yes ) " update="vzt_languages" updatewhere=1 updatekeyinplace=no )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="26" y="3" height="54" width="574" format="[general]"  name=name edit.limit=50 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

@@ -1,0 +1,655 @@
+﻿$PBExportHeader$m_adhoc.srm
+forward
+global type m_adhoc from menu
+end type
+type m_file from menu within m_adhoc
+end type
+type m_runquery from menu within m_file
+end type
+type m_openquery from menu within m_file
+end type
+type m_loadspeciala from menu within m_file
+end type
+type m_loadspecialb from menu within m_file
+end type
+type m_savequery from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_exitqa from menu within m_file
+end type
+type m_file from menu within m_adhoc
+m_runquery m_runquery
+m_openquery m_openquery
+m_loadspeciala m_loadspeciala
+m_loadspecialb m_loadspecialb
+m_savequery m_savequery
+m_-2 m_-2
+m_exitqa m_exitqa
+end type
+type m_edit from menu within m_adhoc
+end type
+type m_clear from menu within m_edit
+end type
+type m_edit from menu within m_adhoc
+m_clear m_clear
+end type
+type m_windowsgraph from menu within m_adhoc
+end type
+type m_tile4 from menu within m_windowsgraph
+end type
+type m_layer from menu within m_windowsgraph
+end type
+type m_cascade from menu within m_windowsgraph
+end type
+type m_arrangemenuicons from menu within m_windowsgraph
+end type
+type m_-3 from menu within m_windowsgraph
+end type
+type m_toolbar from menu within m_windowsgraph
+end type
+type m_timecalculator from menu within m_windowsgraph
+end type
+type m_windowsgraph from menu within m_adhoc
+m_tile4 m_tile4
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_toolbar m_toolbar
+m_timecalculator m_timecalculator
+end type
+type m_help from menu within m_adhoc
+end type
+type m_context from menu within m_help
+end type
+type m_index from menu within m_help
+end type
+type m_search from menu within m_help
+end type
+type m_-4 from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_adhoc
+m_context m_context
+m_index m_index
+m_search m_search
+m_-4 m_-4
+m_about m_about
+end type
+global type m_adhoc from menu
+m_file m_file
+m_edit m_edit
+m_windowsgraph m_windowsgraph
+m_help m_help
+end type
+end forward
+
+global type m_adhoc from menu
+m_file m_file
+m_edit m_edit
+m_windowsgraph m_windowsgraph
+m_help m_help
+end type
+global m_adhoc m_adhoc
+
+on m_adhoc.create
+m_adhoc=this
+call super::create
+this.m_file=create m_file
+this.m_edit=create m_edit
+this.m_windowsgraph=create m_windowsgraph
+this.m_help=create m_help
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_edit
+this.Item[UpperBound(this.Item)+1]=this.m_windowsgraph
+this.Item[UpperBound(this.Item)+1]=this.m_help
+end on
+
+on m_adhoc.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_edit)
+destroy(this.m_windowsgraph)
+destroy(this.m_help)
+end on
+
+type m_file from menu within m_adhoc
+m_runquery m_runquery
+m_openquery m_openquery
+m_loadspeciala m_loadspeciala
+m_loadspecialb m_loadspecialb
+m_savequery m_savequery
+m_-2 m_-2
+m_exitqa m_exitqa
+end type
+
+event selected;// Declare active sheet (a window data type).
+
+window	activesheet
+string	ctext, sheet_name
+
+activesheet = w_main.GetActiveSheet( )
+If IsValid(activesheet) then
+// There is an active sheet, so get its title.
+// Change the text of the MenuItem to read Close and
+// then the title of the active sheet.
+
+	ctext = "E&xit " + activesheet.title
+	m_exitqa.text=ctext
+
+else 
+
+// No sheet is active, change the text to Close Window.
+
+	m_exitqa.text = "E&xit Window"
+
+end if
+
+end event
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.microhelp = "File Options."
+this.m_runquery=create m_runquery
+this.m_openquery=create m_openquery
+this.m_loadspeciala=create m_loadspeciala
+this.m_loadspecialb=create m_loadspecialb
+this.m_savequery=create m_savequery
+this.m_-2=create m_-2
+this.m_exitqa=create m_exitqa
+this.Item[UpperBound(this.Item)+1]=this.m_runquery
+this.Item[UpperBound(this.Item)+1]=this.m_openquery
+this.Item[UpperBound(this.Item)+1]=this.m_loadspeciala
+this.Item[UpperBound(this.Item)+1]=this.m_loadspecialb
+this.Item[UpperBound(this.Item)+1]=this.m_savequery
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_exitqa
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_runquery)
+destroy(this.m_openquery)
+destroy(this.m_loadspeciala)
+destroy(this.m_loadspecialb)
+destroy(this.m_savequery)
+destroy(this.m_-2)
+destroy(this.m_exitqa)
+end on
+
+type m_runquery from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_run")
+
+end on
+
+on m_runquery.create
+call super::create
+this.text = "&Run"
+this.toolbaritemname = "Run!"
+this.toolbaritemtext = "Query"
+this.toolbaritemorder = 1
+end on
+
+on m_runquery.destroy
+call super::destroy
+end on
+
+type m_openquery from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_loadfile")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_load")
+
+end on
+
+on m_openquery.create
+call super::create
+this.text = "&Load Q&&A"
+this.microhelp = "Load a Q&A Query File (*.QA1) from disk."
+this.toolbaritemname = "Custom007!"
+this.toolbaritemtext = "Load Q&&A"
+this.toolbaritemorder = 9
+end on
+
+on m_openquery.destroy
+call super::destroy
+end on
+
+type m_loadspeciala from menu within m_file
+end type
+
+on m_loadspeciala.create
+call super::create
+this.text = "Load Daily Q&&A"
+this.toolbaritemname = "qa1.bmp"
+this.toolbaritemtext = "Load Daily Q&&A"
+this.toolbaritemorder = 10
+end on
+
+event clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_loadfilea")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_load")
+
+end event
+
+on m_loadspeciala.destroy
+call super::destroy
+end on
+
+type m_loadspecialb from menu within m_file
+end type
+
+on m_loadspecialb.create
+call super::create
+this.text = "Load Weekly Q&&A"
+this.toolbaritemname = "qa2.bmp"
+this.toolbaritemtext = "Load Weekly Q&&A"
+this.toolbaritemorder = 11
+end on
+
+event clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_loadfileb")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_load")
+
+end event
+
+on m_loadspecialb.destroy
+call super::destroy
+end on
+
+type m_savequery from menu within m_file
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_savefile")
+TriggerEvent (GetActiveSheet(ParentWindow), "ue_save")
+
+end on
+
+on m_savequery.create
+call super::create
+this.text = "&Save"
+this.microhelp = "Save a Q&A Query File (*.QA1) to disk."
+this.toolbaritemname = "Custom008!"
+this.toolbaritemtext = "Save"
+this.toolbaritemorder = 13
+end on
+
+on m_savequery.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_exitqa from menu within m_file
+end type
+
+event clicked;window w_activesheet
+if isValid(w_main) then
+	w_activesheet = w_main.GetActiveSheet()
+else
+	w_activesheet = gnv_appman.iw_frame.GetActiveSheet()
+End If
+If IsValid( w_activesheet ) Then		Close( w_activesheet )  
+
+
+
+end event
+
+on m_exitqa.create
+call super::create
+this.text = "E&xit Q&&A~tAlt+X"
+this.shortcut = 600
+this.microhelp = "Exit (close) the currently selected Graph(s) and/or Report(s)."
+this.toolbaritemname = "Exit!"
+this.toolbaritemtext = "E&xit Q&&A"
+this.toolbaritemorder = 90
+this.toolbaritemspace = 2
+end on
+
+on m_exitqa.destroy
+call super::destroy
+end on
+
+type m_edit from menu within m_adhoc
+m_clear m_clear
+end type
+
+on m_edit.create
+call super::create
+this.text = "&Edit"
+this.microhelp = "Edit Options."
+this.m_clear=create m_clear
+this.Item[UpperBound(this.Item)+1]=this.m_clear
+end on
+
+on m_edit.destroy
+call super::destroy
+destroy(this.m_clear)
+end on
+
+type m_clear from menu within m_edit
+end type
+
+on clicked;TriggerEvent (GetActiveSheet(ParentWindow), "ue_clear")
+
+end on
+
+on m_clear.create
+call super::create
+this.text = "C&lear Criteria~tCtrl+L"
+this.shortcut = 332
+this.microhelp = "Clear all currently specified criteria and selected graphs and reports."
+end on
+
+on m_clear.destroy
+call super::destroy
+end on
+
+type m_windowsgraph from menu within m_adhoc
+m_tile4 m_tile4
+m_layer m_layer
+m_cascade m_cascade
+m_arrangemenuicons m_arrangemenuicons
+m_-3 m_-3
+m_toolbar m_toolbar
+m_timecalculator m_timecalculator
+end type
+
+on m_windowsgraph.create
+call super::create
+this.text = "&Windows"
+this.microhelp = "Window Options."
+this.m_tile4=create m_tile4
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_arrangemenuicons=create m_arrangemenuicons
+this.m_-3=create m_-3
+this.m_toolbar=create m_toolbar
+this.m_timecalculator=create m_timecalculator
+this.Item[UpperBound(this.Item)+1]=this.m_tile4
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_arrangemenuicons
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_toolbar
+this.Item[UpperBound(this.Item)+1]=this.m_timecalculator
+end on
+
+on m_windowsgraph.destroy
+call super::destroy
+destroy(this.m_tile4)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_arrangemenuicons)
+destroy(this.m_-3)
+destroy(this.m_toolbar)
+destroy(this.m_timecalculator)
+end on
+
+type m_tile4 from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Tile! )
+end on
+
+on m_tile4.create
+call super::create
+this.text = "Tile"
+this.microhelp = "Arrange all open windows at roughly equal size, all showing with no overlap."
+end on
+
+on m_tile4.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Layer! )
+end on
+
+on m_layer.create
+call super::create
+this.text = "&Layer"
+this.microhelp = "Zoom all windows (almost maximize but keep title bars) and overlap w/layer order; reverse order as last accessed."
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_cascade from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Cascade! )
+end on
+
+on m_cascade.create
+call super::create
+this.text = "&Cascade"
+this.microhelp = "Regularize (approx 25% screen size) all windows, overlap and layer as last accessed."
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_arrangemenuicons from menu within m_windowsgraph
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Icons! )
+end on
+
+on m_arrangemenuicons.create
+call super::create
+this.text = "Arrange Menu &Icons"
+this.microhelp = "Arrange Minimized Windows (Icons) along bottom of screen, left-to-right as last accessed."
+end on
+
+on m_arrangemenuicons.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_windowsgraph
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_toolbar from menu within m_windowsgraph
+end type
+
+on clicked;OpenWithParm (w_set_toolbars, GetActiveSheet(ParentWindow))
+
+
+end on
+
+on m_toolbar.create
+call super::create
+this.text = "Tool&bar Options..."
+this.microhelp = "Show, hide and place Q&A Toolbar and/or its~' text."
+this.toolbaritemname = "Custom041!"
+this.toolbaritemtext = "Toolbar"
+this.toolbaritemorder = 85
+end on
+
+on m_toolbar.destroy
+call super::destroy
+end on
+
+type m_timecalculator from menu within m_windowsgraph
+end type
+
+on clicked;// open calculator
+SetPointer( HourGlass! )
+Open( w_calc_time, w_main )
+end on
+
+on m_timecalculator.create
+call super::create
+this.text = "Time Calc&ulator~tCtrl+U"
+this.shortcut = 341
+this.microhelp = "A pop-up time duration Calculator used to convert seconds, minutes, hours, days, weeks, months and years amongst each other."
+end on
+
+on m_timecalculator.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_adhoc
+m_context m_context
+m_index m_index
+m_search m_search
+m_-4 m_-4
+m_about m_about
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Help Options."
+this.m_context=create m_context
+this.m_index=create m_index
+this.m_search=create m_search
+this.m_-4=create m_-4
+this.m_about=create m_about
+this.Item[UpperBound(this.Item)+1]=this.m_context
+this.Item[UpperBound(this.Item)+1]=this.m_index
+this.Item[UpperBound(this.Item)+1]=this.m_search
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_about
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_context)
+destroy(this.m_index)
+destroy(this.m_search)
+destroy(this.m_-4)
+destroy(this.m_about)
+end on
+
+type m_context from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_context.create
+call super::create
+this.text = "Co&ntext"
+this.microhelp = "Context-Sensitive Help, based on the last selected screen object, within the Help Index."
+end on
+
+on m_context.destroy
+call super::destroy
+end on
+
+type m_index from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_index.create
+call super::create
+this.text = "&Index"
+this.microhelp = "Show the Help Index (i.e., Help Table-of-Contents)."
+end on
+
+on m_index.destroy
+call super::destroy
+end on
+
+type m_search from menu within m_help
+end type
+
+on clicked;MessageBox( "Help Alternatively Implemented", &
+				"Please watch the bottom line of the main " + &
+				"window for instant " + &
+				"help at any time while using " + cSysName + " - " + &
+				cAppNAme + " v." + cAppVersion + &
+				" for " + cOSName, Information! )
+
+end on
+
+on m_search.create
+call super::create
+this.text = "&Search"
+this.microhelp = "Search the Help Index for application related key words and phrases."
+end on
+
+on m_search.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_help
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;SetPointer( HourGlass! )
+//OpenSheet( w_about, "w_about", w_main, 3, Original! )
+Open( w_about, w_main )
+end on
+
+on m_about.create
+call super::create
+this.visible = false
+this.text = "&About"
+this.microhelp = "Application version, copyright and available memory information."
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+

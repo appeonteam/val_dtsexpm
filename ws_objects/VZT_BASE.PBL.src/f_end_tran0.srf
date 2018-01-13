@@ -1,0 +1,18 @@
+﻿$PBExportHeader$f_end_tran0.srf
+global type f_end_tran0 from function_object
+end type
+
+forward prototypes
+global function integer f_end_tran0 (ref transaction a_tran, string as_hdr, string as_goodtext, string as_badtext)
+end prototypes
+
+global function integer f_end_tran0 (ref transaction a_tran, string as_hdr, string as_goodtext, string as_badtext);string ls_error , ls_sqlerror
+If a_tran.sqlcode <> 0 then 
+	f_end_tran( a_tran, -10, as_hdr, as_goodtext,as_badtext)
+	return -10
+ELSE
+	f_end_tran( a_tran, 1, as_hdr, as_goodtext,as_badtext)
+	return 1
+END IF
+end function
+

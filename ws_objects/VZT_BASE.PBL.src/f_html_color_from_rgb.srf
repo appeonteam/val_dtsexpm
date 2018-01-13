@@ -1,0 +1,24 @@
+﻿$PBExportHeader$f_html_color_from_rgb.srf
+global type f_html_color_from_rgb from function_object
+end type
+
+forward prototypes
+global function string f_html_color_from_rgb (long al_color)
+end prototypes
+
+global function string f_html_color_from_rgb (long al_color);string ls_r, ls_g, ls_b, ls_html_color
+long ll_color, ll_r, ll_g, ll_b
+ll_color = al_color	// RGB( 180, 220, 255)
+
+ll_r = MOD( (ll_color ), 256 ) 
+ll_g = MOD( (ll_color / 256 ), 256 ) 
+ll_b = MOD( (ll_color / 65536 ), 256 ) 
+ls_r = f_hex(ll_r )
+ls_g = f_hex(ll_g )
+ls_b = f_hex(ll_b )
+
+
+ls_html_color = ls_r + ls_g + ls_b
+return ls_html_color
+end function
+

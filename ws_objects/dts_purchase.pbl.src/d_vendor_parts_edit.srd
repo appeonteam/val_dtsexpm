@@ -1,0 +1,71 @@
+﻿$PBExportHeader$d_vendor_parts_edit.srd
+release 9;
+datawindow(units=0 timer_interval=0 color=67108864 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=588 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=vendor_id dbname="vzt_vendor_part.vendor_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=part_id dbname="vzt_vendor_part.part_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=pref_order dbname="vzt_vendor_part.pref_order" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=vendor_sku dbname="vzt_vendor_part.vendor_sku" )
+ column=(type=char(20) update=yes updatewhereclause=yes name=unit dbname="vzt_vendor_part.unit" )
+ column=(type=long update=yes updatewhereclause=yes name=unit_qty dbname="vzt_vendor_part.unit_qty" )
+ column=(type=long update=yes updatewhereclause=yes name=qty_to_reorder dbname="vzt_vendor_part.qty_to_reorder" )
+ column=(type=decimal(4) update=yes updatewhereclause=yes name=price dbname="vzt_vendor_part.price" )
+ column=(type=datetime update=yes updatewhereclause=yes name=bid_date dbname="vzt_vendor_part.bid_date" )
+ column=(type=datetime update=yes updatewhereclause=yes name=rebid_date dbname="vzt_vendor_part.rebid_date" )
+ column=(type=long update=yes updatewhereclause=yes name=usage dbname="vzt_vendor_part.usage" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=autotask dbname="vzt_vendor_part.autotask" values="	Y/	N" )
+ column=(type=char(20) updatewhereclause=yes name=category dbname="vzt_part.category" )
+ column=(type=char(20) updatewhereclause=yes name=subcategory dbname="vzt_part.subcategory" )
+ column=(type=char(100) updatewhereclause=yes name=partname dbname="vzt_part.partname" )
+ column=(type=char(10) updatewhereclause=yes name=vzt_part_ptype dbname="vzt_part.ptype" )
+ retrieve="  SELECT ~"vzt_vendor_part~".~"vendor_id~",   
+         ~"vzt_vendor_part~".~"part_id~",   
+         ~"vzt_vendor_part~".~"pref_order~",   
+         ~"vzt_vendor_part~".~"vendor_sku~",   
+         ~"vzt_vendor_part~".~"unit~",   
+         ~"vzt_vendor_part~".~"unit_qty~",   
+         ~"vzt_vendor_part~".~"qty_to_reorder~",   
+         ~"vzt_vendor_part~".~"price~",   
+         ~"vzt_vendor_part~".~"bid_date~",   
+         ~"vzt_vendor_part~".~"rebid_date~",   
+         ~"vzt_vendor_part~".~"usage~",   
+         ~"vzt_vendor_part~".~"autotask~"  ,
+			~"vzt_part~".~"category~",   
+			~"vzt_part~".~"subcategory~",   
+         ~"vzt_part~".~"partname~",  
+         ~"vzt_part~".~"ptype~"  
+         
+    FROM ~"vzt_vendor_part~", ~"vzt_part~"  
+WHERE ~"vendor_id~" = :al_vendor AND ~"part_id~" = :al_part
+		AND ~"vzt_part~".~"id~" = ~"vzt_vendor_part~".~"part_id~" 
+" update="vzt_vendor_part" updatewhere=0 updatekeyinplace=no arguments=(("al_vendor", number),("al_part", number)) )
+column(band=detail id=11 alignment="1" tabsequence=60 border="5" color="33554432" x="1545" y="484" height="64" width="347" format="[general]" html.valueishtml="0"  name=usage visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+button(band=detail text="" filename="ddlb.bmp" enabled=yes action="0" border="0" color="0" x="1911" y="92" height="80" width="73" vtextalign="0" htextalign="0"  name=bid_date_ddlk visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+button(band=detail text="" filename="ddlb.bmp" enabled=yes action="0" border="0" color="0" x="1911" y="188" height="80" width="73" vtextalign="0" htextalign="0"  name=rebid_date_ddlk visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="2" color="16777215" x="27" y="12" height="68" width="480" format="[general]" html.valueishtml="0"  name=category visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="2" color="16777215" x="558" y="12" height="68" width="585" format="[general]" html.valueishtml="0"  name=subcategory visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+column(band=detail id=15 alignment="0" tabsequence=32766 border="2" color="16777215" x="1179" y="12" height="68" width="1029" format="[general]" html.valueishtml="0"  name=partname visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.imemode=0  font.face="Lucida Sans" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="27354725" )
+text(band=detail alignment="1" text="Preference Order" border="0" color="27354725" x="27" y="100" height="48" width="480" html.valueishtml="0"  name=pref_order_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Vendor SKU" border="0" color="27354725" x="27" y="196" height="48" width="480" html.valueishtml="0"  name=vendor_sku_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Unit" border="0" color="27354725" x="27" y="292" height="48" width="480" html.valueishtml="0"  name=unit_t visible="1~tif ( vzt_part_ptype = 'PART', 1, 0)"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Unit Qty" border="0" color="27354725" x="27" y="388" height="48" width="480" html.valueishtml="0"  name=unit_qty_t visible="1~tif ( vzt_part_ptype = 'PART', 1, 0)"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Price" border="0" color="27354725" x="27" y="484" height="48" width="480" html.valueishtml="0"  name=price_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Bid Date" border="0" color="27354725" x="1179" y="100" height="48" width="329" html.valueishtml="0"  name=bid_date_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Rebid Date" border="0" color="27354725" x="1179" y="196" height="48" width="329" html.valueishtml="0"  name=rebid_date_t visible="1"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="1" text="Usage:" border="0" color="27354725" x="1179" y="484" height="64" width="329" html.valueishtml="0"  name=usage_t visible="0"  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=3 alignment="1" tabsequence=10 border="5" color="16777215" x="558" y="100" height="64" width="329" format="[general]" html.valueishtml="0"  name=pref_order visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=4 alignment="0" tabsequence=30 border="5" color="16777215" x="558" y="196" height="64" width="576" format="[general]" html.valueishtml="0"  name=vendor_sku visible="1" edit.limit=50 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="16777215" x="558" y="292" height="64" width="576" format="[general]" html.valueishtml="0"  name=unit visible="1~tif ( vzt_part_ptype = 'PART', 1, 0)" dddw.name=d_dddw_lookup_partunit dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=6 alignment="1" tabsequence=70 border="5" color="16777215" x="558" y="388" height="64" width="329" format="#,##0" html.valueishtml="0"  name=unit_qty visible="1~tif ( vzt_part_ptype = 'PART', 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=8 alignment="1" tabsequence=90 border="5" color="16777215" x="558" y="484" height="64" width="329" format="#,##0.00" html.valueishtml="0"  name=price visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=9 alignment="0" tabsequence=20 border="5" color="16777215" x="1545" y="100" height="64" width="347" format="[shortdate]" html.valueishtml="0"  name=bid_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=10 alignment="0" tabsequence=40 border="5" color="16777215" x="1545" y="196" height="64" width="347" format="[shortdate]" html.valueishtml="0"  name=rebid_date visible="1" editmask.mask="mm/dd/yyyy" editmask.imemode=0 editmask.focusrectangle=no  font.face="Lucida Sans" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="30388123" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="5" color="255" x="1536" y="352" height="64" width="329" format="#,##0" html.valueishtml="0"  name=qty_to_reorder visible="0" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes edit.imemode=0  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=detail alignment="1" text="Qty To Reorder:" border="0" color="255" x="1166" y="352" height="64" width="421" html.valueishtml="0"  name=qty_to_reorder_t visible="0"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )

@@ -1,0 +1,64 @@
+﻿$PBExportHeader$save_toolbar_profile.srf
+global type save_toolbar_profile from function_object
+end type
+
+forward prototypes
+global subroutine save_toolbar_profile (string window_name, window window_parm)
+end prototypes
+
+global subroutine save_toolbar_profile (string window_name, window window_parm);string bar_visible, bar_align, bar_showtext
+int bar_x, bar_y, bar_width, bar_height
+
+if IsValid(window_parm) then 
+	if window_parm.toolbarvisible then
+		bar_visible = "yes"
+	else
+		bar_visible = "no"
+	end if 
+	
+	if window_parm.toolbaralignment = alignatbottom! then
+		bar_align = "bottom"
+	elseif window_parm.toolbaralignment = alignatleft! then
+		bar_align = "left"
+	elseif window_parm.toolbaralignment = alignatright! then
+		bar_align = "right"
+	elseif window_parm.toolbaralignment = alignattop! then
+		bar_align = "top"
+	elseif window_parm.toolbaralignment = floating! then
+		bar_align = "floating"
+		bar_x = window_parm.toolbarx
+		bar_y = window_parm.toolbary
+		bar_width = window_parm.toolbarwidth
+		bar_height = window_parm.toolbarheight
+	end if
+	
+	
+end if
+
+if dispatch_tracking_system.toolbartext then
+	bar_showtext = "yes"
+else
+	bar_showtext = "no"
+end if
+
+
+
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbartext",bar_showtext)
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbarvisible",bar_visible)
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbaralignment",bar_align)
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbarx",string(bar_x))
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbary",string(bar_y))
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbarwidth",string(bar_width))
+SetProfileString (cINIPath + "he_dts.ini",window_name,"toolbarheight",string(bar_height))
+
+// For a floating toolbar, the title of the floating window was set 
+// to be the same as the title of the frame window. Reset it now so
+// the title will default to "FrameBar" so no other windows will
+// accidentally use this windows title.
+//dispatch_tracking_system.toolbarframetitle = "FrameBar"
+return
+
+
+
+end subroutine
+

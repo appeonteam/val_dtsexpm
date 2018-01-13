@@ -1,0 +1,243 @@
+﻿$PBExportHeader$d_gcc_rpt_monthly_trend1_12182001.srd
+$PBExportComments$monthly trend as of 12.18.2001
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 1 print.margin.left = 50 print.margin.right = 50 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=228 color="536870912" )
+summary(height=44 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=char(200) updatewhereclause=yes name=questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=char(200) updatewhereclause=yes name=answertxt dbname="qgen_answer_choices.answertxt" )
+ column=(type=decimal(0) updatewhereclause=yes name=questionid dbname="qgen_questions.questionid" )
+ column=(type=decimal(0) updatewhereclause=yes name=answerid dbname="qgen_qset_answers.answerid" )
+ column=(type=datetime updatewhereclause=yes name=ansdate dbname="ansdate" )
+ column=(type=datetime updatewhereclause=yes name=minansdate dbname="minansdate" )
+ column=(type=long updatewhereclause=yes name=r_01 dbname="r_01" )
+ column=(type=long updatewhereclause=yes name=r_02 dbname="r_02" )
+ column=(type=long updatewhereclause=yes name=r_03 dbname="r_03" )
+ column=(type=long updatewhereclause=yes name=r_04 dbname="r_04" )
+ column=(type=long updatewhereclause=yes name=r_05 dbname="r_05" )
+ column=(type=long updatewhereclause=yes name=r_06 dbname="r_06" )
+ column=(type=long updatewhereclause=yes name=r_07 dbname="r_07" )
+ column=(type=long updatewhereclause=yes name=r_08 dbname="r_08" )
+ column=(type=long updatewhereclause=yes name=r_09 dbname="r_09" )
+ column=(type=long updatewhereclause=yes name=r_10 dbname="r_10" )
+ column=(type=long updatewhereclause=yes name=r_11 dbname="r_11" )
+ column=(type=long updatewhereclause=yes name=r_12 dbname="r_12" )
+ column=(type=long updatewhereclause=yes name=r_13 dbname="r_13" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_01 dbname="p_01" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_02 dbname="p_02" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_03 dbname="p_03" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_04 dbname="p_04" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_05 dbname="p_05" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_06 dbname="p_06" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_07 dbname="p_07" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_08 dbname="p_08" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_09 dbname="p_09" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_10 dbname="p_10" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_11 dbname="p_11" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_12 dbname="p_12" )
+ column=(type=decimal(2) updatewhereclause=yes name=p_13 dbname="p_13" )
+ column=(type=long updatewhereclause=yes name=qs_order dbname="qs_order" )
+ column=(type=long updatewhereclause=yes name=q_order dbname="q_order" )
+ column=(type=long updatewhereclause=yes name=a_order dbname="a_order" )
+ column=(type=decimal(0) updatewhereclause=yes name=qsetid dbname="qsetid" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_01 dbname="s_01" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_02 dbname="s_02" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_03 dbname="s_03" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_04 dbname="s_04" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_05 dbname="s_05" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_06 dbname="s_06" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_07 dbname="s_07" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_08 dbname="s_08" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_09 dbname="s_09" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_10 dbname="s_10" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_11 dbname="s_11" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_12 dbname="s_12" )
+ column=(type=decimal(2) updatewhereclause=yes name=s_13 dbname="s_13" )
+ column=(type=char(1) updatewhereclause=yes name=scorable dbname="scorable" )
+ column=(type=char(3) updatewhereclause=yes name=qtypeid dbname="qtypeid" )
+ retrieve="  SELECT DISTINCT qgen_questions.questiontxt  		questiontxt,
+			qgen_answer_choices.answertxt 	answertxt ,
+			qgen_questions.questionid 			questionid,
+			A1.answerid 							answerid,
+			MAX(A1.ansdate) 						ansdate,
+			MIN(A1.ansdate) 						minansdate,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-01-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-01-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_01,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-02-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-02-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_02,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-03-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-03-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_03,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-04-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-04-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_04,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-05-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-05-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_05,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-06-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-06-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_06,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-07-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-07-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_07,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-08-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-08-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_08,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-09-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-09-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_09,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-10-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-10-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_10,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-11-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-11-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_11,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-12-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-12-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_12,
+vzt_gcc_tot_ans ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-01-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-12-01')), qgen_questions.questionid, A1.answerid,':NA', ';comp') r_13,
+
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '01','01', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_01, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '02','02', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_02, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '03','03', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_03, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '04','04', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_04, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '05','05', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_05, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '06','06', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_06, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '07','07', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_07, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '08','08', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_08, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '09','09', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_09, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '10','10', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_10, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '11','11', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_11, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '12','12', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_12, 
+vzt_gcc_tot_ans_pct ( vzt_date_year_dummy (':year')+'-01-01',vzt_date_year_dummy (':year')+'-01-01', '01','12', qgen_questions.questionid, A1.answerid,':NA', ';comp') p_13, 
+
+max(qgen_qset.sortorder) qs_order,
+max( qq.sortorder) q_order,
+max(qgen_answer_choices.sortorder) a_order,
+max(qgen_qset.qsetid) qsetid ,
+
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-01-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-01-01')), qgen_questions.questionid, ':NA', ';comp') s_01,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-02-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-02-01')), qgen_questions.questionid, ':NA', ';comp') s_02,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-03-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-03-01')), qgen_questions.questionid, ':NA', ';comp') s_03,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-04-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-04-01')), qgen_questions.questionid, ':NA', ';comp') s_04,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-05-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-05-01')), qgen_questions.questionid, ':NA', ';comp') s_05,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-06-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-06-01')), qgen_questions.questionid, ':NA', ';comp') s_06,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-07-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-07-01')), qgen_questions.questionid, ':NA', ';comp') s_07,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-08-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-08-01')), qgen_questions.questionid, ':NA', ';comp') s_08,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-09-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-09-01')), qgen_questions.questionid, ':NA', ';comp') s_09,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-10-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-10-01')), qgen_questions.questionid, ':NA', ';comp') s_10,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-11-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-11-01')), qgen_questions.questionid, ':NA', ';comp') s_11,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-12-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-12-01')), qgen_questions.questionid, ':NA', ';comp') s_12,
+vzt_gcc_tot_ans_score ( vzt_date_bom(date( vzt_date_year_dummy (':year')+'-01-01')), vzt_date_eom(date(vzt_date_year_dummy (':year')+'-12-01')), qgen_questions.questionid, ':NA', ';comp') s_13
+, max(qgen_questions.scorable ) scorable
+, max(qgen_questions.qtypeid 	) qtypeid 
+
+FROM 		qgen_qset_answers A1,   
+         qgen_questions  ,
+			qgen_answer_choices   ,
+			qgen_qset,
+			qgen_qset_questions qq,
+			gcc, guest
+
+   WHERE  
+         qgen_answer_choices.answerid = A1.answerid and  
+         A1.questionid = qgen_questions.questionid 	and  
+         A1.answerid = qgen_answer_choices.answerid  and A1.headerid > 0 
+			and gcc.guest_account = guest.account /* company chg */
+			AND qgen_qset.qsetid = A1.qsetid
+			AND qgen_questions.qtypeid NOT IN ('FF1', 'FF2', 'FF3', 'FF4') 
+			AND qq.qsetid = A1.qsetid AND qq.questionid = A1.questionid 
+		   AND A1.headerid = gcc.gccid  	
+
+and A1.ansdate BETWEEN vzt_date_bom(date( vzt_date_year_dummy (':year')+'-01-01') )
+							AND vzt_date_eom(date( vzt_date_year_dummy (':year')+'-12-31'))
+			/*1  AND ((':NA' = 'Y') OR ( ':NA'='N' AND answerid <> 999999000 )) 1*/
+			/*
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					A1.ansdate BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			*/
+			/*
+			 AND
+				( 	{ts ':ARRDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':DEPDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.checkin_dt BETWEEN 
+					{ts ':ARRDATE 00:00:00.000000'} AND {ts ':DEPDATE 23:59:59.777000'} 
+				) 
+			*/
+			/*2 AND ( string(0)=';qset' 		OR qgen_qset.qsetid 				IN (;qset)  ) 		2*/	
+			/*3 AND ( string(0)=';question' 	OR qgen_questions.questionid 	IN (;question) ) 	3*/	
+/*2 AND ( '*ALL*' IN (';COMP') OR '' IN  (';COMP') OR guest.comp_name IN (';COMP') ) 2*/	
+
+ GROUP BY questionid, answerid, questiontxt, answertxt
+ "  sort="qs_order A q_order A a_order A " )
+group(level=1 header.height=72 trailer.height=88 by=("questionid" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="GCC Monthly Trend Report "border="0" color="0" x="1362" y="36" height="80" width="1125"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Jan"border="0" color="65535" x="919" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Feb"border="0" color="65535" x="1184" y="164" height="56" width="274"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Mar"border="0" color="65535" x="1449" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Apr"border="0" color="65535" x="1714" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="May"border="0" color="65535" x="1984" y="164" height="56" width="274"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Jun"border="0" color="65535" x="2254" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Jul"border="0" color="65535" x="2519" y="164" height="56" width="274"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Aug"border="0" color="65535" x="2784" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Sep"border="0" color="65535" x="3049" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Oct"border="0" color="65535" x="3301" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Nov"border="0" color="65535" x="3557" y="164" height="56" width="270"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Dec"border="0" color="65535" x="3799" y="164" height="56" width="297"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+text(band=header alignment="2" text="Avg"border="0" color="65535" x="4041" y="164" height="56" width="297"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="0" )
+column(band=header.1 id=1 alignment="0" tabsequence=32766 border="0" color="128" x="14" y="12" height="56" width="3511" format="[general]"  name=questiontxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="0" color="0" x="1234" y="128" height="60" width="133" format=""  name=r_01 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="1385" y="128" height="60" width="133" format="[general]"  name=r_02 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="0" color="0" x="1536" y="128" height="60" width="133" format="[general]"  name=r_03 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="0" color="0" x="1687" y="128" height="60" width="133" format="[general]"  name=r_04 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="0" x="1842" y="128" height="60" width="128" format="[general]"  name=r_05 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=12 alignment="1" tabsequence=32766 border="0" color="0" x="1989" y="128" height="60" width="133" format="[general]"  name=r_06 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=13 alignment="1" tabsequence=32766 border="0" color="0" x="2139" y="128" height="60" width="133" format="[general]"  name=r_07 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=14 alignment="1" tabsequence=32766 border="0" color="0" x="2290" y="128" height="60" width="133" format="[general]"  name=r_08 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=15 alignment="1" tabsequence=32766 border="0" color="0" x="2441" y="128" height="60" width="133" format="[general]"  name=r_09 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=16 alignment="1" tabsequence=32766 border="0" color="0" x="2592" y="128" height="60" width="133" format="[general]"  name=r_10 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=17 alignment="1" tabsequence=32766 border="0" color="0" x="2743" y="128" height="60" width="133" format="[general]"  name=r_11 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=18 alignment="1" tabsequence=32766 border="0" color="0" x="2894" y="128" height="60" width="133" format="[general]"  name=r_12 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=19 alignment="0" tabsequence=32766 border="0" color="0" x="3099" y="128" height="60" width="133" format="[general]"  name=r_13 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="41" y="8" height="56" width="891" format="[general]"  name=answertxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_04 ) + ')'"border="0" color="16711680" x="1842" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=20 alignment="1" tabsequence=32766 border="0" color="16711680" x="928" y="8" height="56" width="123" format="0.00;0.00;0;0"  name=p_01 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_01 ) + ')'"border="0" color="16711680" x="1051" y="8" height="56" width="137" format="[general]"  name=n1  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_02 ) + ')'"border="0" color="16711680" x="1317" y="8" height="56" width="142" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_03 ) + ')'"border="0" color="16711680" x="1586" y="8" height="56" width="133" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_05 ) + ')'"border="0" color="16711680" x="2107" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_06 ) + ')'"border="0" color="16711680" x="2373" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_07 ) + ')'"border="0" color="16711680" x="2638" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=27 alignment="1" tabsequence=32766 border="0" color="16711680" x="2779" y="8" height="56" width="119" format="[general]"  name=p_08 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_08 ) + ')'"border="0" color="16711680" x="2903" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=28 alignment="1" tabsequence=32766 border="0" color="16711680" x="3045" y="8" height="56" width="119" format="[general]"  name=p_09 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_09 ) + ')'"border="0" color="16711680" x="3168" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=29 alignment="1" tabsequence=32766 border="0" color="16711680" x="3310" y="8" height="56" width="123" format="[general]"  name=p_10 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=30 alignment="1" tabsequence=32766 border="0" color="16711680" x="3561" y="8" height="56" width="119" format="[general]"  name=p_11 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_11 ) + ')'"border="0" color="16711680" x="3685" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=31 alignment="1" tabsequence=32766 border="0" color="16711680" x="3813" y="8" height="56" width="119" format="[general]"  name=p_12 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_12 ) + ')'"border="0" color="16711680" x="3936" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=32 alignment="1" tabsequence=32766 border="0" color="16711680" x="4059" y="8" height="56" width="119" format="[general]"  name=p_13 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_13 ) + ')'"border="0" color="16711680" x="4183" y="8" height="56" width="155" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=26 alignment="1" tabsequence=32766 border="0" color="16711680" x="2514" y="8" height="56" width="123" format="[general]"  name=p_07 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=21 alignment="1" tabsequence=32766 border="0" color="16711680" x="1193" y="8" height="56" width="123" format="0.00;0.00;0;0"  name=p_02 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=22 alignment="1" tabsequence=32766 border="0" color="16711680" x="1458" y="8" height="56" width="128" format="0.00;0.00;0;0"  name=p_03 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=23 alignment="1" tabsequence=32766 border="0" color="16711680" x="1719" y="8" height="56" width="123" format="0.00;0.00;0;0"  name=p_04 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=24 alignment="1" tabsequence=32766 border="0" color="16711680" x="1979" y="8" height="56" width="128" format="0.00;0.00;0;0"  name=p_05 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=25 alignment="1" tabsequence=32766 border="0" color="16711680" x="2245" y="8" height="56" width="128" format="[general]"  name=p_06 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=detail alignment="0" expression="'%('+ string (  r_10 ) + ')'"border="0" color="16711680" x="3438" y="8" height="56" width="137" format="[general]"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=trailer.1 alignment="1" text="Total Score:"border="0" color="128" x="151" y="4" height="56" width="352"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=37 alignment="1" tabsequence=32766 border="0" color="128" x="928" y="4" height="56" width="123" format="##0;##0;0;0"  name=s_01 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0) 
+
+" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_01 for group 1) ) + ')'"border="0" color="128" x="1051" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_02 for group 1) ) + ')'"border="0" color="128" x="1317" y="4" height="56" width="142" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_03 for group 1) ) + ')'"border="0" color="128" x="1586" y="4" height="56" width="133" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_04 for group 1) ) + ')'"border="0" color="128" x="1847" y="4" height="56" width="133" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_05 for group 1) ) + ')'"border="0" color="128" x="2107" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_06 for group 1) ) + ')'"border="0" color="128" x="2373" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_07 for group 1) ) + ')'"border="0" color="128" x="2638" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=44 alignment="1" tabsequence=32766 border="0" color="128" x="2779" y="4" height="56" width="119" format="##0"  name=s_08 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_08 for group 1) ) + ')'"border="0" color="128" x="2903" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=45 alignment="1" tabsequence=32766 border="0" color="128" x="3045" y="4" height="56" width="119" format="##0"  name=s_09 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_09 for group 1) ) + ')'"border="0" color="128" x="3168" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=46 alignment="1" tabsequence=32766 border="0" color="128" x="3310" y="4" height="56" width="128" format="##0"  name=s_10 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=47 alignment="1" tabsequence=32766 border="0" color="128" x="3561" y="4" height="56" width="119" format="##0"  name=s_11 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_11 for group 1) ) + ')'"border="0" color="128" x="3685" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=48 alignment="1" tabsequence=32766 border="0" color="128" x="3813" y="4" height="56" width="119" format="##0"  name=s_12 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_12 for group 1) ) + ')'"border="0" color="128" x="3936" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=49 alignment="1" tabsequence=32766 border="0" color="128" x="4059" y="4" height="56" width="119" format="##0"  name=s_13 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_13 for group 1) ) + ')'"border="0" color="128" x="4183" y="4" height="56" width="155" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=43 alignment="1" tabsequence=32766 border="0" color="128" x="2514" y="4" height="56" width="123" format="##0"  name=s_07 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=38 alignment="1" tabsequence=32766 border="0" color="128" x="1193" y="4" height="56" width="123" format="##0"  name=s_02 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=39 alignment="1" tabsequence=32766 border="0" color="128" x="1458" y="4" height="56" width="128" format="##0"  name=s_03 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=40 alignment="1" tabsequence=32766 border="0" color="128" x="1719" y="4" height="56" width="128" format="##0"  name=s_04 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=41 alignment="1" tabsequence=32766 border="0" color="128" x="1979" y="4" height="56" width="128" format="##0"  name=s_05 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=trailer.1 id=42 alignment="1" tabsequence=32766 border="0" color="128" x="2245" y="4" height="56" width="128" format="##0"  name=s_06 visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=trailer.1 alignment="0" expression="'%('+ string (  sum( r_10 for group 1) ) + ')'"border="0" color="128" x="3438" y="4" height="56" width="137" format="[general]" visible="1~tif (  scorable = 'Y' and  POS(  ~" 'FF1','FF2', 'FF3', 'FF4', 'MC3' ~",   qtypeid  ) = 0, 1,0)"  font.face="Arial Narrow" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+rectangle(band=trailer.1 x="32" y="72" height="4" width="4320" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

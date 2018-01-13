@@ -1,0 +1,14 @@
+﻿$PBExportHeader$f_isdebug.srf
+global type f_isdebug from function_object
+end type
+
+forward prototypes
+global function boolean f_isdebug ()
+end prototypes
+
+global function boolean f_isdebug ();if isValid( gnv_appman) then
+	if gnv_appman.is_debugmode = 'Y' then return true 
+end if
+return false
+end function
+

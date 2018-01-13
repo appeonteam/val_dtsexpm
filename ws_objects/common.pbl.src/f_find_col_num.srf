@@ -1,0 +1,65 @@
+﻿$PBExportHeader$f_find_col_num.srf
+global type f_find_col_num from function_object
+end type
+
+forward prototypes
+global function integer f_find_col_num (string inColName)
+end prototypes
+
+global function integer f_find_col_num (string inColName);string colName[]
+int    colNum[]
+int    retColNum
+int    cntr
+
+colName[1] = "area_area_name"
+colName[2] = "problem_problem_desc"
+colName[3] = "subproblem_desc"
+colName[4] = "closed_bydept"
+colName[5] = "repairman"
+colName[6] = "timercalls_problem_definition"
+colName[7] = "timer_start"
+colName[8] = "callstat_stat_desc"
+colName[9] = "room"
+colName[10] = "problem"
+colName[11] = "subproblem"
+colName[12] = "problem_definition"
+colName[13] = "stat_code"
+colName[14] = "problem_desc"
+
+colNum [1] = 4
+colNum [2] = 20
+colNum [3] = 8
+colNum [4] = 16
+colNum [5] = 13
+colNum [6] = 29
+colNum [7] = 18
+colNum [8] = 3
+colNum [9] = 4
+colNum [10] = 20
+colNum [11] = 8
+colNum [12] = 29
+colNum [13] = 3
+colNum [14] = 20
+
+retColNum = 0
+cntr = 1
+
+for cntr = 1 to UpperBound(colName)
+	if colName [cntr] = inColName then
+		retColNum = colNum  [cntr]
+		Exit
+	else
+		if cntr = UpperBound(colName) then
+			retColNum = 0
+			Exit
+		end if
+	end if
+Next
+
+
+return retColNum
+
+
+
+end function
+

@@ -1,0 +1,180 @@
+﻿$PBExportHeader$f_next_recurring_date.srf
+global type f_next_recurring_date from function_object
+end type
+
+forward prototypes
+global function any f_next_recurring_date (double irecurid, ref date nextrecurdate, ref time nextrecurtime, date lastcallscheduledclosedate, time lastcallscheduledclosetime)
+end prototypes
+
+global function any f_next_recurring_date (double irecurid, ref date nextrecurdate, ref time nextrecurtime, date lastcallscheduledclosedate, time lastcallscheduledclosetime);//*** by hour and target
+//    use original start time from db table to derive current start time.
+//*** by hour and closed time
+//		use the current time (also as closed time).
+//*** by day and target 
+//		use original start date from db table to derive current start date.
+//*** by day and closed date
+//		use the current date (also as closed date). 
+
+date startDate, endDate, today
+time startTime, now, dailyStart,dailyEnd
+string freqCode, recurBy, weekDaySelected
+int freqNum
+
+setNull(nextRecurDate)
+
+select	start_date,
+			end_date,
+			start_time,
+			freq_code,
+			freq_num,
+			recur_by,
+			daily_start_time,
+			daily_end_time,
+			week_day_selected
+into		:startDate,
+			:endDate,
+			:startTime,
+			:freqCode,
+			:freqNum,
+			:recurBy,
+			:dailyStart,
+			:dailyEnd,
+			:weekDaySelected
+from		recurring
+where		recur_id = :iRecurId;
+
+if sqlca.sqlcode < 0 then
+	MessageBox("db error",sqlca.sqlerrtext)
+	return false
+else
+	if sqlca.sqlcode = 100 then
+		MessageBox("DB Error","recurring record not found:" + string(iRecurId))
+		return false
+	end if
+end if
+
+
+date d1
+time t1
+d1 = startDate
+t1 = startTime 
+today = today()
+now = now()
+
+if today < lastCallScheduledCloseDate then
+	today = lastCallScheduledCloseDate
+	now = lastCallScheduledCloseTime
+else
+	if today = lastCallScheduledCloseDate then
+		if now < lastCallScheduledCloseTime then
+			now = lastCallScheduledCloseTime
+		end if	
+	end if
+end if
+
+
+
+if today > endDate then // end of recurring
+	return false
+end if
+
+if freqCode = 'D' and (today = endDate or RelativeDate(lastCallScheduledCloseDate,freqNum) > endDate) then // end of recurring
+	return false
+end if
+
+if freqCode = 'D' and recurBy = 'C' then 
+	if RelativeDate(today,freqNum) > endDate then // projected recurring date
+		return false
+	end if
+end if
+
+if freqCode = 'H'  then // and recurBy = 'C' then
+	if today = endDate then
+		if RelativeTime(time("23:59:59"),-dec(freqNum*3600)) < now then //projected recurring time is next day
+			return false
+		end if
+	end if
+end if
+
+	
+choose case recurBy
+	case 'T' // by target
+		if freqCode = 'D' then //by day
+			do while (RelativeDate(d1,freqNum) <= endDate)
+				if today >= d1 and today < RelativeDate (d1, freqNum) then
+					EXIT
+				end if
+				d1 = RelativeDate(d1,freqNum)
+			loop
+			nextRecurDate = RelativeDate(d1,freqNum)
+			nextRecurTime = t1
+		end if
+		if freqCode = 'H' then //by hour
+			// get start time (t1) base on current time
+			if t1 > now then
+				if RelativeTime(t1,-(dec(freqNum)*3600)) = time('00:00:00') & 
+					or RelativeTime(t1,-(dec(freqNum)*3600)) <= now then
+					nextRecurTime = t1
+				else
+					t1 = RelativeTime(t1,-(dec(freqNum)*3600)) 
+					do while (t1 > now )
+						if RelativeTime(t1,-(dec(freqNum)*3600)) = time('00:00:00') then // hit BOD
+							EXIT
+						else
+							if RelativeTime(t1,-(dec(freqNum)*3600)) <= now then
+								EXIT
+							else
+								t1 =  RelativeTime(t1,-(dec(freqNum)*3600)) 
+							end if
+						end if
+					loop
+					nextRecurTime = t1
+				end if
+				nextRecurDate = today
+			else
+				do while (RelativeTime(t1,freqNum*3600) <= now)
+					t1 = RelativeTime(t1,freqNum*3600)
+				loop
+				if RelativeTime(t1,freqNum*3600) = time('23:59:59') then // hit the eod
+					nextRecurTime=RelativeTime(time('00:00:00'),(freqNum*3600)-SecondsAfter(t1,time('23:59:59'))-1)
+					nextRecurDate = RelativeDate(today,1)
+				else
+					nextRecurTime = RelativeTime(t1,freqNum*3600)
+					nextRecurDate = today
+				end if
+			end if
+		end if
+		
+	case 'C' // by close date/time
+		if freqCode = 'D' then //by day
+			nextRecurDate = RelativeDate(today,freqNum)
+			nextRecurTime = lastCallScheduledClosetime
+		end if
+		if freqCode = 'H' then //by hour
+			t1 = RelativeTime(time("23:59:59"),-(dec(freqNum)*3600))
+			if t1 < now then
+				if RelativeDate(today,1) > endDate then // project date pass end date
+					return false
+				end if
+				nextRecurDate = RelativeDate(today,1) // proj time pass midnight
+				nextRecurTime=RelativeTime(time('00:00:00'),SecondsAfter(t1,now)-1)
+			else
+				nextRecurDate = today
+				nextRecurTime = RelativeTime(now,dec(freqNum*3600))
+			end if
+			
+		end if
+	case else
+		return false
+end choose
+
+// addtional validation for Daily Start/End and Week Day selector
+f_validate_recur_dt(dailyStart,dailyEnd,weekDaySelected,nextRecurDate,nextRecurTime)
+if nextRecurDate > endDate then
+	return false
+end if
+
+return true
+
+end function
+

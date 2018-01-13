@@ -1,0 +1,8 @@
+﻿$PBExportHeader$dp_pkhe_task.srp
+PIPELINE(source_connect=demo503,destination_connect=demo503_remote,type=refresh,commit=100,errors=100,keyname="pkhe_task")
+SOURCE(name="problem",COLUMN(type=varchar,name="problem_number",dbtype="varchar(5)",key=yes,nulls_allowed=no)
+ COLUMN(type=varchar,name="problem_desc",dbtype="varchar(35)",nulls_allowed=yes))
+RETRIEVE(statement="PBSELECT(TABLE(NAME=~"problem~") COLUMN(NAME=~"problem.problem_number~")COLUMN(NAME=~"problem.problem_desc~"))")
+DESTINATION(name="pkhe_task",COLUMN(type=varchar,name="task_no",dbtype="char(5)",key=yes,nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="task_desc",dbtype="varchar(35)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=datetime,name="upd_ts",dbtype="timestamp",nulls_allowed=no,initial_value="today",default_value="current timestamp"))

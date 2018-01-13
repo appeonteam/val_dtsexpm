@@ -1,0 +1,4256 @@
+﻿$PBExportHeader$m_main.srm
+$PBExportComments$Main menu for sample application.
+forward
+global type m_main from menu
+end type
+type m_file from menu within m_main
+end type
+type m_testrecur from menu within m_file
+end type
+type m_setfilter from menu within m_file
+end type
+type m_opencalls from menu within m_setfilter
+end type
+type m_callslast1dau from menu within m_setfilter
+end type
+type m_callslast3days from menu within m_setfilter
+end type
+type m_callslast5days from menu within m_setfilter
+end type
+type m_callslastweek from menu within m_setfilter
+end type
+type m_callslastmonth from menu within m_setfilter
+end type
+type m_callslastyear from menu within m_setfilter
+end type
+type m_setfilter from menu within m_file
+m_opencalls m_opencalls
+m_callslast1dau m_callslast1dau
+m_callslast3days m_callslast3days
+m_callslast5days m_callslast5days
+m_callslastweek m_callslastweek
+m_callslastmonth m_callslastmonth
+m_callslastyear m_callslastyear
+end type
+type m_print from menu within m_file
+end type
+type m_printscreen from menu within m_file
+end type
+type m_printersetup from menu within m_file
+end type
+type m_-2 from menu within m_file
+end type
+type m_close from menu within m_file
+end type
+type m_exit from menu within m_file
+end type
+type m_file from menu within m_main
+m_testrecur m_testrecur
+m_setfilter m_setfilter
+m_print m_print
+m_printscreen m_printscreen
+m_printersetup m_printersetup
+m_-2 m_-2
+m_close m_close
+m_exit m_exit
+end type
+type m_data from menu within m_main
+end type
+type m_opencalls1 from menu within m_data
+end type
+type m_complaintmodentryscreen from menu within m_data
+end type
+type m_1 from menu within m_data
+end type
+type m_10 from menu within m_data
+end type
+type m_-5 from menu within m_data
+end type
+type m_graphics from menu within m_data
+end type
+type m_t from menu within m_data
+end type
+type m_-1 from menu within m_data
+end type
+type m_admin1 from menu within m_data
+end type
+type m_categories1 from menu within m_data
+end type
+type m_tables from menu within m_data
+end type
+type m_pagerupdate from menu within m_data
+end type
+type m_manualpaging from menu within m_data
+end type
+type m_vtask_upd from menu within m_data
+end type
+type m_xm from menu within m_data
+end type
+type m_micromainfm from menu within m_data
+end type
+type m_-8 from menu within m_data
+end type
+type m_pmsinterfacereporting from menu within m_data
+end type
+type m_systemoptions from menu within m_data
+end type
+type m_foioptions from menu within m_data
+end type
+type m_returnablecodes from menu within m_data
+end type
+type m_-0 from menu within m_data
+end type
+type m_commentator from menu within m_data
+end type
+type m_telephonebook from menu within m_data
+end type
+type m_2 from menu within m_data
+end type
+type m_3 from menu within m_data
+end type
+type m_4 from menu within m_data
+end type
+type m_5 from menu within m_data
+end type
+type m_6 from menu within m_data
+end type
+type m_7 from menu within m_data
+end type
+type m_reports from menu within m_data
+end type
+type m_0 from menu within m_data
+end type
+type m_approvallevels from menu within m_data
+end type
+type m_purchaserequests from menu within m_data
+end type
+type m_stylemaintenance from menu within m_data
+end type
+type m_languages from menu within m_data
+end type
+type m_languagetranslation from menu within m_data
+end type
+type m_sqltrace from menu within m_data
+end type
+type m_data from menu within m_main
+m_opencalls1 m_opencalls1
+m_complaintmodentryscreen m_complaintmodentryscreen
+m_1 m_1
+m_10 m_10
+m_-5 m_-5
+m_graphics m_graphics
+m_t m_t
+m_-1 m_-1
+m_admin1 m_admin1
+m_categories1 m_categories1
+m_tables m_tables
+m_pagerupdate m_pagerupdate
+m_manualpaging m_manualpaging
+m_vtask_upd m_vtask_upd
+m_xm m_xm
+m_micromainfm m_micromainfm
+m_-8 m_-8
+m_pmsinterfacereporting m_pmsinterfacereporting
+m_systemoptions m_systemoptions
+m_foioptions m_foioptions
+m_returnablecodes m_returnablecodes
+m_-0 m_-0
+m_commentator m_commentator
+m_telephonebook m_telephonebook
+m_2 m_2
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_reports m_reports
+m_0 m_0
+m_approvallevels m_approvallevels
+m_purchaserequests m_purchaserequests
+m_stylemaintenance m_stylemaintenance
+m_languages m_languages
+m_languagetranslation m_languagetranslation
+m_sqltrace m_sqltrace
+end type
+type m_view from menu within m_main
+end type
+type m_13 from menu within m_view
+end type
+type m_15 from menu within m_13
+end type
+type m_16 from menu within m_13
+end type
+type m_12 from menu within m_13
+end type
+type m_13 from menu within m_view
+m_15 m_15
+m_16 m_16
+m_12 m_12
+end type
+type m_allcalls from menu within m_view
+end type
+type m_pendingcalls from menu within m_view
+end type
+type m_timercalls from menu within m_view
+end type
+type m_guestcallback from menu within m_view
+end type
+type m_-7 from menu within m_view
+end type
+type m_mod_complaint_view from menu within m_view
+end type
+type m_deptdailyresponsereport from menu within m_view
+end type
+type m_deptweeklyresponsereport from menu within m_view
+end type
+type m_-4 from menu within m_view
+end type
+type m_guestcalledreport from menu within m_view
+end type
+type m_guestdo-not-disturbcallreport from menu within m_view
+end type
+type m_-9 from menu within m_view
+end type
+type m_employeedeclinedcallreport from menu within m_view
+end type
+type m_failedbenchmarkreport from menu within m_view
+end type
+type m_8 from menu within m_view
+end type
+type m_-10 from menu within m_view
+end type
+type m_view10 from menu within m_view
+end type
+type m_view20 from menu within m_view
+end type
+type m_view from menu within m_main
+m_13 m_13
+m_allcalls m_allcalls
+m_pendingcalls m_pendingcalls
+m_timercalls m_timercalls
+m_guestcallback m_guestcallback
+m_-7 m_-7
+m_mod_complaint_view m_mod_complaint_view
+m_deptdailyresponsereport m_deptdailyresponsereport
+m_deptweeklyresponsereport m_deptweeklyresponsereport
+m_-4 m_-4
+m_guestcalledreport m_guestcalledreport
+m_guestdo-not-disturbcallreport m_guestdo-not-disturbcallreport
+m_-9 m_-9
+m_employeedeclinedcallreport m_employeedeclinedcallreport
+m_failedbenchmarkreport m_failedbenchmarkreport
+m_8 m_8
+m_-10 m_-10
+m_view10 m_view10
+m_view20 m_view20
+end type
+type m_window from menu within m_main
+end type
+type m_tile from menu within m_window
+end type
+type m_layer from menu within m_window
+end type
+type m_cascade from menu within m_window
+end type
+type m_-3 from menu within m_window
+end type
+type m_systemsettings from menu within m_window
+end type
+type m_toolbaroptions from menu within m_window
+end type
+type m_timecalculator from menu within m_window
+end type
+type m_-6 from menu within m_window
+end type
+type m_messagepaging from menu within m_window
+end type
+type m_window from menu within m_main
+m_tile m_tile
+m_layer m_layer
+m_cascade m_cascade
+m_-3 m_-3
+m_systemsettings m_systemsettings
+m_toolbaroptions m_toolbaroptions
+m_timecalculator m_timecalculator
+m_-6 m_-6
+m_messagepaging m_messagepaging
+end type
+type m_help from menu within m_main
+end type
+type m_context from menu within m_help
+end type
+type m_index from menu within m_help
+end type
+type m_search from menu within m_help
+end type
+type m_- from menu within m_help
+end type
+type m_about from menu within m_help
+end type
+type m_help from menu within m_main
+m_context m_context
+m_index m_index
+m_search m_search
+m_- m_-
+m_about m_about
+end type
+type m_11 from menu within m_main
+end type
+global type m_main from menu
+m_file m_file
+m_data m_data
+m_view m_view
+m_window m_window
+m_help m_help
+m_11 m_11
+end type
+end forward
+
+global type m_main from menu
+m_file m_file
+m_data m_data
+m_view m_view
+m_window m_window
+m_help m_help
+m_11 m_11
+end type
+global m_main m_main
+
+on m_main.create
+m_main=this
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_file=create m_file
+this.m_data=create m_data
+this.m_view=create m_view
+this.m_window=create m_window
+this.m_help=create m_help
+this.m_11=create m_11
+this.Item[UpperBound(this.Item)+1]=this.m_file
+this.Item[UpperBound(this.Item)+1]=this.m_data
+this.Item[UpperBound(this.Item)+1]=this.m_view
+this.Item[UpperBound(this.Item)+1]=this.m_window
+this.Item[UpperBound(this.Item)+1]=this.m_help
+this.Item[UpperBound(this.Item)+1]=this.m_11
+end on
+
+on m_main.destroy
+call super::destroy
+destroy(this.m_file)
+destroy(this.m_data)
+destroy(this.m_view)
+destroy(this.m_window)
+destroy(this.m_help)
+destroy(this.m_11)
+end on
+
+event clicked;
+open(w_equipment_report_category);
+end event
+
+type m_file from menu within m_main
+m_testrecur m_testrecur
+m_setfilter m_setfilter
+m_print m_print
+m_printscreen m_printscreen
+m_printersetup m_printersetup
+m_-2 m_-2
+m_close m_close
+m_exit m_exit
+end type
+
+event clicked;this.m_printscreen.enabled =  IsValid(parentwindow.getactivesheet()) 
+this.m_print.enabled =  IsValid(parentwindow.getactivesheet()) 
+	
+	
+
+//TriggerEvent (GetActiveSheet(ParentWindow), "copy_to_clipboard")
+
+end event
+
+on m_file.create
+call super::create
+this.text = "&File"
+this.microhelp = "File Options."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_testrecur=create m_testrecur
+this.m_setfilter=create m_setfilter
+this.m_print=create m_print
+this.m_printscreen=create m_printscreen
+this.m_printersetup=create m_printersetup
+this.m_-2=create m_-2
+this.m_close=create m_close
+this.m_exit=create m_exit
+this.Item[UpperBound(this.Item)+1]=this.m_testrecur
+this.Item[UpperBound(this.Item)+1]=this.m_setfilter
+this.Item[UpperBound(this.Item)+1]=this.m_print
+this.Item[UpperBound(this.Item)+1]=this.m_printscreen
+this.Item[UpperBound(this.Item)+1]=this.m_printersetup
+this.Item[UpperBound(this.Item)+1]=this.m_-2
+this.Item[UpperBound(this.Item)+1]=this.m_close
+this.Item[UpperBound(this.Item)+1]=this.m_exit
+end on
+
+on m_file.destroy
+call super::destroy
+destroy(this.m_testrecur)
+destroy(this.m_setfilter)
+destroy(this.m_print)
+destroy(this.m_printscreen)
+destroy(this.m_printersetup)
+destroy(this.m_-2)
+destroy(this.m_close)
+destroy(this.m_exit)
+end on
+
+type m_testrecur from menu within m_file
+end type
+
+event clicked;OpenSheet( w_test_recur_dt, "w_test_recur_dt", w_main, 0, Original! )
+end event
+
+on m_testrecur.create
+call super::create
+this.visible = false
+this.text = "Test Recur"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_testrecur.destroy
+call super::destroy
+end on
+
+type m_setfilter from menu within m_file
+m_opencalls m_opencalls
+m_callslast1dau m_callslast1dau
+m_callslast3days m_callslast3days
+m_callslast5days m_callslast5days
+m_callslastweek m_callslastweek
+m_callslastmonth m_callslastmonth
+m_callslastyear m_callslastyear
+end type
+
+on m_setfilter.create
+call super::create
+this.visible = false
+this.text = "Set Filter"
+this.enabled = false
+this.microhelp = "Change the current filter (e.g., open calls, all calls for last day, week...etc.) for the current window."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_opencalls=create m_opencalls
+this.m_callslast1dau=create m_callslast1dau
+this.m_callslast3days=create m_callslast3days
+this.m_callslast5days=create m_callslast5days
+this.m_callslastweek=create m_callslastweek
+this.m_callslastmonth=create m_callslastmonth
+this.m_callslastyear=create m_callslastyear
+this.Item[UpperBound(this.Item)+1]=this.m_opencalls
+this.Item[UpperBound(this.Item)+1]=this.m_callslast1dau
+this.Item[UpperBound(this.Item)+1]=this.m_callslast3days
+this.Item[UpperBound(this.Item)+1]=this.m_callslast5days
+this.Item[UpperBound(this.Item)+1]=this.m_callslastweek
+this.Item[UpperBound(this.Item)+1]=this.m_callslastmonth
+this.Item[UpperBound(this.Item)+1]=this.m_callslastyear
+end on
+
+on m_setfilter.destroy
+call super::destroy
+destroy(this.m_opencalls)
+destroy(this.m_callslast1dau)
+destroy(this.m_callslast3days)
+destroy(this.m_callslast5days)
+destroy(this.m_callslastweek)
+destroy(this.m_callslastmonth)
+destroy(this.m_callslastyear)
+end on
+
+type m_opencalls from menu within m_setfilter
+end type
+
+on m_opencalls.create
+call super::create
+this.text = "Open Calls"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_opencalls.destroy
+call super::destroy
+end on
+
+type m_callslast1dau from menu within m_setfilter
+end type
+
+on m_callslast1dau.create
+call super::create
+this.text = "Calls last 1 dau"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_callslast1dau.destroy
+call super::destroy
+end on
+
+type m_callslast3days from menu within m_setfilter
+end type
+
+on m_callslast3days.create
+call super::create
+this.text = "Calls last 3 days"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_callslast3days.destroy
+call super::destroy
+end on
+
+type m_callslast5days from menu within m_setfilter
+end type
+
+on m_callslast5days.create
+call super::create
+this.text = "Calls last 5 days"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_callslast5days.destroy
+call super::destroy
+end on
+
+type m_callslastweek from menu within m_setfilter
+end type
+
+on m_callslastweek.create
+call super::create
+this.text = "Calls last week"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_callslastweek.destroy
+call super::destroy
+end on
+
+type m_callslastmonth from menu within m_setfilter
+end type
+
+on m_callslastmonth.create
+call super::create
+this.text = "Calls last month"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_callslastmonth.destroy
+call super::destroy
+end on
+
+type m_callslastyear from menu within m_setfilter
+end type
+
+on m_callslastyear.create
+call super::create
+this.text = "Calls last year"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_callslastyear.destroy
+call super::destroy
+end on
+
+type m_print from menu within m_file
+end type
+
+on clicked;window activesheet
+activesheet = w_main.getactivesheet()
+if isvalid(activesheet) THEN
+//   TriggerEvent (GetActiveSheet(ParentWindow), "ue_print")
+   TriggerEvent (GetActiveSheet(ParentWindow), "ue_printreport")
+end if
+
+end on
+
+on m_print.create
+call super::create
+this.text = "&Print~tCtrl+P"
+this.enabled = false
+this.shortcut = 336
+this.microhelp = "Print"
+this.toolbaritemname = "print!"
+this.toolbaritemtext = "Print"
+this.toolbaritemorder = 49
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_print.destroy
+call super::destroy
+end on
+
+type m_printscreen from menu within m_file
+end type
+
+on clicked;window activesheet
+activesheet = w_main.getactivesheet()
+if isvalid(activesheet) THEN
+   TriggerEvent (GetActiveSheet(ParentWindow), "ue_printscreen")
+end if
+end on
+
+on m_printscreen.create
+call super::create
+this.text = "Print &Screen"
+this.enabled = false
+this.microhelp = "Print Screen"
+this.toolbaritemname = "Window!"
+this.toolbaritemtext = "Print Screen"
+this.toolbaritemorder = 50
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printscreen.destroy
+call super::destroy
+end on
+
+type m_printersetup from menu within m_file
+end type
+
+on clicked;SetPointer( HourGlass! )
+PrintSetup()
+end on
+
+on m_printersetup.create
+call super::create
+this.text = "Printer Se&tup..."
+this.microhelp = "Setup printer using the currently selected Windows Printer Driver (modifiable from the Windows Control Panel in the Main group)"
+this.toolbaritemname = "custom074!"
+this.toolbaritemtext = "Setup"
+this.toolbaritemorder = 51
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_printersetup.destroy
+call super::destroy
+end on
+
+type m_-2 from menu within m_file
+end type
+
+on m_-2.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-2.destroy
+call super::destroy
+end on
+
+type m_close from menu within m_file
+end type
+
+on clicked;window activesheet
+activesheet = w_main.getactivesheet()
+IF isvalid(activesheet) Then
+   TriggerEvent (GetActiveSheet(ParentWindow), "close")
+End if
+end on
+
+on m_close.create
+call super::create
+this.text = "C&lose~tCtrl+L"
+this.enabled = false
+this.shortcut = 332
+this.microhelp = "Close Window"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_close.destroy
+call super::destroy
+end on
+
+type m_exit from menu within m_file
+end type
+
+on clicked;SetPointer( HourGlass! )
+Close( w_main )
+
+end on
+
+on m_exit.create
+call super::create
+this.text = "E&xit~tCtrl+Shift+X"
+this.shortcut = 1368
+this.microhelp = "Leave (shut down) the application."
+this.toolbaritemname = "exit!"
+this.toolbaritemtext = "E&xit App"
+this.toolbaritemorder = 100
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_exit.destroy
+call super::destroy
+end on
+
+type m_data from menu within m_main
+m_opencalls1 m_opencalls1
+m_complaintmodentryscreen m_complaintmodentryscreen
+m_1 m_1
+m_10 m_10
+m_-5 m_-5
+m_graphics m_graphics
+m_t m_t
+m_-1 m_-1
+m_admin1 m_admin1
+m_categories1 m_categories1
+m_tables m_tables
+m_pagerupdate m_pagerupdate
+m_manualpaging m_manualpaging
+m_vtask_upd m_vtask_upd
+m_xm m_xm
+m_micromainfm m_micromainfm
+m_-8 m_-8
+m_pmsinterfacereporting m_pmsinterfacereporting
+m_systemoptions m_systemoptions
+m_foioptions m_foioptions
+m_returnablecodes m_returnablecodes
+m_-0 m_-0
+m_commentator m_commentator
+m_telephonebook m_telephonebook
+m_2 m_2
+m_3 m_3
+m_4 m_4
+m_5 m_5
+m_6 m_6
+m_7 m_7
+m_reports m_reports
+m_0 m_0
+m_approvallevels m_approvallevels
+m_purchaserequests m_purchaserequests
+m_stylemaintenance m_stylemaintenance
+m_languages m_languages
+m_languagetranslation m_languagetranslation
+m_sqltrace m_sqltrace
+end type
+
+on m_data.create
+call super::create
+this.text = " Da&ta"
+this.microhelp = "Data Options."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_opencalls1=create m_opencalls1
+this.m_complaintmodentryscreen=create m_complaintmodentryscreen
+this.m_1=create m_1
+this.m_10=create m_10
+this.m_-5=create m_-5
+this.m_graphics=create m_graphics
+this.m_t=create m_t
+this.m_-1=create m_-1
+this.m_admin1=create m_admin1
+this.m_categories1=create m_categories1
+this.m_tables=create m_tables
+this.m_pagerupdate=create m_pagerupdate
+this.m_manualpaging=create m_manualpaging
+this.m_vtask_upd=create m_vtask_upd
+this.m_xm=create m_xm
+this.m_micromainfm=create m_micromainfm
+this.m_-8=create m_-8
+this.m_pmsinterfacereporting=create m_pmsinterfacereporting
+this.m_systemoptions=create m_systemoptions
+this.m_foioptions=create m_foioptions
+this.m_returnablecodes=create m_returnablecodes
+this.m_-0=create m_-0
+this.m_commentator=create m_commentator
+this.m_telephonebook=create m_telephonebook
+this.m_2=create m_2
+this.m_3=create m_3
+this.m_4=create m_4
+this.m_5=create m_5
+this.m_6=create m_6
+this.m_7=create m_7
+this.m_reports=create m_reports
+this.m_0=create m_0
+this.m_approvallevels=create m_approvallevels
+this.m_purchaserequests=create m_purchaserequests
+this.m_stylemaintenance=create m_stylemaintenance
+this.m_languages=create m_languages
+this.m_languagetranslation=create m_languagetranslation
+this.m_sqltrace=create m_sqltrace
+this.Item[UpperBound(this.Item)+1]=this.m_opencalls1
+this.Item[UpperBound(this.Item)+1]=this.m_complaintmodentryscreen
+this.Item[UpperBound(this.Item)+1]=this.m_1
+this.Item[UpperBound(this.Item)+1]=this.m_10
+this.Item[UpperBound(this.Item)+1]=this.m_-5
+this.Item[UpperBound(this.Item)+1]=this.m_graphics
+this.Item[UpperBound(this.Item)+1]=this.m_t
+this.Item[UpperBound(this.Item)+1]=this.m_-1
+this.Item[UpperBound(this.Item)+1]=this.m_admin1
+this.Item[UpperBound(this.Item)+1]=this.m_categories1
+this.Item[UpperBound(this.Item)+1]=this.m_tables
+this.Item[UpperBound(this.Item)+1]=this.m_pagerupdate
+this.Item[UpperBound(this.Item)+1]=this.m_manualpaging
+this.Item[UpperBound(this.Item)+1]=this.m_vtask_upd
+this.Item[UpperBound(this.Item)+1]=this.m_xm
+this.Item[UpperBound(this.Item)+1]=this.m_micromainfm
+this.Item[UpperBound(this.Item)+1]=this.m_-8
+this.Item[UpperBound(this.Item)+1]=this.m_pmsinterfacereporting
+this.Item[UpperBound(this.Item)+1]=this.m_systemoptions
+this.Item[UpperBound(this.Item)+1]=this.m_foioptions
+this.Item[UpperBound(this.Item)+1]=this.m_returnablecodes
+this.Item[UpperBound(this.Item)+1]=this.m_-0
+this.Item[UpperBound(this.Item)+1]=this.m_commentator
+this.Item[UpperBound(this.Item)+1]=this.m_telephonebook
+this.Item[UpperBound(this.Item)+1]=this.m_2
+this.Item[UpperBound(this.Item)+1]=this.m_3
+this.Item[UpperBound(this.Item)+1]=this.m_4
+this.Item[UpperBound(this.Item)+1]=this.m_5
+this.Item[UpperBound(this.Item)+1]=this.m_6
+this.Item[UpperBound(this.Item)+1]=this.m_7
+this.Item[UpperBound(this.Item)+1]=this.m_reports
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_approvallevels
+this.Item[UpperBound(this.Item)+1]=this.m_purchaserequests
+this.Item[UpperBound(this.Item)+1]=this.m_stylemaintenance
+this.Item[UpperBound(this.Item)+1]=this.m_languages
+this.Item[UpperBound(this.Item)+1]=this.m_languagetranslation
+this.Item[UpperBound(this.Item)+1]=this.m_sqltrace
+end on
+
+on m_data.destroy
+call super::destroy
+destroy(this.m_opencalls1)
+destroy(this.m_complaintmodentryscreen)
+destroy(this.m_1)
+destroy(this.m_10)
+destroy(this.m_-5)
+destroy(this.m_graphics)
+destroy(this.m_t)
+destroy(this.m_-1)
+destroy(this.m_admin1)
+destroy(this.m_categories1)
+destroy(this.m_tables)
+destroy(this.m_pagerupdate)
+destroy(this.m_manualpaging)
+destroy(this.m_vtask_upd)
+destroy(this.m_xm)
+destroy(this.m_micromainfm)
+destroy(this.m_-8)
+destroy(this.m_pmsinterfacereporting)
+destroy(this.m_systemoptions)
+destroy(this.m_foioptions)
+destroy(this.m_returnablecodes)
+destroy(this.m_-0)
+destroy(this.m_commentator)
+destroy(this.m_telephonebook)
+destroy(this.m_2)
+destroy(this.m_3)
+destroy(this.m_4)
+destroy(this.m_5)
+destroy(this.m_6)
+destroy(this.m_7)
+destroy(this.m_reports)
+destroy(this.m_0)
+destroy(this.m_approvallevels)
+destroy(this.m_purchaserequests)
+destroy(this.m_stylemaintenance)
+destroy(this.m_languages)
+destroy(this.m_languagetranslation)
+destroy(this.m_sqltrace)
+end on
+
+event clicked;string ls_preq 
+
+select ISNULL(preq,'N') into :ls_preq from vzt_sysoptions where id = 1;
+
+if ls_preq <> 'Y' then 
+	this.m_approvallevels.visible = false
+	this.m_purchaserequests.visible = false 
+end if 
+end event
+
+type m_opencalls1 from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+//If UnitsToPixels( nScreenWidth, XUnitsToPixels! ) > 650 Then	// after 640x480 is 800x600
+//	OpenSheet( w_call_de2, "w_call_de2", w_main, 0, Original! )	// uses d_call_de800x600
+//Else
+//	OpenSheet( w_call_de, "w_call_de", w_main, 0, Original! )	// uses d_call_de640x480
+//	OpenSheetWithParm( w_call_de, "", "w_call_de", 	w_main, 0, Original! )
+//End If
+
+If IsValid(w_call_upd) THEN
+	w_call_upd.openMode = '0'
+	open(w_call_upd)
+	w_call_upd.cb_add.TriggerEvent("clicked")
+	if IsValid(w_call_upd) then
+		if w_call_upd.WindowState = Minimized! then
+			w_call_upd.WindowState = Normal!
+		end if
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "CN" ) ) Then
+	   OpenSheetWithParm( w_call_upd, "0", "w_call_upd", 	gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_opencalls1.create
+call super::create
+this.text = "&Call Entry Screen~tCtrl+Shift+F2"
+this.shortcut = 1393
+this.microhelp = "Add/edit/delete or print New and Existing Call information."
+this.toolbaritemname = "custom020!"
+this.toolbaritemtext = "Open Call"
+this.toolbaritemorder = 2
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_opencalls1.destroy
+call super::destroy
+end on
+
+type m_complaintmodentryscreen from menu within m_data
+end type
+
+on m_complaintmodentryscreen.create
+call super::create
+this.text = "Complaint/MOD Entry Screen"
+this.toolbaritemname = "mod_ico.bmp"
+this.toolbaritemtext = "Complaint/MOD call"
+this.toolbaritemorder = 5
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_complaintmodentryscreen.destroy
+call super::destroy
+end on
+
+event clicked;If IsValid(w_complaint_mod_upd) THEN
+	open(w_complaint_mod_upd)
+//	w_call_upd.cb_add.TriggerEvent("clicked")
+	if IsValid(w_complaint_mod_upd) then
+		if w_complaint_mod_upd.WindowState = Minimized! then
+			w_complaint_mod_upd.WindowState = Normal!
+		end if
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "MO" ) ) Then
+//		OpenSheet( w_complaint_mod_upd, "w_complaint_mod_upd", w_main, 0, Original! )
+				OpenSheetWithParm( w_complaint_mod_upd, "0", w_main, 0, Original! )
+   end if
+END IF
+end event
+
+type m_1 from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_pm_call_upd) THEN
+	w_pm_call_upd.openMode = '0'
+	open(w_pm_call_upd)
+//	w_pm_call_upd.cb_add.TriggerEvent("clicked")
+	w_pm_call_upd.TriggerEvent("ue_add")
+	if IsValid(w_pm_call_upd) then
+		if w_pm_call_upd.WindowState = Minimized! then
+			w_pm_call_upd.WindowState = Normal!
+		end if
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "PM" ) ) Then
+	   OpenSheetWithParm( w_pm_call_upd, "0", "w_pm_call_upd", 	gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_1.create
+call super::create
+this.text = "PM Entry Screen"
+this.toolbaritemname = "screwdriver menu_icon.bmp"
+this.toolbaritemtext = "PM Entry"
+this.toolbaritemorder = 6
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_1.destroy
+call super::destroy
+end on
+
+type m_10 from menu within m_data
+end type
+
+event clicked;//open (w_equipment_custom)
+
+SetPointer( HourGlass! )
+If IsValid(w_equipment_custom) THEN
+	open(w_equipment_custom)
+	if w_equipment_custom.WindowState = Minimized! then
+		w_equipment_custom.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "PB" ) ) Then
+	   OpenSheetWithParm( w_equipment_custom, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_10.create
+call super::create
+this.text = "PM Explorer"
+this.toolbaritemname = "pmgear.jpg"
+this.toolbaritemtext = "PM Explorer"
+this.toolbaritemorder = 7
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_10.destroy
+call super::destroy
+end on
+
+type m_-5 from menu within m_data
+end type
+
+on m_-5.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-5.destroy
+call super::destroy
+end on
+
+type m_graphics from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+//* parm = 1 is password required
+if InitLoadCnt = 1 then
+	InitLoadCnt += 1
+else
+	ccommandparm=""
+end if
+
+OpenSheetwithparm( w_adhoc, 1, "w_adhoc", gnv_appman.iw_frame, 0, Original! )
+//Open( w_adhoc, w_main )
+
+end event
+
+on m_graphics.create
+call super::create
+this.text = "&Q&&A Session~tCtrl+Shift+F6"
+this.shortcut = 1397
+this.microhelp = "Ad-hoc (user-defined) call data query with assorted Graphics and Reports."
+this.toolbaritemname = "find!"
+this.toolbaritemtext = "Q&&A"
+this.toolbaritemorder = 8
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_graphics.destroy
+call super::destroy
+end on
+
+type m_t from menu within m_data
+end type
+
+event clicked;//SetPointer( HourGlass! )
+OpenSheet( w_test_recur_dt, "w_test_recur_dt", gnv_appman.iw_frame, 0, Original! )
+//Open( w_adhoc, w_main )
+end event
+
+on m_t.create
+call super::create
+this.visible = false
+this.text = "&Test"
+this.enabled = false
+this.toolbaritemorder = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_t.destroy
+call super::destroy
+end on
+
+type m_-1 from menu within m_data
+end type
+
+on m_-1.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-1.destroy
+call super::destroy
+end on
+
+type m_admin1 from menu within m_data
+end type
+
+event clicked;SetPointer(HourGlass!)
+OpenSheet( w_admin, "w_admin", gnv_appman.iw_frame, 0, Original! )
+
+end event
+
+on m_admin1.create
+call super::create
+this.text = "&Security Admin ~tCtrl+Shift+F3"
+this.shortcut = 1394
+this.microhelp = "Add/edit/delete or print Security Administration information."
+this.toolbaritemname = "custom016!"
+this.toolbaritemtext = "Admin"
+this.toolbaritemorder = 18
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_admin1.destroy
+call super::destroy
+end on
+
+type m_categories1 from menu within m_data
+end type
+
+event clicked;SetPointer(HourGlass!)
+OpenSheet( w_probsubprob, "w_probsubprob", gnv_appman.iw_frame, 0, Original! )
+
+end event
+
+on m_categories1.create
+call super::create
+this.text = "Task Cate&gories~tCtrl+Shift+F4"
+this.shortcut = 1395
+this.microhelp = "Add/edit/delete or print Category and Sub-Category information."
+this.toolbaritemname = "setnextstatement!"
+this.toolbaritemtext = "Categories"
+this.toolbaritemorder = 19
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_categories1.destroy
+call super::destroy
+end on
+
+type m_tables from menu within m_data
+end type
+
+event clicked;SetPointer( HourGlass! )
+OpenSheet( w_tables1, "w_tables1", gnv_appman.iw_frame, 0, Original! )
+end event
+
+on m_tables.create
+call super::create
+this.text = "Validation Ta&bles~tCtrl+Shift+F5"
+this.shortcut = 1396
+this.microhelp = "Add/edit/delete or print Validaton Table and Lookup Description information."
+this.toolbaritemname = "tables!"
+this.toolbaritemtext = "Tables"
+this.toolbaritemorder = 20
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_tables.destroy
+call super::destroy
+end on
+
+type m_pagerupdate from menu within m_data
+end type
+
+on m_pagerupdate.create
+call super::create
+this.text = "Pager &Update~tCtrl+Shift+F11"
+this.shortcut = 1402
+this.microhelp = "Update Pager/Employee Pager Assignment/Manager Pager Assignment"
+this.toolbaritemname = "pager.bmp"
+this.toolbaritemtext = "Pagers"
+this.toolbaritemorder = 41
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;
+SetPointer(HourGlass!)
+If Is_PasswordOK( Get_Event_Security( "CT" ) ) Then
+	OpenSheet( w_table_upd, "w_table_upd", gnv_appman.iw_frame, 0, Original! )
+	window activesheet
+	activesheet = w_main.getactivesheet()
+	if (f_get_user_right("SA",cPassUserName)) >= 0 then
+		if isvalid(activesheet) THEN
+   		TriggerEvent (GetActiveSheet(ParentWindow), "ue_enablepagerupd")
+			TriggerEvent (GetActiveSheet(ParentWindow), "ue_enablemgrupdate")
+		end if
+	else
+		if (f_get_user_right("MT",cPassUserName)) >= 0 then
+			TriggerEvent (GetActiveSheet(ParentWindow), "ue_enablemgrupdate")
+		end if
+	end if
+	
+	m_main.m_file.m_close.Enabled = true
+	m_main.m_file.m_print.Enabled = true
+else
+	return
+end if
+end event
+
+on m_pagerupdate.destroy
+call super::destroy
+end on
+
+type m_manualpaging from menu within m_data
+end type
+
+on m_manualpaging.create
+call super::create
+this.tag = "Manual Paging"
+this.text = "Manual &Paging"
+this.microhelp = "Start Manual Paging!"
+this.toolbaritemname = "smartpaging_icon.bmp"
+this.toolbaritemdownname = "tower.ico"
+this.toolbaritemtext = "Group Page"
+this.toolbaritemorder = 40
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_manualpaging.destroy
+call super::destroy
+end on
+
+event clicked;SetPointer( HourGlass! )
+OpenSheet( w_manual_paging, "w_manual_paging", gnv_appman.iw_frame, 0, Original! )
+end event
+
+type m_vtask_upd from menu within m_data
+end type
+
+event clicked;IF IsValid(w_vtask_upd) = FALSE THEN 
+	OpenSheetWithParm( w_vtask_upd, "", "w_vtask_upd", 	gnv_appman.iw_frame, 0, Original! )
+end if
+end event
+
+on m_vtask_upd.create
+call super::create
+this.text = "Voice Task Update"
+this.microhelp = "Create/Modify Telephone Interface tasks"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_vtask_upd.destroy
+call super::destroy
+end on
+
+type m_xm from menu within m_data
+end type
+
+on m_xm.create
+call super::create
+this.text = "&XM"
+this.microhelp = "Start XM Application!"
+this.toolbaritemname = "xm.bmp"
+this.toolbaritemtext = "XM"
+this.toolbaritemorder = 34
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_xm.destroy
+call super::destroy
+end on
+
+event clicked;int ret
+string cXMPath,MicromainXMApp, MMAppEnabled, MMAdMsg
+cXMPath = ProfileString( cINIPath + cINIFile, "MicroMain", "XMPath", "c:\")
+MMAppEnabled = ProfileString( cINIPath + cINIFile, "MicroMain","MicroMainEnabled","N")
+//MicromainXMApp=cXMPath+"MicroMainXM.mdb"
+//ret=run (MicromainXMApp,Normal!)
+if MMAppEnabled <> "Y" then
+	MMAdMsg =  ProfileString( cINIPath + cINIFile, "MicroMain","MicroMainDisabledMsg",&
+				"MicroMain Apps are currently disabled!")
+	MessageBox("Notification",MMAdMsg)
+	return
+end if
+ret = run ("c:\xm.bat", Minimized!)
+if ret < 0 then
+	MessageBox("Error","Can't find application "+MicromainXMApp)
+end if
+end event
+
+type m_micromainfm from menu within m_data
+end type
+
+event clicked;int ret
+string cMicromainFMPath,MicromainFMApp,MMAppEnabled,MMAdMsg
+cMicromainFMPath = ProfileString( cINIPath + cINIFile, "Application", "FMPath", "c:\")
+MMAppEnabled = ProfileString( cINIPath + cINIFile, "MicroMain","MicroMainEnabled","N")
+//MicromainXMApp=cXMPath+"MicroMainXM.mdb"
+//ret=run (MicromainXMApp,Normal!)
+if MMAppEnabled <> "Y" then
+	MMAdMsg =  ProfileString( cINIPath + cINIFile, "MicroMain","MicroMainDisabledMsg",&
+				"MicroMain Apps are currently disabled!")
+	MessageBox("Notification",MMAdMsg)
+	return
+end if
+MicromainFMApp=cMicromainFMPath+"MicroMainFM.mdb"
+//ret=run (MicromainFMApp,Normal!)
+ret = run ("c:\fm.bat", Minimized!)
+if ret < 0 then
+	MessageBox("Error","Can't find application "+MicromainFMApp)
+end if
+end event
+
+on m_micromainfm.create
+call super::create
+this.text = "F&M"
+this.microhelp = "Start FM application!"
+this.toolbaritemname = "fm.ico"
+this.toolbaritemtext = "FM"
+this.toolbaritemorder = 35
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_micromainfm.destroy
+call super::destroy
+end on
+
+type m_-8 from menu within m_data
+end type
+
+on m_-8.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-8.destroy
+call super::destroy
+end on
+
+type m_pmsinterfacereporting from menu within m_data
+end type
+
+on m_pmsinterfacereporting.create
+call super::create
+this.text = "PMS Interface Adhoc Reporting"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;SetPointer( HourGlass! )
+//* parm = 1 is password required
+if InitLoadCnt = 1 then
+	InitLoadCnt += 1
+else
+	ccommandparm=""
+end if
+
+OpenSheetwithparm( w_pms_adhoc, 1, "w_pms_adhoc", gnv_appman.iw_frame, 0, Original! )
+
+
+end event
+
+on m_pmsinterfacereporting.destroy
+call super::destroy
+end on
+
+type m_systemoptions from menu within m_data
+end type
+
+on m_systemoptions.create
+call super::create
+this.text = "System Options"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_vzt_sysoptions_edit) THEN
+	open(w_vzt_sysoptions_edit)
+	if w_vzt_sysoptions_edit.WindowState = Minimized! then
+		w_vzt_sysoptions_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_sysoptions_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_systemoptions.destroy
+call super::destroy
+end on
+
+type m_foioptions from menu within m_data
+end type
+
+on m_foioptions.create
+call super::create
+this.text = "FOI Options"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_foi_options_edit) THEN
+	open(w_foi_options_edit)
+	if w_foi_options_edit.WindowState = Minimized! then
+		w_foi_options_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_foi_options_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_foioptions.destroy
+call super::destroy
+end on
+
+type m_returnablecodes from menu within m_data
+end type
+
+on m_returnablecodes.create
+call super::create
+this.text = "Returnable &Codes"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_retcodes_edit) THEN
+	open(w_retcodes_edit)
+	if w_retcodes_edit.WindowState = Minimized! then
+		w_retcodes_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_retcodes_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+end event
+
+on m_returnablecodes.destroy
+call super::destroy
+end on
+
+type m_-0 from menu within m_data
+end type
+
+on m_-0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-0.destroy
+call super::destroy
+end on
+
+type m_commentator from menu within m_data
+end type
+
+event clicked;int ret
+ret = run ("dts_gcc_web.exe")
+if ret < 0 then
+	MessageBox("Error","Can't find Commentator application.")
+end if
+
+end event
+
+on m_commentator.create
+call super::create
+this.text = "Commentator"
+this.toolbaritemname = "custom002!"
+this.toolbaritemtext = "gcc"
+this.toolbaritemorder = 39
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_commentator.destroy
+call super::destroy
+end on
+
+type m_telephonebook from menu within m_data
+end type
+
+event clicked; SetPointer( HourGlass! )
+If IsValid(w_vzt_vendor_edit) THEN
+	open(w_vzt_vendor_edit)
+	if w_vzt_vendor_edit.WindowState = Minimized! then
+		w_vzt_vendor_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "PB" ) ) Then
+	   OpenSheetWithParm( w_vzt_vendor_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+ 
+
+end event
+
+on m_telephonebook.create
+call super::create
+this.text = "Telephone Book"
+this.toolbaritemname = "telephone_book_icon.bmp"
+this.toolbaritemtext = "tel book"
+this.toolbaritemorder = 42
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_telephonebook.destroy
+call super::destroy
+end on
+
+type m_2 from menu within m_data
+end type
+
+event clicked;  SetPointer( HourGlass! )
+If IsValid(w_vzt_part_edit) THEN
+	open(w_vzt_part_edit)
+	if w_vzt_part_edit.WindowState = Minimized! then
+		w_vzt_part_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_part_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+ 
+end event
+
+on m_2.create
+call super::create
+this.text = "Services && Supplies"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_2.destroy
+call super::destroy
+end on
+
+type m_3 from menu within m_data
+end type
+
+event clicked;  SetPointer( HourGlass! )
+If IsValid(w_vzt_svc_cont_edit) THEN
+	open(w_vzt_svc_cont_edit)
+	if w_vzt_svc_cont_edit.WindowState = Minimized! then
+		w_vzt_svc_cont_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_svc_cont_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+  
+
+end event
+
+on m_3.create
+call super::create
+this.text = "Contracts && Agreements"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_3.destroy
+call super::destroy
+end on
+
+type m_4 from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_lookup_edit) THEN
+	open(w_vzt_lookup_edit)
+	if w_vzt_lookup_edit.WindowState = Minimized! then
+		w_vzt_lookup_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_lookup_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+  
+
+end event
+
+on m_4.create
+call super::create
+this.text = "Lookup Table"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_4.destroy
+call super::destroy
+end on
+
+type m_5 from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_guest_edit) THEN
+	open(w_vzt_guest_edit)
+	if w_vzt_guest_edit.WindowState = Minimized! then
+		w_vzt_guest_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_guest_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+  
+end event
+
+on m_5.create
+call super::create
+this.text = "Guest / Owner Profiles"
+this.toolbaritemname = "profiles_icon.bmp"
+this.toolbaritemtext = "guest"
+this.toolbaritemorder = 43
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_5.destroy
+call super::destroy
+end on
+
+type m_6 from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_contact_edit_full) THEN
+	open(w_vzt_contact_edit_full)
+	if w_vzt_contact_edit_full.WindowState = Minimized! then
+		w_vzt_contact_edit_full.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "SS" ) ) Then
+	   OpenSheetWithParm( w_vzt_contact_edit_full, "0", w_main, 0, Original! )
+   end if
+END IF
+  
+end event
+
+on m_6.create
+call super::create
+this.text = "Edit Contacts"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_6.destroy
+call super::destroy
+end on
+
+type m_7 from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_alec_schedule) THEN
+	open(w_vzt_alec_schedule)
+	if w_vzt_alec_schedule.WindowState = Minimized! then
+		w_vzt_alec_schedule.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "AQ" ) ) Then
+	   OpenwithParm( w_vzt_alec_schedule, "0" )
+   end if
+END IF
+  
+end event
+
+on m_7.create
+call super::create
+this.text = "ALEC! Scheduler"
+this.microhelp = "sched"
+this.toolbaritemname = "alec1.ico"
+this.toolbaritemtext = "alec!"
+this.toolbaritemorder = 45
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_7.destroy
+call super::destroy
+end on
+
+type m_reports from menu within m_data
+end type
+
+on m_reports.create
+call super::create
+this.text = "Reports"
+this.toolbaritemname = "nestedreport!"
+this.toolbaritemtext = "reports"
+this.toolbaritemorder = 46
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_reports.destroy
+call super::destroy
+end on
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_mm_report_def_fund) THEN
+	open(w_vzt_mm_report_def_fund)
+	if w_vzt_mm_report_def_fund.WindowState = Minimized! then
+		w_vzt_mm_report_def_fund.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+		OpenSheetWithParm( w_vzt_mm_report_def_fund, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+  
+end event
+
+type m_0 from menu within m_data
+end type
+
+on m_0.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_approvallevels from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_appr_levels_edit) THEN
+	open(w_vzt_appr_levels_edit)
+	if w_vzt_appr_levels_edit.WindowState = Minimized! then
+		w_vzt_appr_levels_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+		OpenSheetWithParm( w_vzt_appr_levels_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+  
+end event
+
+on m_approvallevels.create
+call super::create
+this.text = "Approval Levels"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_approvallevels.destroy
+call super::destroy
+end on
+
+type m_purchaserequests from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_purreq_edit) THEN
+	open(w_vzt_purreq_edit)
+	if w_vzt_purreq_edit.WindowState = Minimized! then
+		w_vzt_purreq_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "RO" ) ) Then
+		OpenSheetWithParm( w_vzt_purreq_edit, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+  
+end event
+
+on m_purchaserequests.create
+call super::create
+this.text = "Purchase Requests"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_purchaserequests.destroy
+call super::destroy
+end on
+
+type m_stylemaintenance from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_styles_edit) THEN
+	open(w_styles_edit)
+	if w_styles_edit.WindowState = Minimized! then
+		w_styles_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "AQ" ) ) Then
+	   OpenwithParm( w_styles_edit, "0" )
+   end if
+END IF
+  
+end event
+
+on m_stylemaintenance.create
+call super::create
+this.visible = false
+this.text = "Style Maintenance"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_stylemaintenance.destroy
+call super::destroy
+end on
+
+type m_languages from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_lang_edit) THEN
+	open(w_vzt_lang_edit)
+	if w_vzt_lang_edit.WindowState = Minimized! then
+		w_vzt_lang_edit.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "AQ" ) ) Then
+	   OpenwithParm( w_vzt_lang_edit, "0" )
+   end if
+END IF
+  
+end event
+
+on m_languages.create
+call super::create
+this.visible = false
+this.text = "Languages"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_languages.destroy
+call super::destroy
+end on
+
+type m_languagetranslation from menu within m_data
+end type
+
+event clicked;   SetPointer( HourGlass! )
+If IsValid(w_vzt_lang_tran) THEN
+	open(w_vzt_lang_tran)
+	if w_vzt_lang_tran.WindowState = Minimized! then
+		w_vzt_lang_tran.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "AQ" ) ) Then
+	   OpenwithParm( w_vzt_lang_tran, "0" )
+   end if
+END IF
+  
+end event
+
+on m_languagetranslation.create
+call super::create
+this.visible = false
+this.text = "Language Translation"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_languagetranslation.destroy
+call super::destroy
+end on
+
+type m_sqltrace from menu within m_data
+end type
+
+event clicked;open(w_vzt_sqltrace)
+end event
+
+on m_sqltrace.create
+call super::create
+this.text = "SQL Trace"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_sqltrace.destroy
+call super::destroy
+end on
+
+type m_view from menu within m_main
+m_13 m_13
+m_allcalls m_allcalls
+m_pendingcalls m_pendingcalls
+m_timercalls m_timercalls
+m_guestcallback m_guestcallback
+m_-7 m_-7
+m_mod_complaint_view m_mod_complaint_view
+m_deptdailyresponsereport m_deptdailyresponsereport
+m_deptweeklyresponsereport m_deptweeklyresponsereport
+m_-4 m_-4
+m_guestcalledreport m_guestcalledreport
+m_guestdo-not-disturbcallreport m_guestdo-not-disturbcallreport
+m_-9 m_-9
+m_employeedeclinedcallreport m_employeedeclinedcallreport
+m_failedbenchmarkreport m_failedbenchmarkreport
+m_8 m_8
+m_-10 m_-10
+m_view10 m_view10
+m_view20 m_view20
+end type
+
+on m_view.create
+call super::create
+this.text = "&View"
+this.microhelp = "View Options."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_13=create m_13
+this.m_allcalls=create m_allcalls
+this.m_pendingcalls=create m_pendingcalls
+this.m_timercalls=create m_timercalls
+this.m_guestcallback=create m_guestcallback
+this.m_-7=create m_-7
+this.m_mod_complaint_view=create m_mod_complaint_view
+this.m_deptdailyresponsereport=create m_deptdailyresponsereport
+this.m_deptweeklyresponsereport=create m_deptweeklyresponsereport
+this.m_-4=create m_-4
+this.m_guestcalledreport=create m_guestcalledreport
+this.m_guestdo-not-disturbcallreport=create m_guestdo-not-disturbcallreport
+this.m_-9=create m_-9
+this.m_employeedeclinedcallreport=create m_employeedeclinedcallreport
+this.m_failedbenchmarkreport=create m_failedbenchmarkreport
+this.m_8=create m_8
+this.m_-10=create m_-10
+this.m_view10=create m_view10
+this.m_view20=create m_view20
+this.Item[UpperBound(this.Item)+1]=this.m_13
+this.Item[UpperBound(this.Item)+1]=this.m_allcalls
+this.Item[UpperBound(this.Item)+1]=this.m_pendingcalls
+this.Item[UpperBound(this.Item)+1]=this.m_timercalls
+this.Item[UpperBound(this.Item)+1]=this.m_guestcallback
+this.Item[UpperBound(this.Item)+1]=this.m_-7
+this.Item[UpperBound(this.Item)+1]=this.m_mod_complaint_view
+this.Item[UpperBound(this.Item)+1]=this.m_deptdailyresponsereport
+this.Item[UpperBound(this.Item)+1]=this.m_deptweeklyresponsereport
+this.Item[UpperBound(this.Item)+1]=this.m_-4
+this.Item[UpperBound(this.Item)+1]=this.m_guestcalledreport
+this.Item[UpperBound(this.Item)+1]=this.m_guestdo-not-disturbcallreport
+this.Item[UpperBound(this.Item)+1]=this.m_-9
+this.Item[UpperBound(this.Item)+1]=this.m_employeedeclinedcallreport
+this.Item[UpperBound(this.Item)+1]=this.m_failedbenchmarkreport
+this.Item[UpperBound(this.Item)+1]=this.m_8
+this.Item[UpperBound(this.Item)+1]=this.m_-10
+this.Item[UpperBound(this.Item)+1]=this.m_view10
+this.Item[UpperBound(this.Item)+1]=this.m_view20
+end on
+
+on m_view.destroy
+call super::destroy
+destroy(this.m_13)
+destroy(this.m_allcalls)
+destroy(this.m_pendingcalls)
+destroy(this.m_timercalls)
+destroy(this.m_guestcallback)
+destroy(this.m_-7)
+destroy(this.m_mod_complaint_view)
+destroy(this.m_deptdailyresponsereport)
+destroy(this.m_deptweeklyresponsereport)
+destroy(this.m_-4)
+destroy(this.m_guestcalledreport)
+destroy(this.m_guestdo-not-disturbcallreport)
+destroy(this.m_-9)
+destroy(this.m_employeedeclinedcallreport)
+destroy(this.m_failedbenchmarkreport)
+destroy(this.m_8)
+destroy(this.m_-10)
+destroy(this.m_view10)
+destroy(this.m_view20)
+end on
+
+type m_13 from menu within m_view
+m_15 m_15
+m_16 m_16
+m_12 m_12
+end type
+
+on m_13.create
+call super::create
+this.text = "Equipment Reports"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_15=create m_15
+this.m_16=create m_16
+this.m_12=create m_12
+this.Item[UpperBound(this.Item)+1]=this.m_15
+this.Item[UpperBound(this.Item)+1]=this.m_16
+this.Item[UpperBound(this.Item)+1]=this.m_12
+end on
+
+on m_13.destroy
+call super::destroy
+destroy(this.m_15)
+destroy(this.m_16)
+destroy(this.m_12)
+end on
+
+type m_15 from menu within m_13
+end type
+
+on m_15.create
+call super::create
+this.text = "Equipment Report by Category"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_15.destroy
+call super::destroy
+end on
+
+event clicked;
+
+SetPointer( HourGlass! )
+If IsValid(w_equipment_report_category) THEN
+	open(w_equipment_report_category)
+	if w_equipment_report_category.WindowState = Minimized! then
+		w_equipment_report_category.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "PB" ) ) Then
+	   OpenSheetWithParm( w_equipment_report_category, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+
+
+
+
+end event
+
+type m_16 from menu within m_13
+end type
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_equipment_report_zone) THEN
+	open(w_equipment_report_zone)
+	if w_equipment_report_zone.WindowState = Minimized! then
+		w_equipment_report_zone.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "PB" ) ) Then
+	   OpenSheetWithParm( w_equipment_report_zone, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_16.create
+call super::create
+this.text = "Equipment Report by Zone"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_16.destroy
+call super::destroy
+end on
+
+type m_12 from menu within m_13
+end type
+
+on m_12.create
+call super::create
+this.text = "Equipment Closed Calls Productivity Report"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_12.destroy
+call super::destroy
+end on
+
+event clicked;SetPointer( HourGlass! )
+If IsValid(w_equipment_report_productivity) THEN
+	open(w_equipment_report_productivity)
+	if w_equipment_report_productivity.WindowState = Minimized! then
+		w_equipment_report_productivity.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "PB" ) ) Then
+	   OpenSheetWithParm( w_equipment_report_productivity, "0", gnv_appman.iw_frame, 0, Original! )
+   end if
+END IF
+
+end event
+
+type m_allcalls from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+//OpenSheet( w_all_calls, "w_all_calls", w_main, 0, Original! )
+OpenSheet( w_closed_calls, "w_closed_calls", w_main, 0, Original! )
+
+end event
+
+on m_allcalls.create
+call super::create
+this.visible = false
+this.text = "&Closed Calls"
+this.enabled = false
+this.microhelp = "View a browse screen of all Closed calls currently on-line."
+this.toolbaritemtext = "Closed Calls"
+this.toolbaritemorder = 8
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_allcalls.destroy
+call super::destroy
+end on
+
+type m_pendingcalls from menu within m_view
+end type
+
+on clicked;SetPointer( HourGlass! )
+OpenSheet( w_pending_calls, "w_pending_calls", w_main, 0, Original! )
+
+end on
+
+on m_pendingcalls.create
+call super::create
+this.text = "&Pending Calls~tCtrl+Shift+F7"
+this.shortcut = 1398
+this.microhelp = "Browse screen of Scheduled, Open, Pending and Recurring calls."
+this.toolbaritemname = "custom038!"
+this.toolbaritemtext = "Pending"
+this.toolbaritemorder = 3
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_pendingcalls.destroy
+call super::destroy
+end on
+
+type m_timercalls from menu within m_view
+end type
+
+on clicked;SetPointer( HourGlass! )
+OpenSheet( w_timer_calls, "w_timer_calls", w_main, 0, Original! )
+
+end on
+
+on m_timercalls.create
+call super::create
+this.text = "&Timer Calls~tCtrl+Shift+F8"
+this.shortcut = 1399
+this.microhelp = "Browse screen of all alarmed guest calls which exceed response benchmark."
+this.toolbaritemname = "custom022!"
+this.toolbaritemtext = "Timer"
+this.toolbaritemorder = 4
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_timercalls.destroy
+call super::destroy
+end on
+
+type m_guestcallback from menu within m_view
+end type
+
+on m_guestcallback.create
+call super::create
+this.text = "&Guest Call Back~tCtrl+Shift+F12"
+this.shortcut = 1403
+this.microhelp = "Initiate guest call back."
+this.toolbaritemname = "guest_call_back_icon.bmp"
+this.toolbaritemtext = "Call Back"
+this.toolbaritemorder = 15
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_guestcallback.destroy
+call super::destroy
+end on
+
+event clicked;SetPointer( HourGlass! )
+OpenSheet( w_call_back, "w_call_back", w_main, 0, Layered! )
+
+end event
+
+type m_-7 from menu within m_view
+end type
+
+on m_-7.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-7.destroy
+call super::destroy
+end on
+
+type m_mod_complaint_view from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+OpenSheet( w_mod_view_complaint, "w_mod_view_complaint", w_main, 0, Original! )
+end event
+
+on m_mod_complaint_view.create
+call super::create
+this.text = "MOD_Complaint_View"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_mod_complaint_view.destroy
+call super::destroy
+end on
+
+type m_deptdailyresponsereport from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+//OpenSheet( w_r_dailyresp, "w_r_dailyresp", w_main, 0, Original! )
+
+
+If IsValid(w_r_dailyresp) THEN
+	open(w_r_dailyresp)
+	if w_r_dailyresp.WindowState = Minimized! then
+		w_r_dailyresp.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_dailyresp, "0", "w_r_dailyresp", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_deptdailyresponsereport.create
+call super::create
+this.text = "Dept Daily Response Report"
+this.microhelp = "7-day Response trend"
+this.toolbaritemname = "datawindow1!"
+this.toolbaritemtext = "Daily Resp"
+this.toolbaritemorder = 12
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_deptdailyresponsereport.destroy
+call super::destroy
+end on
+
+type m_deptweeklyresponsereport from menu within m_view
+end type
+
+on m_deptweeklyresponsereport.create
+call super::create
+this.text = "Dept Weekly Response Report"
+this.microhelp = "7-week Response trend"
+this.toolbaritemname = "datawindow2!"
+this.toolbaritemtext = "Weekly Resp"
+this.toolbaritemorder = 13
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+event clicked;SetPointer( HourGlass! )
+//OpenSheet( w_r_weeklyresp, "w_r_weeklyresp", w_main, 0, Original! )
+
+
+If IsValid(w_r_weeklyresp) THEN
+	open(w_r_weeklyresp)
+	if w_r_weeklyresp.WindowState = Minimized! then
+		w_r_weeklyresp.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_weeklyresp, "0", "w_r_weeklyresp", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_deptweeklyresponsereport.destroy
+call super::destroy
+end on
+
+type m_-4 from menu within m_view
+end type
+
+on m_-4.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-4.destroy
+call super::destroy
+end on
+
+type m_guestcalledreport from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_r_guest_called_back) THEN
+	open(w_r_guest_called_back)
+	if w_r_guest_called_back.WindowState = Minimized! then
+		w_r_guest_called_back.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_guest_called_back, "0", "w_r_guest_called_back", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_guestcalledreport.create
+call super::create
+this.text = "Guest Called Back Report"
+this.microhelp = "Guests called after service. Displays satisfaction scores."
+this.toolbaritemname = "guest_call_back_dark_icon_16.ico"
+this.toolbaritemtext = "CallBack Rpt"
+this.toolbaritemorder = 16
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_guestcalledreport.destroy
+call super::destroy
+end on
+
+type m_guestdo-not-disturbcallreport from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_r_dndcalls) THEN
+	open(w_r_dndcalls)
+	if w_r_dndcalls.WindowState = Minimized! then
+		w_r_dndcalls.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_dndcalls, "0", "w_r_dndcalls", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_guestdo-not-disturbcallreport.create
+call super::create
+this.text = "Guest Do-Not-Disturb Call Report"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_guestdo-not-disturbcallreport.destroy
+call super::destroy
+end on
+
+type m_-9 from menu within m_view
+end type
+
+on m_-9.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-9.destroy
+call super::destroy
+end on
+
+type m_employeedeclinedcallreport from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_r_declinedcalls) THEN
+	open(w_r_guest_called_back)
+	if w_r_declinedcalls.WindowState = Minimized! then
+		w_r_declinedcalls.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_declinedcalls, "0", "w_r_declinedcalls", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_employeedeclinedcallreport.create
+call super::create
+this.text = "Employee Declined Call Report"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_employeedeclinedcallreport.destroy
+call super::destroy
+end on
+
+type m_failedbenchmarkreport from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_r_fail_benchmark) THEN
+	open(w_r_fail_benchmark)
+	if w_r_fail_benchmark.WindowState = Minimized! then
+		w_r_fail_benchmark.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_fail_benchmark, "0", "w_r_fail_benchmark", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_failedbenchmarkreport.create
+call super::create
+this.text = "Failed Benchmark Report"
+this.microhelp = "Report on slow service vs. established response benchmark for task."
+this.toolbaritemname = "addwatch!"
+this.toolbaritemtext = "Failed Service"
+this.toolbaritemorder = 9
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_failedbenchmarkreport.destroy
+call super::destroy
+end on
+
+type m_8 from menu within m_view
+end type
+
+event clicked;SetPointer( HourGlass! )
+
+If IsValid(w_r_equipment) THEN
+	open(w_r_equipment)
+	if w_r_equipment.WindowState = Minimized! then
+		w_r_equipment.WindowState = Normal!
+	end if
+ELSE
+   If Is_PasswordOK( Get_Event_Security( "QO" ) ) Then
+	   OpenSheetWithParm( w_r_equipment, "0", "w_r_equipment", 	w_main, 0, Original! )
+   end if
+END IF
+
+end event
+
+on m_8.create
+call super::create
+this.text = "Equipment Scheduled Task Report"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_8.destroy
+call super::destroy
+end on
+
+type m_-10 from menu within m_view
+end type
+
+on m_-10.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-10.destroy
+call super::destroy
+end on
+
+type m_view10 from menu within m_view
+end type
+
+on m_view10.create
+call super::create
+this.text = "Equipment Explorer by &Zone"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_view10.destroy
+call super::destroy
+end on
+
+event clicked;
+SetPointer( HourGlass! )
+Open(w_equipment_new)
+end event
+
+type m_view20 from menu within m_view
+end type
+
+on m_view20.create
+call super::create
+this.text = "Equipment Explorer by &Category"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_view20.destroy
+call super::destroy
+end on
+
+event clicked;SetPointer( HourGlass! )
+OpenSheet( w_tables1, "w_tables1", gnv_appman.iw_frame, 0, Original! )
+
+end event
+
+type m_window from menu within m_main
+m_tile m_tile
+m_layer m_layer
+m_cascade m_cascade
+m_-3 m_-3
+m_systemsettings m_systemsettings
+m_toolbaroptions m_toolbaroptions
+m_timecalculator m_timecalculator
+m_-6 m_-6
+m_messagepaging m_messagepaging
+end type
+
+on m_window.create
+call super::create
+this.text = "&Window"
+this.microhelp = "Window Options."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_tile=create m_tile
+this.m_layer=create m_layer
+this.m_cascade=create m_cascade
+this.m_-3=create m_-3
+this.m_systemsettings=create m_systemsettings
+this.m_toolbaroptions=create m_toolbaroptions
+this.m_timecalculator=create m_timecalculator
+this.m_-6=create m_-6
+this.m_messagepaging=create m_messagepaging
+this.Item[UpperBound(this.Item)+1]=this.m_tile
+this.Item[UpperBound(this.Item)+1]=this.m_layer
+this.Item[UpperBound(this.Item)+1]=this.m_cascade
+this.Item[UpperBound(this.Item)+1]=this.m_-3
+this.Item[UpperBound(this.Item)+1]=this.m_systemsettings
+this.Item[UpperBound(this.Item)+1]=this.m_toolbaroptions
+this.Item[UpperBound(this.Item)+1]=this.m_timecalculator
+this.Item[UpperBound(this.Item)+1]=this.m_-6
+this.Item[UpperBound(this.Item)+1]=this.m_messagepaging
+end on
+
+on m_window.destroy
+call super::destroy
+destroy(this.m_tile)
+destroy(this.m_layer)
+destroy(this.m_cascade)
+destroy(this.m_-3)
+destroy(this.m_systemsettings)
+destroy(this.m_toolbaroptions)
+destroy(this.m_timecalculator)
+destroy(this.m_-6)
+destroy(this.m_messagepaging)
+end on
+
+type m_tile from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Tile! )
+end on
+
+on m_tile.create
+call super::create
+this.text = "T&ile"
+this.microhelp = "Arrange all open windows at roughly equal size, all showing with no overlap."
+this.toolbaritemname = "tile!"
+this.toolbaritemtext = "Tile"
+this.toolbaritemorder = 92
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_tile.destroy
+call super::destroy
+end on
+
+type m_layer from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Layer! )
+end on
+
+on m_layer.create
+call super::create
+this.text = "&Layer"
+this.microhelp = "Zoom all windows (almost maximize but keep title bars) and overlap w/layer order; reverse order as last accessed."
+this.toolbaritemname = "layer!"
+this.toolbaritemtext = "Layer"
+this.toolbaritemorder = 94
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_layer.destroy
+call super::destroy
+end on
+
+type m_cascade from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+ParentWindow.Arrangesheets( Cascade! )
+end on
+
+on m_cascade.create
+call super::create
+this.text = "&Cascade"
+this.microhelp = "Regularize (approx 25% screen size) all windows, overlap and layer as last accessed."
+this.toolbaritemname = "cascade!"
+this.toolbaritemtext = "Cascade"
+this.toolbaritemorder = 96
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_cascade.destroy
+call super::destroy
+end on
+
+type m_-3 from menu within m_window
+end type
+
+on m_-3.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-3.destroy
+call super::destroy
+end on
+
+type m_systemsettings from menu within m_window
+end type
+
+event clicked;Run("Notepad.exe " + cINIPath + "he_dts.ini", Maximized! )
+// Now let's re-read all global INI settngs, anythng else
+// will need to be reset by whatever opens or timers it...keep
+// that in mind when hooking up window or system var's to the .INI file.
+If not f_System_Setup() Then 
+	MessageBox(	"System ERROR", &
+					"Unable to properly reset System Settings!", &
+					Exclamation!)
+	HALT CLOSE	// OK, so password prompts can stop us...we're not perfect.
+End If
+
+
+
+
+end event
+
+on m_systemsettings.create
+call super::create
+this.text = "S&ystem Settings"
+this.microhelp = "Modify the Windows INI file used to hold System Settings."
+this.toolbaritemvisible = false
+this.toolbaritemtext = "System"
+this.toolbaritemorder = 43
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_systemsettings.destroy
+call super::destroy
+end on
+
+type m_toolbaroptions from menu within m_window
+end type
+
+on clicked;SetPointer( HourGlass! )
+
+OpenWithParm (w_set_toolbars, ParentWindow)
+
+// Open( w_r_ToolBarOptions, w_main )
+end on
+
+on m_toolbaroptions.create
+call super::create
+this.text = "Tool&bar Options..."
+this.microhelp = "Show, hide and place Application Toolbar and/or display its text description."
+this.toolbaritemvisible = false
+this.toolbaritemname = "custom041!"
+this.toolbaritemtext = "Toolbar"
+this.toolbaritemorder = 45
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_toolbaroptions.destroy
+call super::destroy
+end on
+
+type m_timecalculator from menu within m_window
+end type
+
+on clicked;// open calculator
+SetPointer( HourGlass! )
+Open( w_calc_time, w_main )
+end on
+
+on m_timecalculator.create
+call super::create
+this.visible = false
+this.text = "Time Calc&ulator~tCtrl+Shift+F9"
+this.enabled = false
+this.shortcut = 1400
+this.microhelp = "A pop-up time duration Calculator used to convert seconds, minutes, hours, days, weeks, months and years amongst each other."
+this.toolbaritemtext = "Calculator"
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_timecalculator.destroy
+call super::destroy
+end on
+
+type m_-6 from menu within m_window
+end type
+
+on m_-6.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-6.destroy
+call super::destroy
+end on
+
+type m_messagepaging from menu within m_window
+end type
+
+on m_messagepaging.create
+call super::create
+this.text = "&Message Paging"
+this.enabled = false
+this.microhelp = "Group Paging"
+this.toolbaritemvisible = false
+this.toolbaritemname = "pager.bmp"
+this.toolbaritemtext = "Message Paging"
+this.toolbaritemorder = 41
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_messagepaging.destroy
+call super::destroy
+end on
+
+type m_help from menu within m_main
+m_context m_context
+m_index m_index
+m_search m_search
+m_- m_-
+m_about m_about
+end type
+
+on m_help.create
+call super::create
+this.text = "&Help"
+this.microhelp = "Help Options."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+this.m_context=create m_context
+this.m_index=create m_index
+this.m_search=create m_search
+this.m_-=create m_-
+this.m_about=create m_about
+this.Item[UpperBound(this.Item)+1]=this.m_context
+this.Item[UpperBound(this.Item)+1]=this.m_index
+this.Item[UpperBound(this.Item)+1]=this.m_search
+this.Item[UpperBound(this.Item)+1]=this.m_-
+this.Item[UpperBound(this.Item)+1]=this.m_about
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_context)
+destroy(this.m_index)
+destroy(this.m_search)
+destroy(this.m_-)
+destroy(this.m_about)
+end on
+
+type m_context from menu within m_help
+end type
+
+event clicked;integer nResponse
+string cHelpKey
+
+//nResponse = MessageBox( "Please Note", &
+//					"Please watch the bottom line of the main " + &
+//					"window for instant " + &
+//					"help at any time by placing the cursor over the " + &
+//					"area of the screen you are interested in.  Would you like to view the on-line " + &
+//					"help system for " + cAppName + " " + cAppVersion + "?"&
+//					, Question!, YesNo!, 1 )
+//If nResponse = 1 Then
+	SetPointer( HourGlass! )
+//	cHelpKey = "not yet available"
+//	ShowHelp( cHelpPath + cHelpFile, keyword!, cHelpKey )
+	ShowHelp( cHelpPath + cHelpFile, index! )
+//End If
+
+end event
+
+on m_context.create
+call super::create
+this.text = "Co&ntents"
+this.microhelp = "Context-Sensitive Help, based on the last selected screen object, within the Help Index."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_context.destroy
+call super::destroy
+end on
+
+type m_index from menu within m_help
+end type
+
+event clicked;integer nResponse
+string cHelpKey
+
+//nResponse = MessageBox( "Please Note", &
+//					"Please watch the bottom line of the main " + &
+//					"window for instant " + &
+//					"help at any time by placing the cursor over the " + &
+//					"area of the screen you are interested in.  Would you like to view the on-line " + &
+//					"help system for " + cAppName + " " + cAppVersion + "?"&
+//					, Question!, YesNo!, 1 )
+//If nResponse = 1 Then
+	SetPointer( HourGlass! )
+	cHelpKey = "not yet available"
+	ShowHelp( cHelpPath + cHelpFile, index! )
+//End If
+
+end event
+
+on m_index.create
+call super::create
+this.visible = false
+this.text = "&Index~tF1"
+this.shortcut = 112
+this.microhelp = "Show the Help Index (i.e., Help Table-of-Contents)."
+this.toolbaritemname = "help!"
+this.toolbaritemtext = "&F&1 - Help"
+this.toolbaritemorder = 99
+this.toolbaritemspace = 1
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_index.destroy
+call super::destroy
+end on
+
+type m_search from menu within m_help
+end type
+
+on clicked;integer nResponse
+string cHelpKey
+
+nResponse = MessageBox( "Please Note", &
+					"Please watch the bottom line of the main " + &
+					"window for instant " + &
+					"help at any time by placing the cursor over the " + &
+					"area of the screen you are interested in.  Would you like to view the on-line " + &
+					"help system for " + cAppName + " " + cAppVersion + "?"&
+					, Question!, YesNo!, 1 )
+If nResponse = 1 Then
+	SetPointer( HourGlass! )
+	cHelpKey = "not yet available"
+	ShowHelp( cHelpPath + cHelpFile, keyword!, "" )
+End If
+
+end on
+
+on m_search.create
+call super::create
+this.visible = false
+this.text = "&Search~tCtrl+F1"
+this.shortcut = 368
+this.microhelp = "Search the Help Index for application related key words and phrases."
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_search.destroy
+call super::destroy
+end on
+
+type m_- from menu within m_help
+end type
+
+on m_-.create
+call super::create
+this.text = "-"
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_-.destroy
+call super::destroy
+end on
+
+type m_about from menu within m_help
+end type
+
+on clicked;SetPointer( HourGlass! )
+//OpenSheet( w_about, "w_about", w_main, 3, Original! )
+Open( w_about, w_main )
+end on
+
+on m_about.create
+call super::create
+this.text = "&About"
+this.microhelp = "Application version, copyright and available memory information."
+this.toolbaritemtext = "About"
+this.toolbaritemorder = 98
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_about.destroy
+call super::destroy
+end on
+
+type m_11 from menu within m_main
+end type
+
+on m_11.create
+call super::create
+this.menutextcolor = 134217735
+this.menubackcolor = 134217732
+this.menuhighlightcolor = 134217741
+this.textsize = 8
+this.weight = 400
+this.facename = "Tahoma"
+this.titlebackcolor = 134217730
+this.bitmapbackcolor = 12632256
+this.menubitmaps = true
+this.titlegradient = true
+this.toolbartextcolor = 134217746
+this.toolbarbackcolor = 67108864
+this.toolbarhighlightcolor = 134217741
+this.toolbargradient = true
+this.bitmapgradient = true
+end on
+
+on m_11.destroy
+call super::destroy
+end on
+

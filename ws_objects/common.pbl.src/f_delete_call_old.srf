@@ -1,0 +1,44 @@
+﻿$PBExportHeader$f_delete_call_old.srf
+global type f_delete_call_old from function_object
+end type
+
+forward prototypes
+global function boolean f_delete_call_old (string callnumber, integer calltable)
+end prototypes
+
+global function boolean f_delete_call_old (string callnumber, integer calltable);// callTable 1 = 'timercalls'
+//			    2 = 'pendingcalls'
+//           5 = 'closedcalls'
+//				 6 = 'timercalls'
+
+CHOOSE CASE callTable
+	CASE 1
+		DELETE FROM timercalls
+			where call_number = :callNumber;
+	CASE 2
+		DELETE FROM pendingcalls
+		where call_number = :callNumber;		
+	CASE 5
+		DELETE FROM closedcalls
+		where call_number = :callNumber;	
+	CASE 6
+		DELETE FROM timercalls
+			where call_number = :callNumber;
+END CHOOSE
+string ls_error, ls_code
+if sqlca.sqlcode <> 0 then
+//	MessageBox("DB Error","Delete call " + callNumber + " error !" )
+	ls_error =  sqlca.SQLerrtext
+	ls_code	=  string( sqlca.SQLCode) 
+	ROLLBACK;
+	MessageBox('Database Commit Error', 'Failed on commit. ~r~n~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+	return false
+end if
+
+commit;
+
+return true
+
+
+end function
+

@@ -1,0 +1,81 @@
+﻿$PBExportHeader$d_gcc_rpt_rebates_by_dept_nocomp.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=16777215 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=344 color="536870912" )
+summary(height=360 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=64 color="536870912" )
+table(column=(type=number updatewhereclause=yes name=gcc_gccid dbname="gcc.gccid" )
+ column=(type=char(50) updatewhereclause=yes name=guest_guest_id dbname="guest.guest_id" )
+ column=(type=char(20) updatewhereclause=yes name=guest_last_name dbname="guest.last_name" )
+ column=(type=char(15) updatewhereclause=yes name=guest_first_name dbname="guest.first_name" )
+ column=(type=char(15) updatewhereclause=yes name=closed_bydept dbname="dtscalls.closed_bydept" )
+ column=(type=datetime updatewhereclause=yes name=call_indate dbname="dtscalls.call_indate" )
+ column=(type=char(25) updatewhereclause=yes name=subproblem dbname="dtscalls.subproblem" )
+ column=(type=decimal(2) updatewhereclause=yes name=amount dbname="dtscalls.amount" )
+ retrieve="  SELECT gcc.gccid,   
+         guest.guest_id,   
+         guest.last_name,   
+         guest.first_name,   
+         c.closed_bydept,
+			c.call_indate,
+			c.subproblem ,
+			c.amount
+    FROM gcc,   
+         guest,   
+        	dtscalls c 
+   WHERE gcc.guest_account = guest.account 
+        	AND c.gcc_id = gcc.gccid  
+			AND c.problem = 'Rebates' 
+		 
+		/*1
+			 AND
+				( 	{ts ':FDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':TDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					c.call_indate BETWEEN 
+					{ts ':FDATE 00:00:00.000000'} AND {ts ':TDATE 23:59:59.777000'} 
+				)
+			1*/
+			/*1
+			 AND
+				( 	{ts ':ARRDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					{ts ':DEPDATE 00:00:00.000000'} < {ts '1900-01-01 00:00:00.000000'} OR
+					gcc.checkin_dt BETWEEN 
+					{ts ':ARRDATE 00:00:00.000000'} AND {ts ':DEPDATE 23:59:59.777000'} 
+				) 
+			1*/
+
+			/*2
+		 	 AND ( '*ALL*' IN (':DEPT') OR '' IN  (':DEPT') OR c.closed_bydept IN (':DEPT') )
+			 2*/	
+ 
+			/*2
+		 	 AND ( '*ALL*' IN (';COMP') OR '' IN  (';COMP') OR guest.comp_name IN (';COMP') )
+			 2*/	
+"  sort="closed_bydept A guest_guest_id A gcc_gccid A " )
+group(level=1 header.height=80 trailer.height=68 by=("closed_bydept" ) header.color="536870912" trailer.color="536870912" )
+rectangle(band=header x="14" y="268" height="68" width="2821" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+text(band=header alignment="0" text="Rebates by Department"border="0" color="0" x="1298" y="8" height="80" width="795"  font.face="Times New Roman" font.height="-12" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Department"border="0" color="65535" x="23" y="272" height="56" width="343"  name=gcc_history_actioncode_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Guest Name"border="0" color="65535" x="617" y="272" height="56" width="366"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="GCC No."border="0" color="65535" x="1330" y="272" height="56" width="247"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Date"border="0" color="65535" x="1650" y="272" height="56" width="137"  name=gcc_history_action_dt_t  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Subtask"border="0" color="65535" x="1888" y="272" height="56" width="238"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="Amount"border="0" color="65535" x="2610" y="272" height="56" width="219"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="0" text="From:"border="0" color="0" x="1234" y="112" height="56" width="155"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="min ( call_indate )"border="0" color="0" x="1403" y="112" height="56" width="320" format="[shortdate]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="To:"border="0" color="0" x="1783" y="112" height="56" width="91"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="max( call_indate )"border="0" color="0" x="1893" y="112" height="56" width="320" format="[shortdate]"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header.1 alignment="0" expression="if (IsNull(  closed_bydept ) or trim(  closed_bydept )='', '* UNASSIGNED *',  closed_bydept )"border="0" color="0" x="23" y="24" height="56" width="571" format="[general]"  name=dept  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="617" y="4" height="56" width="270" format="[general]"  name=guest_first_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="901" y="4" height="56" width="416" format="[general]"  name=guest_last_name edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1618" y="4" height="56" width="261" format="[shortdate]"  name=call_indate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="1335" y="4" height="56" width="247" format="[general]"  name=gcc_gccid edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="0" color="0" x="2505" y="4" height="56" width="297" format="$#,##0.00;[RED]($#,##0.00); ; "  name=amount edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="1893" y="4" height="56" width="590" format="[general]"  name=subproblem edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Times New Roman" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="0" expression="'Total for '+ if (IsNull(  closed_bydept ) or trim(  closed_bydept )='', '* UNASSIGNED *',  closed_bydept )"border="0" color="0" x="23" y="0" height="56" width="873" format="[general]"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+rectangle(band=trailer.1 x="59" y="52" height="4" width="2743" brush.hatch="6" brush.color="0" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="0" )
+compute(band=trailer.1 alignment="1" expression="sum(amount for group 1)"border="0" color="0" x="2505" y="0" height="56" width="297" format="$#,##0.00;[RED]($#,##0.00)"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=summary alignment="0" text="Total for all departments:"border="0" color="0" x="23" y="8" height="52" width="741"  font.face="Times New Roman" font.height="-8" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=summary alignment="1" expression="sum(amount for all)"border="0" color="0" x="2505" y="4" height="56" width="297" format="$#,##0.00;[RED]($#,##0.00)"  font.face="Times New Roman" font.height="-10" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

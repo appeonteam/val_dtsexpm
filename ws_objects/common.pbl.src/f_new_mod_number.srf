@@ -1,0 +1,42 @@
+﻿$PBExportHeader$f_new_mod_number.srf
+global type f_new_mod_number from function_object
+end type
+
+forward prototypes
+global function double f_new_mod_number ()
+end prototypes
+
+global function double f_new_mod_number ();double dNewCallNumber
+string sNewCallNumber,  ls_error, ls_code
+
+UPDATE sys_settings
+SET last_callnum =  convert(char(10),convert(double,last_callnum) + 1) 
+WHERE phony_key   = '2';
+
+
+If sqlca.SQLCode <> 0 Then        
+	ls_error =  sqlca.SQLerrtext
+	ls_code	=  string( sqlca.SQLCode) 
+	ROLLBACK;
+	MessageBox('Database Error', 'Failed to create new call number. ~r~n~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+	return -1
+END IF
+
+// get last call number
+SELECT "sys_settings"."last_callnum"
+    INTO :sNewCallNumber
+    FROM "sys_settings"
+	 WHERE "sys_settings"."phony_key" = '2';
+
+If sqlca.SQLCode <> 0 Then       // Database ERROR...lost connection...who knows?
+ 	ls_error =  sqlca.SQLerrtext
+	ls_code	=  string( sqlca.SQLCode) 
+	ROLLBACK;
+	MessageBox('Database Error', 'Failed to select new call number.~r~n~r~nCode:'+ls_code+'~r~nMessage:'+ls_error)
+	return -1
+END IF
+COMMIT; // !!!!!!!!!!!!!!!! 
+dNewCallNumber = double ( sNewCallNumber)
+return dNewCallNumber
+end function
+

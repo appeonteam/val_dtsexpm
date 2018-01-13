@@ -1,0 +1,135 @@
+﻿$PBExportHeader$d_client_relations_edit.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=80269528 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes name=person_id dbname="vzt_person_relation.person_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes name=related_id dbname="vzt_person_relation.related_id" )
+ column=(type=char(20) update=yes updatewhereclause=yes key=yes name=relation_type dbname="vzt_person_relation.relation_type" )
+ column=(type=datetime update=yes updatewhereclause=yes name=date_from dbname="vzt_person_relation.date_from" )
+ column=(type=date update=yes updatewhereclause=yes name=date_to dbname="vzt_person_relation.date_to" )
+ column=(type=char(100) update=yes updatewhereclause=yes name=place_start dbname="vzt_person_relation.place_start" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=city_start dbname="vzt_person_relation.city_start" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=country_start dbname="vzt_person_relation.country_start" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=place_end dbname="vzt_person_relation.place_end" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=city_end dbname="vzt_person_relation.city_end" )
+ column=(type=char(50) update=yes updatewhereclause=yes name=country_end dbname="vzt_person_relation.country_end" )
+ column=(type=char(30) updatewhereclause=yes name=vzt_person_last_name dbname="vzt_person.last_name" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_person_first_name dbname="vzt_person.first_name" )
+ column=(type=char(20) updatewhereclause=yes name=vzt_person_middle_init dbname="vzt_person.middle_init" )
+ column=(type=char(1) updatewhereclause=yes name=vzt_person_sex dbname="vzt_person.sex" )
+ column=(type=datetime updatewhereclause=yes name=vzt_person_birthdate dbname="vzt_person.birthdate" )
+ retrieve="  SELECT r.person_id,   
+         r.related_id,   
+         r.relation_type,   
+         r.date_from,   
+         r.date_to,   
+         r.place_start,   
+         r.city_start,   
+         r.country_start,   
+         r.place_end,   
+         r.city_end,   
+         r.country_end  ,
+			p1.last_name,
+			p1.first_name,
+			p1.middle_init,
+			p1.sex ,
+			p1.birthdate
+
+
+    FROM vzt_person_relation  r , vzt_person p1
+   WHERE r.person_id = :ai_person_id    
+			and p1.id = r.related_id 
+         and r.relation_type IN ( 'CHILD', 'PARENT', 'SIBLING') 
+/* forward direction */
+ UNION
+ SELECT r.person_id,   
+         r.related_id,   
+         'PARENT',   
+         r.date_from,   
+         r.date_to,   
+         r.place_start,   
+         r.city_start,   
+         r.country_start,   
+         r.place_end,   
+         r.city_end,   
+         r.country_end  ,
+			p1.last_name,
+			p1.first_name,
+			p1.middle_init,
+			p1.sex ,
+			p1.birthdate
+
+
+    FROM vzt_person_relation  r , vzt_person p1
+   WHERE (r.related_id = :ai_person_id  and p1.id = r.person_id 
+         and r.relation_type IN ( 'CHILD') 
+				) /* reverse the relationship !!! */
+
+ UNION
+ SELECT r.person_id,   
+         r.related_id,   
+         'CHILD',   
+         r.date_from,   
+         r.date_to,   
+         r.place_start,   
+         r.city_start,   
+         r.country_start,   
+         r.place_end,   
+         r.city_end,   
+         r.country_end  ,
+			p1.last_name,
+			p1.first_name,
+			p1.middle_init,
+			p1.sex ,
+			p1.birthdate
+
+
+    FROM vzt_person_relation  r , vzt_person p1
+   WHERE (r.related_id = :ai_person_id  and p1.id = r.person_id 
+         and r.relation_type IN ( 'PARENT') 
+				) /* reverse the relationship !!! */
+
+
+ UNION
+ SELECT r.person_id,   
+         r.related_id,   
+         r.relation_type,   
+         r.date_from,   
+         r.date_to,   
+         r.place_start,   
+         r.city_start,   
+         r.country_start,   
+         r.place_end,   
+         r.city_end,   
+         r.country_end  ,
+			p1.last_name,
+			p1.first_name,
+			p1.middle_init,
+			p1.sex ,
+			p1.birthdate
+
+
+    FROM vzt_person_relation  r , vzt_person p1
+   WHERE (r.related_id = :ai_person_id  and p1.id = r.person_id 
+         and r.relation_type IN ( 'SIBLING') 
+				) /* reversed relationship is the same - simmetrical !!! */
+
+
+
+
+" update="vzt_person_relation" updatewhere=0 updatekeyinplace=yes arguments=(("ai_person_id", number))  sort="relation_type A " )
+group(level=1 header.height=64 trailer.height=0 by=("relation_type" ) header.color="536870912" trailer.color="536870912" )
+compute(band=header.1 alignment="0" expression="if ( relation_type = 'CHILD', ' Children:', if ( relation_type = 'SPOUSE', ' Husbands/Wives:', if ( relation_type = 'PARENT', ' Parents:','*******' )))"border="0" color="16777215" x="18" y="4" height="56" width="2450" format="[general]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="128" )
+compute(band=detail alignment="0" expression="f_vzt_relation_detail (  relation_type ,  vzt_person_sex )"border="0" color="0" x="1454" y="16" height="56" width="311" format="[general]"  name=relation_detail  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=10 border="5" color="0" x="23" y="16" height="56" width="416" format="[general]"  name=relation_type dddw.name=d_dddw_relation_type dddw.displaycolumn=descr dddw.datacolumn=code dddw.percentwidth=100 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=yes dddw.case=any dddw.vscrollbar=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if ( isNull ( vzt_person_first_name) ,'', trim(vzt_person_first_name)) + 
+if ( isNull ( vzt_person_middle_init) ,' ', ' ' +  trim(vzt_person_middle_init) +' ') +
+if ( isNull ( vzt_person_last_name) ,'',  trim(vzt_person_last_name) ) "border="0" color="0" x="466" y="16" height="56" width="974" format="[general]"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="DOB:"border="0" color="0" x="1778" y="16" height="56" width="119"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="0" x="1911" y="16" height="56" width="325" format="[shortdate]"  name=vzt_person_birthdate edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=detail alignment="0" text="Age:"border="0" color="0" x="2258" y="16" height="56" width="128"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" year( today() ) -  year (vzt_person_birthdate )"border="0" color="0" x="2400" y="16" height="56" width="137" format="[general]"  name=age  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

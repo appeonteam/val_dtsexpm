@@ -1,0 +1,45 @@
+﻿$PBExportHeader$d_qlist01.srd
+release 6;
+datawindow(units=0 timer_interval=0 color=12632256 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=8 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=60 color="536870912" )
+table(column=(type=decimal(0) update=yes updatewhereclause=yes name=answerid dbname="qgen_answer_choices.answerid" )
+ column=(type=decimal(0) update=yes updatewhereclause=yes name=questionid dbname="qgen_answer_choices.questionid" )
+ column=(type=char(200) update=yes updatewhereclause=yes name=answertxt dbname="qgen_answer_choices.answertxt" )
+ column=(type=long update=yes updatewhereclause=yes name=score dbname="qgen_answer_choices.score" )
+ column=(type=long update=yes updatewhereclause=yes name=sortorder dbname="qgen_answer_choices.sortorder" )
+ column=(type=char(200) updatewhereclause=yes name=qgen_questions_questiontxt dbname="qgen_questions.questiontxt" )
+ column=(type=char(3) updatewhereclause=yes name=qgen_questions_qtypeid dbname="qgen_questions.qtypeid" )
+ column=(type=long updatewhereclause=yes name=qgen_qtypes_maxchoices dbname="qgen_qtypes.maxchoices" )
+ column=(type=long updatewhereclause=yes name=response01 dbname="qgen_answer_choices.response01" values="1	1/2	2/" )
+ column=(type=long updatewhereclause=yes name=response02 dbname="qgen_answer_choices.response02" values="anstext	1/anstext	0" )
+ retrieve="  SELECT DBA.qgen_answer_choices.answerid,   
+         DBA.qgen_answer_choices.questionid,   
+         DBA.qgen_answer_choices.answertxt,   
+         DBA.qgen_answer_choices.score,   
+         DBA.qgen_answer_choices.sortorder,   
+         DBA.qgen_questions.questiontxt,   
+         DBA.qgen_questions.qtypeid,   
+         DBA.qgen_qtypes.maxchoices  ,
+			111111111 response01, 
+			111111111 response02
+    FROM DBA.qgen_answer_choices,   
+         DBA.qgen_questions,   
+         DBA.qgen_qtypes  
+   WHERE ( DBA.qgen_answer_choices.questionid = DBA.qgen_questions.questionid ) and  
+         ( DBA.qgen_questions.qtypeid = DBA.qgen_qtypes.qtypeid )   
+ORDER BY DBA.qgen_answer_choices.questionid ASC,   
+         DBA.qgen_answer_choices.sortorder ASC   
+" )
+group(level=1 header.height=60 trailer.height=0 by=("questionid" ) header.color="536870912" trailer.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=30 border="0" color="0" x="238" y="4" height="52" width="1605" format="[general]"  name=answertxt edit.limit=200 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="1" tabsequence=40 border="0" color="0" x="2016" y="4" height="52" width="274" format="[general]"  name=score edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="1" tabsequence=50 border="0" color="0" x="2295" y="4" height="52" width="274" format="[general]"  name=sortorder edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=6 alignment="0" tabsequence=32766 border="0" color="0" x="18" y="4" height="52" width="2651" format="[general]"  name=qgen_questions_questiontxt edit.limit=0 edit.case=any edit.autoselect=yes  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=7 alignment="0" tabsequence=0 border="0" color="0" x="2702" y="4" height="52" width="146"  name=qgen_questions_qtypeid  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=8 alignment="0" tabsequence=0 border="0" color="0" x="2875" y="4" height="52" width="169"  name=qgen_qtypes_maxchoices  font.face="MS Sans Serif" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="0" tabsequence=0 border="0" color="0" x="2738" y="0" height="52" width="261"  name=response01 radiobuttons.columns=2 radiobuttons.scale=no radiobuttons.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="0" tabsequence=0 border="0" color="0" x="3072" y="0" height="56" width="256"  name=response02 checkbox.text="anstext" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="MS Sans Serif" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")

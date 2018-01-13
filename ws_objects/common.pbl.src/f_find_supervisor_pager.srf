@@ -1,0 +1,63 @@
+﻿$PBExportHeader$f_find_supervisor_pager.srf
+global type f_find_supervisor_pager from function_object
+end type
+
+forward prototypes
+global function string f_find_supervisor_pager (string deptcd, string roomnum, datetime timerstart)
+end prototypes
+
+global function string f_find_supervisor_pager (string deptcd, string roomnum, datetime timerstart);string pagerId, zoneCd, allZone, zoneGrp
+
+allZone = 'Z0'
+
+if f_is_a_quickcall(deptcd,timerstart) then //force dept to QUICKCALL
+	deptcd='QUICKCALL'
+end if
+	
+
+SELECT  	unit_type, zone_group_code
+INTO		:zoneCd, :zoneGrp
+FROM		area
+WHERE		area_number = :roomnum;
+if sqlca.sqlcode < 0 then
+	MessageBox("DB Error",sqlca.sqlerrtext)
+	return ''
+end if
+
+SELECT 	distinct supervisor.supervisor_pager_id, pagers.pager_type 
+  INTO 	:pagerId, :cPageSysCd
+  FROM 	pagers, supervisor
+where  	pagers.active_ind = 'Y' 
+and		pagers.pager_id = supervisor.supervisor_pager_id
+and		supervisor.dept= :deptcd 
+and		(supervisor.zone_code = :zoneCd or supervisor.zone_code = :zoneGrp or supervisor.zone_code = :allZone);
+		
+if sqlca.sqlcode = 100 then
+  SELECT supervisor.supervisor_pager_id, pagers.pager_type 
+    INTO :pagerId, :cPageSysCd
+    FROM supervisor, pagers
+   WHERE ( supervisor.dept = 'DEFT' 
+	and	 supervisor_pager_id = pager_id)    ;  // ignore zone code for 'DEFT' pager
+			
+	if sqlca.sqlcode = 100 then
+		return ''
+	else
+		if sqlca.sqlcode < 0 then
+			MessageBox("DB Error",sqlca.sqlerrtext)
+			return ''
+		else
+			return pagerId
+		end if
+	end if
+else
+	if sqlca.sqlcode < 0 then
+		MessageBox("DB Error",sqlca.sqlerrtext)
+		return ''
+	else
+		return pagerId
+	end if
+end if		
+
+return ''
+end function
+

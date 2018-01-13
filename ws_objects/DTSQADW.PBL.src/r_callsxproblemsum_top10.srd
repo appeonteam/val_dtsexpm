@@ -1,0 +1,58 @@
+﻿$PBExportHeader$r_callsxproblemsum_top10.srd
+release 10.5;
+datawindow(units=2 timer_interval=60000 color=12632256 processing=0 HTMLDW=no print.printername="" print.documentname="Top 10 Task Report" print.orientation = 2 print.margin.left = 250 print.margin.right = 250 print.margin.top = 250 print.margin.bottom = 250 print.paper.source = 0 print.paper.size = 1 print.canusedefaultprinter=yes print.prompt=yes print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes print.preview.outline=yes hidegrayline=no )
+header(height=864 color="536870912" )
+summary(height=1968 color="536870912" )
+footer(height=260 color="536870912" )
+detail(height=177 color="536870912" )
+table(column=(type=char(25) updatewhereclause=yes name=problem dbname="top10task.problem" )
+ column=(type=char(25) updatewhereclause=yes name=subproblem dbname="top10task.subproblem" )
+ column=(type=long updatewhereclause=yes name=numcalls dbname="numCalls" )
+ column=(type=datetime updatewhereclause=yes name=frdt dbname="frDt" )
+ column=(type=datetime updatewhereclause=yes name=todt dbname="toDt" )
+ retrieve="  SELECT ~"top10task~".~"problem~",   
+         ~"top10task~".~"subproblem~",   
+         numCalls=count(*),   
+         frDt=min(~"top10task~".~"call_indate~"),   
+         toDt=max(~"top10task~".~"call_outdate~")  
+    FROM ~"top10task~"  
+GROUP BY ~"top10task~".~"problem~",   
+         ~"top10task~".~"subproblem~"  
+ORDER BY 3 DESC   
+" filter="rowcount() <= 10")
+rectangle(band=header x="0" y="125" height="31" width="6968"  name=r_1 visible="1" brush.hatch="6" brush.color="0" pen.style="5" pen.width="10" pen.color="553648127"  background.mode="1" background.color="553648127" )
+compute(band=header alignment="0" expression="today()"border="0" color="128" x="52" y="166" height="197" width="2822" format="[longdate]" html.valueishtml="0"  name=rpttoday visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256" )
+compute(band=header alignment="0" expression="'Page ' + page() + ' of ' + pagecount()"border="0" color="128" x="52" y="395" height="177" width="1468" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Times New Roman" font.height="-9" font.weight="700"  font.family="1" font.pitch="2" font.charset="0" font.italic="1" background.mode="2" background.color="12632256" )
+line(band=header x1="41" y1="572" x2="6927" y2="562"  name=l_1 visible="1" pen.style="0" pen.width="20" pen.color="0"  background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="From" border="1" color="128" x="3010" y="156" height="208" width="916" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="min( frdt for all)"border="1" color="65535" x="4072" y="156" height="208" width="750" format="[general]" html.valueishtml="0"  name=fromdate visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="To" border="1" color="128" x="4989" y="156" height="208" width="479" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="max(   todt  for all ) "border="1" color="65535" x="5604" y="156" height="208" width="802" format="[general]" html.valueishtml="0"  name=todate visible="1"  font.face="Arial" font.height="-11" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+text(band=header alignment="2" text="Task" border="1" color="128" x="10" y="666" height="166" width="2114" html.valueishtml="0"  name=closed_bydept_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text="Sub Task" border="1" color="128" x="2177" y="666" height="166" width="1947" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Number of Calls" border="1" color="128" x="4177" y="666" height="166" width="1239" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+text(band=header alignment="2" text="Percentage" border="1" color="128" x="5468" y="666" height="166" width="1125" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="65535" x="4468" y="0" height="166" width="656" format="[general]" html.valueishtml="0"  name=numcalls visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+compute(band=detail alignment="2" expression="string(int( numcalls  / sum(  numcalls  for all ) * 100)) + ~"%~""border="0" color="65535" x="5812" y="11" height="166" width="500" format="[general]" html.valueishtml="0"  name=per visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="65535" x="31" y="11" height="166" width="2072" format="[general]" html.valueishtml="0"  name=problem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="65535" x="2177" y="11" height="166" width="1958" format="[general]" html.valueishtml="0"  name=subproblem visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+line(band=summary x1="10" y1="21" x2="6927" y2="10"  name=l_2 visible="1" pen.style="0" pen.width="20" pen.color="0"  background.mode="2" background.color="16711680" )
+text(band=summary alignment="2" text="Report Variables" border="1" color="128" x="1791" y="83" height="145" width="1552" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=summary alignment="0" text="" border="2" color="128" x="197" y="291" height="187" width="2333" html.valueishtml="0"  name=summary1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256"  height.autosize=yes)
+text(band=summary alignment="0" text="" border="2" color="128" x="2562" y="291" height="187" width="2333" html.valueishtml="0"  name=summary2 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="12632256"  height.autosize=yes)
+line(band=footer x1="6958" y1="41" x2="10" y2="52"  name=l_3 visible="1" pen.style="0" pen.width="20" pen.color="0"  background.mode="2" background.color="16711680" )
+text(band=footer alignment="2" text="Total # of Calls" border="1" color="128" x="72" y="93" height="145" width="833" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="2" expression="sum(  numcalls  for all )"border="1" color="65535" x="1020" y="73" height="166" width="781" format="[general]" html.valueishtml="0"  name=group1callstotal visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+text(band=footer alignment="2" text="Total # of Tasks" border="1" color="128" x="2104" y="73" height="145" width="1114" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=footer alignment="2" expression="count(   problem +  subproblem for all )"border="1" color="65535" x="3395" y="83" height="166" width="416" format="[general]" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16711680" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" pagingmethod=0 generatedddwframes="1" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

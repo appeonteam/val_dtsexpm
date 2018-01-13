@@ -1,0 +1,9 @@
+﻿$PBExportHeader$dp_zone_group.srp
+PIPELINE(source_connect=demo503,destination_connect=demo503_remote,type=refresh,commit=100,errors=100,keyname="zone_group")
+SOURCE(name="zone_group",COLUMN(type=varchar,name="zone_group_code",dbtype="varchar(2)",key=yes,nulls_allowed=no)
+ COLUMN(type=varchar,name="zone_group_name",dbtype="varchar(30)",nulls_allowed=no)
+ COLUMN(type=datetime,name="upd_ts",dbtype="timestamp",nulls_allowed=no))
+RETRIEVE(statement="PBSELECT(TABLE(NAME=~"zone_group~") COLUMN(NAME=~"zone_group.zone_group_code~")COLUMN(NAME=~"zone_group.zone_group_name~")COLUMN(NAME=~"zone_group.upd_ts~"))")
+DESTINATION(name="zone_group",COLUMN(type=varchar,name="zone_group_code",dbtype="varchar(2)",key=yes,nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="zone_group_name",dbtype="varchar(30)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=datetime,name="upd_ts",dbtype="timestamp",nulls_allowed=no,initial_value="today"))

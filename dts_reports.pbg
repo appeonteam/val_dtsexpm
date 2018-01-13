@@ -1,0 +1,15 @@
+Save Format v3.0(19990112)
+@begin Libraries
+ "dts_reports.pbl" "";
+@end;
+@begin Objects
+ "d_vz_rpt_equipment_by_cat_detail.srd" "dts_reports.pbl";
+ "d_he_rpt_prod_calls_by_dept_detail.srd" "dts_reports.pbl";
+ "d_vz_rpt_equipment_by_cat.srd" "dts_reports.pbl";
+ "d_he_rpt_prod_calls_by_dept_summary.srd" "dts_reports.pbl";
+ "d_vz_rpt_approved_calls.srd" "dts_reports.pbl";
+ "d_vz_rpt_equipment_detal.srd" "dts_reports.pbl";
+ "d_vz_rpt_equipment_by_zone_new.srd" "dts_reports.pbl";
+ "d_approval_calls_rpt_by_vend.srd" "dts_reports.pbl";
+ "d_approval_calls_rpt_by_vend_hist.srd" "dts_reports.pbl";
+@end;

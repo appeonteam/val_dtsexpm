@@ -1,0 +1,16 @@
+﻿$PBExportHeader$f_microhelp.srf
+global type f_microhelp from function_object
+end type
+
+forward prototypes
+global subroutine f_microhelp (string as_text)
+end prototypes
+
+global subroutine f_microhelp (string as_text);if gnv_appman.is_apptitle	<> 'Commentator' and POS(gnv_appman.is_apptitle,'Alec') <=0 then 
+	if IsValid( w_main ) then 
+		w_main.SetMicroHelp( as_text )
+	end if	
+end if
+
+end subroutine
+

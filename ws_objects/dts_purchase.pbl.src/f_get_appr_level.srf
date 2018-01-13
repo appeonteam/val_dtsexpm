@@ -1,0 +1,17 @@
+﻿$PBExportHeader$f_get_appr_level.srf
+global type f_get_appr_level from function_object
+end type
+
+forward prototypes
+global function integer f_get_appr_level (string as_pw)
+end prototypes
+
+global function integer f_get_appr_level (string as_pw); int li_my_level 
+ 
+ SELECT "user_rights"."approval_budget"  INTO :li_my_level 
+    FROM "user_rights"  
+    WHERE "user_rights"."user_password" =  :as_pw  ;
+ 
+ return li_my_level 
+end function
+

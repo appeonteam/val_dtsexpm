@@ -1,0 +1,22 @@
+﻿$PBExportHeader$f_end_tran.srf
+global type f_end_tran from function_object
+end type
+
+forward prototypes
+global subroutine f_end_tran (ref transaction a_tran, long al_rc, string as_hdr, string as_goodtext, string as_badtext)
+end prototypes
+
+global subroutine f_end_tran (ref transaction a_tran, long al_rc, string as_hdr, string as_goodtext, string as_badtext);string ls_error , ls_sqlerror
+If al_rc >= 0 then 
+	COMMIT USING a_tran;
+	If Not IsNull( as_hdr) and as_hdr <> '' and Not IsNull(as_goodtext) and as_goodtext <> '' then Messagebox(as_hdr, as_goodtext)
+ELSE
+	ls_sqlerror = '~r~n~r~nSQLCode: '+f_nvl( string(a_tran.sqlcode), 'n/a') +'~r~nSQL Error: '+f_nvl( a_tran.SQLerrtext,'')
+	ROLLBACK USING a_tran;
+	If Not IsNull( as_hdr) and as_hdr <> '' and Not IsNull(as_badtext)  then
+		ls_error = as_badtext + ls_sqlerror
+		Messagebox(as_hdr, ls_error, stopsign!)
+	END IF		
+END IF
+end subroutine
+
