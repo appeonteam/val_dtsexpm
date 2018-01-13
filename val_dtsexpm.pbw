@@ -3,6 +3,7 @@ Save Format v3.0(19990112)
 @end;
 @begin Targets
  0 "xpm.pbt";
+ 1 "ttt.pbt";
 @end;
-DefaultTarget "xpm.pbt";
-DefaultRemoteTarget "xpm.pbt";
+DefaultTarget "ttt.pbt";
+DefaultRemoteTarget "ttt.pbt";
